@@ -1,3 +1,8 @@
+script: "/scripts/menu.gui_script"
+fonts {
+  name: "ofont"
+  font: "/fonts/ofont.font"
+}
 nodes {
   position {
     x: 240.0
@@ -13,14 +18,14 @@ nodes {
     z: 0.45491803
   }
   type: TYPE_BOX
-  id: "box"
+  id: "screen_menu"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    x: 240.0
-    y: 650.0
+    x: 1.0
+    y: 321.0
   }
   size {
     x: 200.0
@@ -28,8 +33,208 @@ nodes {
   }
   type: TYPE_TEXT
   text: "\320\243\320\263\320\260\320\264\320\260\320\271 \320\274\320\260\321\210\320\270\320\275\321\203"
+  font: "ofont"
   id: "text"
+  parent: "screen_menu"
   inherit_alpha: true
+}
+nodes {
+  position {
+    y: 3.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+  }
+  type: TYPE_BOX
+  id: "btn_play"
+  parent: "screen_menu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\230\320\263\321\200\320\260\321\202\321\214"
+  font: "ofont"
+  id: "btn_play_text"
+  parent: "btn_play"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -134.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+  }
+  type: TYPE_BOX
+  id: "btn_leaderboard"
+  parent: "screen_menu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\233\320\270\320\264\320\265\321\200\320\261\320\276\321\200\320\264"
+  font: "ofont"
+  id: "btn_leaderboard_text"
+  parent: "btn_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -274.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.2
+    y: 0.2
+    z: 0.2
+  }
+  type: TYPE_BOX
+  id: "btn_settings"
+  parent: "screen_menu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270"
+  font: "ofont"
+  id: "btn_settings_text"
+  parent: "btn_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 240.0
+    y: 427.0
+  }
+  size {
+    x: 480.0
+    y: 854.0
+  }
+  color {
+    x: 0.45491803
+    y: 0.45491803
+    z: 0.45491803
+  }
+  type: TYPE_BOX
+  id: "screen_categories"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+nodes {
+  position {
+    x: 240.0
+    y: 427.0
+  }
+  size {
+    x: 480.0
+    y: 854.0
+  }
+  color {
+    x: 0.45491803
+    y: 0.45491803
+    z: 0.45491803
+  }
+  type: TYPE_BOX
+  id: "screen_settings"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+nodes {
+  position {
+    x: 240.0
+    y: 427.0
+  }
+  size {
+    x: 480.0
+    y: 854.0
+  }
+  color {
+    x: 0.45491803
+    y: 0.45491803
+    z: 0.45491803
+  }
+  type: TYPE_BOX
+  id: "screen_leaderboard"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+nodes {
+  position {
+    x: 240.0
+    y: 427.0
+  }
+  size {
+    x: 480.0
+    y: 854.0
+  }
+  color {
+    x: 0.45491803
+    y: 0.45491803
+    z: 0.45491803
+  }
+  type: TYPE_BOX
+  id: "screen_result"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+nodes {
+  position {
+    x: 437.0
+    y: 821.0
+  }
+  scale {
+    x: 0.252021
+    y: 0.43994
+    z: 0.76
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.8
+    y: 0.2
+    z: 0.2
+  }
+  type: TYPE_BOX
+  id: "exit"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
