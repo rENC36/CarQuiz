@@ -1,0 +1,35 @@
+nodes {
+  position {
+    x: 240.0
+    y: 427.0
+  }
+  size {
+    x: 480.0
+    y: 854.0
+  }
+  color {
+    x: 0.45491803
+    y: 0.45491803
+    z: 0.45491803
+  }
+  type: TYPE_BOX
+  id: "box"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 240.0
+    y: 650.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\243\320\263\320\260\320\264\320\260\320\271 \320\274\320\260\321\210\320\270\320\275\321\203"
+  id: "text"
+  inherit_alpha: true
+}
+material: "/builtins/materials/gui.material"
+adjust_reference: ADJUST_REFERENCE_PARENT
