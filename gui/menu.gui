@@ -21,6 +21,7 @@ nodes {
   id: "screen_menu"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {
@@ -153,23 +154,130 @@ nodes {
 }
 nodes {
   position {
-    x: 240.0
-    y: 427.0
+    y: -11.0
+  }
+  scale {
+    x: 1.5
   }
   size {
-    x: 480.0
-    y: 854.0
+    x: 200.0
+    y: 100.0
   }
   color {
-    x: 0.45491803
-    y: 0.45491803
-    z: 0.45491803
+    x: 0.101960786
+    y: 0.101960786
+    z: 0.101960786
   }
   type: TYPE_BOX
-  id: "screen_settings"
+  id: "medium"
+  parent: "screen_categories"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
-  enabled: false
+}
+nodes {
+  scale {
+    x: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\241\321\200\320\265\320\264\320\275\321\217\321\217"
+  font: "ofont"
+  id: "text2"
+  parent: "medium"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 99.0
+  }
+  scale {
+    x: 1.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.101960786
+    y: 0.101960786
+    z: 0.101960786
+  }
+  type: TYPE_BOX
+  id: "easy"
+  parent: "screen_categories"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\233\320\265\320\263\320\272\320\260\321\217\n"
+  ""
+  font: "ofont"
+  id: "text1"
+  parent: "easy"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -119.0
+  }
+  scale {
+    x: 1.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.101960786
+    y: 0.101960786
+    z: 0.101960786
+  }
+  type: TYPE_BOX
+  id: "hard"
+  parent: "screen_categories"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  scale {
+    x: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\241\320\273\320\276\320\266\320\275\320\260\321\217"
+  font: "ofont"
+  id: "text3"
+  parent: "hard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 290.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\241\320\273\320\276\320\266\320\275\320\276\321\201\321\202\321\214"
+  font: "ofont"
+  id: "text4"
+  parent: "screen_categories"
+  inherit_alpha: true
 }
 nodes {
   position {
@@ -186,10 +294,24 @@ nodes {
     z: 0.45491803
   }
   type: TYPE_BOX
-  id: "screen_leaderboard"
+  id: "screen_settings"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
-  enabled: false
+}
+nodes {
+  position {
+    y: 324.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270:"
+  font: "ofont"
+  id: "text6"
+  parent: "screen_settings"
+  inherit_alpha: true
 }
 nodes {
   position {
@@ -235,6 +357,41 @@ nodes {
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
   enabled: false
+}
+nodes {
+  position {
+    x: 240.0
+    y: 427.0
+  }
+  size {
+    x: 480.0
+    y: 854.0
+  }
+  color {
+    x: 0.45491803
+    y: 0.45491803
+    z: 0.45491803
+  }
+  type: TYPE_BOX
+  id: "screen_leaderboard"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+nodes {
+  position {
+    y: 360.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\233\320\270\320\264\320\265\321\200\321\213:"
+  font: "ofont"
+  id: "text5"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
