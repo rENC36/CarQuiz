@@ -1,4 +1,5 @@
 local level_manager = require("scripts.level_manager")
+local save_manager = require("scripts.save_manager")
 
 local TIMER_MAX = 10
 local current_questions = {}
@@ -68,10 +69,6 @@ function load_question(self)
 end
 
 function update_lives(self)
-	local hearts = ""
-	for i = 1, 3 do
-		hearts = hearts .. (i <= lives and "❤️" or "🖤")
-	end
 	gui.set_text(gui.get_node("txt_lives"), "HP: " .. lives .. "/3")
 end
 
@@ -150,19 +147,19 @@ end
 
 function end_level(self, win)
 	local stars = 0
-	if win then
-		if errors == 0 then stars = 3
-		elseif errors <= 2 then stars = 2
-		elseif errors == 3 then stars = 1
-		end
+	
+	if errors == 0 then stars = 3
+	elseif errors <= 2 then stars = 2
+	elseif errors == 3 then stars = 1
 	end
 
-	print(win and "Победа! Звёзд: " .. stars or "Поражение!")
-	print("Монет: " .. coins)
+	save_manager.set_stars(self.difficulty, self.level_num, stars)
+	save_manager.add_coins(coins)
+	save_manager.add_score(self.level_score or 0)
 
 	msg.post("/menu#menu", "enable")
 	msg.post("/gameplay#gameplay", "disable")
-	msg.post("/menu#menu", "show_result", { 
+	msg.post("/menu#menu", "show_result", {
 		win = win,
 		stars = stars,
 		coins = coins,

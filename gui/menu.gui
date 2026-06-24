@@ -150,6 +150,7 @@ nodes {
   id: "screen_categories"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {
@@ -354,15 +355,86 @@ nodes {
     y: 854.0
   }
   color {
-    x: 0.45491803
-    y: 0.45491803
-    z: 0.45491803
+    x: 0.2
+    y: 0.2
+    z: 0.2
   }
   type: TYPE_BOX
   id: "screen_result"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
-  enabled: false
+}
+nodes {
+  position {
+    y: 271.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "ofont"
+  id: "txt_result_title"
+  parent: "screen_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 131.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "ofont"
+  id: "txt_result_coins"
+  parent: "screen_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -148.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "ofont"
+  id: "txt_result_errors"
+  parent: "screen_result"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "ofont"
+  id: "txt_result_stars"
+  parent: "screen_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -292.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "ofont"
+  id: "txt_result_next"
+  parent: "screen_result"
+  inherit_alpha: true
 }
 nodes {
   position {
@@ -422,6 +494,21 @@ nodes {
   font: "ofont"
   id: "text5"
   parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 382.0
+    y: 38.0
+  }
+  size {
+    x: 200.0
+    y: 51.0
+  }
+  type: TYPE_TEXT
+  text: "$ 0"
+  font: "ofont"
+  id: "txt_total_coins"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
