@@ -1,7 +1,7 @@
 script: "/scripts/menu.gui_script"
 fonts {
   name: "ofont"
-  font: "/fonts/ofont.font"
+  font: "/Assets/fonts/ofont.font"
 }
 nodes {
   position {
@@ -150,7 +150,6 @@ nodes {
   id: "screen_categories"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
-  enabled: false
 }
 nodes {
   position {
@@ -169,7 +168,7 @@ nodes {
     z: 0.101960786
   }
   type: TYPE_BOX
-  id: "medium"
+  id: "btn_medium"
   parent: "screen_categories"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -186,7 +185,7 @@ nodes {
   text: "\320\241\321\200\320\265\320\264\320\275\321\217\321\217"
   font: "ofont"
   id: "text2"
-  parent: "medium"
+  parent: "btn_medium"
   inherit_alpha: true
 }
 nodes {
@@ -206,7 +205,7 @@ nodes {
     z: 0.101960786
   }
   type: TYPE_BOX
-  id: "easy"
+  id: "btn_easy"
   parent: "screen_categories"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -224,7 +223,7 @@ nodes {
   ""
   font: "ofont"
   id: "text1"
-  parent: "easy"
+  parent: "btn_easy"
   inherit_alpha: true
 }
 nodes {
@@ -244,7 +243,7 @@ nodes {
     z: 0.101960786
   }
   type: TYPE_BOX
-  id: "hard"
+  id: "btn_hard"
   parent: "screen_categories"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
@@ -261,7 +260,7 @@ nodes {
   text: "\320\241\320\273\320\276\320\266\320\275\320\260\321\217"
   font: "ofont"
   id: "text3"
-  parent: "hard"
+  parent: "btn_hard"
   inherit_alpha: true
 }
 nodes {
@@ -297,6 +296,7 @@ nodes {
   id: "screen_settings"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {
@@ -311,6 +311,37 @@ nodes {
   font: "ofont"
   id: "text6"
   parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 203.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
+  }
+  type: TYPE_BOX
+  id: "btn_sound"
+  parent: "screen_settings"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\234\321\203\320\267\321\213\320\272\320\260 \320\262\320\272\320\273"
+  font: "ofont"
+  id: "btn_sound_text"
+  parent: "btn_sound"
   inherit_alpha: true
 }
 nodes {

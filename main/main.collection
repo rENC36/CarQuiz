@@ -1,10 +1,22 @@
 name: "main"
+instances {
+  id: "music"
+  prototype: "/main/music.go"
+}
 scale_along_z: 0
 embedded_instances {
   id: "menu"
   data: "components {\n"
   "  id: \"menu\"\n"
   "  component: \"/gui/menu.gui\"\n"
+  "}\n"
+  ""
+}
+embedded_instances {
+  id: "gameplay"
+  data: "components {\n"
+  "  id: \"gameplay\"\n"
+  "  component: \"/gui/gameplay.gui\"\n"
   "}\n"
   ""
 }
