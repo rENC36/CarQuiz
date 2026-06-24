@@ -410,6 +410,9 @@ nodes {
   inherit_alpha: true
 }
 nodes {
+  position {
+    y: -290.0
+  }
   size {
     x: 200.0
     y: 100.0
@@ -423,8 +426,19 @@ nodes {
 }
 nodes {
   position {
-    y: -292.0
+    y: -9.0
   }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "btn_result_next"
+  parent: "screen_result"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
   size {
     x: 200.0
     y: 100.0
@@ -433,7 +447,7 @@ nodes {
   text: "<text>"
   font: "ofont"
   id: "txt_result_next"
-  parent: "screen_result"
+  parent: "btn_result_next"
   inherit_alpha: true
 }
 nodes {
