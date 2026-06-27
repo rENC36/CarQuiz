@@ -363,6 +363,7 @@ nodes {
   id: "screen_result"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {
@@ -452,31 +453,6 @@ nodes {
 }
 nodes {
   position {
-    x: 437.0
-    y: 821.0
-  }
-  scale {
-    x: 0.252021
-    y: 0.43994
-    z: 0.76
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.8
-    y: 0.2
-    z: 0.2
-  }
-  type: TYPE_BOX
-  id: "exit"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-  enabled: false
-}
-nodes {
-  position {
     x: 240.0
     y: 427.0
   }
@@ -524,6 +500,206 @@ nodes {
   font: "ofont"
   id: "txt_total_coins"
   inherit_alpha: true
+}
+nodes {
+  position {
+    x: 240.0
+    y: 427.0
+  }
+  size {
+    x: 480.0
+    y: 854.0
+  }
+  color {
+    x: 0.45491803
+    y: 0.45491803
+    z: 0.45491803
+  }
+  type: TYPE_BOX
+  id: "screen_levels"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 360.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\233\321\221\320\263\320\272\320\270\320\271"
+  font: "ofont"
+  id: "txt_levels_title"
+  parent: "screen_levels"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 199.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.4
+    y: 0.4
+    z: 0.4
+  }
+  type: TYPE_BOX
+  id: "btn_level_1"
+  parent: "screen_levels"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 10.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\243\321\200\320\276\320\262\320\265\320\275\321\214 1"
+  font: "ofont"
+  id: "txt_level_1"
+  parent: "btn_level_1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -20.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "- - -"
+  font: "ofont"
+  id: "txt_stars_1"
+  parent: "btn_level_1"
+  inherit_alpha: true
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.4
+    y: 0.4
+    z: 0.4
+  }
+  type: TYPE_BOX
+  id: "btn_level_2"
+  parent: "screen_levels"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: -20.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "- - -"
+  font: "ofont"
+  id: "txt_stars_2"
+  parent: "btn_level_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 10.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\243\321\200\320\276\320\262\320\265\320\275\321\214 2"
+  font: "ofont"
+  id: "txt_level_2"
+  parent: "btn_level_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -238.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.4
+    y: 0.4
+    z: 0.4
+  }
+  type: TYPE_BOX
+  id: "btn_level_3"
+  parent: "screen_levels"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 10.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\243\321\200\320\276\320\262\320\265\320\275\321\214 3"
+  font: "ofont"
+  id: "txt_level_3"
+  parent: "btn_level_3"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -20.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "- - -"
+  font: "ofont"
+  id: "txt_stars_3"
+  parent: "btn_level_3"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 451.0
+    y: 820.0
+  }
+  scale {
+    x: 0.205855
+    y: 0.421365
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "exit"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

@@ -256,5 +256,82 @@ nodes {
   parent: "top_bar"
   inherit_alpha: true
 }
+nodes {
+  position {
+    x: 100.0
+    y: 120.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
+  }
+  type: TYPE_BOX
+  id: "btn_hint_5050"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "50/50"
+  font: "ofont"
+  id: "txt_hint_5050"
+  parent: "btn_hint_5050"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 380.0
+    y: 120.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
+  }
+  type: TYPE_BOX
+  id: "btn_hint_skip"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\237\321\200\320\276\320\277\321\203\321\201\320\272"
+  font: "ofont"
+  id: "txt_hint_skip"
+  parent: "btn_hint_skip"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 240.0
+    y: 50.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "$1"
+  font: "ofont"
+  id: "txt_total_coins_gp"
+  inherit_alpha: true
+}
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
