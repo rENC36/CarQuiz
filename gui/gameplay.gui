@@ -7,9 +7,25 @@ fonts {
   name: "vera_mo_bd"
   font: "/Assets/fonts/vera_mo_bd.font"
 }
+fonts {
+  name: "inter_bold"
+  font: "/Assets/fonts/inter_bold.font"
+}
+fonts {
+  name: "inter_regular"
+  font: "/Assets/fonts/inter_regular.font"
+}
 textures {
   name: "cars"
   texture: "/Assets/images/cars.atlas"
+}
+textures {
+  name: "UI1"
+  texture: "/Assets/images/UI1.atlas"
+}
+textures {
+  name: "bg"
+  texture: "/Assets/images/bg.atlas"
 }
 nodes {
   position {
@@ -20,20 +36,15 @@ nodes {
     x: 480.0
     y: 854.0
   }
-  color {
-    x: 0.45491803
-    y: 0.45491803
-    z: 0.45491803
-  }
   type: TYPE_BOX
+  texture: "bg/background1"
   id: "screen_menu"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
     x: 240.0
-    y: 570.0
+    y: 624.0
   }
   size {
     x: 440.0
@@ -47,7 +58,7 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 470.0
+    y: 479.0
   }
   size {
     x: 440.0
@@ -61,7 +72,7 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 470.0
+    y: 479.0
   }
   size {
     x: 440.0
@@ -73,125 +84,161 @@ nodes {
 }
 nodes {
   position {
-    x: 120.0
-    y: 360.0
+    x: 240.0
+    y: 425.0
   }
   size {
-    x: 210.0
+    x: 450.0
     y: 80.0
   }
-  color {
-    x: 0.2
-    y: 0.2
-    z: 0.2
-  }
   type: TYPE_BOX
+  texture: "UI1/btn_white1"
   id: "btn_answer_1"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
+  position {
+    x: -210.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
   size {
     x: 200.0
     y: 100.0
   }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
   type: TYPE_TEXT
   text: "text"
-  font: "vera_mo_bd"
+  font: "inter_regular"
   id: "txt_answer_1"
+  pivot: PIVOT_W
   parent: "btn_answer_1"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 360.0
-    y: 360.0
+    x: 240.0
+    y: 340.0
   }
   size {
-    x: 210.0
+    x: 450.0
     y: 80.0
   }
-  color {
-    x: 0.2
-    y: 0.2
-    z: 0.2
-  }
   type: TYPE_BOX
+  texture: "UI1/btn_white1"
   id: "btn_answer_2"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
+  position {
+    x: -210.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
   size {
     x: 200.0
     y: 100.0
   }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
   type: TYPE_TEXT
   text: "text"
-  font: "vera_mo_bd"
+  font: "inter_regular"
   id: "txt_answer_2"
+  pivot: PIVOT_W
   parent: "btn_answer_2"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 120.0
-    y: 260.0
+    x: 240.0
+    y: 255.0
   }
   size {
-    x: 210.0
+    x: 450.0
     y: 80.0
   }
-  color {
-    x: 0.2
-    y: 0.2
-    z: 0.2
-  }
   type: TYPE_BOX
+  texture: "UI1/btn_white1"
   id: "btn_answer_3"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
+  position {
+    x: -210.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
   size {
     x: 200.0
     y: 100.0
   }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
   type: TYPE_TEXT
   text: "text"
-  font: "vera_mo_bd"
+  font: "inter_regular"
   id: "txt_answer_3"
+  pivot: PIVOT_W
   parent: "btn_answer_3"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 360.0
-    y: 260.0
+    x: 240.0
+    y: 170.0
   }
   size {
-    x: 210.0
+    x: 450.0
     y: 80.0
   }
-  color {
-    x: 0.2
-    y: 0.2
-    z: 0.2
-  }
   type: TYPE_BOX
+  texture: "UI1/btn_white1"
   id: "btn_answer_4"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
+  position {
+    x: -210.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
   size {
     x: 200.0
     y: 100.0
   }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
   type: TYPE_TEXT
   text: "text"
-  font: "vera_mo_bd"
+  font: "inter_regular"
   id: "txt_answer_4"
+  pivot: PIVOT_W
   parent: "btn_answer_4"
   inherit_alpha: true
 }
@@ -205,9 +252,9 @@ nodes {
     y: 80.0
   }
   color {
-    x: 0.6
-    y: 0.6
-    z: 0.6
+    x: 0.08080621
+    y: 0.10002631
+    z: 0.1474359
   }
   type: TYPE_BOX
   id: "top_bar"
@@ -258,22 +305,18 @@ nodes {
 }
 nodes {
   position {
-    x: 100.0
-    y: 120.0
+    x: 130.0
+    y: 70.0
   }
   size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.3019608
-    y: 0.3019608
-    z: 0.3019608
+    x: 170.0
+    y: 80.0
   }
   type: TYPE_BOX
+  texture: "UI1/timebar4"
   id: "btn_hint_5050"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   size {
@@ -289,22 +332,18 @@ nodes {
 }
 nodes {
   position {
-    x: 380.0
-    y: 120.0
+    x: 350.0
+    y: 70.0
   }
   size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.3019608
-    y: 0.3019608
-    z: 0.3019608
+    x: 170.0
+    y: 80.0
   }
   type: TYPE_BOX
+  texture: "UI1/timebar4"
   id: "btn_hint_skip"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   size {
@@ -320,8 +359,8 @@ nodes {
 }
 nodes {
   position {
-    x: 240.0
-    y: 50.0
+    x: 436.0
+    y: 789.0
   }
   size {
     x: 200.0
@@ -332,6 +371,7 @@ nodes {
   font: "ofont"
   id: "txt_total_coins_gp"
   inherit_alpha: true
+  enabled: false
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

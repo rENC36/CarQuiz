@@ -40,6 +40,7 @@ function on_message(self, message_id, message)
 end
 
 function start_level(self, difficulty, level_num)
+	self.start_time = os.time()
 	self.difficulty = difficulty
 	self.level_num = level_num
 	current_questions = level_manager.generate_level(difficulty, level_num)
@@ -172,17 +173,24 @@ function next_question(self)
 end
 
 function end_level(self, win)
+	local elapsed = os.time() - self.start_time  
+	local minutes = math.floor(elapsed / 60)
+	local seconds = elapsed % 60
+	local time_str = string.format("%d:%02d", minutes, seconds)
+	
 	local stars = 0
-	
-	if errors == 0 then stars = 3
-	elseif errors <= 2 then stars = 2
-	elseif errors == 3 then stars = 1
+
+	if win then
+		if errors == 0 then stars = 3
+		elseif errors == 1 then stars = 2
+		elseif errors == 2 then stars = 1
+		end
+		save_manager.set_stars(self.difficulty, self.level_num, stars)
 	end
-	
-	save_manager.set_stars(self.difficulty, self.level_num, stars)
+
 	save_manager.add_coins(coins)
 	save_manager.add_score(self.level_score or 0)
-
+	
 	msg.post("/menu#menu", "enable")
 	msg.post("/gameplay#gameplay", "disable")
 	msg.post("/menu#menu", "show_result", {
@@ -190,8 +198,9 @@ function end_level(self, win)
 		stars = stars,
 		coins = coins,
 		errors = errors,
-		difficulty = self.difficulty,   
-		level_num = self.level_num       
+		time = time_str,
+		difficulty = self.difficulty,
+		level_num = self.level_num
 	})
 end
 

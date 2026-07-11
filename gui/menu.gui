@@ -3,6 +3,22 @@ fonts {
   name: "ofont"
   font: "/Assets/fonts/ofont.font"
 }
+fonts {
+  name: "inter_bold"
+  font: "/Assets/fonts/inter_bold.font"
+}
+fonts {
+  name: "inter_regular"
+  font: "/Assets/fonts/inter_regular.font"
+}
+textures {
+  name: "UI1"
+  texture: "/Assets/images/UI1.atlas"
+}
+textures {
+  name: "bg"
+  texture: "/Assets/images/bg.atlas"
+}
 nodes {
   position {
     x: 240.0
@@ -12,314 +28,93 @@ nodes {
     x: 480.0
     y: 854.0
   }
-  color {
-    x: 0.45491803
-    y: 0.45491803
-    z: 0.45491803
-  }
   type: TYPE_BOX
+  texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
   enabled: false
 }
 nodes {
   position {
-    x: 1.0
-    y: 321.0
+    x: -205.0
+    y: 239.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
   }
   size {
     x: 200.0
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "\320\243\320\263\320\260\320\264\320\260\320\271 \320\274\320\260\321\210\320\270\320\275\321\203"
-  font: "ofont"
-  id: "text"
+  text: "\320\243\320\223\320\220\320\224\320\220\320\231 \320\234\320\220\320\250\320\230\320\235\320\243\n"
+  "\320\237\320\236 \320\244\320\236\320\242\320\236"
+  font: "inter_bold"
+  id: "MainText"
+  pivot: PIVOT_W
   parent: "screen_menu"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: 3.0
+    y: 61.0
+  }
+  size {
+    x: 450.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_white1"
+  id: "btn_play"
+  parent: "screen_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -205.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
   }
   size {
     x: 200.0
     y: 100.0
   }
   color {
-    x: 0.2
-    y: 0.2
-    z: 0.2
-  }
-  type: TYPE_BOX
-  id: "btn_play"
-  parent: "screen_menu"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  size {
-    x: 200.0
-    y: 100.0
+    x: 0.16862746
+    y: 0.20784314
+    z: 0.27058825
   }
   type: TYPE_TEXT
-  text: "\320\230\320\263\321\200\320\260\321\202\321\214"
-  font: "ofont"
+  text: "\320\230\320\223\320\240\320\220\320\242\320\254"
+  font: "inter_bold"
   id: "btn_play_text"
+  pivot: PIVOT_W
   parent: "btn_play"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: -134.0
+    x: 200.0
   }
   size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.2
-    y: 0.2
-    z: 0.2
+    x: 35.0
+    y: 35.0
   }
   type: TYPE_BOX
-  id: "btn_leaderboard"
-  parent: "screen_menu"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\233\320\270\320\264\320\265\321\200\320\261\320\276\321\200\320\264"
-  font: "ofont"
-  id: "btn_leaderboard_text"
-  parent: "btn_leaderboard"
+  texture: "UI1/arrow_gray1"
+  id: "arrow_gray1"
+  parent: "btn_play"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: -274.0
+    y: -54.0
   }
   size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.2
-    y: 0.2
-    z: 0.2
-  }
-  type: TYPE_BOX
-  id: "btn_settings"
-  parent: "screen_menu"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270"
-  font: "ofont"
-  id: "btn_settings_text"
-  parent: "btn_settings"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 240.0
-    y: 427.0
-  }
-  size {
-    x: 480.0
-    y: 854.0
-  }
-  color {
-    x: 0.45491803
-    y: 0.45491803
-    z: 0.45491803
-  }
-  type: TYPE_BOX
-  id: "screen_categories"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-  enabled: false
-}
-nodes {
-  position {
-    y: -11.0
-  }
-  scale {
-    x: 1.5
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.101960786
-    y: 0.101960786
-    z: 0.101960786
-  }
-  type: TYPE_BOX
-  id: "btn_medium"
-  parent: "screen_categories"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  scale {
-    x: 0.5
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\241\321\200\320\265\320\264\320\275\321\217\321\217"
-  font: "ofont"
-  id: "text2"
-  parent: "btn_medium"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: 99.0
-  }
-  scale {
-    x: 1.5
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.101960786
-    y: 0.101960786
-    z: 0.101960786
-  }
-  type: TYPE_BOX
-  id: "btn_easy"
-  parent: "screen_categories"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  scale {
-    x: 0.5
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\233\320\265\320\263\320\272\320\260\321\217\n"
-  ""
-  font: "ofont"
-  id: "text1"
-  parent: "btn_easy"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: -119.0
-  }
-  scale {
-    x: 1.5
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.101960786
-    y: 0.101960786
-    z: 0.101960786
-  }
-  type: TYPE_BOX
-  id: "btn_hard"
-  parent: "screen_categories"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  scale {
-    x: 0.5
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\241\320\273\320\276\320\266\320\275\320\260\321\217"
-  font: "ofont"
-  id: "text3"
-  parent: "btn_hard"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: 290.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\241\320\273\320\276\320\266\320\275\320\276\321\201\321\202\321\214"
-  font: "ofont"
-  id: "text4"
-  parent: "screen_categories"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 240.0
-    y: 427.0
-  }
-  size {
-    x: 480.0
-    y: 854.0
-  }
-  color {
-    x: 0.45491803
-    y: 0.45491803
-    z: 0.45491803
-  }
-  type: TYPE_BOX
-  id: "screen_settings"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-  enabled: false
-}
-nodes {
-  position {
-    y: 324.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270:"
-  font: "ofont"
-  id: "text6"
-  parent: "screen_settings"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: 203.0
-  }
-  size {
-    x: 200.0
+    x: 450.0
     y: 100.0
   }
   color {
@@ -328,21 +123,188 @@ nodes {
     z: 0.3019608
   }
   type: TYPE_BOX
-  id: "btn_sound"
-  parent: "screen_settings"
+  texture: "UI1/btn_gray1"
+  id: "btn_leaderboard"
+  parent: "screen_menu"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
+  position {
+    x: -205.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
   size {
     x: 200.0
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "\320\234\321\203\320\267\321\213\320\272\320\260 \320\262\320\272\320\273"
-  font: "ofont"
-  id: "btn_sound_text"
-  parent: "btn_sound"
+  text: "\320\242\320\220\320\221\320\233\320\230\320\246\320\220 \320\233\320\230\320\224\320\225\320\240\320\236\320\222"
+  font: "inter_bold"
+  id: "btn_leaderboard_text"
+  pivot: PIVOT_W
+  parent: "btn_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 200.0
+  }
+  size {
+    x: 35.0
+    y: 35.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/arrow_white2"
+  id: "arrow_white1"
+  parent: "btn_leaderboard"
+  inherit_alpha: true
+  alpha: 0.5
+}
+nodes {
+  position {
+    y: -171.0
+  }
+  size {
+    x: 450.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_gray1"
+  id: "btn_settings"
+  parent: "screen_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -205.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\235\320\220\320\241\320\242\320\240\320\236\320\231\320\232\320\230"
+  font: "inter_bold"
+  id: "btn_settings_text"
+  pivot: PIVOT_W
+  parent: "btn_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 200.0
+  }
+  size {
+    x: 35.0
+    y: 35.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/arrow_white2"
+  id: "arrow_white"
+  parent: "btn_settings"
+  inherit_alpha: true
+  alpha: 0.5
+}
+nodes {
+  position {
+    x: -205.0
+    y: 300.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\222\320\230\320\232\320\242\320\236\320\240\320\230\320\235\320\220"
+  font: "inter_regular"
+  id: "MainText1"
+  pivot: PIVOT_W
+  parent: "screen_menu"
+  inherit_alpha: true
+  alpha: 0.7
+}
+nodes {
+  position {
+    y: 172.0
+  }
+  size {
+    x: 450.0
+    y: 5.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1"
+  id: "line1"
+  parent: "screen_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 330.0
+  }
+  size {
+    x: 450.0
+    y: 5.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1"
+  id: "line1.1"
+  parent: "screen_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -190.0
+    y: -375.0
+  }
+  size {
+    x: 54.0
+    y: 54.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/ad1"
+  id: "ad1"
+  parent: "screen_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 170.0
+    y: -377.0
+  }
+  size {
+    x: 100.0
+    y: 45.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_darkgray1"
+  id: "btn_money1"
+  parent: "screen_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 206.0
+    y: -375.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/coin1"
+  id: "coin1"
+  parent: "screen_menu"
   inherit_alpha: true
 }
 nodes {
@@ -354,20 +316,858 @@ nodes {
     x: 480.0
     y: 854.0
   }
-  color {
-    x: 0.2
-    y: 0.2
-    z: 0.2
-  }
   type: TYPE_BOX
-  id: "screen_result"
+  texture: "bg/background"
+  id: "screen_categories"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
   enabled: false
 }
 nodes {
   position {
-    y: 271.0
+    y: 64.0
+  }
+  size {
+    x: 450.0
+    y: 150.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_gray_open2"
+  id: "btn_medium"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -209.0
+    y: 42.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\241\320\240\320\225\320\224\320\235\320\257\320\257"
+  font: "inter_bold"
+  id: "MediumCatText1"
+  pivot: PIVOT_W
+  parent: "btn_medium"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 190.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/arrow_white2"
+  id: "white_arrow2."
+  parent: "btn_medium"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -112.0
+    y: -52.0
+  }
+  size {
+    x: 200.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_gray"
+  id: "progress_bar_background_medium"
+  parent: "btn_medium"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -140.0
+    y: -52.0
+  }
+  size {
+    x: 150.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "progress_bar_line_medium"
+  parent: "btn_medium"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 224.0
+  }
+  size {
+    x: 450.0
+    y: 150.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_gray_open2"
+  id: "btn_easy"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -209.0
+    y: 42.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\233\320\201\320\223\320\232\320\220\320\257"
+  font: "inter_bold"
+  id: "EasyCatText"
+  pivot: PIVOT_W
+  parent: "btn_easy"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 190.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/arrow_white2"
+  id: "white_arrow2.1"
+  parent: "btn_easy"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -112.0
+    y: -52.0
+  }
+  size {
+    x: 200.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_gray"
+  id: "progress_bar_background_easy"
+  parent: "btn_easy"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -140.0
+    y: -52.0
+  }
+  size {
+    x: 150.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "progress_bar_line_easy"
+  parent: "btn_easy"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -96.0
+  }
+  size {
+    x: 450.0
+    y: 150.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_gray_open2"
+  id: "btn_hard"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -209.0
+    y: 42.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\242\320\257\320\226\320\201\320\233\320\220\320\257"
+  font: "inter_bold"
+  id: "HardCatText1"
+  pivot: PIVOT_W
+  parent: "btn_hard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 190.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/arrow_white2"
+  id: "white_arrow2.2"
+  parent: "btn_hard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -112.0
+    y: -52.0
+  }
+  size {
+    x: 200.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_gray"
+  id: "progress_bar_background_hard"
+  parent: "btn_hard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -140.0
+    y: -52.0
+  }
+  size {
+    x: 150.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "progress_bar_line_hard"
+  parent: "btn_hard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 385.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\222\320\253\320\221\320\236\320\240 \320\232\320\220\320\242\320\225\320\223\320\236\320\240\320\230\320\230"
+  font: "inter_bold"
+  id: "TitleText2"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 355.0
+  }
+  size {
+    x: 450.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.2"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -210.0
+    y: 385.0
+  }
+  rotation {
+    z: 180.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/arrow_white2"
+  id: "white_arrow"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -232.0
+  }
+  size {
+    x: 450.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.3"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -372.0
+  }
+  size {
+    x: 450.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.4"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -302.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 110.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.5"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -122.0
+    y: -260.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\243\320\240\320\236\320\222\320\235\320\230"
+  font: "inter_regular"
+  id: "LevelsText"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 115.0
+    y: -260.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\227\320\222\320\201\320\227\320\224\320\253"
+  font: "inter_regular"
+  id: "StarsText1"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 240.0
+    y: 427.0
+  }
+  size {
+    x: 480.0
+    y: 854.0
+  }
+  type: TYPE_BOX
+  texture: "bg/background1"
+  id: "screen_settings"
+  inherit_alpha: true
+  enabled: false
+}
+nodes {
+  position {
+    x: -220.0
+    y: 390.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\235\320\220\320\241\320\242\320\240\320\236\320\231\320\232\320\230"
+  font: "inter_bold"
+  id: "TextSettings"
+  pivot: PIVOT_W
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 355.0
+  }
+  size {
+    x: 450.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1"
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 195.0
+    y: 387.0
+  }
+  size {
+    x: 45.0
+    y: 45.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/cancel1.1"
+  id: "close1.1"
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 158.0
+    y: 389.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.2"
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 285.0
+  }
+  size {
+    x: 450.0
+    y: 70.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_darkgray_stld1.1"
+  id: "btn_dark1.1"
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -208.0
+    y: 4.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\234\321\203\320\267\321\213\320\272\320\260"
+  font: "inter_regular"
+  id: "MusicTextSett"
+  pivot: PIVOT_W
+  parent: "btn_dark1.1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 72.0
+    y: 3.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\222\320\272\320\273."
+  font: "inter_regular"
+  id: "OnText"
+  parent: "btn_dark1.1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 172.0
+    y: 3.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\222\321\213\320\272\320\273."
+  font: "inter_regular"
+  id: "OffText"
+  parent: "btn_dark1.1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 72.0
+    y: 3.0
+  }
+  scale {
+    x: 0.400267
+    y: 0.39718
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "OnBox"
+  parent: "btn_dark1.1"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 171.0
+    y: 3.0
+  }
+  scale {
+    x: 0.400267
+    y: 0.39718
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "OffBox"
+  parent: "btn_dark1.1"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    y: 205.0
+  }
+  size {
+    x: 450.0
+    y: 70.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_darkgray_stld1.1"
+  id: "btn_dark1."
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -208.0
+    y: 4.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\227\320\262\321\203\320\272\320\270"
+  font: "inter_regular"
+  id: "SoundsTextSett"
+  pivot: PIVOT_W
+  parent: "btn_dark1."
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 72.0
+    y: 3.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\222\320\272\320\273."
+  font: "inter_regular"
+  id: "OnText1"
+  parent: "btn_dark1."
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 172.0
+    y: 3.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\222\321\213\320\272\320\273."
+  font: "inter_regular"
+  id: "OffText1"
+  parent: "btn_dark1."
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 125.0
+  }
+  size {
+    x: 450.0
+    y: 70.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_darkgray_stld1.1"
+  id: "btn_dark1.2"
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -208.0
+    y: 4.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\257\320\267\321\213\320\272"
+  font: "inter_regular"
+  id: "SoundsTextSett1"
+  pivot: PIVOT_W
+  parent: "btn_dark1.2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 72.0
+    y: 3.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "Rus"
+  font: "inter_regular"
+  id: "LangText2"
+  parent: "btn_dark1.2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 172.0
+    y: 3.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "Eng"
+  font: "inter_regular"
+  id: "LangText1"
+  parent: "btn_dark1.2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 25.0
+    y: 289.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1."
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 125.0
+    y: 289.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.1"
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 25.0
+    y: 129.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.3"
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 25.0
+    y: 209.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.4"
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 125.0
+    y: 209.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.5"
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 125.0
+    y: 129.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.6"
+  parent: "screen_settings"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 240.0
+    y: 427.0
+  }
+  size {
+    x: 480.0
+    y: 854.0
+  }
+  type: TYPE_BOX
+  texture: "bg/background"
+  id: "screen_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 376.0
   }
   size {
     x: 200.0
@@ -382,7 +1182,7 @@ nodes {
 }
 nodes {
   position {
-    y: 131.0
+    y: -103.0
   }
   size {
     x: 200.0
@@ -397,7 +1197,8 @@ nodes {
 }
 nodes {
   position {
-    y: -148.0
+    x: -109.0
+    y: -20.0
   }
   size {
     x: 200.0
@@ -412,7 +1213,7 @@ nodes {
 }
 nodes {
   position {
-    y: -290.0
+    y: 192.0
   }
   size {
     x: 200.0
@@ -427,17 +1228,57 @@ nodes {
 }
 nodes {
   position {
-    y: -9.0
+    y: -220.0
   }
+  scale {
+    x: 0.25
+    y: 0.5
+  }
+  size {
+    x: 888.0
+    y: 170.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_white1"
+  id: "btn_result_next"
+  parent: "screen_result"
+  inherit_alpha: true
+}
+nodes {
   size {
     x: 200.0
     y: 100.0
   }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "\320\225\320\251\320\225 \320\240\320\220\320\227"
+  font: "inter_bold"
+  id: "txt_result_next"
+  parent: "btn_result_next"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 1.0
+    y: -315.0
+  }
+  scale {
+    x: 0.25
+    y: 0.5
+  }
+  size {
+    x: 888.0
+    y: 170.0
+  }
   type: TYPE_BOX
-  id: "btn_result_next"
+  texture: "UI1/btn_gray3"
+  id: "exit_result"
   parent: "screen_result"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   size {
@@ -445,10 +1286,76 @@ nodes {
     y: 100.0
   }
   type: TYPE_TEXT
+  text: "\320\223\320\233\320\220\320\222\320\235\320\236\320\225 \320\234\320\225\320\235\320\256"
+  font: "inter_bold"
+  id: "exit_result_text"
+  parent: "exit_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 268.0
+  }
+  color {
+    x: 0.101960786
+    y: 0.101960786
+    z: 0.101960786
+  }
+  type: TYPE_BOX
+  texture: "UI1/star3"
+  id: "star2_result"
+  parent: "screen_result"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: -148.0
+    y: 196.0
+  }
+  color {
+    x: 0.101960786
+    y: 0.101960786
+    z: 0.101960786
+  }
+  type: TYPE_BOX
+  texture: "UI1/star3"
+  id: "star1_result"
+  parent: "screen_result"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 148.0
+    y: 196.0
+  }
+  color {
+    x: 0.101960786
+    y: 0.101960786
+    z: 0.101960786
+  }
+  type: TYPE_BOX
+  texture: "UI1/star3"
+  id: "star3_result"
+  parent: "screen_result"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 109.0
+    y: -20.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
   text: "<text>"
   font: "ofont"
-  id: "txt_result_next"
-  parent: "btn_result_next"
+  id: "txt_result_time"
+  parent: "screen_result"
   inherit_alpha: true
 }
 nodes {
@@ -460,36 +1367,311 @@ nodes {
     x: 480.0
     y: 854.0
   }
-  color {
-    x: 0.45491803
-    y: 0.45491803
-    z: 0.45491803
-  }
   type: TYPE_BOX
+  texture: "bg/background1"
   id: "screen_leaderboard"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
   enabled: false
 }
 nodes {
   position {
-    y: 360.0
+    x: -220.0
+    y: 390.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
   }
   size {
     x: 200.0
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "\320\233\320\270\320\264\320\265\321\200\321\213:"
-  font: "ofont"
-  id: "text5"
+  text: "\320\242\320\220\320\221\320\233\320\230\320\246\320\220 \320\233\320\230\320\224\320\225\320\240\320\236\320\222"
+  font: "inter_bold"
+  id: "LeaderboardText"
+  pivot: PIVOT_W
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 382.0
-    y: 38.0
+    y: 355.0
+  }
+  size {
+    x: 450.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1."
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 158.0
+    y: 389.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.7"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 195.0
+    y: 387.0
+  }
+  size {
+    x: 45.0
+    y: 45.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/cancel1.1"
+  id: "close1."
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 270.0
+  }
+  size {
+    x: 450.0
+    y: 70.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_darkgray_stld1.1"
+  id: "btn_dark1.3"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -150.0
+    y: 274.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.8"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 100.0
+    y: 274.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.9"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 190.0
+  }
+  size {
+    x: 450.0
+    y: 70.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_darkgray_stld1.1"
+  id: "btn_dark1.4"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -150.0
+    y: 194.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.10"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 100.0
+    y: 194.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.11"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 110.0
+  }
+  size {
+    x: 450.0
+    y: 70.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_white_stld1.1"
+  id: "btn_white1.1"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -150.0
+    y: 114.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.12"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 100.0
+    y: 114.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.13"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -215.0
+    y: 320.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "#"
+  font: "inter_regular"
+  id: "Text1"
+  pivot: PIVOT_W
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -145.0
+    y: 320.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\230\320\274\321\217"
+  font: "inter_regular"
+  id: "Text2"
+  pivot: PIVOT_W
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 105.0
+    y: 320.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\234\320\276\320\275\320\265\321\202\321\213"
+  font: "inter_regular"
+  id: "Text3"
+  pivot: PIVOT_W
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 390.0
+    y: 50.0
+  }
+  scale {
+    x: 0.394316
+    y: 0.773494
   }
   size {
     x: 200.0
@@ -510,196 +1692,334 @@ nodes {
     x: 480.0
     y: 854.0
   }
-  color {
-    x: 0.45491803
-    y: 0.45491803
-    z: 0.45491803
-  }
   type: TYPE_BOX
+  texture: "bg/background"
   id: "screen_levels"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {
-    y: 360.0
+    y: 385.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
   }
   size {
     x: 200.0
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "\320\233\321\221\320\263\320\272\320\270\320\271"
-  font: "ofont"
+  text: "\320\222\320\253\320\221\320\236\320\240 \320\243\320\240\320\236\320\222\320\235\320\257"
+  font: "inter_bold"
   id: "txt_levels_title"
   parent: "screen_levels"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: 199.0
+    x: -155.0
+    y: -50.0
   }
   size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.4
-    y: 0.4
-    z: 0.4
+    x: 140.0
+    y: 140.0
   }
   type: TYPE_BOX
+  texture: "UI1/btn_gray3"
   id: "btn_level_1"
   parent: "screen_levels"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    y: 10.0
+    x: -5.0
+    y: 25.0
   }
   size {
     x: 200.0
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "\320\243\321\200\320\276\320\262\320\265\320\275\321\214 1"
-  font: "ofont"
+  text: "1"
+  font: "inter_bold"
   id: "txt_level_1"
   parent: "btn_level_1"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: -20.0
+    x: -46.0
+    y: -42.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 40.0
+    y: 40.0
   }
-  type: TYPE_TEXT
-  text: "- - -"
-  font: "ofont"
-  id: "txt_stars_1"
+  color {
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
+  }
+  type: TYPE_BOX
+  texture: "UI1/star3"
+  id: "star1_1"
   parent: "btn_level_1"
   inherit_alpha: true
 }
 nodes {
+  position {
+    x: 2.0
+    y: -42.0
+  }
   size {
-    x: 200.0
-    y: 100.0
+    x: 40.0
+    y: 40.0
   }
   color {
-    x: 0.4
-    y: 0.4
-    z: 0.4
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
   }
   type: TYPE_BOX
+  texture: "UI1/star3"
+  id: "star1_2"
+  parent: "btn_level_1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 48.0
+    y: -42.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  color {
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
+  }
+  type: TYPE_BOX
+  texture: "UI1/star3"
+  id: "star1_3"
+  parent: "btn_level_1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -52.0
+  }
+  size {
+    x: 140.0
+    y: 140.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_gray3"
   id: "btn_level_2"
   parent: "screen_levels"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    y: -20.0
+    x: -5.0
+    y: 25.0
   }
   size {
     x: 200.0
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "- - -"
-  font: "ofont"
-  id: "txt_stars_2"
-  parent: "btn_level_2"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: 10.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\243\321\200\320\276\320\262\320\265\320\275\321\214 2"
-  font: "ofont"
+  text: "2"
+  font: "inter_bold"
   id: "txt_level_2"
   parent: "btn_level_2"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: -238.0
+    x: -46.0
+    y: -42.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 40.0
+    y: 40.0
   }
   color {
-    x: 0.4
-    y: 0.4
-    z: 0.4
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
   }
   type: TYPE_BOX
-  id: "btn_level_3"
-  parent: "screen_levels"
+  texture: "UI1/star3"
+  id: "star2_1"
+  parent: "btn_level_2"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
-    y: 10.0
+    x: 2.0
+    y: -42.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  color {
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
+  }
+  type: TYPE_BOX
+  texture: "UI1/star3"
+  id: "star2_2"
+  parent: "btn_level_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 43.0
+    y: -42.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  color {
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
+  }
+  type: TYPE_BOX
+  texture: "UI1/star3"
+  id: "star2_3"
+  parent: "btn_level_2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 155.0
+    y: -52.0
+  }
+  size {
+    x: 140.0
+    y: 140.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_gray3"
+  id: "btn_level_3"
+  parent: "screen_levels"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -5.0
+    y: 25.0
   }
   size {
     x: 200.0
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "\320\243\321\200\320\276\320\262\320\265\320\275\321\214 3"
-  font: "ofont"
+  text: "3"
+  font: "inter_bold"
   id: "txt_level_3"
   parent: "btn_level_3"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: -20.0
+    x: -46.0
+    y: -42.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 40.0
+    y: 40.0
   }
-  type: TYPE_TEXT
-  text: "- - -"
-  font: "ofont"
-  id: "txt_stars_3"
+  color {
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
+  }
+  type: TYPE_BOX
+  texture: "UI1/star3"
+  id: "star3_1"
   parent: "btn_level_3"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 451.0
-    y: 820.0
-  }
-  scale {
-    x: 0.205855
-    y: 0.421365
+    x: 2.0
+    y: -42.0
   }
   size {
-    x: 200.0
-    y: 100.0
+    x: 40.0
+    y: 40.0
   }
   color {
-    y: 0.0
-    z: 0.0
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
   }
   type: TYPE_BOX
-  id: "exit"
+  texture: "UI1/star3"
+  id: "star3_2"
+  parent: "btn_level_3"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 45.0
+    y: -42.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  color {
+    x: 0.3019608
+    y: 0.3019608
+    z: 0.3019608
+  }
+  type: TYPE_BOX
+  texture: "UI1/star3"
+  id: "star3_3"
+  parent: "btn_level_3"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 355.0
+  }
+  size {
+    x: 450.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.6"
+  parent: "screen_levels"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -210.0
+    y: 385.0
+  }
+  rotation {
+    z: 180.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/arrow_white2"
+  id: "white_arrow1"
+  parent: "screen_levels"
+  inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

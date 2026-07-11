@@ -1,0 +1,79 @@
+images {
+  image: "/Assets/images/UI_assets/ad.png"
+}
+images {
+  image: "/Assets/images/UI_assets/arrow_gray.png"
+}
+images {
+  image: "/Assets/images/UI_assets/arrow_gray1.png"
+}
+images {
+  image: "/Assets/images/UI_assets/arrow_white.png"
+}
+images {
+  image: "/Assets/images/UI_assets/bg_pattern.png"
+}
+images {
+  image: "/Assets/images/UI_assets/bg_pattern1.png"
+}
+images {
+  image: "/Assets/images/UI_assets/btn_gray5.png"
+}
+images {
+  image: "/Assets/images/UI_assets/btn_gray20.png"
+}
+images {
+  image: "/Assets/images/UI_assets/btn_gray30.png"
+}
+images {
+  image: "/Assets/images/UI_assets/btn_gray70.png"
+}
+images {
+  image: "/Assets/images/UI_assets/btn_gray_str5.png"
+}
+images {
+  image: "/Assets/images/UI_assets/btn_white.png"
+}
+images {
+  image: "/Assets/images/UI_assets/btn_yellow.png"
+}
+images {
+  image: "/Assets/images/UI_assets/cancel.png"
+}
+images {
+  image: "/Assets/images/UI_assets/closed.png"
+}
+images {
+  image: "/Assets/images/UI_assets/coin.png"
+}
+images {
+  image: "/Assets/images/UI_assets/empty_heart.png"
+}
+images {
+  image: "/Assets/images/UI_assets/empty_star.png"
+}
+images {
+  image: "/Assets/images/UI_assets/heart.png"
+}
+images {
+  image: "/Assets/images/UI_assets/hint.png"
+}
+images {
+  image: "/Assets/images/UI_assets/line.png"
+}
+images {
+  image: "/Assets/images/UI_assets/line_btn.png"
+}
+images {
+  image: "/Assets/images/UI_assets/right.png"
+}
+images {
+  image: "/Assets/images/UI_assets/skip.png"
+}
+images {
+  image: "/Assets/images/UI_assets/star.png"
+}
+images {
+  image: "/Assets/images/UI_assets/wrong.png"
+}
+extrude_borders: 2

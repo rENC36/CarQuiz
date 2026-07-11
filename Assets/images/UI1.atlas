@@ -1,0 +1,115 @@
+images {
+  image: "/Assets/images/UI_assets11/ad1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/arrow_gray1.1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/arrow_gray1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/arrow_white2.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_darkgray1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_darkgray3.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_darkgray_closed2.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_darkgray_stld1.1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_gray1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_gray3.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_gray_open2.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_lightgray5.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_menuback4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_rightgreen4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_white1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_white_stld1.1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_wrongred4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_yellow3.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/cancel1.1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/closed2.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/coin1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/empty_heart4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/empty_star3.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/green_timeline4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/heart4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/hint4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/line_gray1.1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/line_gray1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/progressbar2_gray.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/progressbar2_white.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/red_timeline4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/right4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/skip4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/star3.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/thinginmenu4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/timebar4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/timeline4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/wrong4.png"
+}
+extrude_borders: 2

@@ -1,0 +1,10 @@
+images {
+  image: "/Assets/images/background.png"
+}
+images {
+  image: "/Assets/images/background1.png"
+}
+images {
+  image: "/Assets/images/background_setled1.1.png"
+}
+extrude_borders: 2

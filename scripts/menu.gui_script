@@ -10,17 +10,39 @@ function init(self)
 	
 	self.sound_on = true
 	self.buttons = {
-		{ node = "btn_play",        target = "categories" },
-		{ node = "btn_leaderboard", target = "leaderboard" },
-		{ node = "btn_settings",    target = "settings" },
-		{ node = "btn_easy",        target = "levels", difficulty = "easy" },
-		{ node = "btn_medium",      target = "levels", difficulty = "medium" },
-		{ node = "btn_hard",        target = "levels", difficulty = "hard" },
-		{ node = "exit",            target = "menu" },
+		{ node = "btn_play",        target = "categories", 
+		color = vmath.vector4(1, 1, 1, 1),  
+		hover = vmath.vector4(0.15, 0.75, 0.55, 1) }, 
+
+		{ node = "btn_leaderboard", target = "leaderboard",
+		color = vmath.vector4(0.15, 0.15, 0.20, 1),
+		hover = vmath.vector4(0.25, 0.25, 0.30, 1) },
+
+		{ node = "btn_settings",    target = "settings",
+		color = vmath.vector4(0.15, 0.15, 0.20, 1),
+		hover = vmath.vector4(0.25, 0.25, 0.30, 1) },
+
+		{ node = "btn_easy",        target = "levels", difficulty = "easy",
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(0.15, 0.75, 0.55, 1) },
+		
+		{ node = "btn_medium",      target = "levels", difficulty = "medium",
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(0.15, 0.75, 0.55, 1)  },
+		
+		{ node = "btn_hard",        target = "levels", difficulty = "hard",
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(0.15, 0.75, 0.55, 1)  },
+		
+		{ node = "white_arrow1", 	target = "categories" },
+		{ node = "white_arrow", 	target = "menu" },
 		{ node = "btn_result_next", target = "gameplay" },
 		{ node = "btn_level_1",     target = "gameplay", level_num = 1 },
 		{ node = "btn_level_2",     target = "gameplay", level_num = 2 },
 		{ node = "btn_level_3",     target = "gameplay", level_num = 3 },
+		{ node = "close1.",     target = "menu"},
+		{ node = "close1.1",     target = "menu"},
+		{ node = "exit_result", target = "menu"}
 	}
 
 	change_gui("menu")
@@ -37,43 +59,52 @@ function show_levels(self, difficulty)
 		local locked = i > 1 and save_manager.get_stars(difficulty, i-1) == 0
 
 		print("Уровень " .. i .. " звёзд: " .. stars)
-		
-		local stars_text = ""
-		for s = 1, 3 do
-			stars_text = stars_text .. (s <= stars and "* " or "- ")
-		end
-		gui.set_text(gui.get_node("txt_stars_" .. i), stars_text)
 
+		gui.set_color(gui.get_node("star" .. i .. "_1"), vmath.vector4(0,0,0, .5))
+		gui.set_color(gui.get_node("star" .. i .. "_2"), vmath.vector4(0,0,0, .5))
+		gui.set_color(gui.get_node("star" .. i .. "_3"), vmath.vector4(0,0,0, .5))
+		
+		for s = 1, stars do
+			local but = gui.get_node("star" .. i .. "_" .. s)
+			gui.set_color(but, vmath.vector4(1, 1, 1, 1))
+		end
+		
 		if locked then
-			gui.set_color(gui.get_node("btn_level_" .. i), vmath.vector4(0.2, 0.2, 0.2, 1))
-			gui.set_text(gui.get_node("txt_level_" .. i), "Заблокировано")
+			gui.set_color(gui.get_node("btn_level_" .. i), vmath.vector4(0.2, 0.2, 0.2, .5))
 		else
-			gui.set_color(gui.get_node("btn_level_" .. i), vmath.vector4(0.11, 0.62, 0.46, 1))
-			gui.set_text(gui.get_node("txt_level_" .. i), "Уровень " .. i)
+			if stars == 3 then
+				gui.set_color(gui.get_node("btn_level_" .. i), vmath.vector4(1, 1, 0, 1))
+			else
+				gui.set_color(gui.get_node("btn_level_" .. i), vmath.vector4(0.11, 0.62, 0.46, 1))
+			end
 		end
 	end
 end
 
-function toggle_sound(self)
-	self.sound_on = not self.sound_on
-
-	if self.sound_on then
+function toggle_sound(bool, self)
+	if bool and self.sound_on == false then
 		msg.post("/music#sound", "play_sound")
-		gui.set_text(gui.get_node("btn_sound_text"), "Музыка вкл")
-	else
+	elseif not bool and self.sound_on == true  then
 		msg.post("/music#sound", "stop_sound")
-		gui.set_text(gui.get_node("btn_sound_text"), "Музыка офф")
 	end
 end
 
 function change_gui(name)
 	local screens = {"menu", "settings", "categories", "leaderboard", "result", "levels"}
+	local difficultys = {"easy", "medium", "hard"}
+	
 	for _, screen_name in ipairs(screens) do
+		if screen_name == "categories" then
+			for _, difficultys in ipairs(difficultys) do
+				if not get_category_unlocked(difficultys) then
+					gui.set_color(gui.get_node("btn_" .. difficultys),vmath.vector4(0,0,0, .5))
+				end
+			end
+		end
+		
 		local node = gui.get_node("screen_" .. screen_name)
 		gui.set_enabled(node, screen_name == name)
 	end
-	local back_btn = gui.get_node("exit")
-	gui.set_enabled(back_btn, name ~= "menu")
 end
 
 function on_message(self, message_id, message)
@@ -82,10 +113,15 @@ function on_message(self, message_id, message)
 		local save_data = save_manager.load()
 		gui.set_text(gui.get_node("txt_total_coins"), "$ " .. save_data.coins)
 		
-		gui.set_text(gui.get_node("txt_result_title"), message.win and "Победа!" or "Поражение!")
+		gui.set_text(gui.get_node("txt_result_title"), message.win and "УРОВЕНЬ ПРОЙДЕН!" or "ПРОИГРЫШ")
 		gui.set_text(gui.get_node("txt_result_coins"), "Монет: +" .. message.coins)
 		gui.set_text(gui.get_node("txt_result_errors"), "Ошибок: " .. message.errors)
-
+		gui.set_text(gui.get_node("txt_result_time"), "Время: " .. message.time)
+		
+		for i = 1, 3 do
+			gui.set_color(gui.get_node("star" .. i .. "_result"), i <= message.stars and vmath.vector4(1,1,1, .5) or vmath.vector4(0,0,0, .5))
+		end
+		
 		local stars_text = ""
 		for i = 1, 3 do
 			stars_text = stars_text .. (i <= message.stars and "* " or "- ")
@@ -96,27 +132,37 @@ function on_message(self, message_id, message)
 		self.last_win = message.win
 		
 		gui.set_text(gui.get_node("txt_result_stars"), stars_text)
-		gui.set_text(gui.get_node("txt_result_next"), message.win and "Дальше" or "Заново")
+		gui.set_text(gui.get_node("txt_result_next"), message.win and "СЛЕДУЮЩИЙ УРОВЕНЬ" or "ПРОЙТИ ЕЩЕ РАЗ")
 
 		change_gui("result")
 	end
 end
 
 function on_input(self, action_id, action)
-	if action_id == hash("touch") and action.pressed then
-
-		local sound_btn = gui.get_node("btn_sound")
-		if gui.is_enabled(sound_btn, true) and gui.pick_node(sound_btn, action.x, action.y) then
-			toggle_sound(self)
+	if action_id == hash("touch") and action.released then
+		local screen_settings = gui.get_node("screen_settings")
+		if gui.is_enabled(screen_settings, true) 
+		and gui.pick_node(gui.get_node("OnBox"), action.x, action.y) then
+			toggle_sound(true, self)
+			self.sound_on = true
+			return
+		elseif gui.is_enabled(screen_settings, true) 
+		and gui.pick_node(gui.get_node("OffBox"), action.x, action.y)  then
+			toggle_sound(false, self)
+			self.sound_on = false
 			return
 		end
-
+		
 		for _, btn in ipairs(self.buttons) do
 			local node = gui.get_node(btn.node)
 			if gui.is_enabled(node, true) and gui.pick_node(node, action.x, action.y) then
 				print(btn.node .. " нажато")
+				msg.post("/music#sound_click", "play_sound")
 
 				if btn.target == "levels" then
+					if not get_category_unlocked(btn.difficulty) then
+						return
+					end
 					self.selected_difficulty = btn.difficulty
 					show_levels(self, btn.difficulty)
 					change_gui("levels")
@@ -155,4 +201,54 @@ function on_input(self, action_id, action)
 			end
 		end
 	end
+
+	if action_id == nil then
+		for _, btn in pairs(self.buttons) do
+			local node = gui.get_node(btn.node)
+			local is_hover = gui.pick_node(node, action.x, action.y)
+			
+			if btn.hover == nil or btn.color == nil then
+				return
+			end
+			
+			if is_hover and not btn.hovered then
+				if not get_category_unlocked(btn.difficulty) then 
+					btn.hovered = true
+					gui.animate(node, gui.PROP_SCALE, vmath.vector3(1.03, 1.03, 1), gui.EASING_OUT, 0.1, 0)
+					msg.post("/music#sound_hover", "play_sound")
+					return
+				end
+				
+				btn.hovered = true
+				play_button_animate_cycle(node, btn.hover, vmath.vector3(1.03, 1.03,1), .1)
+				msg.post("/music#sound_hover", "play_sound")
+			elseif not is_hover and btn.hovered then
+				if not get_category_unlocked(btn.difficulty) then 
+					btn.hovered = false
+					gui.animate(node, gui.PROP_SCALE, vmath.vector3(1, 1, 1), gui.EASING_OUT, 0.1, 0)
+					return
+				end
+				
+				btn.hovered = false
+				play_button_animate_cycle(node, btn.color, vmath.vector3(1,1,1), .1)
+			end
+		end
+	end
+end
+
+function play_button_animate_cycle(node, btn_color, new_size, cd)
+	gui.animate(node, gui.PROP_COLOR, btn_color, gui.EASING_OUT, cd, 0)
+	gui.animate(node, gui.PROP_SCALE, new_size, gui.EASING_OUT, cd, 0)
+end
+
+function get_category_unlocked(difficulty)
+	if difficulty == "easy" then return true end
+
+	local prev = difficulty == "medium" and "easy" or "medium"
+	for lvl = 1, 3 do
+		if save_manager.get_stars(prev, lvl) == 0 then
+			return false
+		end
+	end
+	return true
 end
