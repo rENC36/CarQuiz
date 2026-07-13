@@ -117,11 +117,6 @@ nodes {
     x: 450.0
     y: 100.0
   }
-  color {
-    x: 0.3019608
-    y: 0.3019608
-    z: 0.3019608
-  }
   type: TYPE_BOX
   texture: "UI1/btn_gray1"
   id: "btn_leaderboard"
@@ -304,6 +299,29 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/coin1"
   id: "coin1"
+  parent: "screen_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 160.0
+    y: -374.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 51.0
+  }
+  color {
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "$ 0"
+  font: "ofont"
+  id: "txt_total_coins"
   parent: "screen_menu"
   inherit_alpha: true
 }
@@ -697,6 +715,46 @@ nodes {
 }
 nodes {
   position {
+    x: 115.0
+    y: -322.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "0/27"
+  font: "inter_regular"
+  id: "StarsOutput"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -122.0
+    y: -322.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "0/9"
+  font: "inter_regular"
+  id: "LevelsOutput"
+  parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
     x: 240.0
     y: 427.0
   }
@@ -825,6 +883,11 @@ nodes {
   size {
     x: 200.0
     y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
   }
   type: TYPE_TEXT
   text: "\320\222\320\272\320\273."
@@ -1231,7 +1294,7 @@ nodes {
     y: -220.0
   }
   scale {
-    x: 0.25
+    x: 0.5
     y: 0.5
   }
   size {
@@ -1267,7 +1330,7 @@ nodes {
     y: -315.0
   }
   scale {
-    x: 0.25
+    x: 0.5
     y: 0.5
   }
   size {
@@ -1662,25 +1725,6 @@ nodes {
   id: "Text3"
   pivot: PIVOT_W
   parent: "screen_leaderboard"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 390.0
-    y: 50.0
-  }
-  scale {
-    x: 0.394316
-    y: 0.773494
-  }
-  size {
-    x: 200.0
-    y: 51.0
-  }
-  type: TYPE_TEXT
-  text: "$ 0"
-  font: "ofont"
-  id: "txt_total_coins"
   inherit_alpha: true
 }
 nodes {

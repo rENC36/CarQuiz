@@ -10,9 +10,9 @@ function init(self)
 	
 	self.sound_on = true
 	self.buttons = {
-		{ node = "btn_play",        target = "categories", 
+		{ node = "btn_play", target = "categories", 
 		color = vmath.vector4(1, 1, 1, 1),  
-		hover = vmath.vector4(0.15, 0.75, 0.55, 1) }, 
+		hover = vmath.vector4(0.15, 0.75, 0.55, 1),}, 
 
 		{ node = "btn_leaderboard", target = "leaderboard",
 		color = vmath.vector4(0.15, 0.15, 0.20, 1),
@@ -28,25 +28,76 @@ function init(self)
 		
 		{ node = "btn_medium",      target = "levels", difficulty = "medium",
 		color = vmath.vector4(1, 1, 1, 1),
-		hover = vmath.vector4(0.15, 0.75, 0.55, 1)  },
+		hover = vmath.vector4(1, 1, 0, 1),},
 		
 		{ node = "btn_hard",        target = "levels", difficulty = "hard",
 		color = vmath.vector4(1, 1, 1, 1),
-		hover = vmath.vector4(0.15, 0.75, 0.55, 1)  },
+		hover = vmath.vector4(1, 0, 0, 1)  },
 		
-		{ node = "white_arrow1", 	target = "categories" },
-		{ node = "white_arrow", 	target = "menu" },
-		{ node = "btn_result_next", target = "gameplay" },
-		{ node = "btn_level_1",     target = "gameplay", level_num = 1 },
-		{ node = "btn_level_2",     target = "gameplay", level_num = 2 },
-		{ node = "btn_level_3",     target = "gameplay", level_num = 3 },
-		{ node = "close1.",     target = "menu"},
-		{ node = "close1.1",     target = "menu"},
-		{ node = "exit_result", target = "menu"}
-	}
+		{ node = "white_arrow1", 	target = "categories",
+		color = vmath.vector4(0, 0, 0, 1),
+		hover = vmath.vector4(1, 1, 1, 1), 
+		hoversize = vmath.vector3(1.2,1.2,1.2)},
+		
+		{ node = "white_arrow", 	target = "menu", 
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(0, 1, 0, 1), 
+		hoversize = vmath.vector3(1.2,1.2,1.2)},
+		
+		{ node = "btn_level_1", target = "gameplay", level_num = 1, 
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(0, 1, 1, 1)},
+		
+		{ node = "btn_level_2",     target = "gameplay", level_num = 2, 
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(1, 0, 1, 1) },
+		
+		{ node = "btn_level_3",     target = "gameplay", level_num = 3, 
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(1, 1, 0, 1) },
+		
+		{ node = "close1.",     target = "menu", 
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(0, 1, 0, 1), 
+		hoversize = vmath.vector3(1.2,1.2,1.2)},
+		
+		{ node = "close1.1",     target = "menu", 
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(0, 1, 0, 1), 
+		hoversize = vmath.vector3(1.2,1.2,1.2)},
+		
+		{ node = "exit_result", target = "menu", 
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(1, 1, 1, .5), 
+		defaultsize = vmath.vector3(.5,.5,1),
+		hoversize = vmath.vector3(.55,.55,1)},
 
+		{ node = "btn_result_next", target = "gameplay", 
+		color = vmath.vector4(1, 1, 1, 1),
+		hover = vmath.vector4(1, 1, 1, .5),
+		defaultsize = vmath.vector3(.5,.5,1),
+		hoversize = vmath.vector3(.55,.55,1)}
+	}
+	
 	change_gui("menu")
 	print("Menu init работает!")
+
+	local total_stars = 0
+	local total_levels = 0
+	local difficulties = {"easy", "medium", "hard"}
+
+	for _, diff in ipairs(difficulties) do
+		for lvl = 1, 3 do
+			local stars = save_manager.get_stars(diff, lvl)
+			total_stars = total_stars + stars
+			if stars > 0 then
+				total_levels = total_levels + 1
+			end
+		end
+	end
+
+	gui.set_text(gui.get_node("StarsOutput"), total_stars .. "/27")
+	gui.set_text(gui.get_node("LevelsOutput"), total_levels .. "/9")
 end
 
 function show_levels(self, difficulty)
@@ -71,12 +122,23 @@ function show_levels(self, difficulty)
 		
 		if locked then
 			gui.set_color(gui.get_node("btn_level_" .. i), vmath.vector4(0.2, 0.2, 0.2, .5))
+			change_level_color(vmath.vector4(0.2, 0.2, 0.2, .5), i, self)
 		else
 			if stars == 3 then
 				gui.set_color(gui.get_node("btn_level_" .. i), vmath.vector4(1, 1, 0, 1))
+				change_level_color(vmath.vector4(1, 1, 0, 1), i, self)
 			else
-				gui.set_color(gui.get_node("btn_level_" .. i), vmath.vector4(0.11, 0.62, 0.46, 1))
+				gui.set_color(gui.get_node("btn_level_" .. i), vmath.vector4(1, 1, 1, 1))
+				change_level_color(vmath.vector4(1, 1, 1, 1), i, self)
 			end
+		end
+	end
+end
+
+function change_level_color(color, i, self)
+	for _, screen_name in ipairs(self.buttons) do
+		if screen_name.node == "btn_level_" .. i then
+			screen_name.color = color
 		end
 	end
 end
@@ -143,11 +205,21 @@ function on_input(self, action_id, action)
 		local screen_settings = gui.get_node("screen_settings")
 		if gui.is_enabled(screen_settings, true) 
 		and gui.pick_node(gui.get_node("OnBox"), action.x, action.y) then
+			local onText = gui.get_node("OnText")
+			local offText = gui.get_node("OffText")
+
+			gui.set_color(onText, vmath.vector4(0,0,0,1))
+			gui.set_color(offText, vmath.vector4(1,1,1,1))
 			toggle_sound(true, self)
 			self.sound_on = true
 			return
 		elseif gui.is_enabled(screen_settings, true) 
 		and gui.pick_node(gui.get_node("OffBox"), action.x, action.y)  then
+			local onText = gui.get_node("OnText")
+			local offText = gui.get_node("OffText")
+			
+			gui.set_color(onText, vmath.vector4(1,1,1,1))
+			gui.set_color(offText, vmath.vector4(0,0,0,1))
 			toggle_sound(false, self)
 			self.sound_on = false
 			return
@@ -204,33 +276,33 @@ function on_input(self, action_id, action)
 
 	if action_id == nil then
 		for _, btn in pairs(self.buttons) do
-			local node = gui.get_node(btn.node)
-			local is_hover = gui.pick_node(node, action.x, action.y)
-			
-			if btn.hover == nil or btn.color == nil then
-				return
-			end
-			
-			if is_hover and not btn.hovered then
-				if not get_category_unlocked(btn.difficulty) then 
-					btn.hovered = true
-					gui.animate(node, gui.PROP_SCALE, vmath.vector3(1.03, 1.03, 1), gui.EASING_OUT, 0.1, 0)
-					msg.post("/music#sound_hover", "play_sound")
-					return
-				end
-				
-				btn.hovered = true
-				play_button_animate_cycle(node, btn.hover, vmath.vector3(1.03, 1.03,1), .1)
-				msg.post("/music#sound_hover", "play_sound")
-			elseif not is_hover and btn.hovered then
-				if not get_category_unlocked(btn.difficulty) then 
+			if btn.hover ~= nil and btn.color ~= nil then
+				local node = gui.get_node(btn.node)
+
+				if not gui.is_enabled(node, true) then
 					btn.hovered = false
-					gui.animate(node, gui.PROP_SCALE, vmath.vector3(1, 1, 1), gui.EASING_OUT, 0.1, 0)
-					return
+				else
+					local is_hover = gui.pick_node(node, action.x, action.y)
+
+					if is_hover and not btn.hovered then
+						btn.hovered = true
+						local size = btn.hoversize and btn.hoversize or vmath.vector3(1.03, 1.03, 1)
+						if not get_category_unlocked(btn.difficulty) then
+							gui.animate(node, gui.PROP_SCALE, size, gui.EASING_OUT, 0.1, 0)
+						else
+							play_button_animate_cycle(node, btn.hover, size, .1)
+						end
+						msg.post("/music#sound_hover", "play_sound")
+					elseif not is_hover and btn.hovered then
+						btn.hovered = false
+						local size = btn.defaultsize and btn.defaultsize or vmath.vector3(1, 1, 1)
+						if not get_category_unlocked(btn.difficulty) then
+							gui.animate(node, gui.PROP_SCALE, size, gui.EASING_OUT, 0.1, 0)
+						else
+							play_button_animate_cycle(node, btn.color, size, .1)
+						end
+					end
 				end
-				
-				btn.hovered = false
-				play_button_animate_cycle(node, btn.color, vmath.vector3(1,1,1), .1)
 			end
 		end
 	end
