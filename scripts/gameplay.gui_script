@@ -1,5 +1,5 @@
-local level_manager = require("scripts.level_manager")
-local save_manager = require("scripts.save_manager")
+local level_manager = require("scripts.managers.level_manager")
+local save_manager = require("scripts.managers.save_manager")
 
 local TIMER_MAX = 10
 local current_questions = {}

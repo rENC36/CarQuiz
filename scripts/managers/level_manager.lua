@@ -1,4 +1,4 @@
-local data = require("scripts.data")
+local data = require("scripts.data.levels_data")
 local M = {}
 
 function M.generate_level(difficulty, level_num)

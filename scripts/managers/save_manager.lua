@@ -33,7 +33,6 @@ end
 function M.set_stars(difficulty, level_num, stars)
 	local data = M.load()
 	local key = "level_" .. level_num
-	-- сохраняем только лучший результат
 	if stars > (data.progress[difficulty][key] or 0) then
 		data.progress[difficulty][key] = stars
 	end

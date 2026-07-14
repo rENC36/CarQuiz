@@ -32,6 +32,7 @@ nodes {
   texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -267,7 +268,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/ad1"
-  id: "ad1"
+  id: "btn_menu_ad"
   parent: "screen_menu"
   inherit_alpha: true
 }
@@ -282,33 +283,18 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/btn_darkgray1"
-  id: "btn_money1"
+  id: "display_money_menu"
   parent: "screen_menu"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 206.0
-    y: -375.0
-  }
-  size {
-    x: 40.0
-    y: 40.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/coin1"
-  id: "coin1"
-  parent: "screen_menu"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 160.0
-    y: -374.0
+    x: -10.0
+    y: 2.0
   }
   scale {
     x: 0.8
-    y: 0.8
+    y: 0.85
   }
   size {
     x: 200.0
@@ -321,7 +307,22 @@ nodes {
   text: "$ 0"
   font: "ofont"
   id: "txt_total_coins"
-  parent: "screen_menu"
+  parent: "display_money_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 42.0
+    y: 2.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/coin1"
+  id: "coin_title_icon"
+  parent: "display_money_menu"
   inherit_alpha: true
 }
 nodes {
@@ -337,7 +338,6 @@ nodes {
   texture: "bg/background"
   id: "screen_categories"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -654,7 +654,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\222\320\253\320\221\320\236\320\240 \320\232\320\220\320\242\320\225\320\223\320\236\320\240\320\230\320\230"
   font: "inter_bold"
-  id: "TitleText2"
+  id: "txt_categories_title"
   parent: "screen_categories"
   inherit_alpha: true
 }
@@ -750,9 +750,24 @@ nodes {
   }
   type: TYPE_TEXT
   text: "\320\243\320\240\320\236\320\222\320\235\320\230"
-  font: "inter_regular"
-  id: "LevelsText"
+  font: "inter_bold"
+  id: "levels_text"
   parent: "screen_categories"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -150.0
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "0/9"
+  font: "inter_regular"
+  id: "LevelsOutput"
+  parent: "levels_text"
   inherit_alpha: true
 }
 nodes {
@@ -770,19 +785,14 @@ nodes {
   }
   type: TYPE_TEXT
   text: "\320\227\320\222\320\201\320\227\320\224\320\253"
-  font: "inter_regular"
-  id: "StarsText1"
+  font: "inter_bold"
+  id: "stars_text"
   parent: "screen_categories"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 115.0
-    y: -322.0
-  }
-  scale {
-    x: 0.4
-    y: 0.4
+    y: -150.0
   }
   size {
     x: 200.0
@@ -792,27 +802,7 @@ nodes {
   text: "0/27"
   font: "inter_regular"
   id: "StarsOutput"
-  parent: "screen_categories"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -122.0
-    y: -322.0
-  }
-  scale {
-    x: 0.4
-    y: 0.4
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "0/9"
-  font: "inter_regular"
-  id: "LevelsOutput"
-  parent: "screen_categories"
+  parent: "stars_text"
   inherit_alpha: true
 }
 nodes {
@@ -876,7 +866,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/cancel1.1"
-  id: "close1.1"
+  id: "close_screen_settings"
   parent: "screen_settings"
   inherit_alpha: true
 }
@@ -1563,7 +1553,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/cancel1.1"
-  id: "close1."
+  id: "close_screen_leaderboard"
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
