@@ -7,12 +7,12 @@ return {
 
 	--кнопка открытия экрана лидерборда в screen_menu
 	{ node = "btn_leaderboard", target = "leaderboard",
-	color = vmath.vector4(0.15, 0.15, 0.20, 1),
+	color = vmath.vector4(1, 1, 1, 1),
 	hover = vmath.vector4(0.25, 0.25, 0.30, 1) },
 
 	--кнопка открытия экрана настроек в screen_menu
 	{ node = "btn_settings",    target = "settings",
-	color = vmath.vector4(0.15, 0.15, 0.20, 1),
+	color = vmath.vector4(1, 1, 1, 1),
 	hover = vmath.vector4(0.25, 0.25, 0.30, 1) },
 
 	--кнопка выбора сложности в screen_categories
@@ -45,17 +45,17 @@ return {
 	-- кнопка запуска gameplay.gui уровня номер один с определённой сложностью
 	{ node = "btn_level_1", target = "gameplay", level_num = 1, 
 	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(0, 1, 1, 1)},
+	hover = vmath.vector4(0, 1, 0, 1), anim_color = false},
 
 	-- кнопка запуска gameplay.gui уровня номер два с определённой сложностью
 	{ node = "btn_level_2",     target = "gameplay", level_num = 2, 
 	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 0, 1, 1) },
+	hover = vmath.vector4(0, 1, 0, 1), anim_color = false},
 
 	-- кнопка запуска gameplay.gui уровня номер три с определённой сложностью
 	{ node = "btn_level_3",     target = "gameplay", level_num = 3, 
 	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 1, 0, 1) },
+	hover = vmath.vector4(0, 1, 0, 1), anim_color = false},
 
 	-- кнопка возвращения из screen_leaderboard в screen_menu
 	{ node = "close_screen_leaderboard",     target = "menu", 

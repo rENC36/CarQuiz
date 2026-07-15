@@ -33,13 +33,17 @@ function M.shake(node)
 	end)
 end
 
-function M.hover_in(node, color, size)
-	gui.animate(node, gui.PROP_COLOR, color, gui.EASING_OUT, 0.1, 0)
+function M.hover_in(node, color, size, anim_color)
+	if anim_color ~= false or anim_color == nil then
+		gui.animate(node, gui.PROP_COLOR, color, gui.EASING_OUT, 0.1, 0)
+	end
 	gui.animate(node, gui.PROP_SCALE, size or vmath.vector3(1.03, 1.03, 1), gui.EASING_OUT, 0.1, 0)
 end
 
-function M.hover_out(node, color, size)
-	gui.animate(node, gui.PROP_COLOR, color, gui.EASING_OUT, 0.1, 0)
+function M.hover_out(node, color, size, anim_color)
+	if anim_color ~= false or anim_color == nil then
+		gui.animate(node, gui.PROP_COLOR, color, gui.EASING_OUT, 0.1, 0)
+	end
 	gui.animate(node, gui.PROP_SCALE, size or vmath.vector3(1, 1, 1), gui.EASING_OUT, 0.1, 0)
 end
 

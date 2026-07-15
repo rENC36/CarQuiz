@@ -338,6 +338,7 @@ nodes {
   texture: "bg/background"
   id: "screen_categories"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -821,7 +822,6 @@ nodes {
   texture: "bg/background1"
   id: "screen_settings"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -947,7 +947,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\222\320\272\320\273."
   font: "inter_regular"
-  id: "OnText"
+  id: "on_music_text"
   parent: "btn_dark1.1"
   inherit_alpha: true
 }
@@ -967,7 +967,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\222\321\213\320\272\320\273."
   font: "inter_regular"
-  id: "OffText"
+  id: "off_music_text"
   parent: "btn_dark1.1"
   inherit_alpha: true
 }
@@ -985,7 +985,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_BOX
-  id: "OnBox"
+  id: "on_music_box"
   parent: "btn_dark1.1"
   inherit_alpha: true
   alpha: 0.0
@@ -1005,7 +1005,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_BOX
-  id: "OffBox"
+  id: "off_music_box"
   parent: "btn_dark1.1"
   inherit_alpha: true
   alpha: 0.0
@@ -1059,10 +1059,15 @@ nodes {
     x: 200.0
     y: 100.0
   }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
   type: TYPE_TEXT
   text: "\320\222\320\272\320\273."
   font: "inter_regular"
-  id: "OnText1"
+  id: "on_sound_text"
   parent: "btn_dark1."
   inherit_alpha: true
 }
@@ -1082,9 +1087,49 @@ nodes {
   type: TYPE_TEXT
   text: "\320\222\321\213\320\272\320\273."
   font: "inter_regular"
-  id: "OffText1"
+  id: "off_sound_text"
   parent: "btn_dark1."
   inherit_alpha: true
+}
+nodes {
+  position {
+    x: 171.0
+    y: 3.0
+  }
+  scale {
+    x: 0.400267
+    y: 0.39718
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "off_sound_box"
+  parent: "btn_dark1."
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 72.0
+    y: 3.0
+  }
+  scale {
+    x: 0.400267
+    y: 0.39718
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "on_sound_box"
+  parent: "btn_dark1."
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
