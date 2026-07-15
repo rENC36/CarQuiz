@@ -179,28 +179,21 @@ function on_message(self, message_id, message)
 	end
 end
 
-function settings_music_control(self, screen_settings, action)
-	if gui.is_enabled(screen_settings, true) 
-	and gui.pick_node(gui.get_node("OnBox"), action.x, action.y) then
-		local onText = gui.get_node("OnText")
-		local offText = gui.get_node("OffText")
+local function handle_sound_toggle(self, screen_settings, action)
+	if not gui.is_enabled(screen_settings, true) then return end
 
-		gui.set_color(onText, vmath.vector4(0,0,0,1))
-		gui.set_color(offText, vmath.vector4(1,1,1,1))
-		toggle_sound(true, self)
-		self.sound_on = true
-		return
-	elseif gui.is_enabled(screen_settings, true) 
-	and gui.pick_node(gui.get_node("OffBox"), action.x, action.y)  then
-		local onText = gui.get_node("OnText")
-		local offText = gui.get_node("OffText")
+	local pressed_on  = gui.pick_node(gui.get_node("OnBox"),  action.x, action.y)
+	local pressed_off = gui.pick_node(gui.get_node("OffBox"), action.x, action.y)
 
-		gui.set_color(onText, vmath.vector4(1,1,1,1))
-		gui.set_color(offText, vmath.vector4(0,0,0,1))
-		toggle_sound(false, self)
-		self.sound_on = false
-		return
-	end
+	if not pressed_on and not pressed_off then return end
+
+	local sound_on = pressed_on  -- true если On, false если Off
+
+	gui.set_color(gui.get_node("OnText"),  sound_on and vmath.vector4(0,0,0,1) or vmath.vector4(1,1,1,1))
+	gui.set_color(gui.get_node("OffText"), sound_on and vmath.vector4(1,1,1,1) or vmath.vector4(0,0,0,1))
+
+	toggle_sound(sound_on, self)
+	self.sound_on = sound_on
 end
 
 local function apply_hover_out(node, btn)
@@ -221,10 +214,34 @@ local function apply_hover_in(node, btn)
 	end
 end
 
+local function process_hover(action_id, action, self)
+	if action_id ~= nil then return end
+
+	for _, btn in pairs(self.buttons) do
+		if btn.hover == nil or btn.color == nil then return end
+
+		local node = gui.get_node(btn.node)
+
+		if not gui.is_enabled(node, true) then
+			btn.hovered = false
+			apply_hover_out(node, btn)
+		elseif gui.pick_node(node, action.x, action.y) then
+			if not btn.hovered then
+				btn.hovered = true
+				apply_hover_in(node, btn)
+				msg.post("/music#sound_hover", "play_sound")
+			end
+		elseif btn.hovered then
+			btn.hovered = false
+			apply_hover_out(node, btn)
+		end
+	end
+end
+
 function on_input(self, action_id, action)
 	if action_id == hash("touch") and action.released then
 		local screen_settings = gui.get_node("screen_settings")
-		settings_music_control(self, screen_settings, action)
+		handle_sound_toggle(self, screen_settings, action)
 		
 		for _, btn in ipairs(self.buttons) do
 			local node = gui.get_node(btn.node)
@@ -279,26 +296,7 @@ function on_input(self, action_id, action)
 		end
 	end
 
-	if action_id == nil then
-		for _, btn in pairs(self.buttons) do
-			if btn.hover ~= nil and btn.color ~= nil then
-				local node = gui.get_node(btn.node)
-				if not gui.is_enabled(node, true) then
-					btn.hovered = false
-				else
-					local is_hover = gui.pick_node(node, action.x, action.y)
-					if is_hover and not btn.hovered then
-						btn.hovered = true
-						apply_hover_in(node, btn)
-						msg.post("/music#sound_hover", "play_sound")
-					elseif not is_hover and btn.hovered then
-						btn.hovered = false
-						apply_hover_out(node, btn)
-					end
-				end
-			end
-		end
-	end
+	process_hover(action_id, action, self)
 end
 
 function get_category_unlocked(difficulty)
