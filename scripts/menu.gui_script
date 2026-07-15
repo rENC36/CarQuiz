@@ -85,6 +85,13 @@ function toggle_sound(bool, self)
 end
 
 function update_category_progress(self)
+	local bar_states = {
+		[0] = { alpha = 0,    scale_x = 1,    pos_x = 0 },
+		[1] = { alpha = 1,    scale_x = 0.4,  pos_x = -182 },
+		[2] = { alpha = 1,    scale_x = 0.8,  pos_x = -151 },
+		[3] = { alpha = 1,    scale_x = 1.33, pos_x = -112 },
+	}
+
 	local difficulties = {"easy", "medium", "hard"}
 	local nodes = {"Easy", "Medium", "Hard"}
 
@@ -95,12 +102,28 @@ function update_category_progress(self)
 				completed = completed + 1
 			end
 		end
+
 		local pct = math.floor((completed / 3) * 100)
 		gui.set_text(gui.get_node(nodes[i] .. "Completed"), completed .. "/3 (" .. pct .. "%)")
 
 		if completed == 3 then
 			gui.set_color(gui.get_node(nodes[i] .. "Completed"), vmath.vector4(1,1,0,1))
 		end
+
+		local state = bar_states[completed]
+		local bar = gui.get_node("progress_bar_line_" .. diff)
+
+		local color = gui.get_color(bar)
+		color.w = state.alpha
+		gui.set_color(bar, color)
+
+		local scale = gui.get_scale(bar)
+		scale.x = state.scale_x
+		gui.set_scale(bar, scale)
+
+		local pos = gui.get_position(bar)
+		pos.x = state.pos_x
+		gui.set_position(bar, pos)
 	end
 end
 
@@ -115,7 +138,7 @@ function change_gui(name, self)
 					gui.set_color(gui.get_node("btn_" .. diff), vmath.vector4(0,0,0, .5))
 				end
 			end
-			update_category_progress(self)
+			if self then update_category_progress(self) end
 		end
 
 		local node = gui.get_node("screen_" .. screen_name)
