@@ -32,7 +32,6 @@ nodes {
   texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -822,6 +821,7 @@ nodes {
   texture: "bg/background1"
   id: "screen_settings"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
