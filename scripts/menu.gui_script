@@ -34,6 +34,8 @@ function init(self)
 
 	gui.set_text(gui.get_node("StarsOutput"), total_stars .. "/27")
 	gui.set_text(gui.get_node("LevelsOutput"), total_levels .. "/9")
+
+	ysdk.features.loading_api.ready()
 end
 
 function show_levels(self, difficulty)
@@ -278,10 +280,25 @@ function on_input(self, action_id, action)
 				print(btn.node .. " нажато")
 
 				play_sound_effect(self, "click")
-				
-				if not btn.target then
-					break
+
+				if btn.node == "btn_menu_ad" then
+					ysdk.adv.show_rewarded_video({
+						on_open = function (self)
+							print("Video ad open")
+						end,
+						on_close = function (self)
+							print("Rewarded!")
+						end,
+						on_rewarded = function (self)
+							print("Video ad closed.")
+						end,
+						on_error = function (self, error)
+							print("Error while open video ad: " .. error)
+						end
+					})
 				end
+				
+				if not btn.target then break end
 				
 				if btn.target == "levels" then
 					if get_category_unlocked(btn.difficulty) then
@@ -315,7 +332,6 @@ function on_input(self, action_id, action)
 							})
 						end)
 					end
-
 				else
 					change_gui(btn.target, self)
 				end
