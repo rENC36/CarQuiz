@@ -32,6 +32,7 @@ nodes {
   texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -939,17 +940,13 @@ nodes {
     x: 200.0
     y: 100.0
   }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
   type: TYPE_TEXT
   text: "\320\222\320\272\320\273."
   font: "inter_regular"
   id: "on_music_text"
   parent: "btn_dark1.1"
   inherit_alpha: true
+  alpha: 0.5
 }
 nodes {
   position {
@@ -1065,7 +1062,7 @@ nodes {
   id: "on_sound_text"
   parent: "btn_dark1."
   inherit_alpha: true
-  alpha: 0.3
+  alpha: 0.5
 }
 nodes {
   position {
@@ -1323,7 +1320,6 @@ nodes {
   texture: "bg/background"
   id: "screen_result"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -1360,41 +1356,6 @@ nodes {
   text: "<text>"
   font: "inter_regular"
   id: "txt_result_coins"
-  parent: "screen_result"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -122.0
-    y: 43.0
-  }
-  scale {
-    x: 0.4
-    y: 0.4
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "<text>"
-  font: "inter_regular"
-  id: "txt_result_errors"
-  parent: "screen_result"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: 192.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "<text>"
-  font: "ofont"
-  id: "txt_result_stars"
   parent: "screen_result"
   inherit_alpha: true
 }
@@ -1510,8 +1471,21 @@ nodes {
 }
 nodes {
   position {
+    y: 29.0
+  }
+  size {
+    x: 450.0
+    y: 150.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_lightgray5"
+  id: "box"
+  parent: "screen_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
     x: 109.0
-    y: 61.0
   }
   scale {
     x: 0.4
@@ -1525,21 +1499,66 @@ nodes {
   text: "<text>"
   font: "inter_regular"
   id: "txt_result_time"
-  parent: "screen_result"
+  parent: "box"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: 29.0
+    x: -109.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
   }
   size {
-    x: 450.0
-    y: 150.0
+    x: 200.0
+    y: 100.0
   }
-  type: TYPE_BOX
-  texture: "UI1/btn_lightgray5"
-  id: "box"
-  parent: "screen_result"
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "inter_regular"
+  id: "txt_result_errors"
+  parent: "box"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 109.0
+    y: 45.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\222\321\200\320\265\320\274\321\217"
+  font: "inter_bold"
+  id: "txt_result_time1"
+  parent: "box"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -109.0
+    y: 45.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\236\321\210\320\270\320\261\320\272\320\270"
+  font: "inter_bold"
+  id: "txt_result_errors1"
+  parent: "box"
   inherit_alpha: true
 }
 nodes {

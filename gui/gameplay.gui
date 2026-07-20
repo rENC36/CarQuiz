@@ -277,7 +277,7 @@ nodes {
   type: TYPE_TEXT
   text: "1/15"
   font: "ofont"
-  id: "txt_question"
+  id: "txt_question1"
   parent: "top_bar"
   inherit_alpha: true
 }
@@ -289,7 +289,7 @@ nodes {
   type: TYPE_TEXT
   text: "0"
   font: "ofont"
-  id: "txt_coins"
+  id: "txt_coins1"
   parent: "top_bar"
   inherit_alpha: true
 }
@@ -540,30 +540,9 @@ nodes {
   type: TYPE_TEXT
   text: "1/"
   font: "inter_bold"
-  id: "text2"
+  id: "txt_question"
   pivot: PIVOT_W
   inherit_alpha: true
-}
-nodes {
-  position {
-    x: 240.0
-    y: 812.0
-  }
-  scale {
-    x: 0.3
-    y: 0.3
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "15"
-  font: "inter_bold"
-  id: "text1"
-  pivot: PIVOT_W
-  inherit_alpha: true
-  alpha: 0.6
 }
 nodes {
   position {
@@ -602,7 +581,7 @@ nodes {
   type: TYPE_TEXT
   text: "$ 0"
   font: "ofont"
-  id: "txt_total_coins"
+  id: "txt_coins"
   parent: "display_money_menu"
   inherit_alpha: true
 }

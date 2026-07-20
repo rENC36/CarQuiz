@@ -81,7 +81,7 @@ function load_question(self)
 		local node = gui.get_node(btn.node)
 		local text = gui.get_node(btn.text)
 		gui.set_text(text, q.answers[i])
-		gui.set_color(node, vmath.vector4(0.15, 0.15, 0.20, 1))
+		gui.set_color(node, vmath.vector4(1,1,1, 1))
 		gui.set_enabled(node, true)
 	end
 
