@@ -21,5 +21,4 @@ scale_mode = stretch
 
 [project]
 title = CarQuiz
-dependencies#0 = https://github.com/yandex-games-plugins/defold/archive/refs/tags/v1.3.0.zip
 
