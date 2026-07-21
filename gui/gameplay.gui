@@ -40,7 +40,6 @@ nodes {
   texture: "bg/background1"
   id: "screen_menu"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -59,7 +58,6 @@ nodes {
   texture: "cars/easy_01.1"
   id: "car_image"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -75,7 +73,6 @@ nodes {
   id: "timer_bg"
   inherit_alpha: true
   alpha: 0.5
-  enabled: false
 }
 nodes {
   position {
@@ -90,7 +87,6 @@ nodes {
   texture: "UI1/timeline4"
   id: "timer_bar"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -105,7 +101,6 @@ nodes {
   texture: "UI1/btn_white1"
   id: "btn_answer_1"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -145,7 +140,6 @@ nodes {
   texture: "UI1/btn_white1"
   id: "btn_answer_2"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -185,7 +179,6 @@ nodes {
   texture: "UI1/btn_white1"
   id: "btn_answer_3"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -225,7 +218,6 @@ nodes {
   texture: "UI1/btn_white1"
   id: "btn_answer_4"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -326,7 +318,6 @@ nodes {
   texture: "UI1/Rectangle (31) (2)"
   id: "btn_hint_5050"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -361,7 +352,6 @@ nodes {
   texture: "UI1/Rectangle (31) (2)"
   id: "btn_hint_skip"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -385,22 +375,6 @@ nodes {
 }
 nodes {
   position {
-    x: 436.0
-    y: 789.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "$1"
-  font: "ofont"
-  id: "txt_total_coins_gp"
-  inherit_alpha: true
-  enabled: false
-}
-nodes {
-  position {
     x: 240.0
     y: 500.0
   }
@@ -412,7 +386,6 @@ nodes {
   texture: "UI1/btn_lightgray5"
   id: "block"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -427,7 +400,6 @@ nodes {
   texture: "UI1/heart4"
   id: "symbol_heart1"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -442,7 +414,6 @@ nodes {
   texture: "UI1/heart4"
   id: "symbol_heart2"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -457,7 +428,6 @@ nodes {
   texture: "UI1/empty_heart4"
   id: "symbol_heart3"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -478,7 +448,6 @@ nodes {
   id: "text"
   inherit_alpha: true
   alpha: 0.8
-  enabled: false
 }
 nodes {
   position {
@@ -497,7 +466,6 @@ nodes {
   texture: "UI1/progressbar2_white"
   id: "menu"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -516,7 +484,6 @@ nodes {
   texture: "UI1/progressbar2_white"
   id: "1menu"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -535,7 +502,6 @@ nodes {
   texture: "UI1/progressbar2_white"
   id: "2menu"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -556,7 +522,6 @@ nodes {
   id: "txt_question"
   pivot: PIVOT_W
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -575,7 +540,6 @@ nodes {
   texture: "UI1/btn_darkgray1"
   id: "display_money_menu"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -631,7 +595,6 @@ nodes {
   texture: "UI1/line_gray1.1"
   id: "line"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -646,7 +609,6 @@ nodes {
   texture: "UI1/hint4"
   id: "hint1"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -661,7 +623,6 @@ nodes {
   texture: "UI1/skip4"
   id: "skip1"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -676,7 +637,6 @@ nodes {
   texture: "UI1/coin1"
   id: "coin11"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -701,7 +661,6 @@ nodes {
   id: "text3"
   pivot: PIVOT_W
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -722,7 +681,6 @@ nodes {
   id: "text4"
   pivot: PIVOT_W
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -737,7 +695,6 @@ nodes {
   texture: "UI1/ad1"
   id: "coin"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -752,7 +709,6 @@ nodes {
   texture: "UI1/coin1"
   id: "coin1"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -776,7 +732,6 @@ nodes {
   id: "text5"
   pivot: PIVOT_W
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -797,7 +752,6 @@ nodes {
   id: "text6"
   pivot: PIVOT_W
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -812,7 +766,6 @@ nodes {
   texture: "UI1/ad1"
   id: "coin2"
   inherit_alpha: true
-  enabled: false
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

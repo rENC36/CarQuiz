@@ -5,8 +5,7 @@ local buttons_data = require("scripts.data.buttons_data")
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-
-	msg.post(".", "acquire_input_focus")
+	
 	local save_data = save_manager.load()
 	print("Монет в сохранении: " .. save_data.coins)
 	gui.set_text(gui.get_node("txt_total_coins"), "$ " .. save_data.coins)
@@ -35,7 +34,14 @@ function init(self)
 	gui.set_text(gui.get_node("StarsOutput"), total_stars .. "/27")
 	gui.set_text(gui.get_node("LevelsOutput"), total_levels .. "/9")
 
-	ysdk.features.loading_api.ready()
+	--msg.post("/gameplay#gameplay", "disable")
+	--msg.post("/menu#menu", "enable")
+	
+	if ysdk and ysdk.features and ysdk.features.loading_api then
+		ysdk.features.loading_api.ready()
+	else
+		print("Yandex SDK not available")
+	end
 end
 
 function show_levels(self, difficulty)
