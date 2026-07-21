@@ -61,34 +61,6 @@ nodes {
 }
 nodes {
   position {
-    x: 304.0
-    y: 495.0
-  }
-  size {
-    x: 260.0
-    y: 20.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/timeline4"
-  id: "timer_bg"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 304.0
-    y: 495.0
-  }
-  size {
-    x: 260.0
-    y: 15.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/timeline4"
-  id: "timer_bar"
-  inherit_alpha: true
-}
-nodes {
-  position {
     x: 240.0
     y: 380.0
   }
@@ -100,7 +72,6 @@ nodes {
   texture: "UI1/btn_white1"
   id: "btn_answer_1"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -140,7 +111,6 @@ nodes {
   texture: "UI1/btn_white1"
   id: "btn_answer_2"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -180,7 +150,6 @@ nodes {
   texture: "UI1/btn_white1"
   id: "btn_answer_3"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -220,7 +189,6 @@ nodes {
   texture: "UI1/btn_white1"
   id: "btn_answer_4"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -277,7 +245,7 @@ nodes {
   type: TYPE_TEXT
   text: "1/15"
   font: "ofont"
-  id: "txt_question"
+  id: "txt_question1"
   parent: "top_bar"
   inherit_alpha: true
 }
@@ -289,7 +257,7 @@ nodes {
   type: TYPE_TEXT
   text: "0"
   font: "ofont"
-  id: "txt_coins"
+  id: "txt_coins1"
   parent: "top_bar"
   inherit_alpha: true
 }
@@ -321,7 +289,6 @@ nodes {
   texture: "UI1/Rectangle (31) (2)"
   id: "btn_hint_5050"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -356,7 +323,6 @@ nodes {
   texture: "UI1/Rectangle (31) (2)"
   id: "btn_hint_skip"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -380,22 +346,6 @@ nodes {
 }
 nodes {
   position {
-    x: 436.0
-    y: 789.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "$1"
-  font: "ofont"
-  id: "txt_total_coins_gp"
-  inherit_alpha: true
-  enabled: false
-}
-nodes {
-  position {
     x: 240.0
     y: 500.0
   }
@@ -404,14 +354,13 @@ nodes {
     y: 80.0
   }
   type: TYPE_BOX
-  texture: "UI1/btn_lightgray5"
-  id: "block"
+  texture: "UI1/timebar4"
+  id: "time_bar"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 60.0
-    y: 500.0
+    x: -180.0
   }
   size {
     x: 30.0
@@ -419,13 +368,13 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/heart4"
-  id: "heart"
+  id: "symbol_heart1"
+  parent: "time_bar"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 95.0
-    y: 500.0
+    x: -147.0
   }
   size {
     x: 30.0
@@ -433,13 +382,13 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/heart4"
-  id: "heart1"
+  id: "symbol_heart2"
+  parent: "time_bar"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 130.0
-    y: 500.0
+    x: -113.0
   }
   size {
     x: 30.0
@@ -447,7 +396,39 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/empty_heart4"
-  id: "heart2"
+  id: "symbol_heart3"
+  parent: "time_bar"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 65.0
+    y: -2.0
+  }
+  size {
+    x: 260.0
+    y: 21.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/timeline4"
+  id: "timer_bg"
+  parent: "time_bar"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -57.0
+    y: 2.0
+  }
+  size {
+    x: 245.0
+    y: 10.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/green_timeline4.1"
+  id: "timer_bar"
+  pivot: PIVOT_W
+  parent: "time_bar"
   inherit_alpha: true
 }
 nodes {
@@ -476,7 +457,7 @@ nodes {
     y: 831.0
   }
   scale {
-    x: 0.3
+    x: 0.35
     y: 0.3
   }
   size {
@@ -494,7 +475,7 @@ nodes {
     y: 839.0
   }
   scale {
-    x: 0.3
+    x: 0.35
     y: 0.3
   }
   size {
@@ -512,7 +493,7 @@ nodes {
     y: 823.0
   }
   scale {
-    x: 0.3
+    x: 0.35
     y: 0.3
   }
   size {
@@ -540,42 +521,21 @@ nodes {
   type: TYPE_TEXT
   text: "1/"
   font: "inter_bold"
-  id: "text2"
+  id: "txt_question"
   pivot: PIVOT_W
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 240.0
-    y: 812.0
-  }
-  scale {
-    x: 0.3
-    y: 0.3
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "15"
-  font: "inter_bold"
-  id: "text1"
-  pivot: PIVOT_W
-  inherit_alpha: true
-  alpha: 0.6
-}
-nodes {
-  position {
-    x: 419.0
-    y: 821.0
+    x: 410.0
+    y: 825.0
   }
   scale {
     x: 0.9
     y: 0.9
   }
   size {
-    x: 100.0
+    x: 130.0
     y: 45.0
   }
   type: TYPE_BOX
@@ -585,12 +545,12 @@ nodes {
 }
 nodes {
   position {
-    x: -10.0
+    x: 25.555557
     y: 2.0
   }
   scale {
-    x: 0.8
-    y: 0.85
+    x: 0.3
+    y: 0.3
   }
   size {
     x: 200.0
@@ -601,14 +561,15 @@ nodes {
   }
   type: TYPE_TEXT
   text: "$ 0"
-  font: "ofont"
-  id: "txt_total_coins"
+  font: "inter_regular"
+  id: "txt_coins"
+  pivot: PIVOT_E
   parent: "display_money_menu"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 42.0
+    x: 50.0
     y: 2.0
   }
   size {
@@ -686,8 +647,8 @@ nodes {
     y: 20.0
   }
   scale {
-    x: 0.25
-    y: 0.25
+    x: 0.3
+    y: 0.3
   }
   size {
     x: 200.0
@@ -697,8 +658,7 @@ nodes {
     z: 0.0
   }
   type: TYPE_TEXT
-  text: "20\n"
-  ""
+  text: "10"
   font: "inter_regular"
   id: "text3"
   pivot: PIVOT_W
@@ -727,11 +687,11 @@ nodes {
 nodes {
   position {
     x: 162.0
-    y: 20.0
+    y: 19.0
   }
   size {
-    x: 20.0
-    y: 20.0
+    x: 25.0
+    y: 25.0
   }
   type: TYPE_BOX
   texture: "UI1/ad1"
@@ -740,7 +700,7 @@ nodes {
 }
 nodes {
   position {
-    x: 312.0
+    x: 311.0
     y: 20.0
   }
   size {
@@ -754,12 +714,12 @@ nodes {
 }
 nodes {
   position {
-    x: 323.0
+    x: 322.0
     y: 20.0
   }
   scale {
-    x: 0.25
-    y: 0.25
+    x: 0.3
+    y: 0.3
   }
   size {
     x: 200.0
@@ -769,7 +729,7 @@ nodes {
     z: 0.0
   }
   type: TYPE_TEXT
-  text: "30"
+  text: "20"
   font: "inter_regular"
   id: "text5"
   pivot: PIVOT_W
@@ -777,7 +737,7 @@ nodes {
 }
 nodes {
   position {
-    x: 343.0
+    x: 344.0
     y: 20.0
   }
   scale {
@@ -797,12 +757,12 @@ nodes {
 }
 nodes {
   position {
-    x: 381.0
-    y: 20.0
+    x: 380.0
+    y: 19.0
   }
   size {
-    x: 20.0
-    y: 20.0
+    x: 25.0
+    y: 25.0
   }
   type: TYPE_BOX
   texture: "UI1/ad1"

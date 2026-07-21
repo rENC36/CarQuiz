@@ -115,4 +115,7 @@ images {
 images {
   image: "/Assets/images/UI_assets11/Rectangle (31) (2).png"
 }
+images {
+  image: "/Assets/images/UI_assets11/green_timeline4.1.png"
+}
 extrude_borders: 2
