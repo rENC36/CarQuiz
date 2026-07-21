@@ -1,6 +1,9 @@
 local level_manager = require("scripts.managers.level_manager")
 local save_manager = require("scripts.managers.save_manager")
 
+local anim_manager = require("scripts.managers.anim_manager")
+
+
 local TIMER_MAX = 10
 local current_questions = {}
 local current_index = 1
@@ -24,6 +27,41 @@ function init(self)
 	self.timer = TIMER_MAX
 	self.difficulty = "easy"
 	self.level_num = 1
+	
+	self.data = {
+		{ node = "btn_answer_1", 
+		color = vmath.vector4(1, 1, 1, 1),  
+		hover = vmath.vector4(1, 1, 1, 1), 
+		anim_color = false},
+
+		{ node = "btn_answer_2", 
+		color = vmath.vector4(1, 1, 1, 1),  
+		hover = vmath.vector4(1, 1, 1, 1),  
+		anim_color = false},
+
+		{ node = "btn_answer_3", 
+		color = vmath.vector4(1, 1, 1, 1),  
+		hover = vmath.vector4(1, 1, 1, 1),  
+		anim_color = false},
+
+		{ node = "btn_answer_4", 
+		color = vmath.vector4(1, 1, 1, 1),  
+		hover = vmath.vector4(1, 1, 1, 1),  
+		anim_color = false},
+
+		{ node = "btn_hint_skip", 
+		color = vmath.vector4(1, 1, 1, 1),  
+		hover = vmath.vector4(1, 1, 1, 1),  
+		anim_color = false},
+
+		{ node = "btn_hint_5050", 
+		color = vmath.vector4(1, 1, 1, 1),  
+		hover = vmath.vector4(1, 1, 1, 1),  
+		anim_color = false},
+	}
+
+	--btn_hint_5050
+	--btn_hint_skip
 
 	self.answer_buttons = {
 		{ node = "btn_answer_1", text = "txt_answer_1" },
@@ -208,6 +246,49 @@ function end_level(self, win)
 	})
 end
 
+local function apply_hover_out(node, btn)
+	local size = btn.defaultsize or vmath.vector3(1, 1, 1)
+	if get_category_unlocked(btn.difficulty) or btn.difficulty == nil then
+		anim_manager.hover_out(node, btn.color, size, btn.anim_color, btn.anim_scale)
+	else
+		gui.animate(node, gui.PROP_SCALE, size, gui.EASING_OUT, 0.1, 0)
+	end
+end
+
+local function apply_hover_in(node, btn)
+	local size = btn.hoversize or vmath.vector3(1.03, 1.03, 1)
+	if get_category_unlocked(btn.difficulty) or btn.difficulty == nil then
+		anim_manager.hover_in(node, btn.hover, size, btn.anim_color, btn.anim_scale)
+	else
+		gui.animate(node, gui.PROP_SCALE, size, gui.EASING_OUT, 0.1, 0)
+	end
+end
+
+local function process_hover(action_id, action, self)
+	if action_id ~= nil then return end
+
+	for _, btn in pairs(self.data) do
+		if btn.hover == nil or btn.color == nil then return end
+
+		local node = gui.get_node(btn.node)
+
+		if not gui.is_enabled(node, true) then
+			btn.hovered = false
+			apply_hover_out(node, btn)
+		elseif gui.pick_node(node, action.x, action.y) then
+			if not btn.hovered then
+				btn.hovered = true
+				apply_hover_in(node, btn)
+
+				play_sound_effect(self, "hover")
+			end
+		elseif btn.hovered then
+			btn.hovered = false
+			apply_hover_out(node, btn)
+		end
+	end
+end
+
 function on_input(self, action_id, action)
 	if not gui.is_enabled(gui.get_node("top_bar"), true) then return end
 
@@ -232,6 +313,8 @@ function on_input(self, action_id, action)
 			end
 		end
 	end
+
+	process_hover(action_id, action, self)
 end
 
 function use_hint_5050(self)
