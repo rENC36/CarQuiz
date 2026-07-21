@@ -1,24 +1,15 @@
+[project]
+title = CarQuiz
+version = 1.0
+
 [bootstrap]
 main_collection = /main/main.collectionc
-
-[script]
-shared_state = 1
+render = /builtins/render/default.renderc
 
 [display]
 width = 480
 height = 854
 high_dpi = 1
 
-[android]
-input_method = HiddenInputField
-
-[physics]
-gravity_y = -1000.0
-scale = 0.01
-
 [html5]
 scale_mode = stretch
-
-[project]
-title = CarQuiz
-

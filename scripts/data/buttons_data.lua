@@ -104,6 +104,12 @@ return {
 	hover = vmath.vector4(1, 1, 1, 1), 
 	defaultsize = vmath.vector3(.4, .4, 1),
 	hoversize = vmath.vector3(.45, .45, 1)},
+
+	{node = "btn_menu_ad",
+	color = vmath.vector4(1, 1, 1, 1),
+	hover = vmath.vector4(1, 1, 1, 1), 
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.1, 1.1, 1)},
 }
 
 
