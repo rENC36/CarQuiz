@@ -44,11 +44,15 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 624.0
+    y: 670.0
+  }
+  scale {
+    x: 0.5
+    y: 0.4
   }
   size {
-    x: 440.0
-    y: 260.0
+    x: 800.0
+    y: 600.0
   }
   type: TYPE_BOX
   texture: "cars/easy_01.1"
@@ -57,39 +61,41 @@ nodes {
 }
 nodes {
   position {
-    x: 240.0
-    y: 479.0
+    x: 304.0
+    y: 495.0
   }
   size {
-    x: 440.0
-    y: 16.0
+    x: 260.0
+    y: 20.0
   }
   type: TYPE_BOX
+  texture: "UI1/timeline4"
   id: "timer_bg"
   inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
+  alpha: 0.5
 }
 nodes {
   position {
-    x: 240.0
-    y: 479.0
+    x: 304.0
+    y: 495.0
   }
   size {
-    x: 440.0
-    y: 16.0
+    x: 260.0
+    y: 15.0
   }
   type: TYPE_BOX
+  texture: "UI1/timeline4"
   id: "timer_bar"
   inherit_alpha: true
 }
 nodes {
   position {
     x: 240.0
-    y: 425.0
+    y: 380.0
   }
   size {
-    x: 450.0
-    y: 80.0
+    x: 420.0
+    y: 70.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -99,7 +105,7 @@ nodes {
 }
 nodes {
   position {
-    x: -210.0
+    x: -200.0
   }
   scale {
     x: 0.5
@@ -125,11 +131,11 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 340.0
+    y: 300.0
   }
   size {
-    x: 450.0
-    y: 80.0
+    x: 420.0
+    y: 70.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -139,7 +145,7 @@ nodes {
 }
 nodes {
   position {
-    x: -210.0
+    x: -200.0
   }
   scale {
     x: 0.5
@@ -165,11 +171,11 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 255.0
+    y: 220.0
   }
   size {
-    x: 450.0
-    y: 80.0
+    x: 420.0
+    y: 70.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -179,7 +185,7 @@ nodes {
 }
 nodes {
   position {
-    x: -210.0
+    x: -200.0
   }
   scale {
     x: 0.5
@@ -205,11 +211,11 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 170.0
+    y: 140.0
   }
   size {
-    x: 450.0
-    y: 80.0
+    x: 420.0
+    y: 70.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -219,7 +225,7 @@ nodes {
 }
 nodes {
   position {
-    x: -210.0
+    x: -200.0
   }
   scale {
     x: 0.5
@@ -245,7 +251,7 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 816.0
+    y: 919.0
   }
   size {
     x: 480.0
@@ -272,7 +278,7 @@ nodes {
   type: TYPE_TEXT
   text: "1/15"
   font: "ofont"
-  id: "txt_question"
+  id: "txt_question1"
   parent: "top_bar"
   inherit_alpha: true
 }
@@ -284,7 +290,7 @@ nodes {
   type: TYPE_TEXT
   text: "0"
   font: "ofont"
-  id: "txt_coins"
+  id: "txt_coins1"
   parent: "top_bar"
   inherit_alpha: true
 }
@@ -305,54 +311,70 @@ nodes {
 }
 nodes {
   position {
-    x: 130.0
-    y: 70.0
+    x: 132.0
+    y: 57.0
   }
   size {
-    x: 170.0
-    y: 80.0
+    x: 130.0
+    y: 50.0
   }
   type: TYPE_BOX
-  texture: "UI1/timebar4"
+  texture: "UI1/Rectangle (31) (2)"
   id: "btn_hint_5050"
   inherit_alpha: true
   enabled: false
 }
 nodes {
+  position {
+    x: 3.0
+    y: 1.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
   size {
     x: 200.0
     y: 100.0
   }
   type: TYPE_TEXT
   text: "50/50"
-  font: "ofont"
+  font: "inter_regular"
   id: "txt_hint_5050"
   parent: "btn_hint_5050"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 350.0
-    y: 70.0
+    x: 349.0
+    y: 57.0
   }
   size {
-    x: 170.0
-    y: 80.0
+    x: 130.0
+    y: 50.0
   }
   type: TYPE_BOX
-  texture: "UI1/timebar4"
+  texture: "UI1/Rectangle (31) (2)"
   id: "btn_hint_skip"
   inherit_alpha: true
   enabled: false
 }
 nodes {
+  position {
+    x: 2.0
+    y: 2.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
   size {
     x: 200.0
     y: 100.0
   }
   type: TYPE_TEXT
   text: "\320\237\321\200\320\276\320\277\321\203\321\201\320\272"
-  font: "ofont"
+  font: "inter_regular"
   id: "txt_hint_skip"
   parent: "btn_hint_skip"
   inherit_alpha: true
@@ -372,6 +394,400 @@ nodes {
   id: "txt_total_coins_gp"
   inherit_alpha: true
   enabled: false
+}
+nodes {
+  position {
+    x: 240.0
+    y: 500.0
+  }
+  size {
+    x: 420.0
+    y: 80.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_lightgray5"
+  id: "block"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 60.0
+    y: 500.0
+  }
+  size {
+    x: 30.0
+    y: 30.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/heart4"
+  id: "symbol_heart1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 95.0
+    y: 500.0
+  }
+  size {
+    x: 30.0
+    y: 30.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/heart4"
+  id: "symbol_heart2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 130.0
+    y: 500.0
+  }
+  size {
+    x: 30.0
+    y: 30.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/empty_heart4"
+  id: "symbol_heart3"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 237.0
+    y: 440.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\247\321\202\320\276 \320\267\320\260 \320\274\320\260\321\210\320\270\320\275\320\260 \320\275\320\260 \321\204\320\276\321\202\320\276?"
+  font: "inter_regular"
+  id: "text"
+  inherit_alpha: true
+  alpha: 0.8
+}
+nodes {
+  position {
+    x: 22.0
+    y: 831.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 22.0
+    y: 839.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "1menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 22.0
+    y: 823.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "2menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 222.0
+    y: 812.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "1/"
+  font: "inter_bold"
+  id: "txt_question"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 419.0
+    y: 821.0
+  }
+  scale {
+    x: 0.9
+    y: 0.9
+  }
+  size {
+    x: 100.0
+    y: 45.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_darkgray1"
+  id: "display_money_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -10.0
+    y: 2.0
+  }
+  scale {
+    x: 0.8
+    y: 0.85
+  }
+  size {
+    x: 200.0
+    y: 51.0
+  }
+  color {
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "$ 0"
+  font: "ofont"
+  id: "txt_coins"
+  parent: "display_money_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 42.0
+    y: 2.0
+  }
+  size {
+    x: 40.0
+    y: 40.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/coin1"
+  id: "coin_title_icon"
+  parent: "display_money_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 240.0
+    y: 60.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 60.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 87.0
+    y: 59.0
+  }
+  size {
+    x: 25.0
+    y: 25.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/hint4"
+  id: "hint1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 299.0
+    y: 58.0
+  }
+  size {
+    x: 15.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/skip4"
+  id: "skip1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 93.0
+    y: 20.0
+  }
+  size {
+    x: 15.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/coin1"
+  id: "coin11"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 104.0
+    y: 20.0
+  }
+  scale {
+    x: 0.25
+    y: 0.25
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "20\n"
+  ""
+  font: "inter_regular"
+  id: "text3"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 124.0
+    y: 20.0
+  }
+  scale {
+    x: 0.25
+    y: 0.25
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\270\320\273\320\270"
+  font: "inter_regular"
+  id: "text4"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 162.0
+    y: 20.0
+  }
+  size {
+    x: 20.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/ad1"
+  id: "coin"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 312.0
+    y: 20.0
+  }
+  size {
+    x: 15.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/coin1"
+  id: "coin1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 323.0
+    y: 20.0
+  }
+  scale {
+    x: 0.25
+    y: 0.25
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "30"
+  font: "inter_regular"
+  id: "text5"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 343.0
+    y: 20.0
+  }
+  scale {
+    x: 0.25
+    y: 0.25
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\270\320\273\320\270"
+  font: "inter_regular"
+  id: "text6"
+  pivot: PIVOT_W
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 381.0
+    y: 20.0
+  }
+  size {
+    x: 20.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/ad1"
+  id: "coin2"
+  inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

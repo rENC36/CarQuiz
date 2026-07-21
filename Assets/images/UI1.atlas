@@ -112,4 +112,7 @@ images {
 images {
   image: "/Assets/images/UI_assets11/wrong4.png"
 }
+images {
+  image: "/Assets/images/UI_assets11/Rectangle (31) (2).png"
+}
 extrude_borders: 2

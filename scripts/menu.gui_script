@@ -39,10 +39,6 @@ function init(self)
 end
 
 function show_levels(self, difficulty)
-	gui.set_text(gui.get_node("txt_levels_title"),
-	difficulty == "easy" and "Лёгкий" or
-	difficulty == "medium" and "Средний" or "Тяжёлый")
-
 	for i = 1, 3 do
 		local stars = save_manager.get_stars(difficulty, i)
 		local locked = i > 1 and save_manager.get_stars(difficulty, i-1) == 0
@@ -153,23 +149,17 @@ function on_message(self, message_id, message)
 		
 		gui.set_text(gui.get_node("txt_result_title"), message.win and "УРОВЕНЬ ПРОЙДЕН!" or "ПРОИГРЫШ")
 		gui.set_text(gui.get_node("txt_result_coins"), "Монет: +" .. message.coins)
-		gui.set_text(gui.get_node("txt_result_errors"), "Ошибок: " .. message.errors)
-		gui.set_text(gui.get_node("txt_result_time"), "Время: " .. message.time)
+		gui.set_text(gui.get_node("txt_result_errors"), message.errors)
+		gui.set_text(gui.get_node("txt_result_time"), message.time)
 		
 		for i = 1, 3 do
-			gui.set_color(gui.get_node("star" .. i .. "_result"), i <= message.stars and vmath.vector4(1,1,1, .5) or vmath.vector4(0,0,0, .5))
+			gui.set_color(gui.get_node("star" .. i .. "_result"), i <= message.stars and vmath.vector4(1,1,1, 1) or vmath.vector4(0,0,0, .5))
 		end
 		
-		local stars_text = ""
-		for i = 1, 3 do
-			stars_text = stars_text .. (i <= message.stars and "* " or "- ")
-		end
-
 		self.last_difficulty = message.difficulty or "easy"
 		self.last_level = message.level_num or 1
 		self.last_win = message.win
 		
-		gui.set_text(gui.get_node("txt_result_stars"), stars_text)
 		gui.set_text(gui.get_node("txt_result_next"), message.win and "СЛЕДУЮЩИЙ УРОВЕНЬ" or "ПРОЙТИ ЕЩЕ РАЗ")
 
 		change_gui("result", self)
@@ -196,8 +186,8 @@ local function handle_music_toggle(self, screen_settings, action)
 
 	local music_on = pressed_on
 
-	gui.set_color(gui.get_node("on_music_text"),  music_on and vmath.vector4(0,0,0,1) or vmath.vector4(1,1,1,1))
-	gui.set_color(gui.get_node("off_music_text"), music_on and vmath.vector4(1,1,1,1) or vmath.vector4(0,0,0,1))
+	gui.set_alpha(gui.get_node("on_music_text"),  music_on and .3 or 1)
+	gui.set_alpha(gui.get_node("off_music_text"),  music_on and 1 or .3)
 
 	if music_on and self.music_on == false then
 		msg.post("/music#sound", "play_sound")
@@ -218,8 +208,8 @@ local function handle_sound_toggle(self, screen_settings, action)
 
 	local sound_on = pressed_on
 
-	gui.set_color(gui.get_node("on_sound_text"),  sound_on and vmath.vector4(0,0,0,1) or vmath.vector4(1,1,1,1))
-	gui.set_color(gui.get_node("off_sound_text"), sound_on and vmath.vector4(1,1,1,1) or vmath.vector4(0,0,0,1))
+	gui.set_alpha(gui.get_node("on_sound_text"),  sound_on and .3 or 1)
+	gui.set_alpha(gui.get_node("off_sound_text"),  sound_on and 1 or .3)
 	
 	self.sound_on = sound_on
 end
@@ -307,13 +297,30 @@ function on_input(self, action_id, action)
 						show_levels(self, btn.difficulty)
 					end
 				elseif btn.node == "btn_result_next" then
-					local next_level = self.last_win and (self.last_level + 1) or self.last_level
-					if next_level > 3 then next_level = 3 end
+					local next_difficulty = self.last_difficulty
+					local next_level = self.last_level
+
+					if self.last_win then
+						if next_level < 3 then
+							next_level = next_level + 1
+						else
+							if next_difficulty == "easy" then
+								next_difficulty = "medium"
+								next_level = 1
+							elseif next_difficulty == "medium" then
+								next_difficulty = "hard"
+								next_level = 1
+							else
+								next_level = 3
+							end
+						end
+					end
+					
 					msg.post("/gameplay#gameplay", "enable")
 					msg.post("/menu#menu", "disable")
 					timer.delay(0.1, false, function()
 						msg.post("/gameplay#gameplay", "start_game", {
-							difficulty = self.last_difficulty,
+							difficulty = next_difficulty,
 							level_num = next_level
 						})
 					end)
@@ -338,7 +345,7 @@ function on_input(self, action_id, action)
 				break
 			end
 		end
-	end
+	end--"txt_levels_title"
 
 	process_hover(action_id, action, self)
 end
