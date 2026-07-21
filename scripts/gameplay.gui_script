@@ -60,9 +60,6 @@ function init(self)
 		anim_color = false},
 	}
 
-	--btn_hint_5050
-	--btn_hint_skip
-
 	self.answer_buttons = {
 		{ node = "btn_answer_1", text = "txt_answer_1" },
 		{ node = "btn_answer_2", text = "txt_answer_2" },
