@@ -1319,6 +1319,7 @@ nodes {
   texture: "bg/background"
   id: "screen_result"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
