@@ -72,6 +72,7 @@ nodes {
   texture: "UI1/timeline4"
   id: "timer_bg"
   inherit_alpha: true
+  alpha: 0.5
 }
 nodes {
   position {
@@ -419,7 +420,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/heart4"
-  id: "heart"
+  id: "symbol_heart1"
   inherit_alpha: true
 }
 nodes {
@@ -433,7 +434,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/heart4"
-  id: "heart1"
+  id: "symbol_heart2"
   inherit_alpha: true
 }
 nodes {
@@ -447,7 +448,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/empty_heart4"
-  id: "heart2"
+  id: "symbol_heart3"
   inherit_alpha: true
 }
 nodes {
