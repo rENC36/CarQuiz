@@ -35,9 +35,6 @@ function init(self)
 	
 	gui.set_text(gui.get_node("StarsOutput"), total_stars .. "/27")
 	gui.set_text(gui.get_node("LevelsOutput"), total_levels .. "/9")
-
-	--msg.post("/gameplay#gameplay", "disable")
-	--msg.post("/menu#menu", "enable")
 	
 	if ysdk_wrapper and ysdk_wrapper.loading_ready then
 		ysdk_wrapper.loading_ready()
@@ -149,6 +146,9 @@ end
 
 function on_message(self, message_id, message)
 	if message_id == hash("show_result") then
+		if self.music_on == true then
+			msg.post("/music#sound", "play_sound")
+		end
 		
 		local save_data = save_manager.load()
 		gui.set_text(gui.get_node("txt_total_coins"), "$ " .. save_data.coins)
@@ -167,6 +167,12 @@ function on_message(self, message_id, message)
 		self.last_win = message.win
 		
 		gui.set_text(gui.get_node("txt_result_next"), message.win and "СЛЕДУЮЩИЙ УРОВЕНЬ" or "ПРОЙТИ ЕЩЕ РАЗ")
+
+		if message.win then
+			msg.post("/music#sound_win", "play_sound")
+		else
+			msg.post("/music#sound_defeat", "play_sound")
+		end
 
 		change_gui("result", self)
 	end
@@ -200,7 +206,7 @@ local function handle_music_toggle(self, screen_settings, action)
 	elseif not music_on and self.music_on == true  then
 		msg.post("/music#sound", "stop_sound")
 	end
-	
+
 	self.music_on = music_on
 end
 
@@ -326,7 +332,8 @@ function on_input(self, action_id, action)
 					timer.delay(0.1, false, function()
 						msg.post("/gameplay#gameplay", "start_game", {
 							difficulty = next_difficulty,
-							level_num = next_level
+							level_num = next_level,
+							music_play = self.music_on
 						})
 					end)
 
@@ -340,7 +347,8 @@ function on_input(self, action_id, action)
 						timer.delay(0.1, false, function()
 							msg.post("/gameplay#gameplay", "start_game", {
 								difficulty = self.selected_difficulty,
-								level_num = btn.level_num
+								level_num = btn.level_num,
+								music_play = self.music_on
 							})
 						end)
 					end
