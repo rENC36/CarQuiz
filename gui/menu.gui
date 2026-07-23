@@ -32,12 +32,11 @@ nodes {
   texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
     x: -205.0
-    y: 239.0
+    y: 250.0
   }
   scale {
     x: 0.5
@@ -58,7 +57,7 @@ nodes {
 }
 nodes {
   position {
-    y: 61.0
+    y: 80.0
   }
   size {
     x: 450.0
@@ -72,7 +71,7 @@ nodes {
 }
 nodes {
   position {
-    x: -205.0
+    x: -200.0
   }
   scale {
     x: 0.4
@@ -111,7 +110,7 @@ nodes {
 }
 nodes {
   position {
-    y: -54.0
+    y: -40.0
   }
   size {
     x: 450.0
@@ -125,7 +124,7 @@ nodes {
 }
 nodes {
   position {
-    x: -205.0
+    x: -200.0
   }
   scale {
     x: 0.4
@@ -160,7 +159,7 @@ nodes {
 }
 nodes {
   position {
-    y: -171.0
+    y: -160.0
   }
   size {
     x: 450.0
@@ -174,7 +173,7 @@ nodes {
 }
 nodes {
   position {
-    x: -205.0
+    x: -200.0
   }
   scale {
     x: 0.4
@@ -209,29 +208,7 @@ nodes {
 }
 nodes {
   position {
-    x: -205.0
-    y: 300.0
-  }
-  scale {
-    x: 0.3
-    y: 0.3
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\222\320\230\320\232\320\242\320\236\320\240\320\230\320\235\320\220"
-  font: "inter_regular"
-  id: "MainText1"
-  pivot: PIVOT_W
-  parent: "screen_menu"
-  inherit_alpha: true
-  alpha: 0.7
-}
-nodes {
-  position {
-    y: 172.0
+    y: 175.0
   }
   size {
     x: 450.0
@@ -245,7 +222,7 @@ nodes {
 }
 nodes {
   position {
-    y: 330.0
+    y: 325.0
   }
   size {
     x: 450.0
@@ -259,12 +236,12 @@ nodes {
 }
 nodes {
   position {
-    x: -190.0
-    y: -375.0
+    x: -185.0
+    y: -352.0
   }
   size {
-    x: 54.0
-    y: 54.0
+    x: 64.0
+    y: 64.0
   }
   type: TYPE_BOX
   texture: "UI1/ad1"
@@ -275,7 +252,7 @@ nodes {
 nodes {
   position {
     x: 170.0
-    y: -377.0
+    y: -375.0
   }
   size {
     x: 100.0
@@ -289,12 +266,12 @@ nodes {
 }
 nodes {
   position {
-    x: -10.0
+    x: 18.0
     y: 2.0
   }
   scale {
-    x: 0.8
-    y: 0.85
+    x: 0.3
+    y: 0.3
   }
   size {
     x: 200.0
@@ -305,8 +282,9 @@ nodes {
   }
   type: TYPE_TEXT
   text: "$ 0"
-  font: "ofont"
+  font: "inter_regular"
   id: "txt_total_coins"
+  pivot: PIVOT_E
   parent: "display_money_menu"
   inherit_alpha: true
 }
@@ -323,6 +301,64 @@ nodes {
   texture: "UI1/coin1"
   id: "coin_title_icon"
   parent: "display_money_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -186.0
+    y: -310.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "4:39"
+  font: "inter_regular"
+  id: "ad_timer"
+  parent: "screen_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -197.0
+    y: -390.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    z: 0.0
+  }
+  type: TYPE_TEXT
+  text: "+ 100"
+  font: "inter_regular"
+  id: "text1"
+  parent: "screen_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -157.0
+    y: -390.0
+  }
+  size {
+    x: 20.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/coin1"
+  id: "coin_title_icon1"
+  parent: "screen_menu"
   inherit_alpha: true
 }
 nodes {
@@ -356,8 +392,8 @@ nodes {
 }
 nodes {
   position {
-    x: -209.0
-    y: 42.0
+    x: -205.0
+    y: 35.0
   }
   scale {
     x: 0.4
@@ -377,22 +413,8 @@ nodes {
 }
 nodes {
   position {
-    x: 190.0
-  }
-  size {
-    x: 40.0
-    y: 40.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/arrow_white2"
-  id: "white_arrow2."
-  parent: "btn_medium"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -112.0
-    y: -52.0
+    x: -115.0
+    y: -50.0
   }
   size {
     x: 200.0
@@ -406,8 +428,8 @@ nodes {
 }
 nodes {
   position {
-    x: -140.0
-    y: -52.0
+    x: -115.0
+    y: -50.0
   }
   size {
     x: 150.0
@@ -421,12 +443,12 @@ nodes {
 }
 nodes {
   position {
-    x: -4.0
-    y: -52.0
+    x: 195.0
+    y: -47.0
   }
   scale {
     x: 0.3
-    y: 0.257838
+    y: 0.3
   }
   size {
     x: 200.0
@@ -436,7 +458,7 @@ nodes {
   text: "0/3 (0%)"
   font: "inter_regular"
   id: "MediumCompleted"
-  pivot: PIVOT_W
+  pivot: PIVOT_E
   parent: "btn_medium"
   inherit_alpha: true
 }
@@ -456,8 +478,8 @@ nodes {
 }
 nodes {
   position {
-    x: -209.0
-    y: 42.0
+    x: -205.0
+    y: 35.0
   }
   scale {
     x: 0.4
@@ -477,22 +499,8 @@ nodes {
 }
 nodes {
   position {
-    x: 190.0
-  }
-  size {
-    x: 40.0
-    y: 40.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/arrow_white2"
-  id: "white_arrow2.1"
-  parent: "btn_easy"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -112.0
-    y: -52.0
+    x: -115.0
+    y: -50.0
   }
   size {
     x: 200.0
@@ -506,8 +514,8 @@ nodes {
 }
 nodes {
   position {
-    x: -112.0
-    y: -52.0
+    x: -115.0
+    y: -50.0
   }
   scale {
     x: 1.33
@@ -524,12 +532,12 @@ nodes {
 }
 nodes {
   position {
-    x: -4.0
-    y: -52.0
+    x: 195.0
+    y: -47.0
   }
   scale {
     x: 0.3
-    y: 0.257838
+    y: 0.3
   }
   size {
     x: 200.0
@@ -539,7 +547,7 @@ nodes {
   text: "0/3 (0%)"
   font: "inter_regular"
   id: "EasyCompleted"
-  pivot: PIVOT_W
+  pivot: PIVOT_E
   parent: "btn_easy"
   inherit_alpha: true
 }
@@ -559,8 +567,8 @@ nodes {
 }
 nodes {
   position {
-    x: -209.0
-    y: 42.0
+    x: -205.0
+    y: 35.0
   }
   scale {
     x: 0.4
@@ -580,21 +588,7 @@ nodes {
 }
 nodes {
   position {
-    x: 190.0
-  }
-  size {
-    x: 40.0
-    y: 40.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/arrow_white2"
-  id: "white_arrow2.2"
-  parent: "btn_hard"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -112.0
+    x: -115.0
     y: -52.0
   }
   size {
@@ -609,7 +603,7 @@ nodes {
 }
 nodes {
   position {
-    x: -140.0
+    x: -115.0
     y: -52.0
   }
   size {
@@ -624,12 +618,12 @@ nodes {
 }
 nodes {
   position {
-    x: -4.0
-    y: -52.0
+    x: 195.0
+    y: -47.0
   }
   scale {
     x: 0.3
-    y: 0.257838
+    y: 0.3
   }
   size {
     x: 200.0
@@ -639,7 +633,7 @@ nodes {
   text: "0/3 (0%)"
   font: "inter_regular"
   id: "HardCompleted"
-  pivot: PIVOT_W
+  pivot: PIVOT_E
   parent: "btn_hard"
   inherit_alpha: true
 }
@@ -696,7 +690,7 @@ nodes {
 }
 nodes {
   position {
-    y: -232.0
+    y: -235.0
   }
   size {
     x: 450.0
@@ -710,7 +704,7 @@ nodes {
 }
 nodes {
   position {
-    y: -372.0
+    y: -365.0
   }
   size {
     x: 450.0
@@ -724,7 +718,8 @@ nodes {
 }
 nodes {
   position {
-    y: -302.0
+    x: -7.0
+    y: -300.0
   }
   rotation {
     z: 90.0
@@ -741,8 +736,8 @@ nodes {
 }
 nodes {
   position {
-    x: -122.0
-    y: -260.0
+    x: -123.0
+    y: -265.0
   }
   scale {
     x: 0.4
@@ -763,6 +758,10 @@ nodes {
   position {
     y: -150.0
   }
+  scale {
+    x: 1.2
+    y: 1.2
+  }
   size {
     x: 200.0
     y: 100.0
@@ -776,8 +775,8 @@ nodes {
 }
 nodes {
   position {
-    x: 115.0
-    y: -260.0
+    x: 107.0
+    y: -265.0
   }
   scale {
     x: 0.4
@@ -797,6 +796,10 @@ nodes {
 nodes {
   position {
     y: -150.0
+  }
+  scale {
+    x: 1.2
+    y: 1.2
   }
   size {
     x: 200.0
@@ -827,7 +830,7 @@ nodes {
 nodes {
   position {
     x: -220.0
-    y: 390.0
+    y: 385.0
   }
   scale {
     x: 0.4
@@ -861,8 +864,8 @@ nodes {
 }
 nodes {
   position {
-    x: 195.0
-    y: 387.0
+    x: 193.0
+    y: 385.0
   }
   size {
     x: 45.0
@@ -876,8 +879,8 @@ nodes {
 }
 nodes {
   position {
-    x: 158.0
-    y: 389.0
+    x: 160.0
+    y: 388.0
   }
   rotation {
     z: 90.0
@@ -908,7 +911,7 @@ nodes {
 }
 nodes {
   position {
-    x: -208.0
+    x: -205.0
     y: 4.0
   }
   scale {
@@ -929,8 +932,8 @@ nodes {
 }
 nodes {
   position {
-    x: 72.0
-    y: 3.0
+    x: 75.0
+    y: 4.0
   }
   scale {
     x: 0.4
@@ -950,8 +953,8 @@ nodes {
 }
 nodes {
   position {
-    x: 172.0
-    y: 3.0
+    x: 175.0
+    y: 4.0
   }
   scale {
     x: 0.4
@@ -970,8 +973,8 @@ nodes {
 }
 nodes {
   position {
-    x: 72.0
-    y: 3.0
+    x: 75.0
+    y: 4.0
   }
   scale {
     x: 0.400267
@@ -990,8 +993,8 @@ nodes {
 }
 nodes {
   position {
-    x: 171.0
-    y: 3.0
+    x: 175.0
+    y: 4.0
   }
   scale {
     x: 0.400267
@@ -1024,7 +1027,7 @@ nodes {
 }
 nodes {
   position {
-    x: -208.0
+    x: -205.0
     y: 4.0
   }
   scale {
@@ -1045,8 +1048,8 @@ nodes {
 }
 nodes {
   position {
-    x: 72.0
-    y: 3.0
+    x: 75.0
+    y: 4.0
   }
   scale {
     x: 0.4
@@ -1066,8 +1069,8 @@ nodes {
 }
 nodes {
   position {
-    x: 172.0
-    y: 3.0
+    x: 175.0
+    y: 4.0
   }
   scale {
     x: 0.4
@@ -1086,8 +1089,8 @@ nodes {
 }
 nodes {
   position {
-    x: 171.0
-    y: 3.0
+    x: 175.0
+    y: 4.0
   }
   scale {
     x: 0.400267
@@ -1106,8 +1109,8 @@ nodes {
 }
 nodes {
   position {
-    x: 72.0
-    y: 3.0
+    x: 75.0
+    y: 4.0
   }
   scale {
     x: 0.400267
@@ -1140,7 +1143,7 @@ nodes {
 }
 nodes {
   position {
-    x: -208.0
+    x: -205.0
     y: 4.0
   }
   scale {
@@ -1161,8 +1164,8 @@ nodes {
 }
 nodes {
   position {
-    x: 72.0
-    y: 3.0
+    x: 75.0
+    y: 4.0
   }
   scale {
     x: 0.4
@@ -1181,8 +1184,8 @@ nodes {
 }
 nodes {
   position {
-    x: 172.0
-    y: 3.0
+    x: 175.0
+    y: 4.0
   }
   scale {
     x: 0.4
@@ -1324,11 +1327,11 @@ nodes {
 }
 nodes {
   position {
-    y: 376.0
+    y: 385.0
   }
   scale {
-    x: 0.6
-    y: 0.6
+    x: 0.55
+    y: 0.55
   }
   size {
     x: 200.0
@@ -1338,25 +1341,6 @@ nodes {
   text: "<text>"
   font: "inter_bold"
   id: "txt_result_title"
-  parent: "screen_result"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: -87.0
-  }
-  scale {
-    x: 0.4
-    y: 0.4
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "<text>"
-  font: "inter_regular"
-  id: "txt_result_coins"
   parent: "screen_result"
   inherit_alpha: true
 }
@@ -1379,6 +1363,10 @@ nodes {
   inherit_alpha: true
 }
 nodes {
+  scale {
+    x: 0.8
+    y: 0.8
+  }
   size {
     x: 200.0
     y: 100.0
@@ -1398,7 +1386,7 @@ nodes {
 nodes {
   position {
     x: 1.0
-    y: -330.0
+    y: -340.0
   }
   scale {
     x: 0.5
@@ -1415,6 +1403,10 @@ nodes {
   inherit_alpha: true
 }
 nodes {
+  scale {
+    x: 0.8
+    y: 0.8
+  }
   size {
     x: 200.0
     y: 100.0
@@ -1428,11 +1420,12 @@ nodes {
 }
 nodes {
   position {
-    y: 268.0
+    x: -1.0
+    y: 270.0
   }
   size {
-    x: 75.0
-    y: 75.0
+    x: 80.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/star3"
@@ -1442,12 +1435,12 @@ nodes {
 }
 nodes {
   position {
-    x: -148.0
-    y: 196.0
+    x: -145.0
+    y: 200.0
   }
   size {
-    x: 75.0
-    y: 75.0
+    x: 80.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/star3"
@@ -1457,12 +1450,12 @@ nodes {
 }
 nodes {
   position {
-    x: 148.0
-    y: 196.0
+    x: 145.0
+    y: 200.0
   }
   size {
-    x: 75.0
-    y: 75.0
+    x: 80.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/star3"
@@ -1472,7 +1465,7 @@ nodes {
 }
 nodes {
   position {
-    y: 29.0
+    y: 30.0
   }
   size {
     x: 450.0
@@ -1486,7 +1479,8 @@ nodes {
 }
 nodes {
   position {
-    x: 109.0
+    x: 110.0
+    y: -25.0
   }
   scale {
     x: 0.4
@@ -1505,7 +1499,8 @@ nodes {
 }
 nodes {
   position {
-    x: -109.0
+    x: -120.0
+    y: -25.0
   }
   scale {
     x: 0.4
@@ -1524,8 +1519,8 @@ nodes {
 }
 nodes {
   position {
-    x: 109.0
-    y: 45.0
+    x: 110.0
+    y: 35.0
   }
   scale {
     x: 0.4
@@ -1544,8 +1539,8 @@ nodes {
 }
 nodes {
   position {
-    x: -109.0
-    y: 45.0
+    x: -120.0
+    y: 35.0
   }
   scale {
     x: 0.4
@@ -1564,22 +1559,7 @@ nodes {
 }
 nodes {
   position {
-    y: -88.0
-  }
-  size {
-    x: 140.0
-    y: 60.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/Rectangle (31) (2)"
-  id: "box1"
-  parent: "screen_result"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -2.0
-    y: 30.0
+    x: -4.0
   }
   rotation {
     z: 90.0
@@ -1591,6 +1571,58 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/line_gray1.1"
   id: "line11"
+  parent: "box"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -4.0
+    y: -90.0
+  }
+  size {
+    x: 140.0
+    y: 60.0
+  }
+  color {
+    z: 0.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/Rectangle (31) (2)"
+  id: "box1"
+  parent: "screen_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -1.0
+    y: 2.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "<text>"
+  font: "inter_regular"
+  id: "txt_result_coins"
+  parent: "box1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 355.0
+  }
+  size {
+    x: 450.0
+    y: 2.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.7"
   parent: "screen_result"
   inherit_alpha: true
 }
@@ -1612,7 +1644,7 @@ nodes {
 nodes {
   position {
     x: -220.0
-    y: 390.0
+    y: 385.0
   }
   scale {
     x: 0.4
@@ -1646,8 +1678,8 @@ nodes {
 }
 nodes {
   position {
-    x: 158.0
-    y: 389.0
+    x: 160.0
+    y: 388.0
   }
   rotation {
     z: 90.0
@@ -1664,8 +1696,8 @@ nodes {
 }
 nodes {
   position {
-    x: 195.0
-    y: 387.0
+    x: 193.0
+    y: 385.0
   }
   size {
     x: 45.0
@@ -1839,7 +1871,7 @@ nodes {
 }
 nodes {
   position {
-    x: -215.0
+    x: -200.0
     y: 320.0
   }
   scale {
@@ -1854,13 +1886,12 @@ nodes {
   text: "#"
   font: "inter_regular"
   id: "Text1"
-  pivot: PIVOT_W
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: -145.0
+    x: -140.0
     y: 320.0
   }
   scale {
@@ -1881,7 +1912,7 @@ nodes {
 }
 nodes {
   position {
-    x: 105.0
+    x: 195.0
     y: 320.0
   }
   scale {
@@ -1896,7 +1927,7 @@ nodes {
   text: "\320\234\320\276\320\275\320\265\321\202\321\213"
   font: "inter_regular"
   id: "Text3"
-  pivot: PIVOT_W
+  pivot: PIVOT_E
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
@@ -1937,7 +1968,6 @@ nodes {
 nodes {
   position {
     x: -155.0
-    y: -50.0
   }
   size {
     x: 140.0
@@ -1951,7 +1981,7 @@ nodes {
 }
 nodes {
   position {
-    x: -5.0
+    x: -6.0
     y: 25.0
   }
   size {
@@ -1967,12 +1997,12 @@ nodes {
 }
 nodes {
   position {
-    x: -46.0
-    y: -42.0
+    x: -45.0
+    y: -40.0
   }
   size {
-    x: 40.0
-    y: 40.0
+    x: 35.0
+    y: 35.0
   }
   color {
     x: 0.3019608
@@ -1987,12 +2017,11 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
-    y: -42.0
+    y: -40.0
   }
   size {
-    x: 40.0
-    y: 40.0
+    x: 35.0
+    y: 35.0
   }
   color {
     x: 0.3019608
@@ -2007,12 +2036,12 @@ nodes {
 }
 nodes {
   position {
-    x: 48.0
-    y: -42.0
+    x: 45.0
+    y: -40.0
   }
   size {
-    x: 40.0
-    y: 40.0
+    x: 35.0
+    y: 35.0
   }
   color {
     x: 0.3019608
@@ -2026,9 +2055,6 @@ nodes {
   inherit_alpha: true
 }
 nodes {
-  position {
-    y: -52.0
-  }
   size {
     x: 140.0
     y: 140.0
@@ -2041,7 +2067,7 @@ nodes {
 }
 nodes {
   position {
-    x: -5.0
+    x: -3.0
     y: 25.0
   }
   size {
@@ -2057,12 +2083,12 @@ nodes {
 }
 nodes {
   position {
-    x: -46.0
-    y: -42.0
+    x: -45.0
+    y: -40.0
   }
   size {
-    x: 40.0
-    y: 40.0
+    x: 35.0
+    y: 35.0
   }
   color {
     x: 0.3019608
@@ -2077,12 +2103,11 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
-    y: -42.0
+    y: -40.0
   }
   size {
-    x: 40.0
-    y: 40.0
+    x: 35.0
+    y: 35.0
   }
   color {
     x: 0.3019608
@@ -2097,12 +2122,12 @@ nodes {
 }
 nodes {
   position {
-    x: 43.0
-    y: -42.0
+    x: 45.0
+    y: -40.0
   }
   size {
-    x: 40.0
-    y: 40.0
+    x: 35.0
+    y: 35.0
   }
   color {
     x: 0.3019608
@@ -2118,7 +2143,6 @@ nodes {
 nodes {
   position {
     x: 155.0
-    y: -52.0
   }
   size {
     x: 140.0
@@ -2132,7 +2156,7 @@ nodes {
 }
 nodes {
   position {
-    x: -5.0
+    x: -2.0
     y: 25.0
   }
   size {
@@ -2148,12 +2172,12 @@ nodes {
 }
 nodes {
   position {
-    x: -46.0
-    y: -42.0
+    x: -45.0
+    y: -40.0
   }
   size {
-    x: 40.0
-    y: 40.0
+    x: 35.0
+    y: 35.0
   }
   color {
     x: 0.3019608
@@ -2168,12 +2192,11 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
-    y: -42.0
+    y: -40.0
   }
   size {
-    x: 40.0
-    y: 40.0
+    x: 35.0
+    y: 35.0
   }
   color {
     x: 0.3019608
@@ -2189,11 +2212,11 @@ nodes {
 nodes {
   position {
     x: 45.0
-    y: -42.0
+    y: -40.0
   }
   size {
-    x: 40.0
-    y: 40.0
+    x: 35.0
+    y: 35.0
   }
   color {
     x: 0.3019608
