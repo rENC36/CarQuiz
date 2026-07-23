@@ -118,4 +118,10 @@ images {
 images {
   image: "/Assets/images/UI_assets11/green_timeline4.1.png"
 }
+images {
+  image: "/Assets/images/UI_assets11/bar_menu4_gray.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/bar_menu4_white.png"
+}
 extrude_borders: 2
