@@ -453,60 +453,6 @@ nodes {
 }
 nodes {
   position {
-    x: 22.0
-    y: 831.0
-  }
-  scale {
-    x: 0.35
-    y: 0.3
-  }
-  size {
-    x: 90.0
-    y: 20.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/progressbar2_white"
-  id: "menu"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 22.0
-    y: 839.0
-  }
-  scale {
-    x: 0.35
-    y: 0.3
-  }
-  size {
-    x: 90.0
-    y: 20.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/progressbar2_white"
-  id: "1menu"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 22.0
-    y: 823.0
-  }
-  scale {
-    x: 0.35
-    y: 0.3
-  }
-  size {
-    x: 90.0
-    y: 20.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/progressbar2_white"
-  id: "2menu"
-  inherit_alpha: true
-}
-nodes {
-  position {
     x: 222.0
     y: 812.0
   }
@@ -767,6 +713,77 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/ad1"
   id: "coin2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 22.0
+    y: 830.0
+  }
+  scale {
+    x: 0.35
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  id: "open_help_menu"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 22.0
+    y: 835.0
+  }
+  scale {
+    x: 0.35
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "designbar1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 22.0
+    y: 830.0
+  }
+  scale {
+    x: 0.35
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "designbar2"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 22.0
+    y: 825.0
+  }
+  scale {
+    x: 0.35
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "designbar3"
   inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
