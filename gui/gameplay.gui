@@ -466,7 +466,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/progressbar2_white"
-  id: "menu"
+  id: "design1"
   inherit_alpha: true
 }
 nodes {
@@ -484,7 +484,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/progressbar2_white"
-  id: "1menu"
+  id: "design2"
   inherit_alpha: true
 }
 nodes {
@@ -502,7 +502,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/progressbar2_white"
-  id: "2menu"
+  id: "design3"
   inherit_alpha: true
 }
 nodes {
@@ -780,8 +780,9 @@ nodes {
   }
   type: TYPE_BOX
   texture: "bg/background1"
-  id: "menu4.1"
+  id: "help_menu"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -794,7 +795,7 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/thinginmenu4"
   id: "corner"
-  parent: "menu4.1"
+  parent: "help_menu"
   inherit_alpha: true
 }
 nodes {
@@ -811,7 +812,7 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/line_gray1.1"
   id: "corner2"
-  parent: "menu4.1"
+  parent: "help_menu"
   inherit_alpha: true
 }
 nodes {
@@ -826,7 +827,7 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/line_gray1.1"
   id: "line_top"
-  parent: "menu4.1"
+  parent: "help_menu"
   inherit_alpha: true
 }
 nodes {
@@ -847,7 +848,7 @@ nodes {
   font: "inter_bold"
   id: "top_text"
   pivot: PIVOT_W
-  parent: "menu4.1"
+  parent: "help_menu"
   inherit_alpha: true
 }
 nodes {
@@ -861,8 +862,8 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/bar_menu4_white"
-  id: "bar_continue"
-  parent: "menu4.1"
+  id: "btn_continue"
+  parent: "help_menu"
   inherit_alpha: true
 }
 nodes {
@@ -877,7 +878,7 @@ nodes {
   texture: "UI1/arrow_gray1"
   id: "arrow"
   pivot: PIVOT_E
-  parent: "bar_continue"
+  parent: "btn_continue"
   inherit_alpha: true
 }
 nodes {
@@ -902,7 +903,7 @@ nodes {
   font: "inter_regular"
   id: "text1"
   pivot: PIVOT_W
-  parent: "bar_continue"
+  parent: "btn_continue"
   inherit_alpha: true
 }
 nodes {
@@ -916,8 +917,8 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/bar_menu4_gray"
-  id: "bar_settings"
-  parent: "menu4.1"
+  id: "btn_settings"
+  parent: "help_menu"
   inherit_alpha: true
 }
 nodes {
@@ -932,7 +933,7 @@ nodes {
   texture: "UI1/arrow_gray1.1"
   id: "arrow1"
   pivot: PIVOT_E
-  parent: "bar_settings"
+  parent: "btn_settings"
   inherit_alpha: true
 }
 nodes {
@@ -952,7 +953,7 @@ nodes {
   font: "inter_regular"
   id: "text2"
   pivot: PIVOT_W
-  parent: "bar_settings"
+  parent: "btn_settings"
   inherit_alpha: true
 }
 nodes {
@@ -966,8 +967,8 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/bar_menu4_gray"
-  id: "bar_mainmenu"
-  parent: "menu4.1"
+  id: "btn_main_menu"
+  parent: "help_menu"
   inherit_alpha: true
 }
 nodes {
@@ -982,7 +983,7 @@ nodes {
   texture: "UI1/arrow_gray1.1"
   id: "arrow2"
   pivot: PIVOT_E
-  parent: "bar_mainmenu"
+  parent: "btn_main_menu"
   inherit_alpha: true
 }
 nodes {
@@ -1002,8 +1003,23 @@ nodes {
   font: "inter_regular"
   id: "text7"
   pivot: PIVOT_W
-  parent: "bar_mainmenu"
+  parent: "btn_main_menu"
   inherit_alpha: true
+}
+nodes {
+  position {
+    x: 22.0
+    y: 831.0
+  }
+  size {
+    x: 32.0
+    y: 21.0
+  }
+  type: TYPE_BOX
+  id: "open_help_menu"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

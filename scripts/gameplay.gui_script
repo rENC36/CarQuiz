@@ -464,72 +464,45 @@ function update_coins_display(self)
 end
 
 
-local HELP_PANEL_WIDTH = 320
-local HELP_ANIM_TIME = 0.4
-
+-- ============ HELP MENU ============
 function init_help_menu(self)
 	self.help_open = false
-	gui.set_position(gui.get_node("help_menu_panel"), vmath.vector3(-HELP_PANEL_WIDTH, 0, 0))
-	gui.set_color(gui.get_node("help_menu_overlay"), vmath.vector4(0, 0, 0, 0))
-	gui.set_enabled(gui.get_node("help_menu_panel"), false)
-	gui.set_enabled(gui.get_node("help_menu_overlay"), false)
+	gui.set_enabled(gui.get_node("help_menu"), false)
 end
 
 function open_help_menu(self)
 	if self.help_open then return end
 	self.help_open = true
 	self.paused = true
-
-	gui.set_enabled(gui.get_node("help_menu_overlay"), true)
-	gui.set_enabled(gui.get_node("help_menu_panel"), true)
-	
-	gui.animate(gui.get_node("help_menu_overlay"), gui.PROP_COLOR, 
-	vmath.vector4(0, 0, 0, 0.55), gui.EASING_OUTQUAD, HELP_ANIM_TIME * 0.8)
-	
-	gui.animate(gui.get_node("help_menu_panel"), "position.x", 
-	0, gui.EASING_OUTBACK, HELP_ANIM_TIME + 0.05)
+	gui.set_enabled(gui.get_node("help_menu"), true)
 end
 
 function close_help_menu(self)
 	if not self.help_open then return end
 	self.help_open = false
 	self.paused = false
-	
-	gui.animate(gui.get_node("help_menu_overlay"), gui.PROP_COLOR, 
-	vmath.vector4(0, 0, 0, 0), gui.EASING_INQUAD, HELP_ANIM_TIME * 0.6)
-	
-	gui.animate(gui.get_node("help_menu_panel"), "position.x", 
-	-HELP_PANEL_WIDTH, gui.EASING_INQUAD, HELP_ANIM_TIME * 0.6, 0,
-	function()
-		gui.set_enabled(gui.get_node("help_menu_panel"), false)
-		gui.set_enabled(gui.get_node("help_menu_overlay"), false)
-	end)
+	gui.set_enabled(gui.get_node("help_menu"), false)
 end
 
 function handle_help_menu_input(self, x, y)
 	if not self.help_open then return false end
-	
+
 	if gui.pick_node(gui.get_node("btn_continue"), x, y) then
 		close_help_menu(self)
 		return true
 	end
-	
+
 	if gui.pick_node(gui.get_node("btn_settings"), x, y) then
 		close_help_menu(self)
 		msg.post("/menu#menu", "open_settings")
 		return true
 	end
-	
+
 	if gui.pick_node(gui.get_node("btn_main_menu"), x, y) then
 		close_help_menu(self)
 		msg.post("/menu#menu", "enable")
 		msg.post("/gameplay#gameplay", "disable")
 		msg.post("/music#sound_gameplay", "stop_sound")
-		return true
-	end
-	
-	if gui.pick_node(gui.get_node("help_menu_overlay"), x, y) then
-		close_help_menu(self)
 		return true
 	end
 
