@@ -782,6 +782,7 @@ nodes {
   texture: "bg/background1"
   id: "help_menu"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {

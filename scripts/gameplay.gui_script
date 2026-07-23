@@ -1,6 +1,7 @@
 local level_manager = require("scripts.managers.level_manager")
 local save_manager = require("scripts.managers.save_manager")
 local anim_manager = require("scripts.managers.anim_manager")
+local localization_manager = require("scripts.managers.localization_manager")
 
 local yagames = require("yagames.yagames")
 
@@ -13,7 +14,7 @@ local errors = 0
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-
+	
 	self.paused = false
 	window.set_listener(function(event, data)
 		if event == window.WINDOW_EVENT_FOCUS_LOST then
@@ -73,6 +74,7 @@ end
 
 function on_message(self, message_id, message)
 	if message_id == hash("start_game") then
+		localization_manager.init(localization_manager.current_lang, "gameplay")
 		start_level(self, message.difficulty, message.level_num or 1, message.music_play)
 	end
 end

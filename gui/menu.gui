@@ -1178,9 +1178,10 @@ nodes {
   type: TYPE_TEXT
   text: "Rus"
   font: "inter_regular"
-  id: "LangText2"
+  id: "lang_ru"
   parent: "btn_dark1.2"
   inherit_alpha: true
+  alpha: 0.5
 }
 nodes {
   position {
@@ -1198,9 +1199,49 @@ nodes {
   type: TYPE_TEXT
   text: "Eng"
   font: "inter_regular"
-  id: "LangText1"
+  id: "lang_eng"
   parent: "btn_dark1.2"
   inherit_alpha: true
+}
+nodes {
+  position {
+    x: 77.0
+    y: 3.0
+  }
+  scale {
+    x: 0.401549
+    y: 0.414432
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "lang_ru_box"
+  parent: "btn_dark1.2"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 174.0
+    y: 3.0
+  }
+  scale {
+    x: 0.401549
+    y: 0.414432
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "lang_eng_box"
+  parent: "btn_dark1.2"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
