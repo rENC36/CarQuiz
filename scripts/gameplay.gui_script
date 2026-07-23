@@ -343,7 +343,11 @@ function on_input(self, action_id, action)
 		end
 	end
 
-	process_hover(action_id, action, self)
+	if self.help_open and action_id == nil then
+		process_help_menu_hover(self, action)
+	else
+		process_hover(action_id, action, self)
+	end
 end
 
 local function rewarded_ad_open(self)
@@ -463,25 +467,97 @@ function update_coins_display(self)
 	gui.set_text(gui.get_node("txt_coins"), "$ " .. total .. " (+" .. coins .. ")")
 end
 
+local HELP_ANIM_TIME = 0.35
+local HELP_PANEL_OFFSET_X = -320
 
--- ============ HELP MENU ============
 function init_help_menu(self)
 	self.help_open = false
-	gui.set_enabled(gui.get_node("help_menu"), false)
+
+	self.help_buttons = {
+		{ node = gui.get_node("btn_continue"), hovered = false },
+		{ node = gui.get_node("btn_settings"), hovered = false },
+		{ node = gui.get_node("btn_main_menu"), hovered = false },
+	}
+
+	for i, btn in ipairs(self.help_buttons) do
+		local pos = gui.get_position(btn.node)
+		if not self.help_buttons_original_pos then
+			self.help_buttons_original_pos = {}
+		end
+		self.help_buttons_original_pos[i] = pos
+	end
+
+	local menu_node = gui.get_node("help_menu")
+	self.help_menu_original_pos = gui.get_position(menu_node)
+
+	gui.set_position(menu_node, vmath.vector3(
+	self.help_menu_original_pos.x + HELP_PANEL_OFFSET_X,
+	self.help_menu_original_pos.y,
+	self.help_menu_original_pos.z))
+	
+	gui.set_enabled(menu_node, false)
 end
 
 function open_help_menu(self)
 	if self.help_open then return end
 	self.help_open = true
 	self.paused = true
+
 	gui.set_enabled(gui.get_node("help_menu"), true)
+
+	gui.animate(gui.get_node("help_menu"), "position.x", 
+	self.help_menu_original_pos.x, gui.EASING_OUTBACK, HELP_ANIM_TIME)
+
+	for i, btn in ipairs(self.help_buttons) do
+		local delay = HELP_ANIM_TIME * 0.4 + (i - 1) * 0.06
+		local orig_pos = self.help_buttons_original_pos[i]
+
+		gui.set_position(btn.node, vmath.vector3(orig_pos.x - 40, orig_pos.y, orig_pos.z))
+		gui.set_alpha(btn.node, 0)
+
+		gui.animate(btn.node, "position.x", orig_pos.x, gui.EASING_OUTBACK, HELP_ANIM_TIME * 0.7, delay)
+		gui.animate(btn.node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_OUTQUAD, HELP_ANIM_TIME * 0.6, delay)
+	end
 end
 
 function close_help_menu(self)
 	if not self.help_open then return end
 	self.help_open = false
 	self.paused = false
-	gui.set_enabled(gui.get_node("help_menu"), false)
+
+	for _, btn in ipairs(self.help_buttons) do
+		btn.hovered = false
+		gui.animate(btn.node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0), gui.EASING_INQUAD, HELP_ANIM_TIME * 0.3)
+	end
+
+	gui.animate(gui.get_node("help_menu"), "position.x", 
+	self.help_menu_original_pos.x + HELP_PANEL_OFFSET_X, 
+	gui.EASING_INQUAD, HELP_ANIM_TIME * 0.7, 0,
+	function()
+		gui.set_enabled(gui.get_node("help_menu"), false)
+	end)
+end
+
+function process_help_menu_hover(self, action)
+	if not self.help_open then return end
+
+	for _, btn in ipairs(self.help_buttons) do
+		if gui.pick_node(btn.node, action.x, action.y) then
+			if not btn.hovered then
+				btn.hovered = true
+				
+				gui.animate(btn.node, gui.PROP_SCALE, vmath.vector3(1.05, 1.05, 1), gui.EASING_OUT, 0.15, 0)
+				
+				gui.animate(btn.node, gui.PROP_COLOR, vmath.vector4(1.1, 1.1, 1.1, 1), gui.EASING_OUT, 0.15, 0)
+			end
+		elseif btn.hovered then
+			btn.hovered = false
+
+			gui.animate(btn.node, gui.PROP_SCALE, vmath.vector3(1, 1, 1), gui.EASING_OUT, 0.15, 0)
+			
+			gui.animate(btn.node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0.15, 0)
+		end
+	end
 end
 
 function handle_help_menu_input(self, x, y)

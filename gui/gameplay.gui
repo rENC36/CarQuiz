@@ -782,7 +782,6 @@ nodes {
   texture: "bg/background1"
   id: "help_menu"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -1020,6 +1019,26 @@ nodes {
   inherit_alpha: true
   alpha: 0.0
   size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 237.0
+    y: 427.0
+  }
+  scale {
+    x: 2.371119
+    y: 8.588249
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "blur"
+  inherit_alpha: true
+  alpha: 0.25
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
