@@ -5,7 +5,6 @@ local buttons_data = require("scripts.data.buttons_data")
 
 local yagames = require("yagames.yagames")
 
-
 local function yagames_init_handler(self, err)
 	if err then
 		print("YaGames init error:", err)
@@ -14,7 +13,6 @@ local function yagames_init_handler(self, err)
 		yagames.features_loadingapi_ready()
 	end
 end
-
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
