@@ -374,6 +374,7 @@ nodes {
   texture: "bg/background"
   id: "screen_categories"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -824,6 +825,7 @@ nodes {
   texture: "bg/background1"
   id: "screen_settings"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -1321,6 +1323,7 @@ nodes {
   texture: "bg/background"
   id: "screen_result"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -1636,6 +1639,7 @@ nodes {
   texture: "bg/background1"
   id: "screen_leaderboard"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -1940,6 +1944,7 @@ nodes {
   texture: "bg/background"
   id: "screen_levels"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
