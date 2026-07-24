@@ -1,3 +1,4 @@
+--menu
 local save_manager = require("scripts.managers.save_manager")
 local anim_manager = require("scripts.managers.anim_manager")
 local localization_manager = require("scripts.managers.localization_manager")
@@ -6,12 +7,61 @@ local buttons_data = require("scripts.data.buttons_data")
 
 local yagames = require("yagames.yagames")
 
+local LEADERBOARD_NAME = "TopScores"
+
 local function yagames_init_handler(self, err)
 	if err then
 		print("YaGames init error:", err)
 	else
 		print("YaGames SDK готов")
 		yagames.features_loadingapi_ready()
+		fetch_leaderboard(self)
+	end
+end
+
+function fetch_leaderboard(self)
+	yagames.leaderboards_get_entries(LEADERBOARD_NAME, {
+		quantityTop = 10
+	}, function(self, err, result)
+		if err then
+			print("Ошибка получения лидерборда:", err)
+		else
+			display_leaderboard(self, result.entries)
+		end
+	end)
+end
+
+function display_leaderboard(self, entries)
+	for _, node in ipairs(self.leaderboard_clones) do
+		gui.delete_node(node)
+	end
+	self.leaderboard_clones = {}
+
+	local template = self.leaderboard_template
+	local base_pos = self.leaderboard_base_pos
+
+	for i, entry in ipairs(entries) do
+		local clone_ids = gui.clone_tree(template)
+
+		local root_node = clone_ids[gui.get_id(template)]
+		local name_node = clone_ids[hash("Stat_Name1")]
+		local money_node = clone_ids[hash("Stat_Money1")]
+		local number_node = clone_ids[hash("Stat_Number1")]
+
+		gui.set_enabled(root_node, true)
+
+		local pos = gui.get_position(root_node)
+		pos.y = base_pos.y - (i - 1) * 70
+		gui.set_position(root_node, pos)
+
+		local rank_display = entry.rank + 1
+		local player_name = entry.player and entry.player.publicName or "Игрок"
+
+		gui.set_text(number_node, tostring(rank_display))
+		gui.set_text(name_node, player_name)
+		gui.set_text(money_node, tostring(entry.score))
+
+		table.insert(self.leaderboard_clones, root_node)
 	end
 end
 
@@ -48,8 +98,18 @@ function init(self)
 
 	localization_manager.init("en", "menu")
 	
+	setup_leaderboard_template(self)
+
 	-- Инициализация Yandex SDK
 	yagames.init(yagames_init_handler)
+end
+
+function setup_leaderboard_template(self)
+	self.leaderboard_clones = {}
+	local template = gui.get_node("Stat1")
+	self.leaderboard_template = template
+	self.leaderboard_base_pos = gui.get_position(template)
+	gui.set_enabled(template, false)
 end
 
 function show_levels(self, difficulty)
