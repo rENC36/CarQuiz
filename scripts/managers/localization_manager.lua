@@ -2,7 +2,7 @@ local M = {}
 
 local dicts = {
 	ru = require("localization.strings_ru"),
-	eng = require("localization.strings_eng"),
+	en = require("localization.strings_en"),
 }
 
 M.current_lang = "ru" 

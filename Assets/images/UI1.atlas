@@ -124,4 +124,13 @@ images {
 images {
   image: "/Assets/images/UI_assets11/bar_menu4_white.png"
 }
+images {
+  image: "/Assets/images/UI_assets11/ad_block1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/yes_block1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/no_block1.png"
+}
 extrude_borders: 2
