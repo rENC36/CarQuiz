@@ -62,7 +62,7 @@ function display_leaderboard(self, entries)
 		pos.y = base_pos.y - (i - 1) * 70
 		gui.set_position(root_node, pos)
 
-		local rank_display = entry.rank + 1
+		local rank_display = entry.rank
 		local player_name = entry.player and entry.player.publicName or "Игрок"
 
 		gui.set_text(number_node, tostring(rank_display))
