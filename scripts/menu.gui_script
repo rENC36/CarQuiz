@@ -217,13 +217,12 @@ function change_gui(name, self)
 			end
 			if self then update_category_progress(self) end
 		end
-
-		if screen_name == "leaderboard" then
-			fetch_leaderboard(self)
-		end
-
 		local node = gui.get_node("screen_" .. screen_name)
 		gui.set_enabled(node, screen_name == name)
+	end
+
+	if name == "leaderboard" then
+		fetch_leaderboard(self)
 	end
 end
 
