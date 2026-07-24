@@ -356,14 +356,22 @@ end
 local function ad_block_rewarded(self)
 	print("Награда за просмотр рекламы засчитана!")
 	save_manager.add_coins(50) 
+	msg.post("/music#sound", "play_sound")
 end
 
-local function rewarded_ad_open(self) print("Реклама открыта") end
+local function rewarded_ad_open(self)
+	print("Реклама открыта") 
+	
+end
 
-local function rewarded_ad_error(self, err) print("Ошибка показа рекламы:", err) end
+local function rewarded_ad_error(self, err) 
+	print("Ошибка показа рекламы:", err) 
+	msg.post("/music#sound", "play_sound")
+end
 
 local function rewarded_ad_close(self)
 	print("Реклама закрыта")
+	msg.post("/music#sound", "play_sound")
 end
 
 function ad_block_yes(self)

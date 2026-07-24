@@ -313,21 +313,25 @@ end
 
 local function rewarded_ad_open(self)
 	print("Реклама открыта")
+	msg.post("/music#sound", "play_sound")
 end
 
 local function rewarded_ad_rewarded(self)
 	print("Награда засчитана!")
 	save_manager.add_coins(100)
+	msg.post("/music#sound", "play_sound")
 end
 
 local function rewarded_ad_close(self)
 	print("Реклама закрыта")
 	local updated_save = save_manager.load()
 	gui.set_text(gui.get_node("txt_total_coins"), "$ " .. updated_save.coins)
+	msg.post("/music#sound", "play_sound")
 end
 
 local function rewarded_ad_error(self, err)
 	print("Ошибка показа рекламы:", err)
+	msg.post("/music#sound", "play_sound")
 end
 
 local function ad_block_yes(self)
@@ -340,8 +344,6 @@ local function ad_block_yes(self)
 		close = rewarded_ad_close,
 		error = rewarded_ad_error
 	})
-
-	msg.post("/music#sound", "play_sound")
 end
 
 function on_input(self, action_id, action)
