@@ -371,6 +371,7 @@ nodes {
   id: "ad_block"
   parent: "screen_menu"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -383,7 +384,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/yes_block1"
-  id: "yes_block"
+  id: "btn_yes"
   parent: "ad_block"
   inherit_alpha: true
 }
@@ -408,7 +409,7 @@ nodes {
   text: "\320\224\320\260"
   font: "inter_regular"
   id: "text3"
-  parent: "yes_block"
+  parent: "btn_yes"
   inherit_alpha: true
 }
 nodes {
@@ -422,7 +423,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/no_block1"
-  id: "no_block"
+  id: "btn_no"
   parent: "ad_block"
   inherit_alpha: true
 }
@@ -442,7 +443,7 @@ nodes {
   text: "\320\235\320\265\321\202"
   font: "inter_regular"
   id: "text4"
-  parent: "no_block"
+  parent: "btn_no"
   inherit_alpha: true
 }
 nodes {
