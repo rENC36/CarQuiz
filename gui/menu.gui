@@ -362,6 +362,129 @@ nodes {
   inherit_alpha: true
 }
 nodes {
+  size {
+    x: 400.0
+    y: 280.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/ad_block1"
+  id: "ad_block"
+  parent: "screen_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -100.0
+    y: -93.0
+  }
+  size {
+    x: 140.0
+    y: 60.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/yes_block1"
+  id: "yes_block"
+  parent: "ad_block"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 3.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.16862746
+    y: 0.20784314
+    z: 0.27058825
+  }
+  type: TYPE_TEXT
+  text: "\320\224\320\260"
+  font: "inter_regular"
+  id: "text3"
+  parent: "yes_block"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 95.0
+    y: -93.0
+  }
+  size {
+    x: 140.0
+    y: 60.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/no_block1"
+  id: "no_block"
+  parent: "ad_block"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 3.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\235\320\265\321\202"
+  font: "inter_regular"
+  id: "text4"
+  parent: "no_block"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 95.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\221\320\276\320\275\321\203\321\201 \320\267\320\260 \320\277\321\200\320\276\321\201\320\274\320\276\321\202\321\200 \321\200\320\265\320\272\320\273\320\260\320\274\321\213"
+  font: "inter_bold"
+  id: "text"
+  parent: "ad_block"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -25.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\245\320\276\321\202\320\270\321\202\320\265 \320\277\320\276\320\273\321\203\321\207\320\270\321\202\321\214 100 \320\274\320\276\320\275\320\265\321\202?"
+  font: "inter_regular"
+  id: "text2"
+  parent: "ad_block"
+  inherit_alpha: true
+  alpha: 0.9
+}
+nodes {
   position {
     x: 240.0
     y: 427.0
@@ -1178,9 +1301,10 @@ nodes {
   type: TYPE_TEXT
   text: "Rus"
   font: "inter_regular"
-  id: "LangText2"
+  id: "lang_ru"
   parent: "btn_dark1.2"
   inherit_alpha: true
+  alpha: 0.5
 }
 nodes {
   position {
@@ -1198,9 +1322,49 @@ nodes {
   type: TYPE_TEXT
   text: "Eng"
   font: "inter_regular"
-  id: "LangText1"
+  id: "lang_eng"
   parent: "btn_dark1.2"
   inherit_alpha: true
+}
+nodes {
+  position {
+    x: 77.0
+    y: 3.0
+  }
+  scale {
+    x: 0.401549
+    y: 0.414432
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "lang_ru_box"
+  parent: "btn_dark1.2"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 174.0
+    y: 3.0
+  }
+  scale {
+    x: 0.401549
+    y: 0.414432
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_BOX
+  id: "lang_eng_box"
+  parent: "btn_dark1.2"
+  inherit_alpha: true
+  alpha: 0.0
+  size_mode: SIZE_MODE_AUTO
 }
 nodes {
   position {
