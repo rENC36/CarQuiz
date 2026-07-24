@@ -235,14 +235,17 @@ function end_level(self, win)
 
 	save_manager.add_coins(coins)
 	save_manager.add_score(self.level_score or 0)
-
-	local updated_save = save_manager.load()
-	if yagames.player_is_authorized() then
+	
+	local ok, is_authorized = pcall(yagames.player_is_authorized)
+	if ok and is_authorized then
+		local updated_save = save_manager.load()
 		yagames.leaderboards_set_score("TopScores", updated_save.coins, nil, function(self, err)
 			if err then
 				print("Не удалось отправить очки в лидерборд:", err)
 			end
 		end)
+	else
+		print("Player не готов или не авторизован — очки в лидерборд не отправлены")
 	end
 
 	msg.post("/music#sound_gameplay", "stop_sound")

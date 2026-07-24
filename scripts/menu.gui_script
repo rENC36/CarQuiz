@@ -16,6 +16,14 @@ local function yagames_init_handler(self, err)
 		print("YaGames SDK готов")
 		yagames.features_loadingapi_ready()
 		fetch_leaderboard(self)
+		
+		yagames.player_init({}, function(self, err)
+			if err then
+				print("Ошибка инициализации player:", err)
+			else
+				print("Player готов. Авторизован:", yagames.player_is_authorized())
+			end
+		end)
 	end
 end
 
@@ -208,6 +216,10 @@ function change_gui(name, self)
 				end
 			end
 			if self then update_category_progress(self) end
+		end
+
+		if screen_name == "leaderboard" then
+			fetch_leaderboard(self)
 		end
 
 		local node = gui.get_node("screen_" .. screen_name)
