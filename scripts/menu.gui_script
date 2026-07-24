@@ -46,7 +46,7 @@ function init(self)
 	gui.set_text(gui.get_node("StarsOutput"), total_stars .. "/27")
 	gui.set_text(gui.get_node("LevelsOutput"), total_levels .. "/9")
 
-	localization_manager.init("eng", "menu")
+	localization_manager.init("en", "menu")
 	
 	-- Инициализация Yandex SDK
 	yagames.init(yagames_init_handler)
@@ -253,7 +253,7 @@ local function handle_lang_toggle(self, screen_settings, action)
 	if pressed_on then
 		localization_manager.init("ru", "menu")
 	else
-		localization_manager.init("eng", "menu")
+		localization_manager.init("en", "menu")
 	end
 end
 
