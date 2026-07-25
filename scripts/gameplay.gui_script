@@ -162,6 +162,10 @@ function select_answer(self, index)
 	if self.answered then return end
 	self.answered = true
 
+	for i, btn in ipairs(self.answer_buttons) do
+		gui.set_scale(gui.get_node(btn.node), vmath.vector3(1, 1, 1))
+	end
+
 	local q = current_questions[current_index]
 	local is_correct = index == q.correct
 	local is_fast = self.timer > 5
@@ -290,12 +294,14 @@ end
 local function process_hover(action_id, action, self)
 	if action_id ~= nil then return end
 
-	local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
+	-- НАША ПРОВЕРКА: если игрок уже ответил на вопрос, 
+	-- мы принудительно останавливаем любой hover-эффект для кнопок
+	if self.answered then return end
 
+	local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
 	for _, btn in pairs(self.data) do
 		if btn.hover ~= nil and btn.color ~= nil then
 			local node = gui.get_node(btn.node)
-
 			if is_ad_block_active and btn.node ~= "btn_no" and btn.node ~= "btn_yes" then
 				if btn.hovered then
 					btn.hovered = false

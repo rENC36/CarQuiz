@@ -232,8 +232,43 @@ function change_gui(name, self)
 	for _, screen_name in ipairs(screens) do
 		if screen_name == "categories" then
 			for _, diff in ipairs(difficultys) do
+				local btn_node = gui.get_node("btn_" .. diff)
+
+				local name_node = nil
+				local percent_node = nil
+
+				if diff == "easy" then
+					name_node = gui.get_node("EasyCatText")
+					percent_node = gui.get_node("EasyCompleted")
+				elseif diff == "medium" then
+					name_node = gui.get_node("MediumCatText1")
+					percent_node = gui.get_node("MediumCompleted")
+				elseif diff == "hard" then
+					name_node = gui.get_node("HardCatText1")
+					percent_node = gui.get_node("HardCompleted")
+				end
+
 				if not get_category_unlocked(diff) then
-					gui.set_color(gui.get_node("btn_" .. diff), vmath.vector4(0,0,0, .5))
+					gui.play_flipbook(btn_node, hash("btn_closed2.1"))
+					gui.set_color(btn_node, vmath.vector4(1, 1, 1, 1))
+
+					if name_node then gui.set_color(name_node, vmath.vector4(1, 1, 1, 0.25)) end
+
+					if percent_node then gui.set_enabled(percent_node, false) end
+					gui.set_enabled(gui.get_node("progress_bar_background_" .. diff), false)
+					gui.set_enabled(gui.get_node("progress_bar_line_" .. diff), false)
+				else
+					gui.play_flipbook(btn_node, hash("btn_gray_open2"))
+					gui.set_color(btn_node, vmath.vector4(1, 1, 1, 1))
+
+					if name_node then gui.set_color(name_node, vmath.vector4(1, 1, 1, 1)) end
+
+					if percent_node then 
+						gui.set_color(percent_node, vmath.vector4(1, 1, 1, 1)) 
+						gui.set_enabled(percent_node, true)
+					end
+					gui.set_enabled(gui.get_node("progress_bar_background_" .. diff), true)
+					gui.set_enabled(gui.get_node("progress_bar_line_" .. diff), true)
 				end
 			end
 			if self then update_category_progress(self) end

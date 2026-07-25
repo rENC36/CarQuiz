@@ -17,9 +17,6 @@ images {
   image: "/Assets/images/UI_assets11/btn_darkgray3.png"
 }
 images {
-  image: "/Assets/images/UI_assets11/btn_darkgray_closed2.png"
-}
-images {
   image: "/Assets/images/UI_assets11/btn_darkgray_stld1.1.png"
 }
 images {
@@ -126,5 +123,8 @@ images {
 }
 images {
   image: "/Assets/images/UI_assets11/btn_wronganswer4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_closed2.1.png"
 }
 extrude_borders: 2
