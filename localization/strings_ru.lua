@@ -1,8 +1,8 @@
 return {
 	["menu"] = {
-		["btn_play_text"] = "Играть",
-		["btn_leaderboard_text"] = "Таблица Лидеров",
-		["btn_settings_text"] = "Настройки",
+		["btn_play_text"] = "ИГРАТЬ",
+		["btn_leaderboard_text"] = "ТАБЛИЦА ЛИДЕРОВ",
+		["btn_settings_text"] = "НАСТРОЙКИ",
 	},
 	
 	["gameplay"] = {

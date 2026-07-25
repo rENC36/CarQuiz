@@ -1,3 +1,4 @@
+--gameplay
 local level_manager = require("scripts.managers.level_manager")
 local save_manager = require("scripts.managers.save_manager")
 local anim_manager = require("scripts.managers.anim_manager")
@@ -14,7 +15,7 @@ local errors = 0
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
-	
+
 	self.paused = false
 	window.set_listener(function(event, data)
 		if event == window.WINDOW_EVENT_FOCUS_LOST then
@@ -29,37 +30,18 @@ function init(self)
 	self.timer_played = false 
 	self.difficulty = "easy"
 	self.level_num = 1
+	self.ad_block_hint_type = nil
+	self.ad_block_is_purchase = false
 
 	self.data = {
-		{ node = "btn_answer_1", 
-		color = vmath.vector4(1, 1, 1, 1),  
-		hover = vmath.vector4(1, 1, 1, 1), 
-		anim_color = false},
-
-		{ node = "btn_answer_2", 
-		color = vmath.vector4(1, 1, 1, 1),  
-		hover = vmath.vector4(1, 1, 1, 1),  
-		anim_color = false},
-
-		{ node = "btn_answer_3", 
-		color = vmath.vector4(1, 1, 1, 1),  
-		hover = vmath.vector4(1, 1, 1, 1),  
-		anim_color = false},
-
-		{ node = "btn_answer_4", 
-		color = vmath.vector4(1, 1, 1, 1),  
-		hover = vmath.vector4(1, 1, 1, 1),  
-		anim_color = false},
-
-		{ node = "btn_hint_skip", 
-		color = vmath.vector4(1, 1, 1, 1),  
-		hover = vmath.vector4(1, 1, 1, 1),  
-		anim_color = false},
-
-		{ node = "btn_hint_5050", 
-		color = vmath.vector4(1, 1, 1, 1),  
-		hover = vmath.vector4(1, 1, 1, 1),  
-		anim_color = false},
+		{ node = "btn_answer_1", color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false},
+		{ node = "btn_answer_2", color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false},
+		{ node = "btn_answer_3", color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false},
+		{ node = "btn_answer_4", color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false},
+		{ node = "btn_hint_skip", color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false},
+		{ node = "btn_hint_5050", color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false},
+		{ node = "btn_no", color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false},
+		{ node = "btn_yes", color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false},
 	}
 
 	self.answer_buttons = {
@@ -105,10 +87,10 @@ end
 function load_question(self)
 	self.answered = false
 	self.timer = TIMER_MAX
-	
+
 	self.timer_played = false 
 	msg.post("/music#sound_timer", "stop_sound")
-	
+
 	local q = current_questions[current_index]
 	print("Вопрос " .. current_index .. " | Правильный: " .. q.answers[q.correct] .. " | индекс: " .. q.correct)
 
@@ -129,6 +111,9 @@ function load_question(self)
 		local node = gui.get_node(btn.node)
 		local text = gui.get_node(btn.text)
 		gui.set_text(text, q.answers[i])
+
+		gui.play_flipbook(node, hash("btn_white1"))
+
 		gui.set_color(node, vmath.vector4(1,1,1, 1))
 		gui.set_enabled(node, true)
 	end
@@ -153,13 +138,15 @@ function update(self, dt)
 	if #current_questions == 0 then return end  
 	if self.paused then return end
 
+	if gui.is_enabled(gui.get_node("ad_block")) then return end
+
 	self.timer = self.timer - dt
 	local pct = math.max(0, self.timer / TIMER_MAX)
 	gui.set_size(gui.get_node("timer_bar"), vmath.vector3(245 * pct, 10, 0))
 
 	if self.timer < 5 then
 		gui.set_color(gui.get_node("timer_bar"), vmath.vector4(0.9, 0.0, 0.15, 1.0))
-		
+
 		if not self.timer_played then
 			msg.post("/music#sound_timer", "play_sound")
 			self.timer_played = true
@@ -181,20 +168,23 @@ function select_answer(self, index)
 
 	if is_correct then
 		msg.post("/music#sound_correct", "play_sound")
-		
+
 		local earned_coins = is_fast and 2 or 1
 		local earned_score = is_fast and 30 or 10
 		coins = coins + earned_coins
 		self.level_score = self.level_score + earned_score
-		gui.set_color(gui.get_node(self.answer_buttons[index].node), vmath.vector4(0.11, 0.62, 0.46, 1))
+		local correct_node = gui.get_node(self.answer_buttons[index].node)
+		gui.play_flipbook(correct_node, hash("btn_rightanswer4"))
 		update_coins_display(self) 
 	else
 		msg.post("/music#sound_wrong", "play_sound")
-		
+
 		errors = errors + 1
 		lives = lives - 1
-		gui.set_color(gui.get_node(self.answer_buttons[index].node), vmath.vector4(0.85, 0.2, 0.2, 1))
-		gui.set_color(gui.get_node(self.answer_buttons[q.correct].node), vmath.vector4(0.11, 0.62, 0.46, 1))
+		local wrong_node = gui.get_node(self.answer_buttons[index].node)
+		gui.play_flipbook(wrong_node, hash("btn_wronganswer4"))
+		local correct_node = gui.get_node(self.answer_buttons[q.correct].node)
+		gui.play_flipbook(correct_node, hash("btn_rightanswer4"))
 		update_lives(self)
 	end
 
@@ -251,6 +241,18 @@ function end_level(self, win)
 
 	save_manager.add_coins(coins)
 	save_manager.add_score(self.level_score or 0)
+	
+	local ok, is_authorized = pcall(yagames.player_is_authorized)
+	if ok and is_authorized then
+		local updated_save = save_manager.load()
+		yagames.leaderboards_set_score("TopScores", updated_save.coins, nil, function(self, err)
+			if err then
+				print("Не удалось отправить очки в лидерборд:", err)
+			end
+		end)
+	else
+		print("Player не готов или не авторизован — очки в лидерборд не отправлены")
+	end
 
 	msg.post("/music#sound_gameplay", "stop_sound")
 
@@ -288,24 +290,31 @@ end
 local function process_hover(action_id, action, self)
 	if action_id ~= nil then return end
 
+	local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
+
 	for _, btn in pairs(self.data) do
-		if btn.hover == nil or btn.color == nil then return end
+		if btn.hover ~= nil and btn.color ~= nil then
+			local node = gui.get_node(btn.node)
 
-		local node = gui.get_node(btn.node)
-
-		if not gui.is_enabled(node, true) then
-			btn.hovered = false
-			apply_hover_out(node, btn)
-		elseif gui.pick_node(node, action.x, action.y) then
-			if not btn.hovered then
-				btn.hovered = true
-				apply_hover_in(node, btn)
-
-				play_sound_effect(self, "hover")
+			if is_ad_block_active and btn.node ~= "btn_no" and btn.node ~= "btn_yes" then
+				if btn.hovered then
+					btn.hovered = false
+					apply_hover_out(node, btn)
+				end
+			else
+				if not gui.is_enabled(node, true) then
+					btn.hovered = false
+					apply_hover_out(node, btn)
+				elseif gui.pick_node(node, action.x, action.y) then
+					if not btn.hovered then
+						btn.hovered = true
+						apply_hover_in(node, btn)
+					end
+				elseif btn.hovered then
+					btn.hovered = false
+					apply_hover_out(node, btn)
+				end
 			end
-		elseif btn.hovered then
-			btn.hovered = false
-			apply_hover_out(node, btn)
 		end
 	end
 end
@@ -313,13 +322,24 @@ end
 function on_input(self, action_id, action)
 	if not gui.is_enabled(gui.get_node("top_bar"), true) then return end
 
+	local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
+
 	if action_id == hash("touch") and action.pressed then
+		if is_ad_block_active then
+			if gui.pick_node(gui.get_node("btn_no"), action.x, action.y) then
+				gui.set_enabled(gui.get_node("ad_block"), false)
+			elseif gui.pick_node(gui.get_node("btn_yes"), action.x, action.y) then
+				ad_block_yes(self)
+			end
+			return 
+		end
+
 		local btn_help = gui.get_node("open_help_menu")
 		if gui.is_enabled(btn_help, true) and gui.pick_node(btn_help, action.x, action.y) then
 			open_help_menu(self)
 			return
 		end
-		
+
 		if handle_help_menu_input(self, action.x, action.y) then
 			return
 		end
@@ -345,70 +365,74 @@ function on_input(self, action_id, action)
 		end
 	end
 
-	if self.help_open and action_id == nil then
+	if self.help_open and action_id == nil and not is_ad_block_active then
 		process_help_menu_hover(self, action)
 	else
 		process_hover(action_id, action, self)
 	end
 end
 
-local function rewarded_ad_open(self)
-	print("Реклама открыта")
+local function ad_block_rewarded(self)
+	print("Награда за просмотр рекламы засчитана!")
+	save_manager.add_coins(50) 
+	msg.post("/music#sound", "play_sound")
 end
 
-local function rewarded_ad_rewarded(self)
-	print("Награда засчитана!")
-	save_manager.add_coins(5)
+local function rewarded_ad_open(self)
+	print("Реклама открыта") 
+	
+end
+
+local function rewarded_ad_error(self, err) 
+	print("Ошибка показа рекламы:", err) 
+	msg.post("/music#sound", "play_sound")
 end
 
 local function rewarded_ad_close(self)
 	print("Реклама закрыта")
-	local updated_save = save_manager.load()
-	gui.set_text(gui.get_node("txt_total_coins"), "$ " .. updated_save.coins)
+	msg.post("/music#sound", "play_sound")
 end
 
-local function rewarded_ad_error(self, err)
-	print("Ошибка показа рекламы:", err)
-end
+function ad_block_yes(self)
+	gui.set_enabled(gui.get_node("ad_block"), false)
 
+	if self.ad_block_is_purchase then
+		if self.ad_block_hint_type == "5050" then
+			apply_hint_5050(self)
+		elseif self.ad_block_hint_type == "skip" then
+			apply_hint_skip(self)
+		end
+	else
+		msg.post("/music#sound_gameplay", "pause_sound")
+		self.paused = true
 
-function use_hint_5050(self)
-	if self.hint_5050_used or self.answered then return end
-	local save_data = save_manager.load()
-	if save_data.coins < 10 then
 		yagames.adv_show_rewarded_video({
 			open = rewarded_ad_open,
-			rewarded = rewarded_ad_rewarded,
-			close = rewarded_ad_close,
+			rewarded = ad_block_rewarded,
+			close = function()
+				rewarded_ad_close()
+				if self.ad_block_hint_type == "5050" then
+					apply_hint_5050(self)
+				elseif self.ad_block_hint_type == "skip" then
+					apply_hint_skip(self)
+				end
+				self.paused = false
+				msg.post("/music#sound_gameplay", "play_sound")
+			end,
 			error = rewarded_ad_error
 		})
-		
-		self.hint_5050_used = true
-		local q = current_questions[current_index]
-		local wrong_buttons = {}
-		for i, btn in ipairs(self.answer_buttons) do
-			if i ~= q.correct then
-				table.insert(wrong_buttons, i)
-			end
-		end
-
-		for i = #wrong_buttons, 2, -1 do
-			local j = math.random(i)
-			wrong_buttons[i], wrong_buttons[j] = wrong_buttons[j], wrong_buttons[i]
-		end
-
-		for i = 1, 2 do
-			local node = gui.get_node(self.answer_buttons[wrong_buttons[i]].node)
-			gui.set_enabled(node, false)
-		end
-
-		update_coins_display(self)
-		
-		return
 	end
+
+	self.ad_block_hint_type = nil
+	self.ad_block_is_purchase = false
+end
+
+function apply_hint_5050(self)
 	self.hint_5050_used = true
-	save_manager.add_coins(-10)
-	--gui.set_enabled(gui.get_node("btn_hint_5050"), false)
+
+	if self.ad_block_is_purchase then
+		save_manager.add_coins(-10)
+	end
 
 	local q = current_questions[current_index]
 	local wrong_buttons = {}
@@ -431,36 +455,53 @@ function use_hint_5050(self)
 	update_coins_display(self)
 end
 
-function use_hint_skip(self)
-	if self.hint_skip_used or self.answered then return end
-	local save_data = save_manager.load()
-	if save_data.coins < 20 then
-		yagames.adv_show_rewarded_video({
-			open = rewarded_ad_open,
-			rewarded = rewarded_ad_rewarded,
-			close = rewarded_ad_close,
-			error = rewarded_ad_error
-		})
-		self.hint_skip_used = true
-		self.answered = true
-
-		update_coins_display(self)
-
-		timer.delay(0.3, false, function()
-			next_question(self)
-		end)
-		
-		return
-	end
+function apply_hint_skip(self)
 	self.hint_skip_used = true
 	self.answered = true
-	save_manager.add_coins(-20)
+
+	if self.ad_block_is_purchase then
+		save_manager.add_coins(-20)
+	end
 
 	update_coins_display(self)
 
 	timer.delay(0.3, false, function()
 		next_question(self)
 	end)
+end
+
+function use_hint_5050(self)
+	if self.hint_5050_used or self.answered then return end
+	local save_data = save_manager.load()
+	self.ad_block_hint_type = "5050"
+
+	if save_data.coins >= 10 then
+		-- Если монет хватает, мгновенно списываем и применяем:
+		self.ad_block_is_purchase = true
+		apply_hint_5050(self)
+	else
+		-- Если не хватает, показываем короткий текст без дубля заголовка:
+		self.ad_block_is_purchase = false
+		gui.set_text(gui.get_node("txt_ad_block_message"), "Использовать бесплатно\nза просмотр рекламы?")
+		gui.set_enabled(gui.get_node("ad_block"), true)
+	end
+end
+
+function use_hint_skip(self)
+	if self.hint_skip_used or self.answered then return end
+	local save_data = save_manager.load()
+	self.ad_block_hint_type = "skip"
+
+	if save_data.coins >= 20 then
+		-- Если монет хватает, МГНОВЕННО пропускаем БЕЗ открытия попапа:
+		self.ad_block_is_purchase = true
+		apply_hint_skip(self)
+	else
+		-- Если монет НЕ хватает:
+		self.ad_block_is_purchase = false
+		gui.set_text(gui.get_node("txt_ad_block_message"), "Использовать бесплатно\nза просмотр рекламы?")
+		gui.set_enabled(gui.get_node("ad_block"), true)
+	end
 end
 
 function update_coins_display(self)
@@ -496,7 +537,7 @@ function init_help_menu(self)
 	self.help_menu_original_pos.x + HELP_PANEL_OFFSET_X,
 	self.help_menu_original_pos.y,
 	self.help_menu_original_pos.z))
-	
+
 	gui.set_enabled(menu_node, false)
 end
 
@@ -547,16 +588,14 @@ function process_help_menu_hover(self, action)
 		if gui.pick_node(btn.node, action.x, action.y) then
 			if not btn.hovered then
 				btn.hovered = true
-				
+
 				gui.animate(btn.node, gui.PROP_SCALE, vmath.vector3(1.05, 1.05, 1), gui.EASING_OUT, 0.15, 0)
-				
 				gui.animate(btn.node, gui.PROP_COLOR, vmath.vector4(1.1, 1.1, 1.1, 1), gui.EASING_OUT, 0.15, 0)
 			end
 		elseif btn.hovered then
 			btn.hovered = false
 
 			gui.animate(btn.node, gui.PROP_SCALE, vmath.vector3(1, 1, 1), gui.EASING_OUT, 0.15, 0)
-			
 			gui.animate(btn.node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_OUT, 0.15, 0)
 		end
 	end

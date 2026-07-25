@@ -44,7 +44,7 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 670.0
+    y: 680.0
   }
   scale {
     x: 0.5
@@ -62,11 +62,11 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 380.0
+    y: 395.0
   }
   size {
     x: 420.0
-    y: 70.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -101,11 +101,11 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 300.0
+    y: 310.0
   }
   size {
     x: 420.0
-    y: 70.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -140,11 +140,11 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 220.0
+    y: 225.0
   }
   size {
     x: 420.0
-    y: 70.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -183,7 +183,7 @@ nodes {
   }
   size {
     x: 420.0
-    y: 70.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -347,7 +347,7 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 500.0
+    y: 513.0
   }
   size {
     x: 420.0
@@ -434,7 +434,7 @@ nodes {
 nodes {
   position {
     x: 237.0
-    y: 440.0
+    y: 458.0
   }
   scale {
     x: 0.4
@@ -508,7 +508,7 @@ nodes {
 nodes {
   position {
     x: 222.0
-    y: 812.0
+    y: 815.0
   }
   scale {
     x: 0.3
@@ -1054,6 +1054,7 @@ nodes {
   texture: "UI1/ad_block1"
   id: "ad_block"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -1066,7 +1067,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/yes_block1"
-  id: "yes_block"
+  id: "btn_yes"
   parent: "ad_block"
   inherit_alpha: true
 }
@@ -1091,7 +1092,7 @@ nodes {
   text: "\320\224\320\260"
   font: "inter_regular"
   id: "text10"
-  parent: "yes_block"
+  parent: "btn_yes"
   inherit_alpha: true
 }
 nodes {
@@ -1105,7 +1106,7 @@ nodes {
   }
   type: TYPE_BOX
   texture: "UI1/no_block1"
-  id: "no_block"
+  id: "btn_no"
   parent: "ad_block"
   inherit_alpha: true
 }
@@ -1125,7 +1126,7 @@ nodes {
   text: "\320\235\320\265\321\202"
   font: "inter_regular"
   id: "text11"
-  parent: "no_block"
+  parent: "btn_no"
   inherit_alpha: true
 }
 nodes {
@@ -1163,7 +1164,7 @@ nodes {
   text: "\320\230\321\201\320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\321\214 \320\261\320\265\321\201\320\277\320\273\320\260\321\202\320\275\320\276\n"
   "\320\267\320\260 \320\277\321\200\320\276\321\201\320\274\320\276\321\202\321\200 \321\200\320\265\320\272\320\273\320\260\320\274\321\213?"
   font: "inter_regular"
-  id: "text9"
+  id: "txt_ad_block_message"
   parent: "ad_block"
   inherit_alpha: true
   alpha: 0.9

@@ -1,3 +1,4 @@
+--menu
 local save_manager = require("scripts.managers.save_manager")
 local anim_manager = require("scripts.managers.anim_manager")
 local localization_manager = require("scripts.managers.localization_manager")
@@ -6,13 +7,89 @@ local buttons_data = require("scripts.data.buttons_data")
 
 local yagames = require("yagames.yagames")
 
+local LEADERBOARD_NAME = "TopScores"
+
 local function yagames_init_handler(self, err)
 	if err then
 		print("YaGames init error:", err)
 	else
 		print("YaGames SDK готов")
 		yagames.features_loadingapi_ready()
+		fetch_leaderboard(self)
+		
+		yagames.player_init({}, function(self, err)
+			if err then
+				print("Ошибка инициализации player:", err)
+			else
+				print("Player готов. Авторизован:", yagames.player_is_authorized())
+			end
+		end)
 	end
+end
+
+function fetch_leaderboard(self)
+	yagames.leaderboards_get_entries(LEADERBOARD_NAME, {
+		quantityTop = 10
+	}, function(self, err, result)
+		if err then
+			print("Ошибка получения лидерборда:", err)
+		else
+			display_leaderboard(self, result.entries)
+		end
+	end)
+end
+
+function display_leaderboard(self, entries)
+	for _, node in ipairs(self.leaderboard_clones) do
+		gui.delete_node(node)
+	end
+	self.leaderboard_clones = {}
+
+	local template = self.leaderboard_template
+	local base_pos = self.leaderboard_base_pos
+
+	for i, entry in ipairs(entries) do
+		local clone_ids = gui.clone_tree(template)
+
+		local root_node = clone_ids[gui.get_id(template)]
+		local name_node = clone_ids[hash("Stat_Name1")]
+		local money_node = clone_ids[hash("Stat_Money1")]
+		local number_node = clone_ids[hash("Stat_Number1")]
+
+		gui.set_enabled(root_node, true)
+
+		local pos = gui.get_position(root_node)
+		pos.y = base_pos.y - (i - 1) * 70
+		gui.set_position(root_node, pos)
+
+		local rank_display = entry.rank
+		local player_name = entry.player and entry.player.publicName or "Игрок"
+
+		gui.set_text(number_node, tostring(rank_display))
+		gui.set_text(name_node, player_name)
+		gui.set_text(money_node, tostring(entry.score))
+
+		table.insert(self.leaderboard_clones, root_node)
+	end
+end
+
+local function sync_settings_visual(self)
+	-- Синхронизируем музыку (1 - яркий, 0.3 - блеклый)
+	gui.set_alpha(gui.get_node("on_music_text"), self.music_on and 1 or .3)
+	gui.set_alpha(gui.get_node("off_music_text"), self.music_on and .3 or 1)
+
+	-- Синхронизируем звуки
+	gui.set_alpha(gui.get_node("on_sound_text"), self.sound_on and 1 or .3)
+	gui.set_alpha(gui.get_node("off_sound_text"), self.sound_on and .3 or 1)
+
+	-- Синхронизируем язык (берём из менеджера локализации)
+	local current_lang = localization_manager.current_lang or "ru"
+	local is_ru = (current_lang == "ru")
+	gui.set_alpha(gui.get_node("lang_ru"), is_ru and 1 or .3)
+	gui.set_alpha(gui.get_node("lang_eng"), is_ru and .3 or 1)
+
+	sound.set_group_gain(hash("music"), self.music_on and 1 or 0)
+	sound.set_group_gain(hash("sfx"), self.sound_on and 1 or 0)
 end
 
 function init(self)
@@ -46,10 +123,22 @@ function init(self)
 	gui.set_text(gui.get_node("StarsOutput"), total_stars .. "/27")
 	gui.set_text(gui.get_node("LevelsOutput"), total_levels .. "/9")
 
-	localization_manager.init("eng", "menu")
+	localization_manager.init("ru", "menu")
 	
+	setup_leaderboard_template(self)
+
+	sync_settings_visual(self)
+
 	-- Инициализация Yandex SDK
 	yagames.init(yagames_init_handler)
+end
+
+function setup_leaderboard_template(self)
+	self.leaderboard_clones = {}
+	local template = gui.get_node("Stat1")
+	self.leaderboard_template = template
+	self.leaderboard_base_pos = gui.get_position(template)
+	gui.set_enabled(template, false)
 end
 
 function show_levels(self, difficulty)
@@ -149,9 +238,12 @@ function change_gui(name, self)
 			end
 			if self then update_category_progress(self) end
 		end
-
 		local node = gui.get_node("screen_" .. screen_name)
 		gui.set_enabled(node, screen_name == name)
+	end
+
+	if name == "leaderboard" then
+		fetch_leaderboard(self)
 	end
 end
 
@@ -209,32 +301,32 @@ local function handle_music_toggle(self, screen_settings, action)
 
 	local music_on = pressed_on
 
-	gui.set_alpha(gui.get_node("on_music_text"),  music_on and .3 or 1)
-	gui.set_alpha(gui.get_node("off_music_text"),  music_on and 1 or .3)
+	gui.set_alpha(gui.get_node("on_music_text"),  music_on and 1 or .3)
+	gui.set_alpha(gui.get_node("off_music_text"),  music_on and .3 or 1)
 
 	if music_on and self.music_on == false then
 		msg.post("/music#sound", "play_sound")
-	elseif not music_on and self.music_on == true  then
+	elseif not music_on and self.music_on == true then
 		msg.post("/music#sound", "stop_sound")
 	end
-
 	self.music_on = music_on
+
+	sound.set_group_gain(hash("music"), music_on and 1 or 0)
 end
 
 local function handle_sound_toggle(self, screen_settings, action)
 	if not gui.is_enabled(screen_settings, true) then return end
-
-	local pressed_on  = gui.pick_node(gui.get_node("on_sound_box"),  action.x, action.y)
+	local pressed_on = gui.pick_node(gui.get_node("on_sound_box"), action.x, action.y)
 	local pressed_off = gui.pick_node(gui.get_node("off_sound_box"), action.x, action.y)
-
 	if not pressed_on and not pressed_off then return end
-
 	local sound_on = pressed_on
 
-	gui.set_alpha(gui.get_node("on_sound_text"),  sound_on and .3 or 1)
-	gui.set_alpha(gui.get_node("off_sound_text"),  sound_on and 1 or .3)
+	gui.set_alpha(gui.get_node("on_sound_text"), sound_on and 1 or .3)
+	gui.set_alpha(gui.get_node("off_sound_text"), sound_on and .3 or 1)
 
 	self.sound_on = sound_on
+
+	sound.set_group_gain(hash("sfx"), sound_on and 1 or 0)
 end
 
 local function handle_lang_toggle(self, screen_settings, action)
@@ -247,13 +339,13 @@ local function handle_lang_toggle(self, screen_settings, action)
 
 	local sound_on = pressed_on
 
-	gui.set_alpha(gui.get_node("lang_ru"),  sound_on and .3 or 1)
-	gui.set_alpha(gui.get_node("lang_eng"),  sound_on and 1 or .3)
+	gui.set_alpha(gui.get_node("lang_ru"),  sound_on and 1 or .3)
+	gui.set_alpha(gui.get_node("lang_eng"),  sound_on and .3 or 1)
 
 	if pressed_on then
 		localization_manager.init("ru", "menu")
 	else
-		localization_manager.init("eng", "menu")
+		localization_manager.init("en", "menu")
 	end
 end
 
@@ -281,130 +373,164 @@ end
 local function process_hover(action_id, action, self)
 	if action_id ~= nil then return end
 
+	local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
+
 	for _, btn in pairs(self.buttons) do
-		if btn.hover == nil or btn.color == nil then return end
-
-		local node = gui.get_node(btn.node)
-
-		if not gui.is_enabled(node, true) then
-			btn.hovered = false
-			apply_hover_out(node, btn)
-		elseif gui.pick_node(node, action.x, action.y) then
-			if not btn.hovered then
-				btn.hovered = true
-				apply_hover_in(node, btn)
-
-				play_sound_effect(self, "hover")
+		if btn.hover ~= nil and btn.color ~= nil then
+			local node = gui.get_node(btn.node)
+			
+			if is_ad_block_active and btn.node ~= "btn_no" and btn.node ~= "btn_yes" then
+				if btn.hovered then
+					btn.hovered = false
+					apply_hover_out(node, btn)
+				end
+			else
+				if not gui.is_enabled(node, true) then
+					btn.hovered = false
+					apply_hover_out(node, btn)
+				elseif gui.pick_node(node, action.x, action.y) then
+					if not btn.hovered then
+						btn.hovered = true
+						apply_hover_in(node, btn)
+						play_sound_effect(self, "hover")
+					end
+				elseif btn.hovered then
+					btn.hovered = false
+					apply_hover_out(node, btn)
+				end
 			end
-		elseif btn.hovered then
-			btn.hovered = false
-			apply_hover_out(node, btn)
 		end
 	end
 end
 
 local function rewarded_ad_open(self)
 	print("Реклама открыта")
+	msg.post("/music#sound", "play_sound")
 end
 
 local function rewarded_ad_rewarded(self)
 	print("Награда засчитана!")
-	save_manager.add_coins(5)
+	save_manager.add_coins(100)
+	msg.post("/music#sound", "play_sound")
 end
 
 local function rewarded_ad_close(self)
 	print("Реклама закрыта")
 	local updated_save = save_manager.load()
 	gui.set_text(gui.get_node("txt_total_coins"), "$ " .. updated_save.coins)
+	msg.post("/music#sound", "play_sound")
 end
 
 local function rewarded_ad_error(self, err)
 	print("Ошибка показа рекламы:", err)
+	msg.post("/music#sound", "play_sound")
+end
+
+local function ad_block_yes(self)
+	msg.post("/music#sound", "pause_sound")
+	gui.set_enabled(gui.get_node("ad_block"), false)
+	
+	yagames.adv_show_rewarded_video({
+		open = rewarded_ad_open,
+		rewarded = rewarded_ad_rewarded,
+		close = rewarded_ad_close,
+		error = rewarded_ad_error
+	})
 end
 
 function on_input(self, action_id, action)
 	if action_id == hash("touch") and action.released then
-		local screen_settings = gui.get_node("screen_settings")
-		handle_music_toggle(self, screen_settings, action)
-		handle_sound_toggle(self, screen_settings, action)
-		handle_lang_toggle(self, screen_settings, action)
+		local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
+		
+		if not is_ad_block_active then
+			local screen_settings = gui.get_node("screen_settings")
+			handle_music_toggle(self, screen_settings, action)
+			handle_sound_toggle(self, screen_settings, action)
+			handle_lang_toggle(self, screen_settings, action)
+		end
 
 		for _, btn in ipairs(self.buttons) do
-			local node = gui.get_node(btn.node)
-			if gui.is_enabled(node, true) and gui.pick_node(node, action.x, action.y) then
-				print(btn.node .. " нажато")
+			if is_ad_block_active and btn.node ~= "btn_no" and btn.node ~= "btn_yes" then
+				
+			else
+				local node = gui.get_node(btn.node)
+				if gui.is_enabled(node, true) and gui.pick_node(node, action.x, action.y) then
+					print(btn.node .. " нажато")
 
-				play_sound_effect(self, "click")
-				if btn.node == "btn_menu_ad" then
-					yagames.adv_show_rewarded_video({
-						open = rewarded_ad_open,
-						rewarded = rewarded_ad_rewarded,
-						close = rewarded_ad_close,
-						error = rewarded_ad_error
-					})
-				end
+					play_sound_effect(self, "click")
 
-				if not btn.target then break end
-
-				if btn.target == "levels" then
-					if get_category_unlocked(btn.difficulty) then
-						self.selected_difficulty = btn.difficulty
-						change_gui("levels", self)
-						show_levels(self, btn.difficulty)
+					if btn.node == "btn_menu_ad" then
+						gui.set_enabled(gui.get_node("ad_block"), true)
 					end
-				elseif btn.node == "btn_result_next" then
-					local next_difficulty = self.last_difficulty
-					local next_level = self.last_level
 
-					if self.last_win then
-						if next_level < 3 then
-							next_level = next_level + 1
-						else
-							if next_difficulty == "easy" then
-								next_difficulty = "medium"
-								next_level = 1
-							elseif next_difficulty == "medium" then
-								next_difficulty = "hard"
-								next_level = 1
+					if btn.node == "btn_no" then
+						gui.set_enabled(gui.get_node("ad_block"), false)
+					elseif btn.node == "btn_yes" then
+						ad_block_yes(self)
+					end
+
+					if not btn.target then break end
+
+					if btn.target == "levels" then
+						if get_category_unlocked(btn.difficulty) then
+							self.selected_difficulty = btn.difficulty
+							change_gui("levels", self)
+							show_levels(self, btn.difficulty)
+						end
+					elseif btn.node == "btn_result_next" then
+						local next_difficulty = self.last_difficulty
+						local next_level = self.last_level
+
+						if self.last_win then
+							if next_level < 3 then
+								next_level = next_level + 1
 							else
-								next_level = 3
+								if next_difficulty == "easy" then
+									next_difficulty = "medium"
+									next_level = 1
+								elseif next_difficulty == "medium" then
+									next_difficulty = "hard"
+									next_level = 1
+								else
+									next_level = 3
+								end
 							end
 						end
-					end
 
-					msg.post("/gameplay#gameplay", "enable")
-					msg.post("/menu#menu", "disable")
-					timer.delay(0.1, false, function()
-						msg.post("/gameplay#gameplay", "start_game", {
-							difficulty = next_difficulty,
-							level_num = next_level,
-							music_play = self.music_on
-						})
-					end)
-
-				elseif btn.target == "gameplay" and btn.level_num then
-					local locked = btn.level_num > 1 and save_manager.get_stars(self.selected_difficulty, btn.level_num - 1) == 0
-					if locked then
-						print("Уровень заблокирован!")
-					else
 						msg.post("/gameplay#gameplay", "enable")
 						msg.post("/menu#menu", "disable")
 						timer.delay(0.1, false, function()
 							msg.post("/gameplay#gameplay", "start_game", {
-								difficulty = self.selected_difficulty,
-								level_num = btn.level_num,
+								difficulty = next_difficulty,
+								level_num = next_level,
 								music_play = self.music_on
 							})
 						end)
+
+					elseif btn.target == "gameplay" and btn.level_num then
+						local locked = btn.level_num > 1 and save_manager.get_stars(self.selected_difficulty, btn.level_num - 1) == 0
+						if locked then
+							print("Уровень заблокирован!")
+						else
+							msg.post("/gameplay#gameplay", "enable")
+							msg.post("/menu#menu", "disable")
+							timer.delay(0.1, false, function()
+								msg.post("/gameplay#gameplay", "start_game", {
+									difficulty = self.selected_difficulty,
+									level_num = btn.level_num,
+									music_play = self.music_on
+								})
+							end)
+						end
+					else
+						change_gui(btn.target, self)
 					end
-				else
-					change_gui(btn.target, self)
+					break
 				end
-				break
 			end
 		end
-	end--"txt_levels_title"
-
+	end
+	
 	process_hover(action_id, action, self)
 end
 
