@@ -177,18 +177,23 @@ function select_answer(self, index)
 		local earned_score = is_fast and 30 or 10
 		coins = coins + earned_coins
 		self.level_score = self.level_score + earned_score
+		
 		local correct_node = gui.get_node(self.answer_buttons[index].node)
 		gui.play_flipbook(correct_node, hash("btn_rightanswer4"))
+		
 		update_coins_display(self) 
 	else
 		msg.post("/music#sound_wrong", "play_sound")
 
 		errors = errors + 1
 		lives = lives - 1
+		
 		local wrong_node = gui.get_node(self.answer_buttons[index].node)
 		gui.play_flipbook(wrong_node, hash("btn_wronganswer4"))
+		
 		local correct_node = gui.get_node(self.answer_buttons[q.correct].node)
 		gui.play_flipbook(correct_node, hash("btn_rightanswer4"))
+		
 		update_lives(self)
 	end
 
