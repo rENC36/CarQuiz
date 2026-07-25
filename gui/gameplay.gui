@@ -44,7 +44,7 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 670.0
+    y: 680.0
   }
   scale {
     x: 0.5
@@ -62,11 +62,11 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 380.0
+    y: 395.0
   }
   size {
     x: 420.0
-    y: 70.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -101,11 +101,11 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 300.0
+    y: 310.0
   }
   size {
     x: 420.0
-    y: 70.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -140,11 +140,11 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 220.0
+    y: 225.0
   }
   size {
     x: 420.0
-    y: 70.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -183,7 +183,7 @@ nodes {
   }
   size {
     x: 420.0
-    y: 70.0
+    y: 80.0
   }
   type: TYPE_BOX
   texture: "UI1/btn_white1"
@@ -347,7 +347,7 @@ nodes {
 nodes {
   position {
     x: 240.0
-    y: 500.0
+    y: 513.0
   }
   size {
     x: 420.0
@@ -434,7 +434,7 @@ nodes {
 nodes {
   position {
     x: 237.0
-    y: 440.0
+    y: 458.0
   }
   scale {
     x: 0.4
@@ -508,7 +508,7 @@ nodes {
 nodes {
   position {
     x: 222.0
-    y: 812.0
+    y: 815.0
   }
   scale {
     x: 0.3

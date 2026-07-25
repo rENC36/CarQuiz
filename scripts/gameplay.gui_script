@@ -111,6 +111,9 @@ function load_question(self)
 		local node = gui.get_node(btn.node)
 		local text = gui.get_node(btn.text)
 		gui.set_text(text, q.answers[i])
+
+		gui.play_flipbook(node, hash("btn_white1"))
+
 		gui.set_color(node, vmath.vector4(1,1,1, 1))
 		gui.set_enabled(node, true)
 	end
@@ -159,6 +162,10 @@ function select_answer(self, index)
 	if self.answered then return end
 	self.answered = true
 
+	for i, btn in ipairs(self.answer_buttons) do
+		gui.set_scale(gui.get_node(btn.node), vmath.vector3(1, 1, 1))
+	end
+
 	local q = current_questions[current_index]
 	local is_correct = index == q.correct
 	local is_fast = self.timer > 5
@@ -170,15 +177,23 @@ function select_answer(self, index)
 		local earned_score = is_fast and 30 or 10
 		coins = coins + earned_coins
 		self.level_score = self.level_score + earned_score
-		gui.set_color(gui.get_node(self.answer_buttons[index].node), vmath.vector4(0.11, 0.62, 0.46, 1))
+		
+		local correct_node = gui.get_node(self.answer_buttons[index].node)
+		gui.play_flipbook(correct_node, hash("btn_rightanswer4"))
+		
 		update_coins_display(self) 
 	else
 		msg.post("/music#sound_wrong", "play_sound")
 
 		errors = errors + 1
 		lives = lives - 1
-		gui.set_color(gui.get_node(self.answer_buttons[index].node), vmath.vector4(0.85, 0.2, 0.2, 1))
-		gui.set_color(gui.get_node(self.answer_buttons[q.correct].node), vmath.vector4(0.11, 0.62, 0.46, 1))
+		
+		local wrong_node = gui.get_node(self.answer_buttons[index].node)
+		gui.play_flipbook(wrong_node, hash("btn_wronganswer4"))
+		
+		local correct_node = gui.get_node(self.answer_buttons[q.correct].node)
+		gui.play_flipbook(correct_node, hash("btn_rightanswer4"))
+		
 		update_lives(self)
 	end
 
@@ -284,12 +299,14 @@ end
 local function process_hover(action_id, action, self)
 	if action_id ~= nil then return end
 
-	local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
+	-- НАША ПРОВЕРКА: если игрок уже ответил на вопрос, 
+	-- мы принудительно останавливаем любой hover-эффект для кнопок
+	if self.answered then return end
 
+	local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
 	for _, btn in pairs(self.data) do
 		if btn.hover ~= nil and btn.color ~= nil then
 			local node = gui.get_node(btn.node)
-
 			if is_ad_block_active and btn.node ~= "btn_no" and btn.node ~= "btn_yes" then
 				if btn.hovered then
 					btn.hovered = false
@@ -467,39 +484,35 @@ end
 function use_hint_5050(self)
 	if self.hint_5050_used or self.answered then return end
 	local save_data = save_manager.load()
-
 	self.ad_block_hint_type = "5050"
 
 	if save_data.coins >= 10 then
+		-- Если монет хватает, мгновенно списываем и применяем:
 		self.ad_block_is_purchase = true
-		--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-		gui.set_text(gui.get_node("txt_ad_block_message"), "Хотите купить помощь за 10 монет?")
+		apply_hint_5050(self)
 	else
+		-- Если не хватает, показываем короткий текст без дубля заголовка:
 		self.ad_block_is_purchase = false
-		--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-		gui.set_text(gui.get_node("txt_ad_block_message"), "Хотите посмотреть рекламу?")
+		gui.set_text(gui.get_node("txt_ad_block_message"), "Использовать бесплатно\nза просмотр рекламы?")
+		gui.set_enabled(gui.get_node("ad_block"), true)
 	end
-
-	gui.set_enabled(gui.get_node("ad_block"), true)
 end
 
 function use_hint_skip(self)
 	if self.hint_skip_used or self.answered then return end
 	local save_data = save_manager.load()
-
 	self.ad_block_hint_type = "skip"
 
 	if save_data.coins >= 20 then
+		-- Если монет хватает, МГНОВЕННО пропускаем БЕЗ открытия попапа:
 		self.ad_block_is_purchase = true
-		--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-		gui.set_text(gui.get_node("txt_ad_block_message"), "Хотите купить помощь за 20 монет?")
+		apply_hint_skip(self)
 	else
+		-- Если монет НЕ хватает:
 		self.ad_block_is_purchase = false
-		--MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-		gui.set_text(gui.get_node("txt_ad_block_message"), "Хотите посмотреть рекламу?")
+		gui.set_text(gui.get_node("txt_ad_block_message"), "Использовать бесплатно\nза просмотр рекламы?")
+		gui.set_enabled(gui.get_node("ad_block"), true)
 	end
-
-	gui.set_enabled(gui.get_node("ad_block"), true)
 end
 
 function update_coins_display(self)

@@ -73,6 +73,25 @@ function display_leaderboard(self, entries)
 	end
 end
 
+local function sync_settings_visual(self)
+	-- Синхронизируем музыку (1 - яркий, 0.3 - блеклый)
+	gui.set_alpha(gui.get_node("on_music_text"), self.music_on and 1 or .3)
+	gui.set_alpha(gui.get_node("off_music_text"), self.music_on and .3 or 1)
+
+	-- Синхронизируем звуки
+	gui.set_alpha(gui.get_node("on_sound_text"), self.sound_on and 1 or .3)
+	gui.set_alpha(gui.get_node("off_sound_text"), self.sound_on and .3 or 1)
+
+	-- Синхронизируем язык (берём из менеджера локализации)
+	local current_lang = localization_manager.current_lang or "ru"
+	local is_ru = (current_lang == "ru")
+	gui.set_alpha(gui.get_node("lang_ru"), is_ru and 1 or .3)
+	gui.set_alpha(gui.get_node("lang_eng"), is_ru and .3 or 1)
+
+	sound.set_group_gain(hash("music"), self.music_on and 1 or 0)
+	sound.set_group_gain(hash("sfx"), self.sound_on and 1 or 0)
+end
+
 function init(self)
 	msg.post(".", "acquire_input_focus")
 
@@ -104,9 +123,11 @@ function init(self)
 	gui.set_text(gui.get_node("StarsOutput"), total_stars .. "/27")
 	gui.set_text(gui.get_node("LevelsOutput"), total_levels .. "/9")
 
-	localization_manager.init("en", "menu")
+	localization_manager.init("ru", "menu")
 	
 	setup_leaderboard_template(self)
+
+	sync_settings_visual(self)
 
 	-- Инициализация Yandex SDK
 	yagames.init(yagames_init_handler)
@@ -211,8 +232,43 @@ function change_gui(name, self)
 	for _, screen_name in ipairs(screens) do
 		if screen_name == "categories" then
 			for _, diff in ipairs(difficultys) do
+				local btn_node = gui.get_node("btn_" .. diff)
+
+				local name_node = nil
+				local percent_node = nil
+
+				if diff == "easy" then
+					name_node = gui.get_node("EasyCatText")
+					percent_node = gui.get_node("EasyCompleted")
+				elseif diff == "medium" then
+					name_node = gui.get_node("MediumCatText1")
+					percent_node = gui.get_node("MediumCompleted")
+				elseif diff == "hard" then
+					name_node = gui.get_node("HardCatText1")
+					percent_node = gui.get_node("HardCompleted")
+				end
+
 				if not get_category_unlocked(diff) then
-					gui.set_color(gui.get_node("btn_" .. diff), vmath.vector4(0,0,0, .5))
+					gui.play_flipbook(btn_node, hash("btn_closed2.1"))
+					gui.set_color(btn_node, vmath.vector4(1, 1, 1, 1))
+
+					if name_node then gui.set_color(name_node, vmath.vector4(1, 1, 1, 0.25)) end
+
+					if percent_node then gui.set_enabled(percent_node, false) end
+					gui.set_enabled(gui.get_node("progress_bar_background_" .. diff), false)
+					gui.set_enabled(gui.get_node("progress_bar_line_" .. diff), false)
+				else
+					gui.play_flipbook(btn_node, hash("btn_gray_open2"))
+					gui.set_color(btn_node, vmath.vector4(1, 1, 1, 1))
+
+					if name_node then gui.set_color(name_node, vmath.vector4(1, 1, 1, 1)) end
+
+					if percent_node then 
+						gui.set_color(percent_node, vmath.vector4(1, 1, 1, 1)) 
+						gui.set_enabled(percent_node, true)
+					end
+					gui.set_enabled(gui.get_node("progress_bar_background_" .. diff), true)
+					gui.set_enabled(gui.get_node("progress_bar_line_" .. diff), true)
 				end
 			end
 			if self then update_category_progress(self) end
@@ -280,32 +336,32 @@ local function handle_music_toggle(self, screen_settings, action)
 
 	local music_on = pressed_on
 
-	gui.set_alpha(gui.get_node("on_music_text"),  music_on and .3 or 1)
-	gui.set_alpha(gui.get_node("off_music_text"),  music_on and 1 or .3)
+	gui.set_alpha(gui.get_node("on_music_text"),  music_on and 1 or .3)
+	gui.set_alpha(gui.get_node("off_music_text"),  music_on and .3 or 1)
 
 	if music_on and self.music_on == false then
 		msg.post("/music#sound", "play_sound")
-	elseif not music_on and self.music_on == true  then
+	elseif not music_on and self.music_on == true then
 		msg.post("/music#sound", "stop_sound")
 	end
-
 	self.music_on = music_on
+
+	sound.set_group_gain(hash("music"), music_on and 1 or 0)
 end
 
 local function handle_sound_toggle(self, screen_settings, action)
 	if not gui.is_enabled(screen_settings, true) then return end
-
-	local pressed_on  = gui.pick_node(gui.get_node("on_sound_box"),  action.x, action.y)
+	local pressed_on = gui.pick_node(gui.get_node("on_sound_box"), action.x, action.y)
 	local pressed_off = gui.pick_node(gui.get_node("off_sound_box"), action.x, action.y)
-
 	if not pressed_on and not pressed_off then return end
-
 	local sound_on = pressed_on
 
-	gui.set_alpha(gui.get_node("on_sound_text"),  sound_on and .3 or 1)
-	gui.set_alpha(gui.get_node("off_sound_text"),  sound_on and 1 or .3)
+	gui.set_alpha(gui.get_node("on_sound_text"), sound_on and 1 or .3)
+	gui.set_alpha(gui.get_node("off_sound_text"), sound_on and .3 or 1)
 
 	self.sound_on = sound_on
+
+	sound.set_group_gain(hash("sfx"), sound_on and 1 or 0)
 end
 
 local function handle_lang_toggle(self, screen_settings, action)
@@ -318,8 +374,8 @@ local function handle_lang_toggle(self, screen_settings, action)
 
 	local sound_on = pressed_on
 
-	gui.set_alpha(gui.get_node("lang_ru"),  sound_on and .3 or 1)
-	gui.set_alpha(gui.get_node("lang_eng"),  sound_on and 1 or .3)
+	gui.set_alpha(gui.get_node("lang_ru"),  sound_on and 1 or .3)
+	gui.set_alpha(gui.get_node("lang_eng"),  sound_on and .3 or 1)
 
 	if pressed_on then
 		localization_manager.init("ru", "menu")

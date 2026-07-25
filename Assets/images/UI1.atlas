@@ -17,9 +17,6 @@ images {
   image: "/Assets/images/UI_assets11/btn_darkgray3.png"
 }
 images {
-  image: "/Assets/images/UI_assets11/btn_darkgray_closed2.png"
-}
-images {
   image: "/Assets/images/UI_assets11/btn_darkgray_stld1.1.png"
 }
 images {
@@ -38,16 +35,10 @@ images {
   image: "/Assets/images/UI_assets11/btn_menuback4.png"
 }
 images {
-  image: "/Assets/images/UI_assets11/btn_rightgreen4.png"
-}
-images {
   image: "/Assets/images/UI_assets11/btn_white1.png"
 }
 images {
   image: "/Assets/images/UI_assets11/btn_white_stld1.1.png"
-}
-images {
-  image: "/Assets/images/UI_assets11/btn_wrongred4.png"
 }
 images {
   image: "/Assets/images/UI_assets11/btn_yellow3.png"
@@ -92,9 +83,6 @@ images {
   image: "/Assets/images/UI_assets11/red_timeline4.png"
 }
 images {
-  image: "/Assets/images/UI_assets11/right4.png"
-}
-images {
   image: "/Assets/images/UI_assets11/skip4.png"
 }
 images {
@@ -108,9 +96,6 @@ images {
 }
 images {
   image: "/Assets/images/UI_assets11/timeline4.png"
-}
-images {
-  image: "/Assets/images/UI_assets11/wrong4.png"
 }
 images {
   image: "/Assets/images/UI_assets11/Rectangle (31) (2).png"
@@ -132,5 +117,14 @@ images {
 }
 images {
   image: "/Assets/images/UI_assets11/no_block1.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_rightanswer4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_wronganswer4.png"
+}
+images {
+  image: "/Assets/images/UI_assets11/btn_closed2.1.png"
 }
 extrude_borders: 2
