@@ -245,7 +245,7 @@ function end_level(self, win)
 
 	save_manager.add_coins(coins)
 	save_manager.add_score(self.level_score or 0)
-	
+
 	local ok, is_authorized = pcall(yagames.player_is_authorized)
 	if ok and is_authorized then
 		local updated_save = save_manager.load()
@@ -386,7 +386,7 @@ end
 
 local function rewarded_ad_open(self)
 	print("Реклама открыта") 
-	
+
 end
 
 local function rewarded_ad_error(self, err) 

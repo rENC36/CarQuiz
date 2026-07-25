@@ -409,7 +409,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\224\320\260"
   font: "inter_regular"
-  id: "text3"
+  id: "yes"
   parent: "btn_yes"
   inherit_alpha: true
 }
@@ -443,7 +443,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\235\320\265\321\202"
   font: "inter_regular"
-  id: "text4"
+  id: "no"
   parent: "btn_no"
   inherit_alpha: true
 }
@@ -462,7 +462,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\221\320\276\320\275\321\203\321\201 \320\267\320\260 \320\277\321\200\320\276\321\201\320\274\320\276\321\202\321\200 \321\200\320\265\320\272\320\273\320\260\320\274\321\213"
   font: "inter_bold"
-  id: "text"
+  id: "title"
   parent: "ad_block"
   inherit_alpha: true
 }
@@ -481,7 +481,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\245\320\276\321\202\320\270\321\202\320\265 \320\277\320\276\320\273\321\203\321\207\320\270\321\202\321\214 100 \320\274\320\276\320\275\320\265\321\202?"
   font: "inter_regular"
-  id: "text2"
+  id: "title2"
   parent: "ad_block"
   inherit_alpha: true
   alpha: 0.9
@@ -764,6 +764,7 @@ nodes {
 }
 nodes {
   position {
+    x: 2.0
     y: 385.0
   }
   scale {
@@ -1802,7 +1803,6 @@ nodes {
   texture: "bg/background1"
   id: "screen_leaderboard"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -2001,7 +2001,7 @@ nodes {
   type: TYPE_TEXT
   text: "#"
   font: "inter_regular"
-  id: "Text1"
+  id: "number_text"
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
@@ -2021,7 +2021,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\230\320\274\321\217"
   font: "inter_regular"
-  id: "Text2"
+  id: "name_text"
   pivot: PIVOT_W
   parent: "screen_leaderboard"
   inherit_alpha: true
@@ -2042,7 +2042,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\234\320\276\320\275\320\265\321\202\321\213"
   font: "inter_regular"
-  id: "Text3"
+  id: "coins_text"
   pivot: PIVOT_E
   parent: "screen_leaderboard"
   inherit_alpha: true
@@ -2212,6 +2212,7 @@ nodes {
   texture: "bg/background"
   id: "screen_levels"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {

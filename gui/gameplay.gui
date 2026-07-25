@@ -629,7 +629,7 @@ nodes {
 }
 nodes {
   position {
-    x: 93.0
+    x: 94.0
     y: 20.0
   }
   size {
@@ -643,7 +643,7 @@ nodes {
 }
 nodes {
   position {
-    x: 104.0
+    x: 105.0
     y: 20.0
   }
   scale {
@@ -666,7 +666,7 @@ nodes {
 }
 nodes {
   position {
-    x: 124.0
+    x: 134.0
     y: 20.0
   }
   scale {
@@ -681,12 +681,11 @@ nodes {
   text: "\320\270\320\273\320\270"
   font: "inter_regular"
   id: "text4"
-  pivot: PIVOT_W
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 162.0
+    x: 159.0
     y: 19.0
   }
   size {
@@ -737,7 +736,7 @@ nodes {
 }
 nodes {
   position {
-    x: 344.0
+    x: 353.0
     y: 20.0
   }
   scale {
@@ -752,12 +751,11 @@ nodes {
   text: "\320\270\320\273\320\270"
   font: "inter_regular"
   id: "text6"
-  pivot: PIVOT_W
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 380.0
+    x: 377.0
     y: 19.0
   }
   size {
@@ -844,7 +842,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "\320\234\320\225\320\235\320\256"
+  text: "\320\237\320\220\320\243\320\227\320\220"
   font: "inter_bold"
   id: "top_text"
   pivot: PIVOT_W
@@ -1161,8 +1159,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "\320\230\321\201\320\277\320\276\320\273\321\214\320\267\320\276\320\262\320\260\321\202\321\214 \320\261\320\265\321\201\320\277\320\273\320\260\321\202\320\275\320\276\n"
-  "\320\267\320\260 \320\277\321\200\320\276\321\201\320\274\320\276\321\202\321\200 \321\200\320\265\320\272\320\273\320\260\320\274\321\213?"
+  text: "."
   font: "inter_regular"
   id: "txt_ad_block_message"
   parent: "ad_block"
