@@ -1,34 +1,52 @@
 return {
 
-	--кнопка открытия экрана категории в screen_menu
-	{ node = "btn_play", target = "categories", 
-	color = vmath.vector4(1, 1, 1, 1),  
-	hover = vmath.vector4(1, 1, 1, 1),}, 
+	-- кнопка открытия экрана категории в screen_menu
+	{ node = "btn_play", target = "categories",
+	color = vmath.vector4(1, 1, 1, 1),
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.02, 1.02, 1), 
+	anim_scale = true},
 
-	--кнопка открытия экрана лидерборда в screen_menu
+	-- кнопка открытия экрана лидерборда в screen_menu
 	{ node = "btn_leaderboard", target = "leaderboard",
 	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 1, 1, 1) },
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.02, 1.02, 1), 
+	anim_scale = true},
 
-	--кнопка открытия экрана настроек в screen_menu
-	{ node = "btn_settings",    target = "settings",
+	-- кнопка открытия экрана настроек в screen_menu
+	{ node = "btn_settings", target = "settings",
 	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 1, 1, 1) },
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.02, 1.02, 1), 
+	anim_scale = true},
 
 	--кнопка выбора сложности в screen_categories
 	{ node = "btn_easy",        target = "levels", difficulty = "easy",
 	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(0.15, 0.75, 0.55, 1) },
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.02, 1.02, 1), 
+	anim_scale = true},
 
 	--кнопка выбора сложности в screen_categories
 	{ node = "btn_medium",      target = "levels", difficulty = "medium",
 	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 1, 0, 1),},
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.02, 1.02, 1), 
+	anim_scale = true},
 
 	--кнопка выбора сложности в screen_categories
 	{ node = "btn_hard",        target = "levels", difficulty = "hard",
 	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 0, 0, 1)  },
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.02, 1.02, 1), 
+	anim_scale = true},
 
 	--кнопка возвращения в экран меню screen_menu
 	{ node = "white_arrow", 	target = "menu", 
@@ -69,17 +87,21 @@ return {
 	hover = vmath.vector4(1, 1, 1, 1), 
 	hoversize = vmath.vector3(1.2, 1.2, 1.2)},
 
-	{ node = "exit_result", target = "menu", 
+	-- Кнопка «ГЛАВНОЕ МЕНЮ» на экране результатов
+	{ node = "exit_result", target = "menu",
 	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 1, 1, .8), 
-	defaultsize = vmath.vector3(.5,.5,1),
-	hoversize = vmath.vector3(.52, .52, 1)},
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(.5, .5, 1),
+	hoversize = vmath.vector3(.51, .51, 1),
+	anim_scale = true},
 
-	{ node = "btn_result_next", target = "gameplay", 
+	-- Кнопка «ПРОЙТИ ЕЩЕ РАЗ» / «СЛЕДУЮЩИЙ УРОВЕНЬ»
+	{ node = "btn_result_next", target = "gameplay",
 	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 1, 1, .8),
-	defaultsize = vmath.vector3(.5,.5,1),
-	hoversize = vmath.vector3(.52, .52, 1)},
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(.5, .5, 1),
+	hoversize = vmath.vector3(.51, .51, 1),
+	anim_scale = true},
 	
 	{node = "txt_levels_title",
 	color = vmath.vector4(1, 1, 1, 1),
@@ -110,6 +132,16 @@ return {
 	hover = vmath.vector4(1, 1, 1, 1), 
 	defaultsize = vmath.vector3(1, 1, 1),
 	hoversize = vmath.vector3(1.1, 1.1, 1)},
+
+	{node = "btn_no",
+	color = vmath.vector4(1, 1, 1, 1),
+	hover = vmath.vector4(1, 1, 1, 1), 
+	anim_color = false},
+
+	{node = "btn_yes",
+	color = vmath.vector4(1, 1, 1, 1),
+	hover = vmath.vector4(1, 1, 1, 1), 
+	anim_color = false},
 }
 
 
