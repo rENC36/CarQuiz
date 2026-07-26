@@ -6,6 +6,8 @@ local C = require("scripts.menu.menu_constants")
 
 local menu_ads = {}
 
+local is_yagames_initialized = false
+
 local function on_open()
 	print("Реклама открыта")
 	msg.post("/music#sound", "play_sound")
@@ -42,24 +44,32 @@ function menu_ads.show_rewarded()
 end
 
 function menu_ads.init_yagames(self)
-	yagames.init(function(err)
+	if is_yagames_initialized then
+		local menu_leaderboard = require("scripts.menu.menu_leaderboard")
+		menu_leaderboard.fetch(self)
+		return
+	end
+
+	yagames.init(function(self, err) 
 		if err then
 			print("YaGames init error:", err)
-		else
-			print("YaGames SDK готов")
-			yagames.features_loadingapi_ready()
-
-			local menu_leaderboard = require("scripts.menu.menu_leaderboard")
-			menu_leaderboard.fetch(self)
-
-			yagames.player_init({}, function(self, err)
-				if err then
-					print("Ошибка инициализации player:", err)
-				else
-					print("Player готов. Авторизован:", yagames.player_is_authorized())
-				end
-			end)
+			return
 		end
+
+		is_yagames_initialized = true
+		print("YaGames SDK готов")
+		yagames.features_loadingapi_ready()
+
+		local menu_leaderboard = require("scripts.menu.menu_leaderboard")
+		menu_leaderboard.fetch(self)
+
+		yagames.player_init({}, function(self, err)
+			if err then
+				print("Ошибка инициализации player:", err)
+			else
+				print("Player готов. Авторизован:", yagames.player_is_authorized())
+			end
+		end)
 	end)
 end
 

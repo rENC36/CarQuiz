@@ -1,5 +1,4 @@
 -- scripts/menu/menu_leaderboard.lua
-
 local yagames = require("yagames.yagames")
 local C = require("scripts.menu.menu_constants")
 
@@ -10,23 +9,18 @@ local function display(self, entries)
 		gui.delete_node(node)
 	end
 	self.leaderboard_clones = {}
-
 	local template = self.leaderboard_template
 	local base_pos = self.leaderboard_base_pos
-
 	for i, entry in ipairs(entries) do
 		local clone_ids = gui.clone_tree(template)
 		local root_node = clone_ids[gui.get_id(template)]
-
 		gui.set_enabled(root_node, true)
 		local pos = gui.get_position(root_node)
 		pos.y = base_pos.y - (i - 1) * 70
 		gui.set_position(root_node, pos)
-
 		gui.set_text(clone_ids[hash("Stat_Number1")], tostring(entry.rank))
 		gui.set_text(clone_ids[hash("Stat_Name1")],   entry.player and entry.player.publicName or "Игрок")
 		gui.set_text(clone_ids[hash("Stat_Money1")],  tostring(entry.score))
-
 		table.insert(self.leaderboard_clones, root_node)
 	end
 end
@@ -47,6 +41,38 @@ function menu_leaderboard.setup_template(self)
 	self.leaderboard_template = template
 	self.leaderboard_base_pos = gui.get_position(template)
 	gui.set_enabled(template, false)
+end
+
+local function ensure_player_ready(callback)
+	local ok, is_authorized = pcall(yagames.player_is_authorized)
+	if ok then
+		callback(is_authorized)
+	else
+		yagames.player_init({}, function(self, err)
+			if err then
+				callback(false)
+			else
+				callback(yagames.player_is_authorized())
+			end
+		end)
+	end
+end
+
+function menu_leaderboard.request_access(self, callback)
+	ensure_player_ready(function(is_authorized)
+		if is_authorized then
+			callback()
+		else
+			yagames.auth_open_auth_dialog(function(self2, err)
+				if err then
+					print("Авторизация отменена или не удалась:", err)
+				else
+					yagames.player_init({}, function() end)
+				end
+				callback()
+			end)
+		end
+	end)
 end
 
 return menu_leaderboard

@@ -55,31 +55,36 @@ function menu_manager.init(self)
 end
 
 function menu_manager.on_message(self, message_id, message)
-	if message_id ~= hash("show_result") then return end
+	if message_id == hash("show_result") then  
+		if self.music_on then msg.post("/music#sound", "play_sound") end
 
-	if self.music_on then msg.post("/music#sound", "play_sound") end
+		local save_data = save_manager.load()
+		gui.set_text(gui.get_node("txt_total_coins"), "$ " .. save_data.coins)
 
-	local save_data = save_manager.load()
-	gui.set_text(gui.get_node("txt_total_coins"), "$ " .. save_data.coins)
+		gui.set_text(gui.get_node("txt_result_title"),  message.win and "УРОВЕНЬ ПРОЙДЕН!" or "ПРОИГРЫШ")
+		gui.set_text(gui.get_node("txt_result_coins"),  "Монет: +" .. message.coins)
+		gui.set_text(gui.get_node("txt_result_errors"), message.errors)
+		gui.set_text(gui.get_node("txt_result_time"),   message.time)
 
-	gui.set_text(gui.get_node("txt_result_title"),  message.win and "УРОВЕНЬ ПРОЙДЕН!" or "ПРОИГРЫШ")
-	gui.set_text(gui.get_node("txt_result_coins"),  "Монет: +" .. message.coins)
-	gui.set_text(gui.get_node("txt_result_errors"), message.errors)
-	gui.set_text(gui.get_node("txt_result_time"),   message.time)
+		for i = 1, 3 do
+			local color = i <= message.stars and vmath.vector4(1,1,1,1) or vmath.vector4(0,0,0,.5)
+			gui.set_color(gui.get_node("star" .. i .. "_result"), color)
+		end
 
-	for i = 1, 3 do
-		local color = i <= message.stars and vmath.vector4(1,1,1,1) or vmath.vector4(0,0,0,.5)
-		gui.set_color(gui.get_node("star" .. i .. "_result"), color)
+		self.last_difficulty = message.difficulty or "easy"
+		self.last_level = message.level_num or 1
+		self.last_win = message.win
+
+		gui.set_text(gui.get_node("txt_result_next"), message.win and "СЛЕДУЮЩИЙ УРОВЕНЬ" or "ПРОЙТИ ЕЩЕ РАЗ")
+		msg.post("/music#" .. (message.win and "sound_win" or "sound_defeat"), "play_sound")
+
+		menu_navigation.change(self, "result")
+		
+	elseif message_id == hash("open_settings") then
+		self.opened_settings_from_gameplay = true
+		msg.post("/menu#menu", "enable")
+		menu_navigation.change(self, "settings")
 	end
-
-	self.last_difficulty = message.difficulty or "easy"
-	self.last_level = message.level_num or 1
-	self.last_win = message.win
-
-	gui.set_text(gui.get_node("txt_result_next"), message.win and "СЛЕДУЮЩИЙ УРОВЕНЬ" or "ПРОЙТИ ЕЩЕ РАЗ")
-	msg.post("/music#" .. (message.win and "sound_win" or "sound_defeat"), "play_sound")
-
-	menu_navigation.change(self, "result")
 end
 
 function menu_manager.on_input(self, action_id, action)
@@ -92,13 +97,21 @@ function menu_manager.on_input(self, action_id, action)
 
 		for _, btn in ipairs(self.buttons) do
 			if is_ad_block_active and btn.node ~= "btn_no" and btn.node ~= "btn_yes" then
-				-- пропускаем
+
 			else
 				local node = gui.get_node(btn.node)
 				if gui.is_enabled(node, true) and gui.pick_node(node, action.x, action.y) then
 					print(btn.node .. " нажато")
 					play_click_sound(self)
-					menu_actions.handle(self, btn)
+
+					if btn.target == "menu" and self.opened_settings_from_gameplay then
+						self.opened_settings_from_gameplay = false
+						msg.post("/menu#menu", "disable")
+						msg.post("/gameplay#gameplay", "resume_from_settings")
+					else
+						menu_actions.handle(self, btn)
+					end
+
 					break
 				end
 			end
@@ -107,5 +120,4 @@ function menu_manager.on_input(self, action_id, action)
 
 	menu_hover.process(self, action_id, action)
 end
-
 return menu_manager

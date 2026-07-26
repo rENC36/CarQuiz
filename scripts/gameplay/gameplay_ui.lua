@@ -2,6 +2,7 @@
 
 local anim_manager = require("scripts.managers.anim_manager")
 local save_manager = require("scripts.managers.save_manager")
+local yandex_marking = require("scripts.managers.yandex_marking")
 local C = require("scripts.gameplay.gameplay_constants")
 
 local gameplay_ui = {}
@@ -66,8 +67,6 @@ function gameplay_ui.process_hover(action_id, action, self)
 	end
 end
 
--- === HELP MENU ===
-
 function gameplay_ui.init_help_menu(self)
 	self.help_open = false
 
@@ -100,6 +99,8 @@ function gameplay_ui.open_help_menu(self)
 	if self.help_open then return end
 	self.help_open = true
 	self.paused = true
+	gameplay_ui.pause_game_audio(self)
+	yandex_marking.stop()
 
 	gui.set_enabled(gui.get_node("help_menu"), true)
 
@@ -122,6 +123,8 @@ function gameplay_ui.close_help_menu(self)
 	if not self.help_open then return end
 	self.help_open = false
 	self.paused = false
+	gameplay_ui.resume_game_audio(self)
+	yandex_marking.start() 
 
 	for _, btn in ipairs(self.help_buttons) do
 		btn.hovered = false
@@ -163,20 +166,55 @@ function gameplay_ui.handle_help_menu_input(self, x, y)
 	end
 
 	if gui.pick_node(gui.get_node("btn_settings"), x, y) then
-		gameplay_ui.close_help_menu(self)
-		msg.post("/menu#menu", "open_settings")
+		gameplay_ui.open_settings_from_pause(self)
 		return true
 	end
 
 	if gui.pick_node(gui.get_node("btn_main_menu"), x, y) then
 		gameplay_ui.close_help_menu(self)
+		yandex_marking.stop()
+		 
 		msg.post("/menu#menu", "enable")
-		msg.post("/gameplay#gameplay", "disable")
-		msg.post("/music#sound_gameplay", "stop_sound")
+		gameplay_ui.stop_game_audio(self)
 		return true
 	end
 
 	return false
+end
+
+function gameplay_ui.open_settings_from_pause(self)
+	self.help_open = false
+	self.settings_open = true
+
+	for _, btn in ipairs(self.help_buttons) do
+		btn.hovered = false
+		gui.animate(btn.node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0), gui.EASING_INQUAD, C.HELP_ANIM_TIME * 0.3)
+	end
+
+	gui.animate(gui.get_node("help_menu"), "position.x",
+	self.help_menu_original_pos.x + C.HELP_PANEL_OFFSET_X,
+	gui.EASING_INQUAD, C.HELP_ANIM_TIME * 0.7, 0,
+	function()
+		gui.set_enabled(gui.get_node("help_menu"), false)
+		msg.post("/menu#menu", "open_settings")
+	end)
+end
+
+function gameplay_ui.pause_game_audio(self)
+	msg.post("/music#sound_gameplay", "pause_sound")
+	msg.post("/music#sound_timer", "stop_sound")
+	self.timer_played = false
+end
+
+function gameplay_ui.resume_game_audio(self)
+	if self.music_on ~= false then
+		msg.post("/music#sound_gameplay", "play_sound")
+	end
+end
+
+function gameplay_ui.stop_game_audio(self)
+	msg.post("/music#sound_gameplay", "stop_sound")
+	msg.post("/music#sound_timer", "stop_sound")
 end
 
 return gameplay_ui

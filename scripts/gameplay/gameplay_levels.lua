@@ -3,11 +3,11 @@
 local level_manager = require("scripts.managers.level_manager")
 local save_manager = require("scripts.managers.save_manager")
 local yagames = require("yagames.yagames")
+local yandex_marking = require("scripts.managers.yandex_marking")
 local C = require("scripts.gameplay.gameplay_constants")
 
 local gameplay_levels = {}
 
--- Состояние уровня (модульные переменные, как в оригинале)
 local current_questions = {}
 local current_index = 1
 local lives = C.LIVES_MAX
@@ -34,6 +34,8 @@ function gameplay_levels.start(self, difficulty, level_num, music_on)
 	self.start_time = os.time()
 	self.difficulty = difficulty
 	self.level_num = level_num
+	self.music_on = music_on
+
 	current_questions = level_manager.generate_level(difficulty, level_num)
 	current_index = 1
 	lives = C.LIVES_MAX
@@ -51,6 +53,8 @@ function gameplay_levels.start(self, difficulty, level_num, music_on)
 	self.hint_5050_used = false
 	self.hint_skip_used = false
 	gameplay_levels.load_question(self)
+
+	yandex_marking.start() 
 end
 
 function gameplay_levels.load_question(self)
@@ -103,6 +107,7 @@ function gameplay_levels.update_timer(self, dt)
 	if self.answered then return false end
 	if #current_questions == 0 then return false end
 	if self.paused then return false end
+	if self.settings_open then return false end
 	if gui.is_enabled(gui.get_node("ad_block")) then return false end
 
 	self.timer = self.timer - dt
@@ -163,6 +168,8 @@ function gameplay_levels.select_answer(self, index)
 		gameplay_levels.update_lives(self)
 	end
 
+	msg.post("/music#sound_timer", "stop_sound")
+
 	timer.delay(C.HINT_DELAY, false, function()
 		gameplay_levels.next_question(self)
 	end)
@@ -174,6 +181,8 @@ function gameplay_levels.time_out(self)
 	errors = errors + 1
 	lives = lives - 1
 	gameplay_levels.update_lives(self)
+
+	msg.post("/music#sound_timer", "stop_sound")
 
 	local q = current_questions[current_index]
 	gui.set_color(gui.get_node(self.answer_buttons[q.correct].node), C.COLORS.correct_hint)
@@ -228,7 +237,10 @@ function gameplay_levels.end_level(self, win)
 		print("Player не готов или не авторизован — очки в лидерборд не отправлены")
 	end
 
+	yandex_marking.stop()
+
 	msg.post("/music#sound_gameplay", "stop_sound")
+	msg.post("/music#sound_timer", "stop_sound")
 
 	msg.post("/menu#menu", "enable")
 	msg.post("/gameplay#gameplay", "disable")

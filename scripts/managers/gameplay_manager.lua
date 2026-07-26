@@ -1,6 +1,7 @@
 -- scripts/gameplay/gameplay_manager.lua
 
 local localization_manager = require("scripts.managers.localization_manager")
+local yandex_marking = require("scripts.managers.yandex_marking")
 
 local gameplay_levels = require("scripts.gameplay.gameplay_levels")
 local gameplay_hints  = require("scripts.gameplay.gameplay_hints")
@@ -12,11 +13,17 @@ function gameplay_manager.init(self)
 	msg.post(".", "acquire_input_focus")
 
 	self.paused = false
+	self.settings_open = false
+
 	window.set_listener(function(event, data)
 		if event == window.WINDOW_EVENT_FOCUS_LOST then
 			self.paused = true
+			yandex_marking.stop() 
 		elseif event == window.WINDOW_EVENT_FOCUS_GAINED then
-			self.paused = false
+			if not self.help_open and not self.settings_open then
+				self.paused = false
+				yandex_marking.start()
+			end
 		end
 	end)
 
@@ -53,6 +60,11 @@ function gameplay_manager.on_message(self, message_id, message)
 	if message_id == hash("start_game") then
 		localization_manager.init(localization_manager.current_lang, "gameplay")
 		gameplay_levels.start(self, message.difficulty, message.level_num or 1, message.music_play)
+	elseif message_id == hash("resume_from_settings") then
+		self.settings_open = false
+		self.paused = false
+		gameplay_ui.resume_game_audio(self)
+		yandex_marking.start()
 	end
 end
 
@@ -61,6 +73,7 @@ function gameplay_manager.update(self, dt)
 end
 
 function gameplay_manager.on_input(self, action_id, action)
+	if self.settings_open then return end
 	if not gui.is_enabled(gui.get_node("top_bar"), true) then return end
 
 	local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
