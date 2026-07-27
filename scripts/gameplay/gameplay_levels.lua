@@ -186,7 +186,7 @@ function gameplay_levels.time_out(self)
 	msg.post("/music#sound_timer", "stop_sound")
 
 	local q = current_questions[current_index]
-	gui.set_color(gui.get_node(self.answer_buttons[q.correct].node), C.COLORS.correct_hint)
+	gui.play_flipbook(gui.get_node(self.answer_buttons[q.correct].node), hash("btn_rightanswer4"))
 
 	timer.delay(C.HINT_DELAY, false, function()
 		gameplay_levels.next_question(self)
@@ -258,8 +258,8 @@ end
 
 function gameplay_levels.update_coins_display(self)
 	local save_data = save_manager.load()
-	local total = save_data.coins + coins
-	gui.set_text(gui.get_node("txt_coins"), "$ " .. total .. " (+" .. coins .. ")")
+	local total = save_data.coins
+	gui.set_text(gui.get_node("txt_coins"), total)
 end
 
 return gameplay_levels
