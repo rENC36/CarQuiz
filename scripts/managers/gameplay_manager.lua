@@ -65,6 +65,11 @@ function gameplay_manager.on_message(self, message_id, message)
 		self.paused = false
 		gameplay_ui.resume_game_audio(self)
 		yandex_marking.start()
+		-- Обновляем локализацию при выходе из настроек
+		localization_manager.init(localization_manager.current_lang, "gameplay")
+	elseif message_id == hash("update_language") then
+		-- Обновляем локализацию при смене языка в настройках
+		localization_manager.init(localization_manager.current_lang, "gameplay")
 	end
 end
 

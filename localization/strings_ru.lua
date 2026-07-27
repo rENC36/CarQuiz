@@ -1,11 +1,61 @@
 return {
 	["menu"] = {
+		["MainText"] = "УГАДАЙ МАШИНУ\nПО ФОТО",
 		["btn_play_text"] = "ИГРАТЬ",
 		["btn_leaderboard_text"] = "ТАБЛИЦА ЛИДЕРОВ",
 		["btn_settings_text"] = "НАСТРОЙКИ",
+		["yes"] = "Да",
+		["no"] = "Нет",
+		["title"] = "Бонус за просмотр рекламы",
+		["title2"] = "Хотите получить 100 монет?",
 	},
-	
+	["categories"] = {
+		["txt_categories_title"] = "ВЫБОР КАТЕГОРИИ",
+		["EasyCatText"] = "ЛЁГКАЯ",
+		["MediumCatText1"] = "СРЕДНЯЯ",
+		["HardCatText1"] = "СЛОЖНАЯ",
+		["levels_text"] = "УРОВНИ",
+		["stars_text"] = "ЗВЁЗДЫ",
+	},
+	["levels"] = {
+		["txt_levels_title"] = "ВЫБОР УРОВНЯ",
+	},
+	["result"] = {
+		["txt_result_errors1"] = "Ошибки: ",
+		["txt_result_time1"] = "Время: ",
+		["txt_result_next"] = "СЛЕДУЮЩИЙ УРОВЕНЬ",
+		["exit_result_text"] = "ПРОЙТИ ЕЩЕ РАЗ",
+	},
+	["settings"] = {
+		["TextSettings"] = "НАСТРОЙКИ",
+		["MusicTextSett"] = "Музыка",
+		["SoundsTextSett"] = "Звуковые эффекты",
+		["SoundsTextSett1"] = "Язык",
+		["on_music_text"] = "Вкл",
+		["off_music_text"] = "Выкл",
+		["on_sound_text"] = "Вкл",
+		["off_sound_text"] = "Выкл",
+		["lang_ru"] = "Рус",
+		["lang_eng"] = "Англ",
+	},
+	["leaderboard"] = {
+		["LeaderboardText"] = "ТАБЛИЦА ЛИДЕРОВ",
+		["name_text"] = "Имя",
+		["coins_text"] = "Монеты",
+	},
+
 	["gameplay"] = {
-		["text"] = "Что за машина на фото?"
+		["text"] = "Что за машина на фото?",
+		["txt_hint_skip"] = "Пропуск",
+		["text4"] = "или",
+		["text6"] = "или",
+		["text10"] = "Да",
+		["text11"] = "Нет",
+		["text8"] = "У вас не хватает монет",
+		["txt_ad_block_message"] = "Использовать бесплатно\nза просмотр рекламы?",
+		["top_text"] = "ПАУЗА",
+		["text1"] = "Продолжить",
+		["text2"] = "Настройки",
+		["text7"] = "Главное меню",
 	}
 }

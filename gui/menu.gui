@@ -32,7 +32,6 @@ nodes {
   texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -462,7 +461,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\221\320\276\320\275\321\203\321\201 \320\267\320\260 \320\277\321\200\320\276\321\201\320\274\320\276\321\202\321\200 \321\200\320\265\320\272\320\273\320\260\320\274\321\213"
   font: "inter_bold"
-  id: "text"
+  id: "title"
   parent: "ad_block"
   inherit_alpha: true
 }
@@ -481,7 +480,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\245\320\276\321\202\320\270\321\202\320\265 \320\277\320\276\320\273\321\203\321\207\320\270\321\202\321\214 100 \320\274\320\276\320\275\320\265\321\202?"
   font: "inter_regular"
-  id: "text2"
+  id: "title2"
   parent: "ad_block"
   inherit_alpha: true
   alpha: 0.9
@@ -1802,6 +1801,7 @@ nodes {
   texture: "bg/background1"
   id: "screen_leaderboard"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {

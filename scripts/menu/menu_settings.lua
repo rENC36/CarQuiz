@@ -48,7 +48,10 @@ local function handle_lang_toggle(self, screen_settings, action)
 	if not pressed_on and not pressed_off then return end
 
 	ui.toggle_pair("lang_ru", "lang_eng", pressed_on)
-	localization_manager.init(pressed_on and "ru" or "en", "menu")
+	localization_manager.init(pressed_on and "ru" or "en", "settings")
+	localization_manager.apply_to_all()
+	
+	msg.post("/gameplay#gameplay", "update_language")
 end
 
 function menu_settings.handle_toggles(self, action)

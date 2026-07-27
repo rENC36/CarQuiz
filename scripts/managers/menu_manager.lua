@@ -48,7 +48,7 @@ function menu_manager.init(self)
 	gui.set_text(gui.get_node("StarsOutput"),  total_stars  .. "/27")
 	gui.set_text(gui.get_node("LevelsOutput"), total_levels .. "/9")
 
-	localization_manager.init("ru", "menu")
+	localization_manager.init(localization_manager.current_lang, "menu")
 	menu_leaderboard.setup_template(self)
 	menu_settings.sync_visual(self)
 	menu_ads.init_yagames(self)
@@ -103,8 +103,7 @@ function menu_manager.on_input(self, action_id, action)
 				if gui.is_enabled(node, true) and gui.pick_node(node, action.x, action.y) then
 					print(btn.node .. " нажато")
 					play_click_sound(self)
-
-					-- Только кнопка "назад" из настроек, открытых из геймплея
+					
 					if btn.node == "close_screen_settings" and self.opened_settings_from_gameplay then
 						self.opened_settings_from_gameplay = false
 						msg.post("/menu#menu", "disable")

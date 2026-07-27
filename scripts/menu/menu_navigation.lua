@@ -1,6 +1,7 @@
 -- scripts/menu/menu_navigation.lua
 
 local save_manager = require("scripts.managers.save_manager")
+local localization_manager = require("scripts.managers.localization_manager")
 local C = require("scripts.menu.menu_constants")
 
 local menu_navigation = {}
@@ -86,6 +87,8 @@ function menu_navigation.change(self, name)
 		end
 		gui.set_enabled(gui.get_node("screen_" .. screen_name), screen_name == name)
 	end
+	
+	localization_manager.apply_to_screen(name)
 
 	if name == "leaderboard" then
 		local menu_leaderboard = require("scripts.menu.menu_leaderboard")
