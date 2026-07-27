@@ -44,7 +44,8 @@ function gameplay_levels.start(self, difficulty, level_num, music_on)
 	self.level_score = 0
 	self.timer = C.TIMER_MAX
 	self.answered = false
-
+	self.paused = false
+	
 	if music_on then
 		msg.post("/music#sound", "stop_sound")
 		msg.post("/music#sound_gameplay", "play_sound")

@@ -1873,8 +1873,8 @@ nodes {
 }
 nodes {
   position {
-    x: -193.0
-    y: 320.0
+    x: -175.0
+    y: 333.0
   }
   scale {
     x: 0.4
@@ -1893,8 +1893,8 @@ nodes {
 }
 nodes {
   position {
-    x: -160.0
-    y: 320.0
+    x: -48.0
+    y: 334.0
   }
   scale {
     x: 0.4
@@ -1914,8 +1914,8 @@ nodes {
 }
 nodes {
   position {
-    x: 170.0
-    y: 320.0
+    x: 197.0
+    y: 333.0
   }
   scale {
     x: 0.4
@@ -2087,55 +2087,25 @@ nodes {
 }
 nodes {
   position {
-    y: 11.35
+    x: -2.0
+    y: 281.0
   }
   scale {
-    x: 2.25
-    y: 6.8
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "viewport"
-  parent: "screen_leaderboard"
-  inherit_alpha: true
-  clipping_mode: CLIPPING_MODE_STENCIL
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  scale {
-    y: 1.3
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_BOX
-  id: "content"
-  parent: "viewport"
-  inherit_alpha: true
-  clipping_mode: CLIPPING_MODE_STENCIL
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: -3.111111
-    y: -45.158363
-  }
-  scale {
-    x: 0.396711
-    y: 0.153126
+    y: 0.838673
   }
   size {
     x: 410.0
     y: 70.0
   }
+  color {
+    x: 0.101960786
+    y: 0.101960786
+    z: 0.101960786
+  }
   type: TYPE_BOX
-  texture: "UI1/btn_darkgray_stld1.1"
+  texture: "UI1/btn_white_stld1.1"
   id: "Stat1"
-  parent: "content"
+  parent: "screen_leaderboard"
   inherit_alpha: true
 }
 nodes {
@@ -2149,6 +2119,11 @@ nodes {
   size {
     x: 50.0
     y: 2.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
   }
   type: TYPE_BOX
   texture: "UI1/line_gray1.1"
@@ -2167,6 +2142,11 @@ nodes {
   size {
     x: 50.0
     y: 2.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
   }
   type: TYPE_BOX
   texture: "UI1/line_gray1.1"
@@ -2188,7 +2168,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "1"
+  text: "20"
   font: "inter_regular"
   id: "Stat_Number1"
   parent: "Stat1"
@@ -2196,7 +2176,7 @@ nodes {
 }
 nodes {
   position {
-    x: -140.0
+    x: -38.0
     y: 4.0
   }
   scale {
@@ -2208,7 +2188,7 @@ nodes {
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "Frg4"
+  text: "\320\222\321\213"
   font: "inter_regular"
   id: "Stat_Name1"
   pivot: PIVOT_W
@@ -2217,7 +2197,7 @@ nodes {
 }
 nodes {
   position {
-    x: 190.0
+    x: 178.0
     y: 4.0
   }
   scale {

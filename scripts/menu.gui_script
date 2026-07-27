@@ -1,9 +1,11 @@
 -- scripts/menu/menu.gui_script
 local menu_manager = require("scripts.managers.menu_manager")
+local sound_manager = require("scripts.managers.sound_manager")
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
 	menu_manager.init(self)
+	sound_manager.init()
 end
 
 function on_message(self, message_id, message, sender)

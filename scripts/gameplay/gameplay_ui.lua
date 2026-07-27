@@ -173,7 +173,8 @@ function gameplay_ui.handle_help_menu_input(self, x, y)
 	if gui.pick_node(gui.get_node("btn_main_menu"), x, y) then
 		gameplay_ui.close_help_menu(self)
 		yandex_marking.stop()
-		 
+
+		self.paused = true
 		msg.post("/menu#menu", "enable")
 		gameplay_ui.stop_game_audio(self)
 		return true
