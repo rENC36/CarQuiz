@@ -79,7 +79,7 @@ function menu_manager.on_message(self, message_id, message)
 		msg.post("/music#" .. (message.win and "sound_win" or "sound_defeat"), "play_sound")
 
 		menu_navigation.change(self, "result")
-		
+
 	elseif message_id == hash("open_settings") then
 		self.opened_settings_from_gameplay = true
 		msg.post("/menu#menu", "enable")
@@ -104,7 +104,8 @@ function menu_manager.on_input(self, action_id, action)
 					print(btn.node .. " нажато")
 					play_click_sound(self)
 
-					if btn.target == "menu" and self.opened_settings_from_gameplay then
+					-- Только кнопка "назад" из настроек, открытых из геймплея
+					if btn.node == "close_screen_settings" and self.opened_settings_from_gameplay then
 						self.opened_settings_from_gameplay = false
 						msg.post("/menu#menu", "disable")
 						msg.post("/gameplay#gameplay", "resume_from_settings")

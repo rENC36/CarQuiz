@@ -119,7 +119,8 @@ function gameplay_ui.open_help_menu(self)
 	end
 end
 
-function gameplay_ui.close_help_menu(self)
+-- Модифицирован: теперь принимает опциональный callback
+function gameplay_ui.close_help_menu(self, on_complete)
 	if not self.help_open then return end
 	self.help_open = false
 	self.paused = false
@@ -136,6 +137,9 @@ function gameplay_ui.close_help_menu(self)
 	gui.EASING_INQUAD, C.HELP_ANIM_TIME * 0.7, 0,
 	function()
 		gui.set_enabled(gui.get_node("help_menu"), false)
+		if on_complete then
+			on_complete()
+		end
 	end)
 end
 
@@ -171,12 +175,14 @@ function gameplay_ui.handle_help_menu_input(self, x, y)
 	end
 
 	if gui.pick_node(gui.get_node("btn_main_menu"), x, y) then
-		gameplay_ui.close_help_menu(self)
 		yandex_marking.stop()
-
-		self.paused = true
-		msg.post("/menu#menu", "enable")
 		gameplay_ui.stop_game_audio(self)
+		
+		gameplay_ui.close_help_menu(self, function()
+			msg.post("/gameplay#gameplay", "disable")
+		end)
+		
+		msg.post("/menu#menu", "enable")
 		return true
 	end
 

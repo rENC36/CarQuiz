@@ -21,9 +21,19 @@ end
 
 actions.btn_result_next = function(self)
 	local next_diff, next_lvl = menu_levels.get_next_level(
-	self.last_difficulty, self.last_level, self.last_win
-)
-actions._start_game(self, next_diff, next_lvl)
+	self.last_difficulty, self.last_level, self.last_win)
+	
+	actions._start_game(self, next_diff, next_lvl)
+end
+
+actions.exit_result = function(self)
+	self.opened_settings_from_gameplay = false
+	msg.post("/gameplay#gameplay", "disable")
+	menu_navigation.change(self, "menu")
+end
+
+actions.close_screen_settings = function(self)
+	menu_navigation.change(self, "menu")
 end
 
 function actions._start_game(self, difficulty, level_num)
