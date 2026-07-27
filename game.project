@@ -13,4 +13,9 @@ high_dpi = 1
 
 [html5]
 scale_mode = stretch
+show_made_with_defold = 0
+cssfile = /gui/dark_theme.css
+show_console_banner = 0
+show_fullscreen_button = 0
+splash_image = /Assets/images/easy_01.3.jpg
 
