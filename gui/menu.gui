@@ -1935,7 +1935,7 @@ nodes {
 }
 nodes {
   position {
-    y: -335.0
+    y: -353.0
   }
   size {
     x: 450.0
@@ -1950,10 +1950,7 @@ nodes {
 nodes {
   position {
     x: 3.0
-    y: -385.0
-  }
-  scale {
-    y: 0.8
+    y: -392.0
   }
   size {
     x: 410.0
@@ -2092,9 +2089,6 @@ nodes {
   position {
     x: -2.0
     y: 281.0
-  }
-  scale {
-    y: 0.8
   }
   size {
     x: 410.0
