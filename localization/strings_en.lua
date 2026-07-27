@@ -1,11 +1,61 @@
 return {
 	["menu"] = {
+		["MainText"] = "GUESS THE CAR\nFROM THE PHOTO",
 		["btn_play_text"] = "PLAY",
 		["btn_leaderboard_text"] = "LEADERBOARD",
 		["btn_settings_text"] = "SETTINGS",
+		["yes"] = "Yes",
+		["no"] = "No",
+		["title"] = "Bonus for watching ad",
+		["title2"] = "Do you want to get 100 coins?",
 	},
-	
+	["categories"] = {
+		["txt_categories_title"] = "SELECT CATEGORY",
+		["EasyCatText"] = "EASY",
+		["MediumCatText1"] = "MEDIUM",
+		["HardCatText1"] = "HARD",
+		["levels_text"] = "LEVELS",
+		["stars_text"] = "STARS",
+	},
+	["levels"] = {
+		["txt_levels_title"] = "SELECT LEVEL",
+	},
+	["result"] = {
+		["txt_result_errors1"] = "Errors: ",
+		["txt_result_time1"] = "Time: ",
+		["txt_result_next"] = "NEXT LEVEL",
+		["exit_result_text"] = "TRY AGAIN",
+	},
+	["settings"] = {
+		["TextSettings"] = "SETTINGS",
+		["MusicTextSett"] = "Music",
+		["SoundsTextSett"] = "Sound effects",
+		["SoundsTextSett1"] = "Language",
+		["on_music_text"] = "On",
+		["off_music_text"] = "Off",
+		["on_sound_text"] = "On",
+		["off_sound_text"] = "Off",
+		["lang_ru"] = "Rus",
+		["lang_eng"] = "Eng",
+	},
+	["leaderboard"] = {
+		["LeaderboardText"] = "LEADERBOARD",
+		["name_text"] = "Name",
+		["coins_text"] = "Coins",
+	},
+
 	["gameplay"] = {
-		["text"] = "car on photo?"
+		["text"] = "What car is in the photo?",
+		["txt_hint_skip"] = "Skip",
+		["text4"] = "or",
+		["text6"] = "or",
+		["text10"] = "Yes",
+		["text11"] = "No",
+		["text8"] = "You don't have enough coins",
+		["txt_ad_block_message"] = "Use for free\nby watching an ad?",
+		["top_text"] = "PAUSE",
+		["text1"] = "Continue",
+		["text2"] = "Settings",
+		["text7"] = "Main menu",
 	}
 }
