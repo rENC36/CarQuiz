@@ -47,7 +47,6 @@ end
 
 local function ad_block_rewarded(self)
 	print("Награда за просмотр рекламы засчитана!")
-	save_manager.add_coins(C.COINS.ad_reward)
 end
 
 local function rewarded_ad_open(self)
@@ -61,6 +60,8 @@ local function rewarded_ad_error(self, err)
 	if self then
 		self.paused = false
 	end
+	self.ad_block_hint_type = nil
+	self.ad_block_is_purchase = false
 
 	sound_manager.restore_after_ads("gameplay")
 	yandex_marking.start()
@@ -78,6 +79,8 @@ function gameplay_hints.ad_block_yes(self)
 		elseif self.ad_block_hint_type == "skip" then
 			apply_hint_skip(self)
 		end
+		self.ad_block_hint_type = nil
+		self.ad_block_is_purchase = false
 	else
 		self.paused = true
 		sound_manager.mute_for_ads()
@@ -92,6 +95,9 @@ function gameplay_hints.ad_block_yes(self)
 				elseif self.ad_block_hint_type == "skip" then
 					apply_hint_skip(self)
 				end
+				self.ad_block_hint_type = nil
+				self.ad_block_is_purchase = false
+
 				self.paused = false
 				sound_manager.restore_after_ads("gameplay")
 				yandex_marking.start()
@@ -99,8 +105,6 @@ function gameplay_hints.ad_block_yes(self)
 			error = rewarded_ad_error
 		})
 	end
-	self.ad_block_hint_type = nil
-	self.ad_block_is_purchase = false
 end
 
 function gameplay_hints.use_hint_5050(self)

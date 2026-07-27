@@ -32,6 +32,7 @@ nodes {
   texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -1801,7 +1802,6 @@ nodes {
   texture: "bg/background1"
   id: "screen_leaderboard"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -1893,7 +1893,7 @@ nodes {
 }
 nodes {
   position {
-    x: -48.0
+    x: -130.0
     y: 334.0
   }
   scale {
@@ -1951,6 +1951,9 @@ nodes {
   position {
     x: 3.0
     y: -385.0
+  }
+  scale {
+    y: 0.8
   }
   size {
     x: 410.0
@@ -2091,7 +2094,7 @@ nodes {
     y: 281.0
   }
   scale {
-    y: 0.838673
+    y: 0.8
   }
   size {
     x: 410.0
@@ -2176,7 +2179,7 @@ nodes {
 }
 nodes {
   position {
-    x: -38.0
+    x: -125.0
     y: 4.0
   }
   scale {

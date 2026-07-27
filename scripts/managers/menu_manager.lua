@@ -52,6 +52,8 @@ function menu_manager.init(self)
 	menu_leaderboard.setup_template(self)
 	menu_settings.sync_visual(self)
 	menu_ads.init_yagames(self)
+
+	save_manager.sync_leaderboard()
 end
 
 function menu_manager.on_message(self, message_id, message)
@@ -81,9 +83,13 @@ function menu_manager.on_message(self, message_id, message)
 		menu_navigation.change(self, "result")
 
 	elseif message_id == hash("open_settings") then
+		msg.post("/gameplay#gameplay", "force_close_help_menu")
+
 		self.opened_settings_from_gameplay = true
 		msg.post("/menu#menu", "enable")
 		menu_navigation.change(self, "settings")
+	elseif message_id == hash("open_main_menu") then
+		menu_navigation.change(self, "menu")
 	end
 end
 

@@ -63,13 +63,15 @@ function gameplay_manager.on_message(self, message_id, message)
 	elseif message_id == hash("resume_from_settings") then
 		self.settings_open = false
 		self.paused = false
+
 		gameplay_ui.resume_game_audio(self)
 		yandex_marking.start()
-		-- Обновляем локализацию при выходе из настроек
+
 		localization_manager.init(localization_manager.current_lang, "gameplay")
 	elseif message_id == hash("update_language") then
-		-- Обновляем локализацию при смене языка в настройках
 		localization_manager.init(localization_manager.current_lang, "gameplay")
+	elseif message_id == hash("force_close_help_menu") then
+		gameplay_ui.force_close_help_menu(self)
 	end
 end
 
@@ -98,10 +100,12 @@ function gameplay_manager.on_input(self, action_id, action)
 			gameplay_ui.open_help_menu(self)
 			return
 		end
-
+		
 		if gameplay_ui.handle_help_menu_input(self, action.x, action.y) then
 			return
 		end
+		
+		if self.help_open then return end
 
 		local btn_5050 = gui.get_node("btn_hint_5050")
 		if gui.is_enabled(btn_5050, true) and gui.pick_node(btn_5050, action.x, action.y) then

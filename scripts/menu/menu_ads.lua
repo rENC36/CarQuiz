@@ -1,3 +1,5 @@
+-- scripts/menu/menu_ads.lua
+
 local save_manager = require("scripts.managers.save_manager")
 local sound_manager = require("scripts.managers.sound_manager")
 local localization_manager = require("scripts.managers.localization_manager")
@@ -14,6 +16,7 @@ end
 local function on_rewarded()
 	print("Награда засчитана!")
 	save_manager.add_coins(C.AD_REWARD_COINS)
+	save_manager.sync_leaderboard()
 end
 
 local function on_close()

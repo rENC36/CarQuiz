@@ -120,7 +120,10 @@ function gameplay_ui.open_help_menu(self)
 end
 
 function gameplay_ui.close_help_menu(self, on_complete, skip_resume_audio)
-	if not self.help_open then return end
+	if not self.help_open then 
+		if on_complete then on_complete() end
+		return 
+	end
 	self.help_open = false
 	self.paused = false
 
@@ -143,6 +146,12 @@ function gameplay_ui.close_help_menu(self, on_complete, skip_resume_audio)
 			on_complete()
 		end
 	end)
+end
+
+function gameplay_ui.force_close_help_menu(self)
+	if not self.help_open then return end
+	self.help_open = false
+	gui.set_enabled(gui.get_node("help_menu"), false)
 end
 
 function gameplay_ui.process_help_menu_hover(self, action)
@@ -179,17 +188,17 @@ function gameplay_ui.handle_help_menu_input(self, x, y)
 	if gui.pick_node(gui.get_node("btn_main_menu"), x, y) then
 		yandex_marking.stop()
 		gameplay_ui.stop_game_audio(self)
-
-		-- Закрываем help_menu с callback и флагом skip_resume_audio = true
-		gameplay_ui.close_help_menu(self, function()
-			msg.post("/gameplay#gameplay", "disable")
-			-- Запускаем музыку меню, если она включена в настройках
-			if self.music_on then
-				msg.post("/music#sound", "play_sound")
-			end
-		end, true)
-
+		
+		msg.post("/gameplay#gameplay", "disable")
 		msg.post("/menu#menu", "enable")
+		msg.post("/menu#menu", "open_main_menu")
+		
+		gameplay_ui.force_close_help_menu(self)
+		
+		if self.music_on then
+			msg.post("/music#sound", "play_sound")
+		end
+
 		return true
 	end
 

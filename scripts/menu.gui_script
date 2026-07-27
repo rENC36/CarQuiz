@@ -4,6 +4,8 @@ local sound_manager = require("scripts.managers.sound_manager")
 
 function init(self)
 	msg.post(".", "acquire_input_focus")
+	msg.post("/gameplay#gameplay", "disable")
+	
 	menu_manager.init(self)
 	sound_manager.init()
 end

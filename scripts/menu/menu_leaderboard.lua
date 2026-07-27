@@ -80,7 +80,7 @@ local function display(self, entries)
 			pos.y = pos_y
 			gui.set_position(root_node, pos)
 
-			gui.set_text(clone_ids[hash("Stat_Number")], tostring(entry.rank + 1))
+			gui.set_text(clone_ids[hash("Stat_Number")], tostring(entry.rank))
 			gui.set_text(clone_ids[hash("Stat_Name")],   YOU_LABEL)
 			gui.set_text(clone_ids[hash("Stat_Money")],  tostring(entry.score))
 
@@ -94,7 +94,7 @@ local function display(self, entries)
 			pos.y = pos_y
 			gui.set_position(root_node, pos)
 
-			gui.set_text(clone_ids[hash("Stat_Number1")], tostring(entry.rank + 1))
+			gui.set_text(clone_ids[hash("Stat_Number1")], tostring(entry.rank))
 			gui.set_text(clone_ids[hash("Stat_Name1")],   entry.player and entry.player.publicName or "Игрок")
 			gui.set_text(clone_ids[hash("Stat_Money1")],  tostring(entry.score))
 
