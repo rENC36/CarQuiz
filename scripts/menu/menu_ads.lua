@@ -3,11 +3,33 @@
 local save_manager = require("scripts.managers.save_manager")
 local sound_manager = require("scripts.managers.sound_manager")
 local localization_manager = require("scripts.managers.localization_manager")
+local ad_timer = require("scripts.managers.ad_timer")
 local yagames = require("yagames.yagames")
 local C = require("scripts.menu.menu_constants")
 
 local menu_ads = {}
 local is_yagames_initialized = false
+
+local timer_update_handle = nil
+
+local function update_timer_display()
+	local node = gui.get_node("ad_timer")
+
+	if ad_timer.can_show_rewarded() then
+		gui.set_text(node, "5:00")
+	else
+		local remaining = ad_timer.get_remaining_time()
+		gui.set_text(node, ad_timer.format_time(remaining))
+	end
+end
+
+local function start_timer_update()
+	if not timer_update_handle then
+		timer_update_handle = timer.delay(1.0, true, function()
+			update_timer_display()
+		end)
+	end
+end
 
 local function on_open()
 	print("Реклама открыта")
@@ -17,6 +39,9 @@ local function on_rewarded()
 	print("Награда засчитана!")
 	save_manager.add_coins(C.AD_REWARD_COINS)
 	save_manager.sync_leaderboard()
+	ad_timer.mark_rewarded_shown()
+	update_timer_display()
+	start_timer_update()
 end
 
 local function on_close()
@@ -32,6 +57,12 @@ local function on_error(err)
 end
 
 function menu_ads.show_rewarded()
+	if not ad_timer.can_show_rewarded() then
+		local remaining = ad_timer.get_remaining_time()
+		print("Реклама недоступна. Подождите: " .. ad_timer.format_time(remaining))
+		return false
+	end
+
 	sound_manager.mute_for_ads()
 	gui.set_enabled(gui.get_node("ad_block"), false)
 	yagames.adv_show_rewarded_video({
@@ -40,6 +71,7 @@ function menu_ads.show_rewarded()
 		close    = on_close,
 		error    = on_error,
 	})
+	return true
 end
 
 local function apply_player_language(self)
@@ -64,6 +96,7 @@ function menu_ads.init_yagames(self)
 	if is_yagames_initialized then
 		local menu_leaderboard = require("scripts.menu.menu_leaderboard")
 		menu_leaderboard.fetch(self)
+		start_timer_update()
 		return
 	end
 	yagames.init(function(self, err)
@@ -84,6 +117,7 @@ function menu_ads.init_yagames(self)
 				print("Player готов. Авторизован:", yagames.player_is_authorized())
 			end
 		end)
+		start_timer_update()
 	end)
 end
 
