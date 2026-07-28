@@ -225,67 +225,6 @@ nodes {
 }
 nodes {
   position {
-    x: 240.0
-    y: 919.0
-  }
-  size {
-    x: 480.0
-    y: 80.0
-  }
-  color {
-    x: 0.08080621
-    y: 0.10002631
-    z: 0.1474359
-  }
-  type: TYPE_BOX
-  id: "top_bar"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: -140.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "1/15"
-  font: "ofont"
-  id: "txt_question1"
-  parent: "top_bar"
-  inherit_alpha: true
-}
-nodes {
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "0"
-  font: "ofont"
-  id: "txt_coins1"
-  parent: "top_bar"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 140.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "3"
-  font: "ofont"
-  id: "txt_lives"
-  parent: "top_bar"
-  inherit_alpha: true
-}
-nodes {
-  position {
     x: 132.0
     y: 57.0
   }
@@ -458,60 +397,6 @@ nodes {
   id: "text"
   inherit_alpha: true
   alpha: 0.8
-}
-nodes {
-  position {
-    x: 22.0
-    y: 831.0
-  }
-  scale {
-    x: 0.35
-    y: 0.3
-  }
-  size {
-    x: 90.0
-    y: 20.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/progressbar2_white"
-  id: "design1"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 22.0
-    y: 839.0
-  }
-  scale {
-    x: 0.35
-    y: 0.3
-  }
-  size {
-    x: 90.0
-    y: 20.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/progressbar2_white"
-  id: "design2"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 22.0
-    y: 823.0
-  }
-  scale {
-    x: 0.35
-    y: 0.3
-  }
-  size {
-    x: 90.0
-    y: 20.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/progressbar2_white"
-  id: "design3"
-  inherit_alpha: true
 }
 nodes {
   position {
@@ -1016,7 +901,7 @@ nodes {
 }
 nodes {
   position {
-    x: 22.0
+    x: 26.0
     y: 831.0
   }
   size {
@@ -1026,8 +911,59 @@ nodes {
   type: TYPE_BOX
   id: "open_help_menu"
   inherit_alpha: true
-  alpha: 0.0
   size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.35
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "design1"
+  parent: "open_help_menu"
+  inherit_alpha: true
+}
+nodes {
+  scale {
+    x: 0.35
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "design2"
+  parent: "open_help_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -8.0
+  }
+  scale {
+    x: 0.35
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "design3"
+  parent: "open_help_menu"
+  inherit_alpha: true
 }
 nodes {
   position {

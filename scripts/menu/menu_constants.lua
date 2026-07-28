@@ -20,12 +20,12 @@ C.SCREENS = {"menu", "settings", "categories", "leaderboard", "result", "levels"
 C.DIFFICULTIES = {"easy", "medium", "hard"}
 
 C.LEADERBOARD_NAME = "TopScores"
-C.AD_REWARD_COINS = 100
+C.AD_REWARD_COINS = 30
 
 C.CATEGORY_NODE_NAMES = {
-	easy   = { name = "EasyCatText",   percent = "EasyCompleted" },
-	medium = { name = "MediumCatText1", percent = "MediumCompleted" },
-	hard   = { name = "HardCatText1",   percent = "HardCompleted" },
+	easy   = { name = "EasyCatText",   percent = "easyCompleted" },
+	medium = { name = "MediumCatText1", percent = "mediumCompleted" },
+	hard   = { name = "HardCatText1",   percent = "hardCompleted" },
 }
 
 C.BAR_STATES = {

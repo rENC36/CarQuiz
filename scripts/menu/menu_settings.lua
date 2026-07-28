@@ -23,6 +23,7 @@ local function handle_music_toggle(self, screen_settings, action)
 	local pressed_on  = ui.is_node_pressed("on_music_box",  action.x, action.y)
 	local pressed_off = ui.is_node_pressed("off_music_box", action.x, action.y)
 	if not pressed_on and not pressed_off then return end
+	if self.music_on and pressed_on then return end
 
 	self.music_on = pressed_on
 	ui.toggle_pair("on_music_text", "off_music_text", self.music_on)

@@ -24,7 +24,9 @@ return {
 		["txt_result_errors1"] = "Ошибки: ",
 		["txt_result_time1"] = "Время: ",
 		["txt_result_next"] = "СЛЕДУЮЩИЙ УРОВЕНЬ",
-		["exit_result_text"] = "ПРОЙТИ ЕЩЕ РАЗ",
+		["exit_result_text"] = "ГЛАВНОЕ МЕНЮ",
+		["result_next_win"]  = "СЛЕДУЮЩИЙ УРОВЕНЬ",
+		["result_next_lose"] = "ПРОЙТИ ЕЩЕ РАЗ",
 	},
 	["settings"] = {
 		["TextSettings"] = "НАСТРОЙКИ",

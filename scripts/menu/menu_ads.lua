@@ -87,4 +87,40 @@ function menu_ads.init_yagames(self)
 	end)
 end
 
+local pending_interstitial_callback = nil
+
+local function on_interstitial_open()
+	print("Полноэкранная реклама открыта")
+	sound_manager.mute_for_ads()
+end
+
+local function on_interstitial_close(self, was_shown)
+	print("Полноэкранная реклама закрыта. Была показана:", was_shown)
+	sound_manager.restore_after_ads("menu")
+
+	if pending_interstitial_callback then
+		local cb = pending_interstitial_callback
+		pending_interstitial_callback = nil
+		cb()
+	end
+end
+
+local function on_interstitial_offline()
+	print("Нет сети — реклама недоступна")
+end
+
+local function on_interstitial_error(self, err)
+	print("Ошибка полноэкранной рекламы:", err)
+end
+
+function menu_ads.show_interstitial(on_complete)
+	pending_interstitial_callback = on_complete
+	yagames.adv_show_fullscreen_adv({
+		open    = on_interstitial_open,
+		close   = on_interstitial_close,
+		offline = on_interstitial_offline,
+		error   = on_interstitial_error,
+	})
+end
+
 return menu_ads

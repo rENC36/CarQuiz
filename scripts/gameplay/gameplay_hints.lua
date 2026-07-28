@@ -116,7 +116,6 @@ function gameplay_hints.use_hint_5050(self)
 		apply_hint_5050(self)
 	else
 		self.ad_block_is_purchase = false
-		gui.set_text(gui.get_node("txt_ad_block_message"), "Использовать бесплатно\nза просмотр рекламы?")
 		gui.set_enabled(gui.get_node("ad_block"), true)
 	end
 end
@@ -130,7 +129,6 @@ function gameplay_hints.use_hint_skip(self)
 		apply_hint_skip(self)
 	else
 		self.ad_block_is_purchase = false
-		gui.set_text(gui.get_node("txt_ad_block_message"), "Использовать бесплатно\nза просмотр рекламы?")
 		gui.set_enabled(gui.get_node("ad_block"), true)
 	end
 end

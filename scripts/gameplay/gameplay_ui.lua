@@ -101,19 +101,15 @@ function gameplay_ui.open_help_menu(self)
 	self.paused = true
 	gameplay_ui.pause_game_audio(self)
 	yandex_marking.stop()
-
+	gui.set_enabled(gui.get_node("open_help_menu"), false) 
 	gui.set_enabled(gui.get_node("help_menu"), true)
-
 	gui.animate(gui.get_node("help_menu"), "position.x",
 	self.help_menu_original_pos.x, gui.EASING_OUTBACK, C.HELP_ANIM_TIME)
-
 	for i, btn in ipairs(self.help_buttons) do
 		local delay = C.HELP_ANIM_TIME * 0.4 + (i - 1) * 0.06
 		local orig_pos = self.help_buttons_original_pos[i]
-
 		gui.set_position(btn.node, vmath.vector3(orig_pos.x - 40, orig_pos.y, orig_pos.z))
 		gui.set_alpha(btn.node, 0)
-
 		gui.animate(btn.node, "position.x", orig_pos.x, gui.EASING_OUTBACK, C.HELP_ANIM_TIME * 0.7, delay)
 		gui.animate(btn.node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 1), gui.EASING_OUTQUAD, C.HELP_ANIM_TIME * 0.6, delay)
 	end
@@ -126,22 +122,20 @@ function gameplay_ui.close_help_menu(self, on_complete, skip_resume_audio)
 	end
 	self.help_open = false
 	self.paused = false
-
 	if not skip_resume_audio then
 		gameplay_ui.resume_game_audio(self)
 		yandex_marking.start()
 	end
-
 	for _, btn in ipairs(self.help_buttons) do
 		btn.hovered = false
 		gui.animate(btn.node, gui.PROP_COLOR, vmath.vector4(1, 1, 1, 0), gui.EASING_INQUAD, C.HELP_ANIM_TIME * 0.3)
 	end
-
 	gui.animate(gui.get_node("help_menu"), "position.x",
 	self.help_menu_original_pos.x + C.HELP_PANEL_OFFSET_X,
 	gui.EASING_INQUAD, C.HELP_ANIM_TIME * 0.7, 0,
 	function()
 		gui.set_enabled(gui.get_node("help_menu"), false)
+		gui.set_enabled(gui.get_node("open_help_menu"), true) 
 		if on_complete then
 			on_complete()
 		end

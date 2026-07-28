@@ -24,7 +24,9 @@ return {
 		["txt_result_errors1"] = "Errors: ",
 		["txt_result_time1"] = "Time: ",
 		["txt_result_next"] = "NEXT LEVEL",
-		["exit_result_text"] = "TRY AGAIN",
+		["exit_result_text"] = "MAIN MENU",
+		["result_next_win"]  = "NEXT LEVEL",
+		["result_next_lose"] = "TRY AGAIN",
 	},
 	["settings"] = {
 		["TextSettings"] = "SETTINGS",

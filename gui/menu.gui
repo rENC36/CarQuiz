@@ -32,6 +32,7 @@ nodes {
   texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -325,7 +326,7 @@ nodes {
 }
 nodes {
   position {
-    x: -197.0
+    x: -194.0
     y: -390.0
   }
   scale {
@@ -340,15 +341,15 @@ nodes {
     z: 0.0
   }
   type: TYPE_TEXT
-  text: "+ 100"
+  text: "+ 30"
   font: "inter_regular"
-  id: "text1"
+  id: "display_reward_menu"
   parent: "screen_menu"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: -157.0
+    x: -160.0
     y: -390.0
   }
   size {
@@ -581,7 +582,7 @@ nodes {
   type: TYPE_TEXT
   text: "0/3 (0%)"
   font: "inter_regular"
-  id: "MediumCompleted"
+  id: "mediumCompleted"
   pivot: PIVOT_E
   parent: "btn_medium"
   inherit_alpha: true
@@ -670,7 +671,7 @@ nodes {
   type: TYPE_TEXT
   text: "0/3 (0%)"
   font: "inter_regular"
-  id: "EasyCompleted"
+  id: "easyCompleted"
   pivot: PIVOT_E
   parent: "btn_easy"
   inherit_alpha: true
@@ -756,7 +757,7 @@ nodes {
   type: TYPE_TEXT
   text: "0/3 (0%)"
   font: "inter_regular"
-  id: "HardCompleted"
+  id: "hardCompleted"
   pivot: PIVOT_E
   parent: "btn_hard"
   inherit_alpha: true
@@ -1485,7 +1486,6 @@ nodes {
   texture: "bg/background"
   id: "screen_result"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -1949,7 +1949,7 @@ nodes {
 }
 nodes {
   position {
-    x: 3.0
+    x: -2.0
     y: -392.0
   }
   size {
