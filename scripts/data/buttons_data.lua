@@ -118,5 +118,11 @@ return {
 	color = vmath.vector4(1, 1, 1, 1),
 	hover = vmath.vector4(1, 1, 1, 1), 
 	anim_color = false},
-}
 
+	{node = "btn_2x",
+	color = vmath.vector4(1, 1, 1, 1),
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(.4, .4, 1),
+	hoversize = vmath.vector3(.44, .44, 1), 
+	anim_color = false},
+}

@@ -8,6 +8,7 @@ return {
 		["btn_no_text"] = "Нет",
 		["title"] = "Бонус за просмотр рекламы",
 		["title2"] = "Хотите получить 30 монет?",
+		["available"] = "Доступно",
 	},
 	["categories"] = {
 		["txt_categories_title"] = "ВЫБОР КАТЕГОРИИ",
@@ -27,6 +28,7 @@ return {
 		["exit_result_text"] = "ГЛАВНОЕ МЕНЮ",
 		["result_next_win"]  = "СЛЕДУЮЩИЙ УРОВЕНЬ",
 		["result_next_lose"] = "ПРОЙТИ ЕЩЕ РАЗ",
+		["title_result2"] = "Хотите получить 2x?"
 	},
 	["settings"] = {
 		["TextSettings"] = "НАСТРОЙКИ",

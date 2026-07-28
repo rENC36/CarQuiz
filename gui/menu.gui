@@ -32,6 +32,7 @@ nodes {
   texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -371,6 +372,7 @@ nodes {
   id: "ad_block"
   parent: "screen_menu"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -1484,7 +1486,6 @@ nodes {
   texture: "bg/background"
   id: "screen_result"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -1786,6 +1787,172 @@ nodes {
   id: "line1.1.7"
   parent: "screen_result"
   inherit_alpha: true
+}
+nodes {
+  position {
+    x: 92.0
+    y: -89.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  type: TYPE_BOX
+  texture: "UI1/ad1"
+  id: "btn_2x"
+  parent: "screen_result"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  position {
+    x: 96.666664
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "2x"
+  font: "inter_regular"
+  id: "btn_2x_text"
+  parent: "btn_2x"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 66.666664
+  }
+  type: TYPE_BOX
+  texture: "UI1/coin1"
+  id: "box2"
+  parent: "btn_2x_text"
+  inherit_alpha: true
+  size_mode: SIZE_MODE_AUTO
+}
+nodes {
+  size {
+    x: 400.0
+    y: 280.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/ad_block1"
+  id: "ad_block_result"
+  parent: "screen_result"
+  inherit_alpha: true
+  enabled: false
+}
+nodes {
+  position {
+    x: -100.0
+    y: -93.0
+  }
+  size {
+    x: 140.0
+    y: 60.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/yes_block1"
+  id: "btn_yes_result"
+  parent: "ad_block_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 3.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.16862746
+    y: 0.20784314
+    z: 0.27058825
+  }
+  type: TYPE_TEXT
+  text: "\320\224\320\260"
+  font: "inter_regular"
+  id: "btn_yes_text1"
+  parent: "btn_yes_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 95.0
+    y: -93.0
+  }
+  size {
+    x: 140.0
+    y: 60.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/no_block1"
+  id: "btn_no_result"
+  parent: "ad_block_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 3.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\235\320\265\321\202"
+  font: "inter_regular"
+  id: "btn_no_text1"
+  parent: "btn_no_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 95.0
+  }
+  scale {
+    x: 0.3
+    y: 0.3
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\221\320\276\320\275\321\203\321\201 \320\267\320\260 \320\277\321\200\320\276\321\201\320\274\320\276\321\202\321\200 \321\200\320\265\320\272\320\273\320\260\320\274\321\213"
+  font: "inter_bold"
+  id: "title_result1"
+  parent: "ad_block_result"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -25.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\245\320\276\321\202\320\270\321\202\320\265 \320\277\320\276\320\273\321\203\321\207\320\270\321\202\321\214 2x?"
+  font: "inter_regular"
+  id: "title_result2"
+  parent: "ad_block_result"
+  inherit_alpha: true
+  alpha: 0.9
 }
 nodes {
   position {

@@ -16,7 +16,7 @@ local function update_timer_display()
 	local node = gui.get_node("ad_timer")
 
 	if ad_timer.can_show_rewarded() then
-		gui.set_text(node, "5:00")
+		gui.set_text(node, localization_manager.get("available", "menu"))
 	else
 		local remaining = ad_timer.get_remaining_time()
 		gui.set_text(node, ad_timer.format_time(remaining))
@@ -115,6 +115,7 @@ function menu_ads.init_yagames(self)
 				print("Ошибка инициализации player:", err)
 			else
 				print("Player готов. Авторизован:", yagames.player_is_authorized())
+				save_manager.sync_leaderboard()
 			end
 		end)
 		start_timer_update()
@@ -154,6 +155,51 @@ function menu_ads.show_interstitial(on_complete)
 		close   = on_interstitial_close,
 		offline = on_interstitial_offline,
 		error   = on_interstitial_error,
+	})
+end
+
+local function on_double_open()
+	print("Реклама (удвоение) открыта")
+	sound_manager.mute_for_ads()
+end
+
+local function on_double_close(reward_coins, was_rewarded)
+	print("Реклама (удвоение) закрыта")
+	if was_rewarded then
+		save_manager.add_coins(reward_coins)
+		save_manager.sync_leaderboard()
+		local updated_save = save_manager.load()
+		gui.set_text(gui.get_node("txt_total_coins"), updated_save.coins)
+
+		local current_text = gui.get_text(gui.get_node("txt_result_coins"))
+		local current_coins = tonumber(current_text:match("%d+")) or 0
+		local new_coins = current_coins + reward_coins
+		gui.set_text(gui.get_node("txt_result_coins"), "Монет: +" .. new_coins)
+	end
+	sound_manager.restore_after_ads("menu")
+end
+
+local function on_double_error(err)
+	print("Ошибка показа рекламы (удвоение):", err)
+	sound_manager.restore_after_ads("menu")
+end
+
+function menu_ads.show_double_reward(reward_coins, on_result)
+	local was_rewarded = false
+
+	yagames.adv_show_rewarded_video({
+		open = on_double_open,
+		rewarded = function()
+			was_rewarded = true
+		end,
+		close = function()
+			on_double_close(reward_coins, was_rewarded)
+			if on_result then on_result(was_rewarded) end
+		end,
+		error = function(self, err)
+			on_double_error(err)
+			if on_result then on_result(false) end
+		end,
 	})
 end
 

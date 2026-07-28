@@ -8,6 +8,7 @@ return {
 		["btn_no_text"] = "No",
 		["title"] = "Bonus for watching ad",
 		["title2"] = "Do you want to get 30 coins?",
+		["available"] = "Available",
 	},
 	["categories"] = {
 		["txt_categories_title"] = "SELECT CATEGORY",
@@ -27,6 +28,7 @@ return {
 		["exit_result_text"] = "MAIN MENU",
 		["result_next_win"]  = "NEXT LEVEL",
 		["result_next_lose"] = "TRY AGAIN",
+		["title_result2"] = "get 2x?"
 	},
 	["settings"] = {
 		["TextSettings"] = "SETTINGS",
