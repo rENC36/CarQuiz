@@ -16,16 +16,24 @@ fonts {
   font: "/Assets/fonts/inter_regular.font"
 }
 textures {
-  name: "cars"
-  texture: "/Assets/images/cars.atlas"
-}
-textures {
   name: "UI1"
   texture: "/Assets/images/UI1.atlas"
 }
 textures {
   name: "bg"
   texture: "/Assets/images/bg.atlas"
+}
+textures {
+  name: "cars_easy"
+  texture: "/Assets/images/cars_easy.atlas"
+}
+textures {
+  name: "cars_hard"
+  texture: "/Assets/images/cars_hard.atlas"
+}
+textures {
+  name: "cars_medium"
+  texture: "/Assets/images/cars_medium.atlas"
 }
 nodes {
   position {
@@ -55,7 +63,7 @@ nodes {
     y: 600.0
   }
   type: TYPE_BOX
-  texture: "cars/easy_01.1"
+  texture: "cars_easy/easy_01.1"
   id: "car_image"
   inherit_alpha: true
 }

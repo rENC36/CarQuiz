@@ -35,6 +35,13 @@ function gameplay_levels.start(self, difficulty, level_num, music_on)
 	self.difficulty = difficulty
 	self.level_num = level_num
 	self.music_on = music_on
+	
+	local texture_name = C.CAR_TEXTURE_BY_DIFFICULTY[difficulty]
+	if texture_name then
+		gui.set_texture(gui.get_node("car_image"), texture_name)
+	else
+		print("Нет атласа для сложности:", difficulty)
+	end
 
 	current_questions = level_manager.generate_level(difficulty, level_num)
 	current_index = 1
@@ -45,7 +52,7 @@ function gameplay_levels.start(self, difficulty, level_num, music_on)
 	self.timer = C.TIMER_MAX
 	self.answered = false
 	self.paused = false
-	
+
 	if music_on then
 		msg.post("/music#sound", "stop_sound")
 		msg.post("/music#sound_gameplay", "play_sound")
@@ -55,7 +62,7 @@ function gameplay_levels.start(self, difficulty, level_num, music_on)
 	self.hint_skip_used = false
 	gameplay_levels.load_question(self)
 
-	yandex_marking.start() 
+	yandex_marking.start()
 end
 
 function gameplay_levels.load_question(self)

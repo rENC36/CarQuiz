@@ -13,6 +13,12 @@ C.COLORS = {
 	white         = vmath.vector4(1, 1, 1, 1),
 }
 
+C.CAR_TEXTURE_BY_DIFFICULTY = {
+	easy   = "cars_easy",
+	medium = "cars_medium",
+	hard   = "cars_hard",
+}
+
 C.COINS = {
 	hint_5050_price = 10,
 	hint_skip_price = 20,
