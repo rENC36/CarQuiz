@@ -109,7 +109,11 @@ function menu_manager.on_message(self, message_id, message)
 		msg.post("/menu#menu", "enable")
 		menu_navigation.change(self, "settings")
 	elseif message_id == hash("open_main_menu") then
+		local save_data = save_manager.load()
+		
 		menu_navigation.change(self, "menu")
+		menu_leaderboard.fetch(self)
+		gui.set_text(gui.get_node("txt_total_coins"), save_data.coins)
 	end
 end
 

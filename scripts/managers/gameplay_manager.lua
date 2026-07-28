@@ -53,7 +53,7 @@ function gameplay_manager.init(self)
 		{ node = "btn_answer_3", text = "txt_answer_3" },
 		{ node = "btn_answer_4", text = "txt_answer_4" },
 	}
-
+	
 	gameplay_ui.init_help_menu(self)
 end
 

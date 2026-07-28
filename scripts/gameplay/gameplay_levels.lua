@@ -58,6 +58,8 @@ function gameplay_levels.start(self, difficulty, level_num, music_on)
 		msg.post("/music#sound_gameplay", "play_sound")
 	end
 
+	gui.set_enabled(gui.get_node("open_help_menu"), true)
+
 	self.hint_5050_used = false
 	self.hint_skip_used = false
 	gameplay_levels.load_question(self)
