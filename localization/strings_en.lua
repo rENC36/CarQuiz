@@ -1,6 +1,6 @@
 return {
 	["menu"] = {
-		["MainText"] = "GUESS THE CAR\nFROM THE PHOTO",
+		["MainText"] = "GUESS THE CAR\nBY PHOTO",
 		["btn_play_text"] = "PLAY",
 		["btn_leaderboard_text"] = "LEADERBOARD",
 		["btn_settings_text"] = "SETTINGS",

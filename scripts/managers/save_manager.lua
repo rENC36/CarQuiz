@@ -1,3 +1,8 @@
+-- scripts/managers/save_manager.lua
+
+local yagames = require("yagames.yagames")
+local C = require("scripts.menu.menu_constants")
+
 local M = {}
 
 local SAVE_PATH = sys.get_save_file("CarQuiz", "save.json")
@@ -51,6 +56,18 @@ function M.add_score(amount)
 	data.score = data.score + amount
 	M.save(data)
 	return data.score
+end
+
+function M.sync_leaderboard()
+	local ok, is_authorized = pcall(yagames.player_is_authorized)
+	if ok and is_authorized then
+		local data = M.load()
+		yagames.leaderboards_set_score(C.LEADERBOARD_NAME, data.coins, nil, function(self, err)
+			if err then
+				print("Не удалось отправить очки в лидерборд:", err)
+			end
+		end)
+	end
 end
 
 return M

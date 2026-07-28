@@ -409,7 +409,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\224\320\260"
   font: "inter_regular"
-  id: "yes"
+  id: "text3"
   parent: "btn_yes"
   inherit_alpha: true
 }
@@ -443,7 +443,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\235\320\265\321\202"
   font: "inter_regular"
-  id: "no"
+  id: "text4"
   parent: "btn_no"
   inherit_alpha: true
 }
@@ -499,7 +499,6 @@ nodes {
   texture: "bg/background"
   id: "screen_categories"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -764,7 +763,6 @@ nodes {
 }
 nodes {
   position {
-    x: 2.0
     y: 385.0
   }
   scale {
@@ -1803,6 +1801,7 @@ nodes {
   texture: "bg/background1"
   id: "screen_leaderboard"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -1874,121 +1873,8 @@ nodes {
 }
 nodes {
   position {
-    x: -20.0
-    y: 270.0
-  }
-  size {
-    x: 410.0
-    y: 70.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/btn_darkgray_stld1.1"
-  id: "Stat1"
-  parent: "screen_leaderboard"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -150.0
-    y: 3.0
-  }
-  rotation {
-    z: 90.0
-  }
-  size {
-    x: 50.0
-    y: 2.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/line_gray1.1"
-  id: "line1.1.1.8"
-  parent: "Stat1"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 100.0
-    y: 3.0
-  }
-  rotation {
-    z: 90.0
-  }
-  size {
-    x: 50.0
-    y: 2.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/line_gray1.1"
-  id: "line1.1.1.9"
-  parent: "Stat1"
-  inherit_alpha: true
-}
-nodes {
-  position {
     x: -175.0
-    y: 4.0
-  }
-  scale {
-    x: 0.5
-    y: 0.5
-  }
-  size {
-    x: 100.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "1"
-  font: "inter_regular"
-  id: "Stat_Number1"
-  parent: "Stat1"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -140.0
-    y: 4.0
-  }
-  scale {
-    x: 0.5
-    y: 0.5
-  }
-  size {
-    x: 100.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "Frg4"
-  font: "inter_regular"
-  id: "Stat_Name1"
-  pivot: PIVOT_W
-  parent: "Stat1"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 190.0
-    y: 4.0
-  }
-  scale {
-    x: 0.5
-    y: 0.5
-  }
-  size {
-    x: 100.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "1000"
-  font: "inter_regular"
-  id: "Stat_Money1"
-  pivot: PIVOT_E
-  parent: "Stat1"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -193.0
-    y: 320.0
+    y: 333.0
   }
   scale {
     x: 0.4
@@ -2001,14 +1887,14 @@ nodes {
   type: TYPE_TEXT
   text: "#"
   font: "inter_regular"
-  id: "number_text"
+  id: "Text1"
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: -160.0
-    y: 320.0
+    x: -130.0
+    y: 334.0
   }
   scale {
     x: 0.4
@@ -2021,15 +1907,15 @@ nodes {
   type: TYPE_TEXT
   text: "\320\230\320\274\321\217"
   font: "inter_regular"
-  id: "name_text"
+  id: "Text2"
   pivot: PIVOT_W
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 170.0
-    y: 320.0
+    x: 197.0
+    y: 333.0
   }
   scale {
     x: 0.4
@@ -2042,14 +1928,14 @@ nodes {
   type: TYPE_TEXT
   text: "\320\234\320\276\320\275\320\265\321\202\321\213"
   font: "inter_regular"
-  id: "coins_text"
+  id: "Text3"
   pivot: PIVOT_E
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
 nodes {
   position {
-    y: -335.0
+    y: -353.0
   }
   size {
     x: 450.0
@@ -2063,8 +1949,8 @@ nodes {
 }
 nodes {
   position {
-    x: -20.0
-    y: -385.0
+    x: 3.0
+    y: -392.0
   }
   size {
     x: 410.0
@@ -2197,6 +2083,134 @@ nodes {
   id: "Stat_Money"
   pivot: PIVOT_E
   parent: "Stat"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -2.0
+    y: 281.0
+  }
+  size {
+    x: 410.0
+    y: 70.0
+  }
+  color {
+    x: 0.101960786
+    y: 0.101960786
+    z: 0.101960786
+  }
+  type: TYPE_BOX
+  texture: "UI1/btn_white_stld1.1"
+  id: "Stat1"
+  parent: "screen_leaderboard"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -150.0
+    y: 3.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.8"
+  parent: "Stat1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 100.0
+    y: 3.0
+  }
+  rotation {
+    z: 90.0
+  }
+  size {
+    x: 50.0
+    y: 2.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/line_gray1.1"
+  id: "line1.1.1.9"
+  parent: "Stat1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -175.0
+    y: 4.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "20"
+  font: "inter_regular"
+  id: "Stat_Number1"
+  parent: "Stat1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -125.0
+    y: 4.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\222\321\213"
+  font: "inter_regular"
+  id: "Stat_Name1"
+  pivot: PIVOT_W
+  parent: "Stat1"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 178.0
+    y: 4.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 100.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "1000"
+  font: "inter_regular"
+  id: "Stat_Money1"
+  pivot: PIVOT_E
+  parent: "Stat1"
   inherit_alpha: true
 }
 nodes {

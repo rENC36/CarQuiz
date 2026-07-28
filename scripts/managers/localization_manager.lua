@@ -1,66 +1,72 @@
 -- scripts/managers/localization_manager.lua
+
 local M = {}
 
-local locales = {
+local dicts = {
 	ru = require("localization.strings_ru"),
 	en = require("localization.strings_en"),
 }
 
-M.current_lang = "ru"
+M.current_lang = "ru" 
 
-function M.init(lang, screen_name)
-	if lang then
+function M.init(lang, place)
+	if lang and dicts[lang] then
 		M.current_lang = lang
-	end
-
-	local locale = locales[M.current_lang]
-	if not locale then
+	else
 		M.current_lang = "ru"
-		locale = locales[M.current_lang]
-		if not locale then return end
 	end
 
-	if screen_name then
-		M.update_screen(screen_name, locale)
-	end
+	M.set_lang(M.current_lang, place)
 end
 
-function M.update_screen(screen_name, locale)
-	local texts = locale[screen_name]
-	if not texts then return end
-
-	for key, value in pairs(texts) do
-		local node = gui.get_node(key)
-		if node then
-			gui.set_text(node, value)
+function M.get(key, place)
+	local dict = dicts[M.current_lang]
+	if place and dict[place] and dict[place][key] then
+		return dict[place][key]
+	end
+	
+	for _, section in pairs(dict) do
+		if section[key] then
+			return section[key]
 		end
 	end
-end
-
-function M.get_text(key)
-	local locale = locales[M.current_lang]
-	if not locale then return key end
-
-	local parts = {}
-	for part in string.gmatch(key, "[^%.]+") do
-		table.insert(parts, part)
-	end
-
-	local current = locale
-	for _, part in ipairs(parts) do
-		if current[part] then
-			current = current[part]
-		else
-			return key
+	
+	for _, section in pairs(dicts["ru"]) do
+		if section[key] then
+			return section[key]
 		end
 	end
-
-	return current
+	return key
 end
 
-function M.set_lang(lang)
-	if lang then
+function M.set_lang(lang, place)
+	if dicts[lang] then
 		M.current_lang = lang
+
+		if place and dicts[lang][place] then
+			for key, text in pairs(dicts[lang][place]) do
+				local ok, node = pcall(gui.get_node, key)
+				if ok and node then
+					gui.set_text(node, text)
+				end
+			end
+		end
+	end
+end
+
+function M.apply_to_screen(place)
+	M.set_lang(M.current_lang, place)
+end
+
+function M.apply_to_all()
+	local dict = dicts[M.current_lang]
+	for place, section in pairs(dict) do
+		for key, text in pairs(section) do
+			local ok, node = pcall(gui.get_node, key)
+			if ok and node then
+				gui.set_text(node, text)
+			end
+		end
 	end
 end
 
