@@ -7,7 +7,7 @@ return {
 		["yes"] = "Да",
 		["no"] = "Нет",
 		["title"] = "Бонус за просмотр рекламы",
-		["title2"] = "Хотите получить 100 монет?",
+		["title2"] = "Хотите получить 30 монет?",
 	},
 	["categories"] = {
 		["txt_categories_title"] = "ВЫБОР КАТЕГОРИИ",
@@ -42,8 +42,8 @@ return {
 	},
 	["leaderboard"] = {
 		["LeaderboardText"] = "ТАБЛИЦА ЛИДЕРОВ",
-		["name_text"] = "Имя",
-		["coins_text"] = "Монеты",
+		["name_text_leaderboard"] = "Имя",
+		["money_text_leaderboard"] = "Монеты",
 	},
 
 	["gameplay"] = {

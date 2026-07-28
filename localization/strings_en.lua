@@ -7,7 +7,7 @@ return {
 		["yes"] = "Yes",
 		["no"] = "No",
 		["title"] = "Bonus for watching ad",
-		["title2"] = "Do you want to get 100 coins?",
+		["title2"] = "Do you want to get 30 coins?",
 	},
 	["categories"] = {
 		["txt_categories_title"] = "SELECT CATEGORY",
@@ -42,8 +42,8 @@ return {
 	},
 	["leaderboard"] = {
 		["LeaderboardText"] = "LEADERBOARD",
-		["name_text"] = "Name",
-		["coins_text"] = "Coins",
+		["name_text_leaderboard"] = "Name",
+		["money_text_leaderboard"] = "Coins",
 	},
 
 	["gameplay"] = {

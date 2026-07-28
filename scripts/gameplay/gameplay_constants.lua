@@ -32,7 +32,7 @@ C.SCORE = {
 	slow_answer = 10,
 }
 
-C.FAST_ANSWER_TIME = 7
+C.FAST_ANSWER_TIME = 5
 C.HINT_DELAY = 1.2
 C.SKIP_DELAY = 0.3
 C.LEADERBOARD_NAME = "TopScores"

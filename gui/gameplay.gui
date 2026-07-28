@@ -259,6 +259,21 @@ nodes {
 }
 nodes {
   position {
+    x: -46.0
+    y: 3.0
+  }
+  size {
+    x: 25.0
+    y: 25.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/hint4"
+  id: "hint1"
+  parent: "btn_hint_5050"
+  inherit_alpha: true
+}
+nodes {
+  position {
     x: 349.0
     y: 57.0
   }
@@ -288,6 +303,20 @@ nodes {
   text: "\320\237\321\200\320\276\320\277\321\203\321\201\320\272"
   font: "inter_regular"
   id: "txt_hint_skip"
+  parent: "btn_hint_skip"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -50.0
+  }
+  size {
+    x: 15.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/skip4"
+  id: "skip1"
   parent: "btn_hint_skip"
   inherit_alpha: true
 }
@@ -494,34 +523,6 @@ nodes {
 }
 nodes {
   position {
-    x: 87.0
-    y: 59.0
-  }
-  size {
-    x: 25.0
-    y: 25.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/hint4"
-  id: "hint1"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 299.0
-    y: 58.0
-  }
-  size {
-    x: 15.0
-    y: 15.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/skip4"
-  id: "skip1"
-  inherit_alpha: true
-}
-nodes {
-  position {
     x: 93.0
     y: 20.0
   }
@@ -579,7 +580,7 @@ nodes {
 }
 nodes {
   position {
-    x: 162.0
+    x: 160.0
     y: 19.0
   }
   size {
@@ -650,7 +651,7 @@ nodes {
 }
 nodes {
   position {
-    x: 380.0
+    x: 379.0
     y: 19.0
   }
   size {

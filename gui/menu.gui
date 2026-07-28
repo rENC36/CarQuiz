@@ -1486,6 +1486,7 @@ nodes {
   texture: "bg/background"
   id: "screen_result"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -1801,12 +1802,11 @@ nodes {
   texture: "bg/background1"
   id: "screen_leaderboard"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
     x: -220.0
-    y: 385.0
+    y: 398.0
   }
   scale {
     x: 0.4
@@ -1826,7 +1826,7 @@ nodes {
 }
 nodes {
   position {
-    y: 355.0
+    y: 369.0
   }
   size {
     x: 450.0
@@ -1841,7 +1841,7 @@ nodes {
 nodes {
   position {
     x: 160.0
-    y: 388.0
+    y: 397.0
   }
   rotation {
     z: 90.0
@@ -1858,8 +1858,8 @@ nodes {
 }
 nodes {
   position {
-    x: 193.0
-    y: 385.0
+    x: 205.0
+    y: 397.0
   }
   size {
     x: 45.0
@@ -1873,8 +1873,8 @@ nodes {
 }
 nodes {
   position {
-    x: -175.0
-    y: 333.0
+    x: -161.0
+    y: 347.0
   }
   scale {
     x: 0.4
@@ -1887,14 +1887,14 @@ nodes {
   type: TYPE_TEXT
   text: "#"
   font: "inter_regular"
-  id: "Text1"
+  id: "number_text_leaderboard"
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: -130.0
-    y: 334.0
+    x: -128.0
+    y: 348.0
   }
   scale {
     x: 0.4
@@ -1907,15 +1907,15 @@ nodes {
   type: TYPE_TEXT
   text: "\320\230\320\274\321\217"
   font: "inter_regular"
-  id: "Text2"
+  id: "name_text_leaderboard"
   pivot: PIVOT_W
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 197.0
-    y: 333.0
+    x: 180.0
+    y: 347.0
   }
   scale {
     x: 0.4
@@ -1928,22 +1928,8 @@ nodes {
   type: TYPE_TEXT
   text: "\320\234\320\276\320\275\320\265\321\202\321\213"
   font: "inter_regular"
-  id: "Text3"
+  id: "money_text_leaderboard"
   pivot: PIVOT_E
-  parent: "screen_leaderboard"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: -353.0
-  }
-  size {
-    x: 450.0
-    y: 2.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/line_gray1.1"
-  id: "line1.1.8"
   parent: "screen_leaderboard"
   inherit_alpha: true
 }
@@ -1951,6 +1937,10 @@ nodes {
   position {
     x: -2.0
     y: -392.0
+  }
+  scale {
+    x: 0.9
+    y: 0.9
   }
   size {
     x: 410.0
@@ -2088,16 +2078,20 @@ nodes {
 nodes {
   position {
     x: -2.0
-    y: 281.0
+    y: 295.0
+  }
+  scale {
+    x: 0.9
+    y: 0.9
   }
   size {
     x: 410.0
     y: 70.0
   }
   color {
-    x: 0.101960786
-    y: 0.101960786
-    z: 0.101960786
+    x: 0.2
+    y: 0.2
+    z: 0.2
   }
   type: TYPE_BOX
   texture: "UI1/btn_white_stld1.1"
@@ -2173,7 +2167,7 @@ nodes {
 }
 nodes {
   position {
-    x: -125.0
+    x: -140.0
     y: 4.0
   }
   scale {
@@ -2194,7 +2188,7 @@ nodes {
 }
 nodes {
   position {
-    x: 178.0
+    x: 190.0
     y: 4.0
   }
   scale {
