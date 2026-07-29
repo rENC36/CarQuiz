@@ -67,7 +67,7 @@ local function display(self, entries)
 	local own_index = find_own_entry_index(entries, own_id)
 
 	for i, entry in ipairs(entries) do
-		local pos_y = base_pos.y - (i - 1) * 60
+		local pos_y = base_pos.y - (i - 1) * 63
 
 		if i == own_index then
 			local clone_ids = gui.clone_tree(self.own_row_template)

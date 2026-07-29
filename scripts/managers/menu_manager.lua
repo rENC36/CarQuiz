@@ -11,6 +11,7 @@ local menu_leaderboard = require("scripts.menu.menu_leaderboard")
 local menu_ads         = require("scripts.menu.menu_ads")
 local menu_hover       = require("scripts.menu.menu_hover")
 local menu_actions     = require("scripts.menu.menu_actions")
+local menu_feedback	   = require("scripts.menu.menu_feedback")
 
 local menu_manager = {}
 
@@ -35,11 +36,16 @@ end
 function menu_manager.init(self)
 	local save_data = save_manager.load()
 	print("Монет в сохранении: " .. save_data.coins)
-	gui.set_text(gui.get_node("txt_total_coins"), "$ " .. save_data.coins)
+	gui.set_text(gui.get_node("txt_total_coins"), save_data.coins)
 
 	self.sound_on = true
 	self.music_on = true
 	self.buttons = buttons_data
+
+	self.buttons_by_node = {}
+	for _, btn in ipairs(self.buttons) do
+		self.buttons_by_node[btn.node] = btn
+	end
 
 	menu_navigation.change(self, "menu")
 	print("Menu init работает!")
@@ -52,8 +58,6 @@ function menu_manager.init(self)
 	menu_leaderboard.setup_template(self)
 	menu_settings.sync_visual(self)
 	menu_ads.init_yagames(self)
-
-	save_manager.sync_leaderboard()
 end
 
 function menu_manager.on_message(self, message_id, message)
@@ -61,12 +65,30 @@ function menu_manager.on_message(self, message_id, message)
 		if self.music_on then msg.post("/music#sound", "play_sound") end
 
 		local save_data = save_manager.load()
-		gui.set_text(gui.get_node("txt_total_coins"), "$ " .. save_data.coins)
+		gui.set_text(gui.get_node("txt_total_coins"), save_data.coins)
+
+		self.last_coins = message.coins
+		self.double_reward_used = false
+		gui.set_enabled(gui.get_node("btn_2x"), message.win)
+		gui.set_enabled(gui.get_node("ad_block_result"), false)
 
 		gui.set_text(gui.get_node("txt_result_title"),  message.win and "УРОВЕНЬ ПРОЙДЕН!" or "ПРОИГРЫШ")
 		gui.set_text(gui.get_node("txt_result_coins"),  "Монет: +" .. message.coins)
 		gui.set_text(gui.get_node("txt_result_errors"), message.errors)
 		gui.set_text(gui.get_node("txt_result_time"),   message.time)
+
+		local is_final_level = message.win and message.difficulty == "hard" and message.level_num == 3
+		gui.set_enabled(gui.get_node("btn_result_next"), not is_final_level)
+
+		if message.difficulty == "easy" and message.level_num == 3 then
+			menu_feedback.request_review(function()
+				print("Оценка игры выполнена")
+			end)
+		end
+
+		local total_stars, total_levels = calculate_total_progress()
+		gui.set_text(gui.get_node("StarsOutput"),  total_stars  .. "/27")
+		gui.set_text(gui.get_node("LevelsOutput"), total_levels .. "/9")
 
 		for i = 1, 3 do
 			local color = i <= message.stars and vmath.vector4(1,1,1,1) or vmath.vector4(0,0,0,.5)
@@ -77,11 +99,12 @@ function menu_manager.on_message(self, message_id, message)
 		self.last_level = message.level_num or 1
 		self.last_win = message.win
 
-		gui.set_text(gui.get_node("txt_result_next"), message.win and "СЛЕДУЮЩИЙ УРОВЕНЬ" or "ПРОЙТИ ЕЩЕ РАЗ")
-		msg.post("/music#" .. (message.win and "sound_win" or "sound_defeat"), "play_sound")
-
 		menu_navigation.change(self, "result")
 
+		gui.set_text(gui.get_node("txt_result_next"),
+		localization_manager.get(message.win and "result_next_win" or "result_next_lose", "menu"))
+
+		msg.post("/music#" .. (message.win and "sound_win" or "sound_defeat"), "play_sound")
 	elseif message_id == hash("open_settings") then
 		msg.post("/gameplay#gameplay", "force_close_help_menu")
 
@@ -89,13 +112,46 @@ function menu_manager.on_message(self, message_id, message)
 		msg.post("/menu#menu", "enable")
 		menu_navigation.change(self, "settings")
 	elseif message_id == hash("open_main_menu") then
+		local save_data = save_manager.load()
+
 		menu_navigation.change(self, "menu")
+		menu_leaderboard.fetch(self)
+		gui.set_text(gui.get_node("txt_total_coins"), save_data.coins)
 	end
 end
 
 function menu_manager.on_input(self, action_id, action)
 	if action_id == hash("touch") and action.released then
 		local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
+		local is_ad_block_result_active = gui.is_enabled(gui.get_node("ad_block_result"))
+		
+		if is_ad_block_result_active then
+			local btn_yes_result = gui.get_node("btn_yes_result")
+			local btn_no_result = gui.get_node("btn_no_result")
+
+			if gui.pick_node(btn_no_result, action.x, action.y) then
+				print("btn_no_result нажато")
+				play_click_sound(self)
+				gui.set_enabled(gui.get_node("ad_block_result"), false)
+				self.double_reward_used = false
+				return
+			end
+
+			if gui.pick_node(btn_yes_result, action.x, action.y) then
+				print("btn_yes_result нажато")
+				play_click_sound(self)
+				gui.set_enabled(gui.get_node("ad_block_result"), false)
+				menu_ads.show_double_reward(self.last_coins, function(doubled)
+					if doubled then
+						gui.set_enabled(gui.get_node("btn_2x"), false)
+					else
+						self.double_reward_used = false
+					end
+				end)
+				return
+			end
+			return
+		end
 
 		if not is_ad_block_active then
 			menu_settings.handle_toggles(self, action)
@@ -109,11 +165,22 @@ function menu_manager.on_input(self, action_id, action)
 				if gui.is_enabled(node, true) and gui.pick_node(node, action.x, action.y) then
 					print(btn.node .. " нажато")
 					play_click_sound(self)
-					
+
 					if btn.node == "close_screen_settings" and self.opened_settings_from_gameplay then
 						self.opened_settings_from_gameplay = false
 						msg.post("/menu#menu", "disable")
 						msg.post("/gameplay#gameplay", "resume_from_settings")
+					elseif btn.node == "btn_result_next" or btn.node == "exit_result" then
+						menu_ads.show_interstitial(function()
+							menu_actions.handle(self, btn)
+						end)
+					elseif btn.node == "btn_2x" then
+						if self.double_reward_used or not self.last_coins or self.last_coins <= 0 then
+							print("Удвоение недоступно: уже использовано или нечего удваивать")
+						else
+							self.double_reward_used = true
+							gui.set_enabled(gui.get_node("ad_block_result"), true)
+						end
 					else
 						menu_actions.handle(self, btn)
 					end
@@ -126,4 +193,5 @@ function menu_manager.on_input(self, action_id, action)
 
 	menu_hover.process(self, action_id, action)
 end
+
 return menu_manager

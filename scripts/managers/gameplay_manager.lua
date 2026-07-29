@@ -44,6 +44,7 @@ function gameplay_manager.init(self)
 		{ node = "btn_hint_5050",  color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false },
 		{ node = "btn_no",  color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false },
 		{ node = "btn_yes", color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false },
+		{ node = "open_help_menu", color = vmath.vector4(1, 1, 1, 1), hover = vmath.vector4(1, 1, 1, 1), anim_color = false },
 	}
 
 	self.answer_buttons = {
@@ -52,7 +53,7 @@ function gameplay_manager.init(self)
 		{ node = "btn_answer_3", text = "txt_answer_3" },
 		{ node = "btn_answer_4", text = "txt_answer_4" },
 	}
-
+	
 	gameplay_ui.init_help_menu(self)
 end
 
@@ -62,10 +63,8 @@ function gameplay_manager.on_message(self, message_id, message)
 		gameplay_levels.start(self, message.difficulty, message.level_num or 1, message.music_play)
 	elseif message_id == hash("resume_from_settings") then
 		self.settings_open = false
-		self.paused = false
-
 		gameplay_ui.resume_game_audio(self)
-		yandex_marking.start()
+		gameplay_ui.open_help_menu(self) 
 
 		localization_manager.init(localization_manager.current_lang, "gameplay")
 	elseif message_id == hash("update_language") then
@@ -81,8 +80,7 @@ end
 
 function gameplay_manager.on_input(self, action_id, action)
 	if self.settings_open then return end
-	if not gui.is_enabled(gui.get_node("top_bar"), true) then return end
-
+	
 	local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
 
 	if action_id == hash("touch") and action.pressed then
@@ -100,11 +98,11 @@ function gameplay_manager.on_input(self, action_id, action)
 			gameplay_ui.open_help_menu(self)
 			return
 		end
-
+		
 		if gameplay_ui.handle_help_menu_input(self, action.x, action.y) then
 			return
 		end
-
+		
 		if self.help_open then return end
 
 		local btn_5050 = gui.get_node("btn_hint_5050")

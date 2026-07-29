@@ -16,16 +16,24 @@ fonts {
   font: "/Assets/fonts/inter_regular.font"
 }
 textures {
-  name: "cars"
-  texture: "/Assets/images/cars.atlas"
-}
-textures {
   name: "UI1"
   texture: "/Assets/images/UI1.atlas"
 }
 textures {
   name: "bg"
   texture: "/Assets/images/bg.atlas"
+}
+textures {
+  name: "cars_easy"
+  texture: "/Assets/images/cars_easy.atlas"
+}
+textures {
+  name: "cars_hard"
+  texture: "/Assets/images/cars_hard.atlas"
+}
+textures {
+  name: "cars_medium"
+  texture: "/Assets/images/cars_medium.atlas"
 }
 nodes {
   position {
@@ -55,7 +63,7 @@ nodes {
     y: 600.0
   }
   type: TYPE_BOX
-  texture: "cars/easy_01.1"
+  texture: "cars_easy/easy_01.1"
   id: "car_image"
   inherit_alpha: true
 }
@@ -217,67 +225,6 @@ nodes {
 }
 nodes {
   position {
-    x: 240.0
-    y: 919.0
-  }
-  size {
-    x: 480.0
-    y: 80.0
-  }
-  color {
-    x: 0.08080621
-    y: 0.10002631
-    z: 0.1474359
-  }
-  type: TYPE_BOX
-  id: "top_bar"
-  inherit_alpha: true
-  size_mode: SIZE_MODE_AUTO
-}
-nodes {
-  position {
-    x: -140.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "1/15"
-  font: "ofont"
-  id: "txt_question1"
-  parent: "top_bar"
-  inherit_alpha: true
-}
-nodes {
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "0"
-  font: "ofont"
-  id: "txt_coins1"
-  parent: "top_bar"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 140.0
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "3"
-  font: "ofont"
-  id: "txt_lives"
-  parent: "top_bar"
-  inherit_alpha: true
-}
-nodes {
-  position {
     x: 132.0
     y: 57.0
   }
@@ -312,6 +259,21 @@ nodes {
 }
 nodes {
   position {
+    x: -46.0
+    y: 3.0
+  }
+  size {
+    x: 25.0
+    y: 25.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/hint4"
+  id: "hint1"
+  parent: "btn_hint_5050"
+  inherit_alpha: true
+}
+nodes {
+  position {
     x: 349.0
     y: 57.0
   }
@@ -341,6 +303,20 @@ nodes {
   text: "\320\237\321\200\320\276\320\277\321\203\321\201\320\272"
   font: "inter_regular"
   id: "txt_hint_skip"
+  parent: "btn_hint_skip"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: -50.0
+  }
+  size {
+    x: 15.0
+    y: 15.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/skip4"
+  id: "skip1"
   parent: "btn_hint_skip"
   inherit_alpha: true
 }
@@ -453,60 +429,6 @@ nodes {
 }
 nodes {
   position {
-    x: 22.0
-    y: 831.0
-  }
-  scale {
-    x: 0.35
-    y: 0.3
-  }
-  size {
-    x: 90.0
-    y: 20.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/progressbar2_white"
-  id: "design1"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 22.0
-    y: 839.0
-  }
-  scale {
-    x: 0.35
-    y: 0.3
-  }
-  size {
-    x: 90.0
-    y: 20.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/progressbar2_white"
-  id: "design2"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 22.0
-    y: 823.0
-  }
-  scale {
-    x: 0.35
-    y: 0.3
-  }
-  size {
-    x: 90.0
-    y: 20.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/progressbar2_white"
-  id: "design3"
-  inherit_alpha: true
-}
-nodes {
-  position {
     x: 222.0
     y: 815.0
   }
@@ -601,35 +523,7 @@ nodes {
 }
 nodes {
   position {
-    x: 87.0
-    y: 59.0
-  }
-  size {
-    x: 25.0
-    y: 25.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/hint4"
-  id: "hint1"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 299.0
-    y: 58.0
-  }
-  size {
-    x: 15.0
-    y: 15.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/skip4"
-  id: "skip1"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 94.0
+    x: 93.0
     y: 20.0
   }
   size {
@@ -643,7 +537,7 @@ nodes {
 }
 nodes {
   position {
-    x: 105.0
+    x: 104.0
     y: 20.0
   }
   scale {
@@ -666,12 +560,12 @@ nodes {
 }
 nodes {
   position {
-    x: 133.0
+    x: 134.0
     y: 20.0
   }
   scale {
-    x: 0.25
-    y: 0.25
+    x: 0.27
+    y: 0.27
   }
   size {
     x: 200.0
@@ -685,7 +579,7 @@ nodes {
 }
 nodes {
   position {
-    x: 157.0
+    x: 160.0
     y: 19.0
   }
   size {
@@ -699,7 +593,7 @@ nodes {
 }
 nodes {
   position {
-    x: 313.0
+    x: 311.0
     y: 20.0
   }
   size {
@@ -713,7 +607,7 @@ nodes {
 }
 nodes {
   position {
-    x: 324.0
+    x: 322.0
     y: 20.0
   }
   scale {
@@ -736,12 +630,12 @@ nodes {
 }
 nodes {
   position {
-    x: 355.0
+    x: 354.0
     y: 20.0
   }
   scale {
-    x: 0.25
-    y: 0.25
+    x: 0.27
+    y: 0.27
   }
   size {
     x: 200.0
@@ -1006,7 +900,7 @@ nodes {
 }
 nodes {
   position {
-    x: 22.0
+    x: 26.0
     y: 831.0
   }
   size {
@@ -1016,8 +910,59 @@ nodes {
   type: TYPE_BOX
   id: "open_help_menu"
   inherit_alpha: true
-  alpha: 0.0
   size_mode: SIZE_MODE_AUTO
+  visible: false
+}
+nodes {
+  position {
+    y: 8.0
+  }
+  scale {
+    x: 0.35
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "design1"
+  parent: "open_help_menu"
+  inherit_alpha: true
+}
+nodes {
+  scale {
+    x: 0.35
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "design2"
+  parent: "open_help_menu"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -8.0
+  }
+  scale {
+    x: 0.35
+    y: 0.3
+  }
+  size {
+    x: 90.0
+    y: 20.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/progressbar2_white"
+  id: "design3"
+  parent: "open_help_menu"
+  inherit_alpha: true
 }
 nodes {
   position {
@@ -1166,209 +1111,6 @@ nodes {
   parent: "ad_block"
   inherit_alpha: true
   alpha: 0.9
-}
-nodes {
-  position {
-    x: 400.0
-    y: 458.0
-  }
-  scale {
-    x: 0.4
-    y: 0.4
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\221\321\213\321\201\321\202\321\200\320\276!"
-  font: "inter_regular"
-  id: "speed_text_bonus"
-  inherit_alpha: true
-  enabled: false
-}
-nodes {
-  position {
-    x: 240.0
-    y: 450.0
-  }
-  size {
-    x: 400.0
-    y: 280.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/ad_block1"
-  id: "rate_box"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: 80.0
-  }
-  scale {
-    x: 0.35
-    y: 0.35
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\222\320\260\320\274 \320\275\321\200\320\260\320\262\320\270\321\202\321\201\321\217 \320\270\320\263\321\200\320\260?\\n"
-  "\n"
-  "\320\237\320\276\320\266\320\260\320\273\321\203\320\271\321\201\321\202\320\260, \n"
-  "\320\276\321\201\321\202\320\260\320\262\321\214\321\202\320\265 \321\201\320\262\320\276\321\216 \320\276\321\206\320\265\320\275\320\272\321\203"
-  font: "inter_bold"
-  id: "text9"
-  parent: "rate_box"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -120.0
-    y: -15.0
-  }
-  size {
-    x: 54.0
-    y: 54.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/star3"
-  id: "star1.1"
-  parent: "rate_box"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -60.0
-    y: -15.0
-  }
-  size {
-    x: 54.0
-    y: 54.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/star3"
-  id: "star1.2"
-  parent: "rate_box"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: -15.0
-  }
-  size {
-    x: 54.0
-    y: 54.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/star3"
-  id: "star1.3"
-  parent: "rate_box"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 60.0
-    y: -15.0
-  }
-  size {
-    x: 54.0
-    y: 54.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/star3"
-  id: "star1.4"
-  parent: "rate_box"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 120.0
-    y: -15.0
-  }
-  size {
-    x: 54.0
-    y: 54.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/empty_star3"
-  id: "star1.5"
-  parent: "rate_box"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: -100.0
-    y: -90.0
-  }
-  size {
-    x: 150.0
-    y: 60.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/yes_block1"
-  id: "btn_rate"
-  parent: "rate_box"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: 3.0
-  }
-  scale {
-    x: 0.45
-    y: 0.45
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  color {
-    x: 0.16862746
-    y: 0.20784314
-    z: 0.27058825
-  }
-  type: TYPE_TEXT
-  text: "\320\236\321\206\320\265\320\275\320\270\321\202\321\214!"
-  font: "inter_regular"
-  id: "text12"
-  parent: "btn_rate"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    x: 100.0
-    y: -90.0
-  }
-  size {
-    x: 150.0
-    y: 60.0
-  }
-  type: TYPE_BOX
-  texture: "UI1/no_block1"
-  id: "btn_cancel"
-  parent: "rate_box"
-  inherit_alpha: true
-}
-nodes {
-  position {
-    y: 3.0
-  }
-  scale {
-    x: 0.35
-    y: 0.35
-  }
-  size {
-    x: 200.0
-    y: 100.0
-  }
-  type: TYPE_TEXT
-  text: "\320\235\320\265\321\202, \321\201\320\277\320\260\321\201\320\270\320\261\320\276"
-  font: "inter_regular"
-  id: "text13"
-  parent: "btn_cancel"
-  inherit_alpha: true
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT

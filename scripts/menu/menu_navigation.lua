@@ -1,4 +1,5 @@
 -- scripts/menu/menu_navigation.lua
+local buttons_data = require("scripts.data.buttons_data")
 
 local save_manager = require("scripts.managers.save_manager")
 local localization_manager = require("scripts.managers.localization_manager")
@@ -15,42 +16,54 @@ local function get_category_unlocked(difficulty)
 	return true
 end
 
-local function update_category_progress()
+local function update_category_progress(self)
 	local difficulties = C.DIFFICULTIES
-	local nodes = {"Easy", "Medium", "Hard"}
+	local nodes = {"easy", "medium", "hard"}
+	local MAX_STARS_PER_CATEGORY = 9
 
 	for i, diff in ipairs(difficulties) do
 		local completed = 0
+		local total_stars = 0
+
 		for lvl = 1, 3 do
-			if save_manager.get_stars(diff, lvl) > 0 then completed = completed + 1 end
+			local stars = save_manager.get_stars(diff, lvl)
+			total_stars = total_stars + stars
+			if stars > 0 then completed = completed + 1 end
 		end
 
-		local pct = math.floor((completed / 3) * 100)
-		local completed_node = gui.get_node(nodes[i] .. "Completed")
-		gui.set_text(completed_node, completed .. "/3 (" .. pct .. "%)")
+		local pct = math.floor((total_stars / MAX_STARS_PER_CATEGORY) * 100)
+		gui.set_text(gui.get_node(nodes[i] .. "Completed"), completed .. "/3 (" .. pct .. "%)")
 
-		if completed == 3 then
-			gui.set_color(completed_node, C.COLORS.gold)
+		local is_perfect = total_stars == MAX_STARS_PER_CATEGORY
+
+		if is_perfect then
+			gui.set_color(gui.get_node(nodes[i] .. "Completed"), vmath.vector4(1,1,0,1))
+			local btn_node_id = "btn_" .. nodes[i]
+			local btn = self.buttons_by_node[btn_node_id]
+			if btn then
+				btn.color = vmath.vector4(1,1,0,1)
+				btn.hover = vmath.vector4(1,1,0,1)
+				gui.set_color(gui.get_node(btn_node_id), vmath.vector4(1,1,0,1))
+			else
+				print("Кнопка не найдена в buttons_data:", btn_node_id)
+			end
 		end
 
 		local state = C.BAR_STATES[completed]
 		local bar = gui.get_node("progress_bar_line_" .. diff)
-
 		local color = gui.get_color(bar)
 		color.w = state.alpha
 		gui.set_color(bar, color)
-
 		local scale = gui.get_scale(bar)
 		scale.x = state.scale_x
 		gui.set_scale(bar, scale)
-
 		local pos = gui.get_position(bar)
 		pos.x = state.pos_x
 		gui.set_position(bar, pos)
 	end
 end
 
-local function update_categories_screen()
+local function update_categories_screen(self)
 	for _, diff in ipairs(C.DIFFICULTIES) do
 		local btn_node = gui.get_node("btn_" .. diff)
 		local names = C.CATEGORY_NODE_NAMES[diff]
@@ -77,13 +90,13 @@ local function update_categories_screen()
 			gui.set_enabled(gui.get_node("progress_bar_line_" .. diff), true)
 		end
 	end
-	update_category_progress()
+	update_category_progress(self)
 end
 
 function menu_navigation.change(self, name)
 	for _, screen_name in ipairs(C.SCREENS) do
 		if screen_name == "categories" then
-			update_categories_screen()
+			update_categories_screen(self)
 		end
 		gui.set_enabled(gui.get_node("screen_" .. screen_name), screen_name == name)
 	end
