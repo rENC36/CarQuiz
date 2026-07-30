@@ -102,30 +102,6 @@ return {
 	defaultsize = vmath.vector3(.5, .5, 1),
 	hoversize = vmath.vector3(.51, .51, 1),
 	anim_scale = true},
-	
-	{node = "txt_levels_title",
-	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 1, 1, 1), 
-	defaultsize = vmath.vector3(.4, .4, 1),
-	hoversize = vmath.vector3(.45, .45, 1)},
-
-	{node = "txt_categories_title",
-	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 1, 1, 1), 
-	defaultsize = vmath.vector3(.4, .4, 1),
-	hoversize = vmath.vector3(.45, .45, 1)},
-
-	{node = "stars_text",
-	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 1, 1, 1), 
-	defaultsize = vmath.vector3(.4, .4, 1),
-	hoversize = vmath.vector3(.45, .45, 1)},
-
-	{node = "levels_text",
-	color = vmath.vector4(1, 1, 1, 1),
-	hover = vmath.vector4(1, 1, 1, 1), 
-	defaultsize = vmath.vector3(.4, .4, 1),
-	hoversize = vmath.vector3(.45, .45, 1)},
 
 	{node = "btn_menu_ad",
 	color = vmath.vector4(1, 1, 1, 1),
@@ -142,6 +118,11 @@ return {
 	color = vmath.vector4(1, 1, 1, 1),
 	hover = vmath.vector4(1, 1, 1, 1), 
 	anim_color = false},
+
+	{node = "btn_2x",
+	color = vmath.vector4(1, 1, 1, 1),
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(.4, .4, 1),
+	hoversize = vmath.vector3(.44, .44, 1), 
+	anim_color = false},
 }
-
-

@@ -125,6 +125,6 @@ images {
   image: "/Assets/images/UI_assets11/btn_wronganswer4.png"
 }
 images {
-  image: "/Assets/images/UI_assets11/btn_closed2.1.png"
+  image: "/Assets/images/UI_assets11/btn_closed2.2.png"
 }
 extrude_borders: 2

@@ -1,13 +1,14 @@
 return {
 	["menu"] = {
-		["MainText"] = "GUESS THE CAR\nFROM THE PHOTO",
+		["MainText"] = "GUESS THE CAR\nBY PHOTO",
 		["btn_play_text"] = "PLAY",
 		["btn_leaderboard_text"] = "LEADERBOARD",
 		["btn_settings_text"] = "SETTINGS",
-		["yes"] = "Yes",
-		["no"] = "No",
+		["btn_yes_text"] = "Yes",
+		["btn_no_text"] = "No",
 		["title"] = "Bonus for watching ad",
-		["title2"] = "Do you want to get 100 coins?",
+		["title2"] = "Do you want to get 30 coins?",
+		["available"] = "Available",
 	},
 	["categories"] = {
 		["txt_categories_title"] = "SELECT CATEGORY",
@@ -24,7 +25,10 @@ return {
 		["txt_result_errors1"] = "Errors: ",
 		["txt_result_time1"] = "Time: ",
 		["txt_result_next"] = "NEXT LEVEL",
-		["exit_result_text"] = "TRY AGAIN",
+		["exit_result_text"] = "MAIN MENU",
+		["result_next_win"]  = "NEXT LEVEL",
+		["result_next_lose"] = "TRY AGAIN",
+		["title_result2"] = "get 2x?"
 	},
 	["settings"] = {
 		["TextSettings"] = "SETTINGS",
@@ -40,8 +44,8 @@ return {
 	},
 	["leaderboard"] = {
 		["LeaderboardText"] = "LEADERBOARD",
-		["name_text"] = "Name",
-		["coins_text"] = "Coins",
+		["name_text_leaderboard"] = "Name",
+		["money_text_leaderboard"] = "Coins",
 	},
 
 	["gameplay"] = {

@@ -4,10 +4,11 @@ return {
 		["btn_play_text"] = "ИГРАТЬ",
 		["btn_leaderboard_text"] = "ТАБЛИЦА ЛИДЕРОВ",
 		["btn_settings_text"] = "НАСТРОЙКИ",
-		["yes"] = "Да",
-		["no"] = "Нет",
+		["btn_yes_text"] = "Да",
+		["btn_no_text"] = "Нет",
 		["title"] = "Бонус за просмотр рекламы",
-		["title2"] = "Хотите получить 100 монет?",
+		["title2"] = "Хотите получить 30 монет?",
+		["available"] = "Доступно",
 	},
 	["categories"] = {
 		["txt_categories_title"] = "ВЫБОР КАТЕГОРИИ",
@@ -24,7 +25,10 @@ return {
 		["txt_result_errors1"] = "Ошибки: ",
 		["txt_result_time1"] = "Время: ",
 		["txt_result_next"] = "СЛЕДУЮЩИЙ УРОВЕНЬ",
-		["exit_result_text"] = "ПРОЙТИ ЕЩЕ РАЗ",
+		["exit_result_text"] = "ГЛАВНОЕ МЕНЮ",
+		["result_next_win"]  = "СЛЕДУЮЩИЙ УРОВЕНЬ",
+		["result_next_lose"] = "ПРОЙТИ ЕЩЕ РАЗ",
+		["title_result2"] = "Хотите получить 2x?"
 	},
 	["settings"] = {
 		["TextSettings"] = "НАСТРОЙКИ",
@@ -40,8 +44,8 @@ return {
 	},
 	["leaderboard"] = {
 		["LeaderboardText"] = "ТАБЛИЦА ЛИДЕРОВ",
-		["name_text"] = "Имя",
-		["coins_text"] = "Монеты",
+		["name_text_leaderboard"] = "Имя",
+		["money_text_leaderboard"] = "Монеты",
 	},
 
 	["gameplay"] = {
