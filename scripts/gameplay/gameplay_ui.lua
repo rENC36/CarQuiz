@@ -3,6 +3,7 @@
 local anim_manager = require("scripts.managers.anim_manager")
 local save_manager = require("scripts.managers.save_manager")
 local yandex_marking = require("scripts.managers.yandex_marking")
+local app_focus = require("scripts.managers.app_focus") 
 local C = require("scripts.gameplay.gameplay_constants")
 
 local gameplay_ui = {}
@@ -190,6 +191,7 @@ function gameplay_ui.handle_help_menu_input(self, x, y)
 	if gui.pick_node(gui.get_node("btn_main_menu"), x, y) then
 		yandex_marking.stop()
 		gameplay_ui.stop_game_audio(self)
+		app_focus.set_context("menu") 
 
 		msg.post("/gameplay#gameplay", "disable")
 		msg.post("/menu#menu", "enable")

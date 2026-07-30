@@ -3,6 +3,7 @@
 local save_manager = require("scripts.managers.save_manager")
 local localization_manager = require("scripts.managers.localization_manager")
 local buttons_data = require("scripts.data.buttons_data")
+local app_focus = require("scripts.managers.app_focus")
 
 local menu_navigation  = require("scripts.menu.menu_navigation")
 local menu_settings    = require("scripts.menu.menu_settings")
@@ -34,6 +35,9 @@ local function calculate_total_progress()
 end
 
 function menu_manager.init(self)
+	app_focus.init() 
+	app_focus.set_context("menu")
+	
 	local save_data = save_manager.load()
 	print("Монет в сохранении: " .. save_data.coins)
 	gui.set_text(gui.get_node("txt_total_coins"), save_data.coins)

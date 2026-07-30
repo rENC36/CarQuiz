@@ -1,6 +1,7 @@
 -- scripts/gameplay/gameplay_manager.lua
 
 local localization_manager = require("scripts.managers.localization_manager")
+local app_focus = require("scripts.managers.app_focus")
 local yandex_marking = require("scripts.managers.yandex_marking")
 
 local gameplay_levels = require("scripts.gameplay.gameplay_levels")
@@ -15,17 +16,7 @@ function gameplay_manager.init(self)
 	self.paused = false
 	self.settings_open = false
 
-	window.set_listener(function(event, data)
-		if event == window.WINDOW_EVENT_FOCUS_LOST then
-			self.paused = true
-			yandex_marking.stop() 
-		elseif event == window.WINDOW_EVENT_FOCUS_GAINED then
-			if not self.help_open and not self.settings_open then
-				self.paused = false
-				yandex_marking.start()
-			end
-		end
-	end)
+	app_focus.register_gameplay_self(self) 
 
 	self.answered = false
 	self.timer = 10

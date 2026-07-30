@@ -4,6 +4,7 @@ local level_manager = require("scripts.managers.level_manager")
 local save_manager = require("scripts.managers.save_manager")
 local yagames = require("yagames.yagames")
 local yandex_marking = require("scripts.managers.yandex_marking")
+local app_focus = require("scripts.managers.app_focus") 
 local C = require("scripts.gameplay.gameplay_constants")
 
 local gameplay_levels = {}
@@ -31,6 +32,8 @@ function gameplay_levels.get_coins()
 end
 
 function gameplay_levels.start(self, difficulty, level_num, music_on)
+	app_focus.set_context("gameplay")
+	
 	self.start_time = os.time()
 	self.difficulty = difficulty
 	self.level_num = level_num
@@ -249,6 +252,7 @@ function gameplay_levels.end_level(self, win)
 	end
 
 	yandex_marking.stop()
+	app_focus.set_context("menu")
 
 	msg.post("/music#sound_gameplay", "stop_sound")
 	msg.post("/music#sound_timer", "stop_sound")
