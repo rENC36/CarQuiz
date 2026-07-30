@@ -24,40 +24,16 @@ textures {
   texture: "/Assets/images/bg.atlas"
 }
 textures {
-  name: "cars_easy1"
-  texture: "/Assets/images/cars_easy1.atlas"
+  name: "cars_easy"
+  texture: "/Assets/images/cars_easy.atlas"
 }
 textures {
-  name: "cars_easy2"
-  texture: "/Assets/images/cars_easy2.atlas"
+  name: "cars_hard"
+  texture: "/Assets/images/cars_hard.atlas"
 }
 textures {
-  name: "cars_easy3"
-  texture: "/Assets/images/cars_easy3.atlas"
-}
-textures {
-  name: "cars_medium1"
-  texture: "/Assets/images/cars_medium1.atlas"
-}
-textures {
-  name: "cars_medium2"
-  texture: "/Assets/images/cars_medium2.atlas"
-}
-textures {
-  name: "cars_medium3"
-  texture: "/Assets/images/cars_medium3.atlas"
-}
-textures {
-  name: "cars_hard1"
-  texture: "/Assets/images/cars_hard1.atlas"
-}
-textures {
-  name: "cars_hard2"
-  texture: "/Assets/images/cars_hard2.atlas"
-}
-textures {
-  name: "cars_hard3"
-  texture: "/Assets/images/cars_hard3.atlas"
+  name: "cars_medium"
+  texture: "/Assets/images/cars_medium.atlas"
 }
 nodes {
   position {
@@ -71,7 +47,6 @@ nodes {
   type: TYPE_BOX
   texture: "bg/background1"
   id: "screen_menu"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -88,9 +63,8 @@ nodes {
     y: 600.0
   }
   type: TYPE_BOX
-  texture: "cars_easy1/easy_01.1"
+  texture: "cars_easy/easy_01.1"
   id: "car_image"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -105,7 +79,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/btn_white1"
   id: "btn_answer_1"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -145,7 +118,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/btn_white1"
   id: "btn_answer_2"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -185,7 +157,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/btn_white1"
   id: "btn_answer_3"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -225,7 +196,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/btn_white1"
   id: "btn_answer_4"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -265,7 +235,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/Rectangle (31) (2)"
   id: "btn_hint_5050"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -315,7 +284,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/Rectangle (31) (2)"
   id: "btn_hint_skip"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -364,7 +332,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/timebar4"
   id: "time_bar"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -456,8 +423,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\247\321\202\320\276 \320\267\320\260 \320\274\320\260\321\210\320\270\320\275\320\260 \320\275\320\260 \321\204\320\276\321\202\320\276?"
   font: "inter_regular"
-  id: "title_gameplay"
-  layer: "gameplay"
+  id: "text"
   inherit_alpha: true
   alpha: 0.8
 }
@@ -479,7 +445,6 @@ nodes {
   font: "inter_bold"
   id: "txt_question"
   pivot: PIVOT_W
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -498,7 +463,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/btn_darkgray1"
   id: "display_money_menu"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -555,7 +519,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/line_gray1.1"
   id: "line"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -570,7 +533,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/coin1"
   id: "coin11"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -594,17 +556,16 @@ nodes {
   font: "inter_regular"
   id: "text3"
   pivot: PIVOT_W
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 124.0
+    x: 134.0
     y: 20.0
   }
   scale {
-    x: 0.25
-    y: 0.25
+    x: 0.27
+    y: 0.27
   }
   size {
     x: 200.0
@@ -613,9 +574,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\270\320\273\320\270"
   font: "inter_regular"
-  id: "hint50_or_text"
-  pivot: PIVOT_W
-  layer: "gameplay"
+  id: "text4"
   inherit_alpha: true
 }
 nodes {
@@ -630,7 +589,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/ad1"
   id: "coin"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -645,7 +603,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/coin1"
   id: "coin1"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -669,17 +626,16 @@ nodes {
   font: "inter_regular"
   id: "text5"
   pivot: PIVOT_W
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
   position {
-    x: 344.0
+    x: 354.0
     y: 20.0
   }
   scale {
-    x: 0.25
-    y: 0.25
+    x: 0.27
+    y: 0.27
   }
   size {
     x: 200.0
@@ -688,9 +644,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\270\320\273\320\270"
   font: "inter_regular"
-  id: "hint_or_text"
-  pivot: PIVOT_W
-  layer: "gameplay"
+  id: "text6"
   inherit_alpha: true
 }
 nodes {
@@ -705,7 +659,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/ad1"
   id: "coin2"
-  layer: "gameplay"
   inherit_alpha: true
 }
 nodes {
@@ -720,7 +673,6 @@ nodes {
   type: TYPE_BOX
   texture: "bg/background1"
   id: "help_menu"
-  layer: "help_menu"
   inherit_alpha: true
   enabled: false
 }
@@ -841,7 +793,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\237\321\200\320\276\320\264\320\276\320\273\320\266\320\270\321\202\321\214"
   font: "inter_regular"
-  id: "btn_continue_text"
+  id: "text1"
   pivot: PIVOT_W
   parent: "btn_continue"
   inherit_alpha: true
@@ -891,7 +843,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270"
   font: "inter_regular"
-  id: "btn_settings_text"
+  id: "text2"
   pivot: PIVOT_W
   parent: "btn_settings"
   inherit_alpha: true
@@ -941,7 +893,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\223\320\273\320\260\320\262\320\275\320\276\320\265 \320\274\320\265\320\275\321\216"
   font: "inter_regular"
-  id: "btn_main_menu_text"
+  id: "text7"
   pivot: PIVOT_W
   parent: "btn_main_menu"
   inherit_alpha: true
@@ -957,7 +909,6 @@ nodes {
   }
   type: TYPE_BOX
   id: "open_help_menu"
-  layer: "gameplay"
   inherit_alpha: true
   size_mode: SIZE_MODE_AUTO
   visible: false
@@ -1019,23 +970,17 @@ nodes {
     y: 427.0
   }
   scale {
-    x: 3.060672
-    y: 9.420736
+    x: 2.371119
+    y: 8.588249
   }
   size {
     x: 200.0
     y: 100.0
   }
-  color {
-    x: 0.0
-    y: 0.0
-    z: 0.0
-  }
   type: TYPE_BOX
   id: "blur"
-  layer: "blur"
   inherit_alpha: true
-  alpha: 0.55
+  alpha: 0.25
   size_mode: SIZE_MODE_AUTO
   enabled: false
 }
@@ -1051,7 +996,6 @@ nodes {
   type: TYPE_BOX
   texture: "UI1/ad_block1"
   id: "ad_block"
-  layer: "help_menu"
   inherit_alpha: true
   enabled: false
 }
@@ -1090,7 +1034,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\224\320\260"
   font: "inter_regular"
-  id: "btn_yes_text_gameplay"
+  id: "text10"
   parent: "btn_yes"
   inherit_alpha: true
 }
@@ -1124,7 +1068,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\235\320\265\321\202"
   font: "inter_regular"
-  id: "btn_no_text_gameplay"
+  id: "text11"
   parent: "btn_no"
   inherit_alpha: true
 }
@@ -1143,7 +1087,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\243 \320\262\320\260\321\201 \320\275\320\265 \321\205\320\262\320\260\321\202\320\260\320\265\321\202 \320\274\320\276\320\275\320\265\321\202"
   font: "inter_bold"
-  id: "ad_block_title"
+  id: "text8"
   parent: "ad_block"
   inherit_alpha: true
 }
@@ -1167,15 +1111,6 @@ nodes {
   parent: "ad_block"
   inherit_alpha: true
   alpha: 0.9
-}
-layers {
-  name: "gameplay"
-}
-layers {
-  name: "blur"
-}
-layers {
-  name: "help_menu"
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
