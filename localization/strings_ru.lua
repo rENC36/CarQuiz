@@ -49,17 +49,17 @@ return {
 	},
 
 	["gameplay"] = {
-		["text"] = "Что за машина на фото?",
+		["title_gameplay"] = "Что за машина на фото?",
 		["txt_hint_skip"] = "Пропуск",
-		["text4"] = "или",
-		["text6"] = "или",
-		["text10"] = "Да",
-		["text11"] = "Нет",
-		["text8"] = "У вас не хватает монет",
+		["hint50_or_text"] = "или",
+		["hint_or_text"] = "или",
+		["btn_yes_text_gameplay"] = "Да",
+		["btn_no_text_gameplay"] = "Нет",
+		["ad_block_title"] = "У вас не хватает монет",
 		["txt_ad_block_message"] = "Использовать бесплатно\nза просмотр рекламы?",
 		["top_text"] = "ПАУЗА",
-		["text1"] = "Продолжить",
-		["text2"] = "Настройки",
-		["text7"] = "Главное меню",
+		["btn_continue_text"] = "Продолжить",
+		["btn_settings_text"] = "Настройки",
+		["btn_main_menu_text"] = "Главное меню",
 	}
 }

@@ -49,17 +49,17 @@ return {
 	},
 
 	["gameplay"] = {
-		["text"] = "What car is in the photo?",
+		["title_gameplay"] = "What car is in the photo?",
 		["txt_hint_skip"] = "Skip",
-		["text4"] = "or",
-		["text6"] = "or",
-		["text10"] = "Yes",
-		["text11"] = "No",
-		["text8"] = "You don't have enough coins",
+		["hint50_or_text"] = "or",
+		["hint_or_text"] = "or",
+		["btn_yes_text_gameplay"] = "Yes",
+		["btn_no_text_gameplay"] = "No",
+		["ad_block_title"] = "You don't have enough coins",
 		["txt_ad_block_message"] = "Use for free\nby watching an ad?",
 		["top_text"] = "PAUSE",
-		["text1"] = "Continue",
-		["text2"] = "Settings",
-		["text7"] = "Main menu",
+		["btn_continue_text"] = "Continue",
+		["btn_settings_text"] = "Settings",
+		["btn_main_menu_text"] = "Main menu",
 	}
 }

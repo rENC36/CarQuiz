@@ -447,7 +447,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\247\321\202\320\276 \320\267\320\260 \320\274\320\260\321\210\320\270\320\275\320\260 \320\275\320\260 \321\204\320\276\321\202\320\276?"
   font: "inter_regular"
-  id: "text"
+  id: "title_gameplay"
   inherit_alpha: true
   alpha: 0.8
 }
@@ -598,7 +598,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\270\320\273\320\270"
   font: "inter_regular"
-  id: "text4"
+  id: "hint50_or_text"
   pivot: PIVOT_W
   inherit_alpha: true
 }
@@ -669,7 +669,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\270\320\273\320\270"
   font: "inter_regular"
-  id: "text6"
+  id: "hint_or_text"
   pivot: PIVOT_W
   inherit_alpha: true
 }
@@ -819,7 +819,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\237\321\200\320\276\320\264\320\276\320\273\320\266\320\270\321\202\321\214"
   font: "inter_regular"
-  id: "text1"
+  id: "btn_continue_text"
   pivot: PIVOT_W
   parent: "btn_continue"
   inherit_alpha: true
@@ -869,7 +869,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\270"
   font: "inter_regular"
-  id: "text2"
+  id: "btn_settings_text"
   pivot: PIVOT_W
   parent: "btn_settings"
   inherit_alpha: true
@@ -919,7 +919,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\223\320\273\320\260\320\262\320\275\320\276\320\265 \320\274\320\265\320\275\321\216"
   font: "inter_regular"
-  id: "text7"
+  id: "btn_main_menu_text"
   pivot: PIVOT_W
   parent: "btn_main_menu"
   inherit_alpha: true
@@ -1060,7 +1060,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\224\320\260"
   font: "inter_regular"
-  id: "text10"
+  id: "btn_yes_text_gameplay"
   parent: "btn_yes"
   inherit_alpha: true
 }
@@ -1094,7 +1094,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\235\320\265\321\202"
   font: "inter_regular"
-  id: "text11"
+  id: "btn_no_text_gameplay"
   parent: "btn_no"
   inherit_alpha: true
 }
@@ -1113,7 +1113,7 @@ nodes {
   type: TYPE_TEXT
   text: "\320\243 \320\262\320\260\321\201 \320\275\320\265 \321\205\320\262\320\260\321\202\320\260\320\265\321\202 \320\274\320\276\320\275\320\265\321\202"
   font: "inter_bold"
-  id: "text8"
+  id: "ad_block_title"
   parent: "ad_block"
   inherit_alpha: true
 }
