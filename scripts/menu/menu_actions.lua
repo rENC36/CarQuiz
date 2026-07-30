@@ -9,10 +9,14 @@ local actions = {}
 
 actions.btn_menu_ad = function()
 	gui.set_enabled(gui.get_node("ad_block"), true)
+	-- Включаем блюр при открытии ad_block
+	gui.set_enabled(gui.get_node("blur"), true)
 end
 
 actions.btn_no = function()
 	gui.set_enabled(gui.get_node("ad_block"), false)
+	-- Выключаем блюр при закрытии ad_block через "Нет"
+	gui.set_enabled(gui.get_node("blur"), false)
 end
 
 actions.btn_yes = function()
@@ -22,7 +26,7 @@ end
 actions.btn_result_next = function(self)
 	local next_diff, next_lvl = menu_levels.get_next_level(
 	self.last_difficulty, self.last_level, self.last_win)
-	
+
 	actions._start_game(self, next_diff, next_lvl)
 end
 

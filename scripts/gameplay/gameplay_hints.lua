@@ -63,6 +63,9 @@ local function rewarded_ad_error(self, err)
 	self.ad_block_hint_type = nil
 	self.ad_block_is_purchase = false
 
+	-- Выключаем блюр при ошибке рекламы
+	gui.set_enabled(gui.get_node("blur"), false)
+
 	sound_manager.restore_after_ads("gameplay")
 	yandex_marking.start()
 end
@@ -73,6 +76,8 @@ end
 
 function gameplay_hints.ad_block_yes(self)
 	gui.set_enabled(gui.get_node("ad_block"), false)
+	-- Выключаем блюр при закрытии ad_block
+	gui.set_enabled(gui.get_node("blur"), false)
 	if self.ad_block_is_purchase then
 		if self.ad_block_hint_type == "5050" then
 			apply_hint_5050(self)
@@ -117,6 +122,8 @@ function gameplay_hints.use_hint_5050(self)
 	else
 		self.ad_block_is_purchase = false
 		gui.set_enabled(gui.get_node("ad_block"), true)
+		-- Включаем блюр при открытии ad_block
+		gui.set_enabled(gui.get_node("blur"), true)
 	end
 end
 
@@ -130,6 +137,8 @@ function gameplay_hints.use_hint_skip(self)
 	else
 		self.ad_block_is_purchase = false
 		gui.set_enabled(gui.get_node("ad_block"), true)
+		-- Включаем блюр при открытии ad_block
+		gui.set_enabled(gui.get_node("blur"), true)
 	end
 end
 

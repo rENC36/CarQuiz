@@ -71,6 +71,8 @@ function gameplay_manager.on_message(self, message_id, message)
 		localization_manager.init(localization_manager.current_lang, "gameplay")
 	elseif message_id == hash("force_close_help_menu") then
 		gameplay_ui.force_close_help_menu(self)
+	elseif message_id == hash("update_music") then
+		self.music_on = message.music_on
 	end
 end
 
@@ -80,13 +82,15 @@ end
 
 function gameplay_manager.on_input(self, action_id, action)
 	if self.settings_open then return end
-	
+
 	local is_ad_block_active = gui.is_enabled(gui.get_node("ad_block"))
 
 	if action_id == hash("touch") and action.pressed then
 		if is_ad_block_active then
 			if gui.pick_node(gui.get_node("btn_no"), action.x, action.y) then
 				gui.set_enabled(gui.get_node("ad_block"), false)
+				-- Выключаем блюр при закрытии ad_block через "Нет"
+				gui.set_enabled(gui.get_node("blur"), false)
 			elseif gui.pick_node(gui.get_node("btn_yes"), action.x, action.y) then
 				gameplay_hints.ad_block_yes(self)
 			end
@@ -98,11 +102,11 @@ function gameplay_manager.on_input(self, action_id, action)
 			gameplay_ui.open_help_menu(self)
 			return
 		end
-		
+
 		if gameplay_ui.handle_help_menu_input(self, action.x, action.y) then
 			return
 		end
-		
+
 		if self.help_open then return end
 
 		local btn_5050 = gui.get_node("btn_hint_5050")

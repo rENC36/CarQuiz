@@ -39,6 +39,7 @@ embedded_components {
   id: "sound_timer"
   type: "sound"
   data: "sound: \"/Assets/sounds/timer_sound.ogg\"\n"
+  "looping: 1\n"
   "group: \"sfx\"\n"
   "gain: 0.1\n"
   ""

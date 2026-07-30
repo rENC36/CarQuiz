@@ -93,6 +93,8 @@ function gameplay_ui.init_help_menu(self)
 	self.help_menu_original_pos.z))
 
 	gui.set_enabled(menu_node, false)
+	-- Блюр выключен при старте
+	gui.set_enabled(gui.get_node("blur"), false)
 end
 
 function gameplay_ui.open_help_menu(self)
@@ -102,6 +104,8 @@ function gameplay_ui.open_help_menu(self)
 	gameplay_ui.pause_game_audio(self)
 	yandex_marking.stop()
 	gui.set_enabled(gui.get_node("open_help_menu"), false) 
+	-- Включаем блюр
+	gui.set_enabled(gui.get_node("blur"), true)
 	gui.set_enabled(gui.get_node("help_menu"), true)
 	gui.animate(gui.get_node("help_menu"), "position.x",
 	self.help_menu_original_pos.x, gui.EASING_OUTBACK, C.HELP_ANIM_TIME)
@@ -135,6 +139,8 @@ function gameplay_ui.close_help_menu(self, on_complete, skip_resume_audio)
 	gui.EASING_INQUAD, C.HELP_ANIM_TIME * 0.7, 0,
 	function()
 		gui.set_enabled(gui.get_node("help_menu"), false)
+		-- Выключаем блюр после закрытия help_menu
+		gui.set_enabled(gui.get_node("blur"), false)
 		gui.set_enabled(gui.get_node("open_help_menu"), true) 
 		if on_complete then
 			on_complete()
@@ -146,6 +152,8 @@ function gameplay_ui.force_close_help_menu(self)
 	if not self.help_open then return end
 	self.help_open = false
 	gui.set_enabled(gui.get_node("help_menu"), false)
+	-- Выключаем блюр при принудительном закрытии
+	gui.set_enabled(gui.get_node("blur"), false)
 end
 
 function gameplay_ui.process_help_menu_hover(self, action)
@@ -182,13 +190,13 @@ function gameplay_ui.handle_help_menu_input(self, x, y)
 	if gui.pick_node(gui.get_node("btn_main_menu"), x, y) then
 		yandex_marking.stop()
 		gameplay_ui.stop_game_audio(self)
-		
+
 		msg.post("/gameplay#gameplay", "disable")
 		msg.post("/menu#menu", "enable")
 		msg.post("/menu#menu", "open_main_menu")
-		
+
 		gameplay_ui.force_close_help_menu(self)
-		
+
 		if self.music_on then
 			msg.post("/music#sound", "play_sound")
 		end
@@ -213,6 +221,8 @@ function gameplay_ui.open_settings_from_pause(self)
 	gui.EASING_INQUAD, C.HELP_ANIM_TIME * 0.7, 0,
 	function()
 		gui.set_enabled(gui.get_node("help_menu"), false)
+		-- Выключаем блюр при переходе в настройки
+		gui.set_enabled(gui.get_node("blur"), false)
 		msg.post("/menu#menu", "open_settings")
 	end)
 end

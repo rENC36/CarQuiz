@@ -28,7 +28,13 @@ local function handle_music_toggle(self, screen_settings, action)
 	self.music_on = pressed_on
 	ui.toggle_pair("on_music_text", "off_music_text", self.music_on)
 	sound.set_group_gain(hash("music"), self.music_on and 1 or 0)
-	msg.post("/music#sound", self.music_on and "play_sound" or "stop_sound")
+
+	if self.opened_settings_from_gameplay then
+		-- Обновляем music_on в геймплее
+		msg.post("/gameplay#gameplay", "update_music", { music_on = self.music_on })
+	else
+		msg.post("/music#sound", self.music_on and "play_sound" or "stop_sound")
+	end
 end
 
 local function handle_sound_toggle(self, screen_settings, action)
@@ -51,7 +57,7 @@ local function handle_lang_toggle(self, screen_settings, action)
 	ui.toggle_pair("lang_ru", "lang_eng", pressed_on)
 	localization_manager.init(pressed_on and "ru" or "en", "settings")
 	localization_manager.apply_to_all()
-	
+
 	msg.post("/gameplay#gameplay", "update_language")
 end
 

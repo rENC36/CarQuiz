@@ -62,9 +62,11 @@ function menu_ads.show_rewarded()
 		print("Реклама недоступна. Подождите: " .. ad_timer.format_time(remaining))
 		return false
 	end
+	
+	gui.set_enabled(gui.get_node("blur"), false)
+	gui.set_enabled(gui.get_node("ad_block"), false)
 
 	sound_manager.mute_for_ads()
-	gui.set_enabled(gui.get_node("ad_block"), false)
 	yagames.adv_show_rewarded_video({
 		open     = on_open,
 		rewarded = on_rewarded,
