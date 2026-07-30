@@ -1,0 +1,46 @@
+images {
+  image: "/Assets/images/hard_01.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_02.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_03.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_04.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_05.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_06.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_07.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_08.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_09.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_10.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_11.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_12.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_13.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_14.1.jpg"
+}
+images {
+  image: "/Assets/images/hard_15.1.jpg"
+}
+extrude_borders: 2

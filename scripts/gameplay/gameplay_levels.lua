@@ -36,11 +36,12 @@ function gameplay_levels.start(self, difficulty, level_num, music_on)
 	self.level_num = level_num
 	self.music_on = music_on
 	
-	local texture_name = C.CAR_TEXTURE_BY_DIFFICULTY[difficulty]
+	local textures_by_level = C.CAR_TEXTURE_BY_LEVEL[difficulty]
+	local texture_name = textures_by_level and textures_by_level[level_num]
 	if texture_name then
 		gui.set_texture(gui.get_node("car_image"), texture_name)
 	else
-		print("Нет атласа для сложности:", difficulty)
+		print("Нет атласа для сложности/уровня:", difficulty, level_num)
 	end
 
 	current_questions = level_manager.generate_level(difficulty, level_num)

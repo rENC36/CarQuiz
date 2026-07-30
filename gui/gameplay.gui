@@ -24,16 +24,40 @@ textures {
   texture: "/Assets/images/bg.atlas"
 }
 textures {
-  name: "cars_easy"
-  texture: "/Assets/images/cars_easy.atlas"
+  name: "cars_easy1"
+  texture: "/Assets/images/cars_easy1.atlas"
 }
 textures {
-  name: "cars_hard"
-  texture: "/Assets/images/cars_hard.atlas"
+  name: "cars_easy2"
+  texture: "/Assets/images/cars_easy2.atlas"
 }
 textures {
-  name: "cars_medium"
-  texture: "/Assets/images/cars_medium.atlas"
+  name: "cars_easy3"
+  texture: "/Assets/images/cars_easy3.atlas"
+}
+textures {
+  name: "cars_medium1"
+  texture: "/Assets/images/cars_medium1.atlas"
+}
+textures {
+  name: "cars_medium2"
+  texture: "/Assets/images/cars_medium2.atlas"
+}
+textures {
+  name: "cars_medium3"
+  texture: "/Assets/images/cars_medium3.atlas"
+}
+textures {
+  name: "cars_hard1"
+  texture: "/Assets/images/cars_hard1.atlas"
+}
+textures {
+  name: "cars_hard2"
+  texture: "/Assets/images/cars_hard2.atlas"
+}
+textures {
+  name: "cars_hard3"
+  texture: "/Assets/images/cars_hard3.atlas"
 }
 nodes {
   position {
@@ -63,7 +87,7 @@ nodes {
     y: 600.0
   }
   type: TYPE_BOX
-  texture: "cars_easy/easy_01.1"
+  texture: "cars_easy1/easy_01.1"
   id: "car_image"
   inherit_alpha: true
 }

@@ -1,0 +1,46 @@
+images {
+  image: "/Assets/images/easy_01.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_02.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_03.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_04.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_05.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_06.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_07.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_08.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_09.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_10.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_11.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_12.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_13.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_14.2.jpg"
+}
+images {
+  image: "/Assets/images/easy_15.2.jpg"
+}
+extrude_borders: 2

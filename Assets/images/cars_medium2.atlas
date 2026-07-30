@@ -1,0 +1,46 @@
+images {
+  image: "/Assets/images/medium_01.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_02.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_03.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_04.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_05.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_06.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_07.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_08.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_09.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_10.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_11.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_12.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_13.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_14.2.jpg"
+}
+images {
+  image: "/Assets/images/medium_15.2.jpg"
+}
+extrude_borders: 2

@@ -13,10 +13,22 @@ C.COLORS = {
 	white         = vmath.vector4(1, 1, 1, 1),
 }
 
-C.CAR_TEXTURE_BY_DIFFICULTY = {
-	easy   = "cars_easy",
-	medium = "cars_medium",
-	hard   = "cars_hard",
+C.CAR_TEXTURE_BY_LEVEL = {
+	easy = {
+		[1] = "cars_easy1",
+		[2] = "cars_easy2",
+		[3] = "cars_easy3",
+	},
+	medium = {
+		[1] = "cars_medium1",
+		[2] = "cars_medium2",
+		[3] = "cars_medium3",
+	},
+	hard = {
+		[1] = "cars_hard1",
+		[2] = "cars_hard2",
+		[3] = "cars_hard3",
+	},
 }
 
 C.COINS = {
