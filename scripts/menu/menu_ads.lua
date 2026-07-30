@@ -47,7 +47,7 @@ end
 local function on_close()
 	print("Реклама закрыта")
 	local updated_save = save_manager.load()
-	gui.set_text(gui.get_node("txt_total_coins"), "$ " .. updated_save.coins)
+	gui.set_text(gui.get_node("txt_total_coins"), updated_save.coins)
 	sound_manager.restore_after_ads("menu")
 end
 
@@ -188,6 +188,9 @@ end
 
 function menu_ads.show_double_reward(reward_coins, on_result)
 	local was_rewarded = false
+
+	gui.set_enabled(gui.get_node("blur1"), false)
+	gui.set_enabled(gui.get_node("ad_block_result"), false)
 
 	yagames.adv_show_rewarded_video({
 		open = on_double_open,

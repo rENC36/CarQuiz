@@ -28,7 +28,10 @@ return {
 		["exit_result_text"] = "ГЛАВНОЕ МЕНЮ",
 		["result_next_win"]  = "СЛЕДУЮЩИЙ УРОВЕНЬ",
 		["result_next_lose"] = "ПРОЙТИ ЕЩЕ РАЗ",
-		["title_result2"] = "Хотите получить 2x?"
+		["title_result1"] = "Бонус за просмотр рекламы",
+		["title_result2"] = "Хотите удвоить награду?",
+		["btn_no_text1"] = "Нет",
+		["btn_yes_text1"] = "Да"
 	},
 	["settings"] = {
 		["TextSettings"] = "НАСТРОЙКИ",

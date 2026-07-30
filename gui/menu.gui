@@ -32,6 +32,7 @@ nodes {
   texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -522,7 +523,6 @@ nodes {
   texture: "bg/background"
   id: "screen_categories"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -578,6 +578,9 @@ nodes {
   position {
     x: -115.0
     y: -50.0
+  }
+  scale {
+    x: 1.338892
   }
   size {
     x: 150.0
@@ -662,11 +665,11 @@ nodes {
 }
 nodes {
   position {
-    x: -115.0
+    x: -192.0
     y: -50.0
   }
   scale {
-    x: 1.33
+    x: 0.3
   }
   size {
     x: 150.0
@@ -753,6 +756,9 @@ nodes {
   position {
     x: -115.0
     y: -52.0
+  }
+  scale {
+    x: 1.316401
   }
   size {
     x: 150.0
@@ -1863,6 +1869,7 @@ nodes {
   texture: "UI1/ad_block1"
   id: "ad_block_result"
   parent: "screen_result"
+  layer: "ad_block"
   inherit_alpha: true
   enabled: false
 }
@@ -1971,12 +1978,35 @@ nodes {
     y: 100.0
   }
   type: TYPE_TEXT
-  text: "\320\245\320\276\321\202\320\270\321\202\320\265 \320\277\320\276\320\273\321\203\321\207\320\270\321\202\321\214 2x?"
+  text: "\320\245\320\276\321\202\320\270\321\202\320\265 \321\203\320\264\320\262\320\276\320\270\321\202\321\214 \320\275\320\260\320\263\321\200\320\260\320\264\321\203?"
   font: "inter_regular"
   id: "title_result2"
   parent: "ad_block_result"
   inherit_alpha: true
   alpha: 0.9
+}
+nodes {
+  scale {
+    x: 3.031814
+    y: 9.003133
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "blur1"
+  parent: "screen_result"
+  layer: "blur"
+  inherit_alpha: true
+  alpha: 0.55
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
 }
 nodes {
   position {

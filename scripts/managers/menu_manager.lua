@@ -73,8 +73,10 @@ function menu_manager.on_message(self, message_id, message)
 
 		self.last_coins = message.coins
 		self.double_reward_used = false
+		
 		gui.set_enabled(gui.get_node("btn_2x"), message.win)
 		gui.set_enabled(gui.get_node("ad_block_result"), false)
+		gui.set_enabled(gui.get_node("blur1"), false)
 
 		gui.set_text(gui.get_node("txt_result_title"),  message.win and "УРОВЕНЬ ПРОЙДЕН!" or "ПРОИГРЫШ")
 		gui.set_text(gui.get_node("txt_result_coins"),  "Монет: +" .. message.coins)
@@ -137,6 +139,7 @@ function menu_manager.on_input(self, action_id, action)
 				print("btn_no_result нажато")
 				play_click_sound(self)
 				gui.set_enabled(gui.get_node("ad_block_result"), false)
+				gui.set_enabled(gui.get_node("blur1"), false)
 				self.double_reward_used = false
 				return
 			end
@@ -145,6 +148,7 @@ function menu_manager.on_input(self, action_id, action)
 				print("btn_yes_result нажато")
 				play_click_sound(self)
 				gui.set_enabled(gui.get_node("ad_block_result"), false)
+				gui.set_enabled(gui.get_node("blur1"), false)
 				menu_ads.show_double_reward(self.last_coins, function(doubled)
 					if doubled then
 						gui.set_enabled(gui.get_node("btn_2x"), false)
@@ -184,6 +188,7 @@ function menu_manager.on_input(self, action_id, action)
 						else
 							self.double_reward_used = true
 							gui.set_enabled(gui.get_node("ad_block_result"), true)
+							gui.set_enabled(gui.get_node("blur1"), true)
 						end
 					else
 						menu_actions.handle(self, btn)

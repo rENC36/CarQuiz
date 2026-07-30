@@ -28,8 +28,12 @@ return {
 		["exit_result_text"] = "MAIN MENU",
 		["result_next_win"]  = "NEXT LEVEL",
 		["result_next_lose"] = "TRY AGAIN",
-		["title_result2"] = "get 2x?"
+		["title_result1"] = "Bonus for watching ad",
+		["title_result2"] = "Do you want to double the reward?",
+		["btn_no_text1"] = "No",
+		["btn_yes_text1"] = "Yes"
 	},
+	
 	["settings"] = {
 		["TextSettings"] = "SETTINGS",
 		["MusicTextSett"] = "Music",
@@ -42,6 +46,7 @@ return {
 		["lang_ru"] = "Rus",
 		["lang_eng"] = "Eng",
 	},
+	
 	["leaderboard"] = {
 		["LeaderboardText"] = "LEADERBOARD",
 		["name_text_leaderboard"] = "Name",

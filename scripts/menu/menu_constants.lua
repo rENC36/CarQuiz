@@ -29,7 +29,7 @@ C.CATEGORY_NODE_NAMES = {
 }
 
 C.BAR_STATES = {
-	[0] = { alpha = 0,    scale_x = 1,    pos_x = 0 },
+	[0] = { alpha = 0,    scale_x = .3,    pos_x = -192.0 },
 	[1] = { alpha = 1,    scale_x = 0.4,  pos_x = -182 },
 	[2] = { alpha = 1,    scale_x = 0.8,  pos_x = -151 },
 	[3] = { alpha = 1,    scale_x = 1.33, pos_x = -112 },

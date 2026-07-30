@@ -125,4 +125,23 @@ return {
 	defaultsize = vmath.vector3(.4, .4, 1),
 	hoversize = vmath.vector3(.44, .44, 1), 
 	anim_color = false},
+
+	{node = "btn_yes_result",
+	color = vmath.vector4(1, 1, 1, 1),
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.1, 1.1, 1), 
+	anim_color = false},
+
+	{node = "btn_no_result",
+	color = vmath.vector4(1, 1, 1, 1),
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.1, 1.1, 1), 
+	anim_color = false},
 }
+
+
+--btn_yes_result
+
+--btn_no_result

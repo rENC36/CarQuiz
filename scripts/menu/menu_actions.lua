@@ -4,23 +4,33 @@ local save_manager = require("scripts.managers.save_manager")
 local menu_navigation = require("scripts.menu.menu_navigation")
 local menu_levels = require("scripts.menu.menu_levels")
 local menu_ads = require("scripts.menu.menu_ads")
+local ad_timer = require("scripts.managers.ad_timer")
 
 local actions = {}
 
 actions.btn_menu_ad = function()
+	if not ad_timer.can_show_rewarded() then
+		local remaining = ad_timer.get_remaining_time()
+		print("Реклама в cooldown. Подождите: " .. ad_timer.format_time(remaining))
+		return
+	end
+
 	gui.set_enabled(gui.get_node("ad_block"), true)
-	-- Включаем блюр при открытии ad_block
 	gui.set_enabled(gui.get_node("blur"), true)
 end
 
 actions.btn_no = function()
 	gui.set_enabled(gui.get_node("ad_block"), false)
-	-- Выключаем блюр при закрытии ad_block через "Нет"
 	gui.set_enabled(gui.get_node("blur"), false)
 end
 
 actions.btn_yes = function()
 	menu_ads.show_rewarded()
+end
+
+actions.btn_2x = function()
+	gui.set_enabled(gui.get_node("ad_block_result"), true)
+	gui.set_enabled(gui.get_node("blur1"), true)
 end
 
 actions.btn_result_next = function(self)
