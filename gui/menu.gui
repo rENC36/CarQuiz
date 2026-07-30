@@ -32,7 +32,6 @@ nodes {
   texture: "bg/background"
   id: "screen_menu"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
@@ -371,6 +370,7 @@ nodes {
   texture: "UI1/ad_block1"
   id: "ad_block"
   parent: "screen_menu"
+  layer: "ad_block"
   inherit_alpha: true
   enabled: false
 }
@@ -487,6 +487,29 @@ nodes {
   alpha: 0.9
 }
 nodes {
+  scale {
+    x: 3.027597
+    y: 9.273027
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
+  id: "blur"
+  parent: "screen_menu"
+  layer: "blur"
+  inherit_alpha: true
+  alpha: 0.55
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+nodes {
   position {
     x: 240.0
     y: 427.0
@@ -499,6 +522,7 @@ nodes {
   texture: "bg/background"
   id: "screen_categories"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -2687,6 +2711,12 @@ nodes {
   id: "white_arrow1"
   parent: "screen_levels"
   inherit_alpha: true
+}
+layers {
+  name: "blur"
+}
+layers {
+  name: "ad_block"
 }
 material: "/builtins/materials/gui.material"
 adjust_reference: ADJUST_REFERENCE_PARENT
