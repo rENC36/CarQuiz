@@ -10,6 +10,8 @@ local SAVE_PATH = sys.get_save_file("CarQuiz", "save.json")
 local DEFAULT_SAVE = {
 	coins = 0,
 	score = 0,
+	sound_on = true,
+	music_on = true,
 	progress = {
 		easy =   { level_1 = 0, level_2 = 0, level_3 = 0 },
 		medium = { level_1 = 0, level_2 = 0, level_3 = 0 },
@@ -22,6 +24,9 @@ function M.load()
 	if not data or not data.coins then
 		return DEFAULT_SAVE
 	end
+	-- На случай если старые сохранения не имеют этих полей
+	if data.sound_on == nil then data.sound_on = true end
+	if data.music_on == nil then data.music_on = true end
 	return data
 end
 
@@ -56,6 +61,18 @@ function M.add_score(amount)
 	data.score = data.score + amount
 	M.save(data)
 	return data.score
+end
+
+function M.set_sound_on(value)
+	local data = M.load()
+	data.sound_on = value
+	M.save(data)
+end
+
+function M.set_music_on(value)
+	local data = M.load()
+	data.music_on = value
+	M.save(data)
 end
 
 function M.sync_leaderboard()

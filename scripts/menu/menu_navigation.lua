@@ -48,39 +48,16 @@ local function update_category_progress(self)
 				print("Кнопка не найдена в buttons_data:", btn_node_id)
 			end
 		end
-		
+
+		local state = C.BAR_STATES[completed]
 		local bar = gui.get_node("progress_bar_line_" .. diff)
-
-		local state_from, state_to, t
-
-		if total_stars <= 3 then
-			state_from = C.BAR_STATES[0]
-			state_to = C.BAR_STATES[1]
-			t = total_stars / 3
-		elseif total_stars <= 6 then
-			state_from = C.BAR_STATES[1]
-			state_to = C.BAR_STATES[2]
-			t = (total_stars - 3) / 3
-		else
-			state_from = C.BAR_STATES[2]
-			state_to = C.BAR_STATES[3]
-			t = (total_stars - 6) / 3
-		end
-
-		local alpha = state_from.alpha + (state_to.alpha - state_from.alpha) * t
-		local scale_x = state_from.scale_x + (state_to.scale_x - state_from.scale_x) * t
-		local pos_x = state_from.pos_x + (state_to.pos_x - state_from.pos_x) * t
-
 		local color = gui.get_color(bar)
-		color.w = alpha
 		gui.set_color(bar, color)
-
 		local scale = gui.get_scale(bar)
-		scale.x = scale_x
+		scale.x = state.scale_x
 		gui.set_scale(bar, scale)
-
 		local pos = gui.get_position(bar)
-		pos.x = pos_x
+		pos.x = state.pos_x
 		gui.set_position(bar, pos)
 	end
 end
@@ -94,14 +71,14 @@ local function update_categories_screen(self)
 		local unlocked = get_category_unlocked(diff)
 
 		if not unlocked then
-			pcall(gui.play_flipbook, btn_node, hash("btn_closed2.2"))
+			gui.play_flipbook(btn_node, hash("btn_closed2.2"))
 			gui.set_color(btn_node, C.COLORS.white)
 			if name_node then gui.set_color(name_node, C.COLORS.dimmed) end
 			if percent_node then gui.set_enabled(percent_node, false) end
 			gui.set_enabled(gui.get_node("progress_bar_background_" .. diff), false)
 			gui.set_enabled(gui.get_node("progress_bar_line_" .. diff), false)
 		else
-			pcall(gui.play_flipbook, btn_node, hash("btn_gray_open2"))
+			gui.play_flipbook(btn_node, hash("btn_gray_open2"))
 			gui.set_color(btn_node, C.COLORS.white)
 			if name_node then gui.set_color(name_node, C.COLORS.white) end
 			if percent_node then
@@ -122,12 +99,14 @@ function menu_navigation.change(self, name)
 		end
 		gui.set_enabled(gui.get_node("screen_" .. screen_name), screen_name == name)
 	end
-	
+
 	localization_manager.apply_to_screen(name)
 
 	if name == "leaderboard" then
 		local menu_leaderboard = require("scripts.menu.menu_leaderboard")
-		menu_leaderboard.fetch(self)
+		menu_leaderboard.request_access(self, function()
+			menu_leaderboard.fetch(self)
+		end)
 	end
 end
 

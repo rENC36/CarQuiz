@@ -1,5 +1,7 @@
 -- scripts/menu/menu_settings.lua
 
+local save_manager = require("scripts.managers.save_manager")
+local sound_manager = require("scripts.managers.sound_manager")
 local localization_manager = require("scripts.managers.localization_manager")
 local ui = require("scripts.shared.ui_helpers")
 local C = require("scripts.menu.menu_constants")
@@ -26,13 +28,12 @@ local function handle_music_toggle(self, screen_settings, action)
 	if self.music_on and pressed_on then return end
 
 	self.music_on = pressed_on
-	ui.toggle_pair("on_music_text", "off_music_text", self.music_on)
-	sound.set_group_gain(hash("music"), self.music_on and 1 or 0)
+	save_manager.set_music_on(self.music_on)
+	sound_manager.set_music_on(self.music_on)
 
-	if self.opened_settings_from_gameplay then
-		-- Обновляем music_on в геймплее
-		msg.post("/gameplay#gameplay", "update_music", { music_on = self.music_on })
-	else
+	ui.toggle_pair("on_music_text", "off_music_text", self.music_on)
+
+	if not self.opened_settings_from_gameplay then
 		msg.post("/music#sound", self.music_on and "play_sound" or "stop_sound")
 	end
 end
@@ -44,8 +45,10 @@ local function handle_sound_toggle(self, screen_settings, action)
 	if not pressed_on and not pressed_off then return end
 
 	self.sound_on = pressed_on
+	save_manager.set_sound_on(self.sound_on)
+	sound_manager.set_sound_on(self.sound_on)
+
 	ui.toggle_pair("on_sound_text", "off_sound_text", self.sound_on)
-	sound.set_group_gain(hash("sfx"), self.sound_on and 1 or 0)
 end
 
 local function handle_lang_toggle(self, screen_settings, action)

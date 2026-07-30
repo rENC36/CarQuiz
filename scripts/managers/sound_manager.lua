@@ -2,6 +2,9 @@ local save_manager = require("scripts.managers.save_manager")
 local sound_manager = {}
 
 local is_muted = false
+local music_on = true
+local sound_on = true
+
 local SOUND_GROUPS = {
 	"music",
 	"sfx",
@@ -10,20 +13,45 @@ local SOUND_GROUPS = {
 }
 
 local function apply_mute_state()
-	local gain = is_muted and 0.0 or 1.0
-	for _, group in ipairs(SOUND_GROUPS) do
-		sound.set_group_gain(group, gain)
-	end
+	local music_gain = (is_muted or not music_on) and 0.0 or 1.0
+	sound.set_group_gain("music", music_gain)
+	
+	local sfx_gain = (is_muted or not sound_on) and 0.0 or 1.0
+	sound.set_group_gain("sfx", sfx_gain)
+	
+	local other_gain = is_muted and 0.0 or 1.0
+	sound.set_group_gain("ui", other_gain)
+	sound.set_group_gain("master", other_gain)
 end
 
-local function load_mute_state()
+local function load_settings()
 	local save = save_manager.load()
 	is_muted = save.sound_muted or false
+	music_on = save.music_on ~= false
+	sound_on = save.sound_on ~= false
 	apply_mute_state()
 end
 
 function sound_manager.init()
-	load_mute_state()
+	load_settings()
+end
+
+function sound_manager.set_music_on(value)
+	music_on = value
+	apply_mute_state()
+end
+
+function sound_manager.set_sound_on(value)
+	sound_on = value
+	apply_mute_state()
+end
+
+function sound_manager.get_music_on()
+	return music_on
+end
+
+function sound_manager.get_sound_on()
+	return sound_on
 end
 
 function sound_manager.mute_all()
@@ -91,10 +119,10 @@ function sound_manager.restore_after_ads(context)
 	if is_muted then
 		return
 	end
-
-	if context == "menu" then
+	
+	if context == "menu" and music_on then
 		msg.post("/music#sound", "play_sound")
-	elseif context == "gameplay" then
+	elseif context == "gameplay" and music_on then
 		msg.post("/music#sound_gameplay", "play_sound")
 	end
 end

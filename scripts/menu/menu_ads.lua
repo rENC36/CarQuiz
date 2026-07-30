@@ -176,7 +176,8 @@ local function on_double_close(reward_coins, was_rewarded)
 		local current_text = gui.get_text(gui.get_node("txt_result_coins"))
 		local current_coins = tonumber(current_text:match("%d+")) or 0
 		local new_coins = current_coins + reward_coins
-		gui.set_text(gui.get_node("txt_result_coins"), "Монет: +" .. new_coins)
+		gui.set_text(gui.get_node("txt_result_coins"), 
+		localization_manager.get("result_coins", "menu") .. new_coins)
 	end
 	sound_manager.restore_after_ads("menu")
 end

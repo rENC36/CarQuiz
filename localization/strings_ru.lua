@@ -31,7 +31,10 @@ return {
 		["title_result1"] = "Бонус за просмотр рекламы",
 		["title_result2"] = "Хотите удвоить награду?",
 		["btn_no_text1"] = "Нет",
-		["btn_yes_text1"] = "Да"
+		["btn_yes_text1"] = "Да",
+		["result_win"] = "УРОВЕНЬ ПРОЙДЕН!",
+		["result_lose"] = "ПРОИГРЫШ",
+		["result_coins"] = "Монет: +",
 	},
 	["settings"] = {
 		["TextSettings"] = "НАСТРОЙКИ",

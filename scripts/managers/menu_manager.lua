@@ -2,6 +2,7 @@
 
 local save_manager = require("scripts.managers.save_manager")
 local localization_manager = require("scripts.managers.localization_manager")
+local sound_manager = require("scripts.managers.sound_manager")
 local buttons_data = require("scripts.data.buttons_data")
 local app_focus = require("scripts.managers.app_focus")
 
@@ -42,8 +43,14 @@ function menu_manager.init(self)
 	print("Монет в сохранении: " .. save_data.coins)
 	gui.set_text(gui.get_node("txt_total_coins"), save_data.coins)
 
-	self.sound_on = true
-	self.music_on = true
+	local save_data = save_manager.load()
+	
+	self.sound_on = save_data.sound_on
+	self.music_on = save_data.music_on
+
+	sound_manager.set_music_on(self.music_on)
+	sound_manager.set_sound_on(self.sound_on)
+	
 	self.buttons = buttons_data
 
 	self.buttons_by_node = {}
@@ -78,8 +85,12 @@ function menu_manager.on_message(self, message_id, message)
 		gui.set_enabled(gui.get_node("ad_block_result"), false)
 		gui.set_enabled(gui.get_node("blur1"), false)
 
-		gui.set_text(gui.get_node("txt_result_title"),  message.win and "УРОВЕНЬ ПРОЙДЕН!" or "ПРОИГРЫШ")
-		gui.set_text(gui.get_node("txt_result_coins"),  "Монет: +" .. message.coins)
+		gui.set_text(gui.get_node("txt_result_title"), 
+		localization_manager.get(message.win and "result_win" or "result_lose", "menu"))
+		
+		gui.set_text(gui.get_node("txt_result_coins"), 
+		localization_manager.get("result_coins", "menu") .. message.coins)
+
 		gui.set_text(gui.get_node("txt_result_errors"), message.errors)
 		gui.set_text(gui.get_node("txt_result_time"),   message.time)
 

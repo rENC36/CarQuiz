@@ -132,7 +132,7 @@ function menu_leaderboard.setup_template(self)
 	self.leaderboard_template = template
 	self.leaderboard_base_pos = gui.get_position(template)
 	gui.set_enabled(template, false)
-	
+
 	local own_row_template = gui.get_node("Stat")
 	self.own_row_template = own_row_template
 	self.own_row_base_pos = gui.get_position(own_row_template)

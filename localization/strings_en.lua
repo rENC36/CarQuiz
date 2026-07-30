@@ -31,7 +31,10 @@ return {
 		["title_result1"] = "Bonus for watching ad",
 		["title_result2"] = "Do you want to double the reward?",
 		["btn_no_text1"] = "No",
-		["btn_yes_text1"] = "Yes"
+		["btn_yes_text1"] = "Yes",
+		["result_win"] = "LEVEL PASSED!",
+		["result_lose"] = "DEFEAT",
+		["result_coins"] = "Coins: +",
 	},
 	
 	["settings"] = {
