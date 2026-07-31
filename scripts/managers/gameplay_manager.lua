@@ -80,8 +80,8 @@ function gameplay_manager.on_input(self, action_id, action)
 		if is_ad_block_active then
 			if gui.pick_node(gui.get_node("btn_no"), action.x, action.y) then
 				gui.set_enabled(gui.get_node("ad_block"), false)
-				-- Выключаем блюр при закрытии ad_block через "Нет"
 				gui.set_enabled(gui.get_node("blur"), false)
+				yandex_marking.start()
 			elseif gui.pick_node(gui.get_node("btn_yes"), action.x, action.y) then
 				gameplay_hints.ad_block_yes(self)
 			end

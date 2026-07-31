@@ -4,6 +4,7 @@ local sound_manager = {}
 local is_muted = false
 local music_on = true
 local sound_on = true
+local timer_was_playing = false  -- флаг для таймера
 
 local SOUND_GROUPS = {
 	"music",
@@ -105,9 +106,11 @@ function sound_manager.mute_for_ads()
 	msg.post("/music#sound_defeat", "stop_sound")
 	msg.post("/music#sound_gameplay", "stop_sound")
 	msg.post("/music#sound_hover", "stop_sound")
-	msg.post("/music#sound_timer", "stop_sound")
 	msg.post("/music#sound_win", "stop_sound")
 	msg.post("/music#sound_wrong", "stop_sound")
+	
+	timer_was_playing = true
+	msg.post("/music#sound_timer", "stop_sound")
 end
 
 function sound_manager.restore_after_ads(context)
@@ -124,6 +127,11 @@ function sound_manager.restore_after_ads(context)
 		msg.post("/music#sound", "play_sound")
 	elseif context == "gameplay" and music_on then
 		msg.post("/music#sound_gameplay", "play_sound")
+	end
+	
+	if timer_was_playing then
+		msg.post("/music#sound_timer", "play_sound")
+		timer_was_playing = false
 	end
 end
 

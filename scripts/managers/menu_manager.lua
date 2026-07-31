@@ -126,7 +126,6 @@ function menu_manager.on_message(self, message_id, message)
 		msg.post("/music#" .. (message.win and "sound_win" or "sound_defeat"), "play_sound")
 
 	elseif message_id == hash("refresh_leaderboard") then
-		-- Обновляем лидерборд после просмотра рекламы
 		menu_leaderboard.fetch(self)
 
 	elseif message_id == hash("open_settings") then
@@ -138,6 +137,8 @@ function menu_manager.on_message(self, message_id, message)
 
 	elseif message_id == hash("open_main_menu") then
 		local save_data = save_manager.load()
+
+		save_manager.sync_leaderboard()
 
 		menu_navigation.change(self, "menu")
 		menu_leaderboard.fetch(self)
