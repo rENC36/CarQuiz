@@ -48,6 +48,10 @@ local function on_close()
 	print("Реклама закрыта")
 	local updated_save = save_manager.load()
 	gui.set_text(gui.get_node("txt_total_coins"), updated_save.coins)
+	
+	local menu_leaderboard = require("scripts.menu.menu_leaderboard")
+	msg.post("/menu#menu", "refresh_leaderboard")
+
 	sound_manager.restore_after_ads("menu")
 end
 
@@ -62,7 +66,7 @@ function menu_ads.show_rewarded()
 		print("Реклама недоступна. Подождите: " .. ad_timer.format_time(remaining))
 		return false
 	end
-	
+
 	gui.set_enabled(gui.get_node("blur"), false)
 	gui.set_enabled(gui.get_node("ad_block"), false)
 
@@ -178,6 +182,9 @@ local function on_double_close(reward_coins, was_rewarded)
 		local new_coins = current_coins + reward_coins
 		gui.set_text(gui.get_node("txt_result_coins"), 
 		localization_manager.get("result_coins", "menu") .. new_coins)
+
+		-- Обновляем лидерборд после удвоения
+		msg.post("/menu#menu", "refresh_leaderboard")
 	end
 	sound_manager.restore_after_ads("menu")
 end

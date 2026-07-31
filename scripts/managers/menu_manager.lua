@@ -82,14 +82,14 @@ function menu_manager.on_message(self, message_id, message)
 
 		self.last_coins = message.coins
 		self.double_reward_used = false
-		
+
 		gui.set_enabled(gui.get_node("btn_2x"), message.win)
 		gui.set_enabled(gui.get_node("ad_block_result"), false)
 		gui.set_enabled(gui.get_node("blur1"), false)
 
 		gui.set_text(gui.get_node("txt_result_title"), 
 		localization_manager.get(message.win and "result_win" or "result_lose", "menu"))
-		
+
 		gui.set_text(gui.get_node("txt_result_coins"), 
 		localization_manager.get("result_coins", "menu") .. message.coins)
 
@@ -124,12 +124,18 @@ function menu_manager.on_message(self, message_id, message)
 		localization_manager.get(message.win and "result_next_win" or "result_next_lose", "menu"))
 
 		msg.post("/music#" .. (message.win and "sound_win" or "sound_defeat"), "play_sound")
+
+	elseif message_id == hash("refresh_leaderboard") then
+		-- Обновляем лидерборд после просмотра рекламы
+		menu_leaderboard.fetch(self)
+
 	elseif message_id == hash("open_settings") then
 		msg.post("/gameplay#gameplay", "force_close_help_menu")
 
 		self.opened_settings_from_gameplay = true
 		msg.post("/menu#menu", "enable")
 		menu_navigation.change(self, "settings")
+
 	elseif message_id == hash("open_main_menu") then
 		local save_data = save_manager.load()
 

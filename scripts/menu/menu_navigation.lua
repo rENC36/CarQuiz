@@ -48,20 +48,41 @@ local function update_category_progress(self)
 				print("Кнопка не найдена в buttons_data:", btn_node_id)
 			end
 		end
-
-		local state = C.BAR_STATES[completed]
+		
 		local bar = gui.get_node("progress_bar_line_" .. diff)
-		
+
+		local state_from, state_to, t
+
+		if total_stars <= 3 then
+			state_from = C.BAR_STATES[0]
+			state_to = C.BAR_STATES[1]
+			t = total_stars / 3
+		elseif total_stars <= 6 then
+			state_from = C.BAR_STATES[1]
+			state_to = C.BAR_STATES[2]
+			t = (total_stars - 3) / 3
+		else
+			state_from = C.BAR_STATES[2]
+			state_to = C.BAR_STATES[3]
+			t = (total_stars - 6) / 3
+		end
+
+		-- Alpha: 0 если 0 звёзд, 1 если больше 0
+		local alpha = total_stars > 0 and 1 or 0
+
+		local scale_x = state_from.scale_x + (state_to.scale_x - state_from.scale_x) * t
+		local pos_x = state_from.pos_x + (state_to.pos_x - state_from.pos_x) * t
+
 		local color = gui.get_color(bar)
-		color.w = state.alpha 
+		color.w = alpha
 		gui.set_color(bar, color)
-		
+
 		local scale = gui.get_scale(bar)
-		scale.x = state.scale_x
+		scale.x = scale_x
 		gui.set_scale(bar, scale)
-		
+
 		local pos = gui.get_position(bar)
-		pos.x = state.pos_x
+		pos.x = pos_x
 		gui.set_position(bar, pos)
 	end
 end
