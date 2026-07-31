@@ -140,8 +140,3 @@ return {
 	hoversize = vmath.vector3(1.1, 1.1, 1), 
 	anim_color = false},
 }
-
-
---btn_yes_result
-
---btn_no_result

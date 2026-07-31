@@ -19,3 +19,6 @@ show_console_banner = 0
 show_fullscreen_button = 0
 splash_image = /Assets/images/easy_01.3.jpg
 
+[graphics]
+texture_profiles = /graphics/texture_profiles.texture_profiles
+

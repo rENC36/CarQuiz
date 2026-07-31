@@ -47,8 +47,7 @@ function menu_manager.init(self)
 
 	self.sound_on = save_data.sound_on
 	self.music_on = save_data.music_on
-
-	-- Синхронизируем настройки с sound_manager
+	
 	sound_manager.set_music_on(self.music_on)
 	sound_manager.set_sound_on(self.sound_on)
 

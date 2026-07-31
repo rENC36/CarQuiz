@@ -51,11 +51,15 @@ local function update_category_progress(self)
 
 		local state = C.BAR_STATES[completed]
 		local bar = gui.get_node("progress_bar_line_" .. diff)
+		
 		local color = gui.get_color(bar)
+		color.w = state.alpha 
 		gui.set_color(bar, color)
+		
 		local scale = gui.get_scale(bar)
 		scale.x = state.scale_x
 		gui.set_scale(bar, scale)
+		
 		local pos = gui.get_position(bar)
 		pos.x = state.pos_x
 		gui.set_position(bar, pos)
