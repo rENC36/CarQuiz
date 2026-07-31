@@ -1,8 +1,8 @@
 -- scripts/menu/menu_settings.lua
 
+local localization_manager = require("scripts.managers.localization_manager")
 local save_manager = require("scripts.managers.save_manager")
 local sound_manager = require("scripts.managers.sound_manager")
-local localization_manager = require("scripts.managers.localization_manager")
 local ui = require("scripts.shared.ui_helpers")
 local C = require("scripts.menu.menu_constants")
 
@@ -32,6 +32,7 @@ local function handle_music_toggle(self, screen_settings, action)
 	sound_manager.set_music_on(self.music_on)
 
 	ui.toggle_pair("on_music_text", "off_music_text", self.music_on)
+	sound.set_group_gain(hash("music"), self.music_on and 1 or 0)
 
 	if not self.opened_settings_from_gameplay then
 		msg.post("/music#sound", self.music_on and "play_sound" or "stop_sound")
@@ -49,6 +50,7 @@ local function handle_sound_toggle(self, screen_settings, action)
 	sound_manager.set_sound_on(self.sound_on)
 
 	ui.toggle_pair("on_sound_text", "off_sound_text", self.sound_on)
+	sound.set_group_gain(hash("sfx"), self.sound_on and 1 or 0)
 end
 
 local function handle_lang_toggle(self, screen_settings, action)

@@ -15,10 +15,10 @@ local SOUND_GROUPS = {
 local function apply_mute_state()
 	local music_gain = (is_muted or not music_on) and 0.0 or 1.0
 	sound.set_group_gain("music", music_gain)
-	
+
 	local sfx_gain = (is_muted or not sound_on) and 0.0 or 1.0
 	sound.set_group_gain("sfx", sfx_gain)
-	
+
 	local other_gain = is_muted and 0.0 or 1.0
 	sound.set_group_gain("ui", other_gain)
 	sound.set_group_gain("master", other_gain)
@@ -119,7 +119,7 @@ function sound_manager.restore_after_ads(context)
 	if is_muted then
 		return
 	end
-	
+
 	if context == "menu" and music_on then
 		msg.post("/music#sound", "play_sound")
 	elseif context == "gameplay" and music_on then

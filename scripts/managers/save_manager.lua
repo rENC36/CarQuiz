@@ -24,7 +24,6 @@ function M.load()
 	if not data or not data.coins then
 		return DEFAULT_SAVE
 	end
-	-- На случай если старые сохранения не имеют этих полей
 	if data.sound_on == nil then data.sound_on = true end
 	if data.music_on == nil then data.music_on = true end
 	return data

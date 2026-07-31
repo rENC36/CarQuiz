@@ -39,18 +39,19 @@ function menu_manager.init(self)
 	app_focus.init() 
 	app_focus.set_context("menu")
 	
+	sound_manager.init()
+
 	local save_data = save_manager.load()
 	print("Монет в сохранении: " .. save_data.coins)
 	gui.set_text(gui.get_node("txt_total_coins"), save_data.coins)
 
-	local save_data = save_manager.load()
-	
 	self.sound_on = save_data.sound_on
 	self.music_on = save_data.music_on
 
+	-- Синхронизируем настройки с sound_manager
 	sound_manager.set_music_on(self.music_on)
 	sound_manager.set_sound_on(self.sound_on)
-	
+
 	self.buttons = buttons_data
 
 	self.buttons_by_node = {}
