@@ -9,6 +9,10 @@ return {
 		["title"] = "Bonus for watching ad",
 		["title2"] = "Do you want to get 30 coins?",
 		["available"] = "Available",
+		["title2_auth"] = "Do you want to log in?",
+		["title_auth"] = "To save your results in the leaderboard, \n you need to log in to your Yandex account.",
+		["btn_auth_no_text"] = "No",
+		["btn_auth_yes_text"] = "Yes"
 	},
 	["categories"] = {
 		["txt_categories_title"] = "SELECT CATEGORY",

@@ -139,4 +139,18 @@ return {
 	defaultsize = vmath.vector3(1, 1, 1),
 	hoversize = vmath.vector3(1.1, 1.1, 1), 
 	anim_color = false},
+
+	{node = "btn_auth_yes",
+	color = vmath.vector4(1, 1, 1, 1),
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.1, 1.1, 1), 
+	anim_color = false},
+
+	{node = "btn_auth_no",
+	color = vmath.vector4(1, 1, 1, 1),
+	hover = vmath.vector4(1, 1, 1, 1),
+	defaultsize = vmath.vector3(1, 1, 1),
+	hoversize = vmath.vector3(1.1, 1.1, 1), 
+	anim_color = false},
 }

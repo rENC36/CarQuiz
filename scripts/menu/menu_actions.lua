@@ -6,6 +6,8 @@ local menu_levels = require("scripts.menu.menu_levels")
 local menu_ads = require("scripts.menu.menu_ads")
 local ad_timer = require("scripts.managers.ad_timer")
 
+local yagames = require("yagames.yagames")
+
 local actions = {}
 
 actions.btn_menu_ad = function()
@@ -48,6 +50,16 @@ end
 
 actions.close_screen_settings = function(self)
 	menu_navigation.change(self, "menu")
+end
+
+actions.btn_leaderboard = function(self)
+	local ok, is_authorized = pcall(yagames.player_is_authorized)
+	if ok and is_authorized then
+		menu_navigation.change(self, "leaderboard")
+	else
+		gui.set_enabled(gui.get_node("leaderboard_block"), true)
+		gui.set_enabled(gui.get_node("blur2"), true) 
+	end
 end
 
 function actions._start_game(self, difficulty, level_num)

@@ -502,6 +502,155 @@ nodes {
     z: 0.0
   }
   type: TYPE_BOX
+  id: "blur2"
+  parent: "screen_menu"
+  layer: "blur"
+  inherit_alpha: true
+  alpha: 0.55
+  size_mode: SIZE_MODE_AUTO
+  enabled: false
+}
+nodes {
+  size {
+    x: 400.0
+    y: 280.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/ad_block1"
+  id: "leaderboard_block"
+  parent: "screen_menu"
+  layer: "ad_block"
+  inherit_alpha: true
+  enabled: false
+}
+nodes {
+  position {
+    x: -100.0
+    y: -93.0
+  }
+  size {
+    x: 140.0
+    y: 60.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/yes_block1"
+  id: "btn_auth_yes"
+  parent: "leaderboard_block"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 3.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.16862746
+    y: 0.20784314
+    z: 0.27058825
+  }
+  type: TYPE_TEXT
+  text: "\320\224\320\260"
+  font: "inter_regular"
+  id: "btn_auth_yes_text"
+  parent: "btn_auth_yes"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    x: 95.0
+    y: -93.0
+  }
+  size {
+    x: 140.0
+    y: 60.0
+  }
+  type: TYPE_BOX
+  texture: "UI1/no_block1"
+  id: "btn_auth_no"
+  parent: "leaderboard_block"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 3.0
+  }
+  scale {
+    x: 0.5
+    y: 0.5
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\235\320\265\321\202"
+  font: "inter_regular"
+  id: "btn_auth_no_text"
+  parent: "btn_auth_no"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: 95.0
+  }
+  scale {
+    x: 0.2
+    y: 0.2
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\247\321\202\320\276\320\261\321\213 \321\201\320\276\321\205\321\200\320\260\320\275\321\217\321\202\321\214 \321\200\320\265\320\267\321\203\320\273\321\214\321\202\320\260\321\202\321\213 \320\262 \321\202\320\260\320\261\320\273\320\270\321\206\320\265 \320\273\320\270\320\264\320\265\321\200\320\276\320\262, \n"
+  "\320\275\321\203\320\266\320\275\320\276 \320\262\320\276\320\271\321\202\320\270 \320\262 \320\260\320\272\320\272\320\260\321\203\320\275\321\202 \320\257\320\275\320\264\320\265\320\272\321\201."
+  font: "inter_bold"
+  id: "title_auth"
+  parent: "leaderboard_block"
+  inherit_alpha: true
+}
+nodes {
+  position {
+    y: -25.0
+  }
+  scale {
+    x: 0.4
+    y: 0.4
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  type: TYPE_TEXT
+  text: "\320\245\320\276\321\202\320\270\321\202\320\265 \320\260\320\262\321\202\320\276\321\200\320\270\320\267\320\276\320\262\320\260\321\202\321\214\321\201\321\217?"
+  font: "inter_regular"
+  id: "title2_auth"
+  parent: "leaderboard_block"
+  inherit_alpha: true
+  alpha: 0.9
+}
+nodes {
+  scale {
+    x: 3.027597
+    y: 9.273027
+  }
+  size {
+    x: 200.0
+    y: 100.0
+  }
+  color {
+    x: 0.0
+    y: 0.0
+    z: 0.0
+  }
+  type: TYPE_BOX
   id: "blur"
   parent: "screen_menu"
   layer: "blur"
@@ -523,6 +672,7 @@ nodes {
   texture: "bg/background"
   id: "screen_categories"
   inherit_alpha: true
+  enabled: false
 }
 nodes {
   position {
@@ -1515,7 +1665,6 @@ nodes {
   texture: "bg/background"
   id: "screen_result"
   inherit_alpha: true
-  enabled: false
 }
 nodes {
   position {
